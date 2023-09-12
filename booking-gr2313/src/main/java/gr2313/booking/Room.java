@@ -33,27 +33,34 @@ public class Room {
     public void setRoomCapacity(int roomCapacity) {
         this.roomCapacity = roomCapacity;
     }
+    
+        public Date getBookedTo() {
+            return bookedTo;
+        }
+    
+        public void setBookedTo(Date bookedTo) {
+            // if (bookedFrom != null && bookedFrom.after(bookedFrom)) {
+            //     throw new IllegalArgumentException("Cannot book in a negative range.");
+            // }
+            this.bookedTo = bookedTo;
+        }
 
     public Date getBookedFrom() {
         return bookedFrom;
     }
 
     public void setBookedFrom(Date bookedFrom) {
-        if (bookedTo == null || bookedTo.before(bookedFrom)) {
-            throw new IllegalArgumentException("Cannot book in a negative range.");
-        }
+        // if (bookedTo != null) {
+        //     if (bookedTo.before(bookedFrom)) {
+        //         throw new IllegalArgumentException("Cannot book in a negative range.");
+        //     }
+        // }
         this.bookedFrom = bookedFrom;
     }
 
-    public Date getBookedTo() {
-        return bookedTo;
-    }
-
-    public void setBookedTo(Date bookedTo) {
-        if (bookedFrom == null || bookedFrom.after(bookedFrom)) {
-            throw new IllegalArgumentException("Cannot book in a negative range.");
-        }
-        this.bookedTo = bookedTo;
+    public void bookRoom (Date bookedTo, Date bookedFrom) {
+        setBookedTo(bookedTo);
+        setBookedFrom(bookedFrom);
     }
 
     public int getPricePerNight() {
@@ -79,4 +86,13 @@ public class Room {
         return pricePerNight * bookedFrom.compareTo(bookedTo);
     }
 
+    public static void main(String[] args) {
+        // isAvailableOn gir feil resultat
+        Room r1 = new Room(1, 1, 10);
+        Date from = new Date(2023, 9, 12);
+        Date to = new Date(2023, 9, 14);
+        Date test = new Date(2023, 9, 13);
+        r1.bookRoom(from, to);
+        System.out.println(r1.isAvailableOn(test));
+    }
 }
