@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.Color?>
+
+<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="800" style="-fx-background-color: #3a3379;" xmlns:fx="" xmlns="" fx:controller="">
+
+    <!-- Header -->
+    <HBox layoutX="20" layoutY="20">
+        <Label text="Hotel Booking App" style="-fx-text-fill: #ffffff; -fx-font-size: 24px;" />
+    </HBox>
+
+    <!-- Content -->
+    <VBox layoutX="20" layoutY="80" spacing="20">
+        <Label text="Check-In Date" style="-fx-text-fill: #ffffff;" />
+        <DatePicker style="-fx-background-color: #d8d8f8;" />
+
+        <Label text="Check-Out Date" style="-fx-text-fill: #ffffff;" />
+        <DatePicker style="-fx-background-color: #d8d8f8;" />
+
+        <Label text="Select Room Type" style="-fx-text-fill: #ffffff;" />
+        <ComboBox prefWidth="200" style="-fx-background-color: #d8d8f8;">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Single Room" />
+                    <String fx:value="Double Room" />
+                    <String fx:value="Suite" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <Button text="Book Now" style="-fx-background-color: #ffa797; -fx-text-fill: #ffffff;" />
+    </VBox>
+
+</AnchorPane>
