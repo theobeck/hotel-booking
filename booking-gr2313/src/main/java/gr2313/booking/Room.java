@@ -1,13 +1,13 @@
 package gr2313.booking;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Room {
     private int roomNumber;
     // Kanskje endre roomCapacity til å være en samling av antall f.eks. singleBed, doubleBed, osv?
     private int roomCapacity;
-    private Date bookedFrom;
-    private Date bookedTo;
+    private GregorianCalendar bookedFrom;
+    private GregorianCalendar bookedTo;
     private int pricePerNight;
 
     public Room (int roomNumber, int roomCapacity, int pricePerNight) {
@@ -34,22 +34,11 @@ public class Room {
         this.roomCapacity = roomCapacity;
     }
     
-        public Date getBookedTo() {
-            return bookedTo;
-        }
-    
-        public void setBookedTo(Date bookedTo) {
-            // if (bookedFrom != null && bookedFrom.after(bookedFrom)) {
-            //     throw new IllegalArgumentException("Cannot book in a negative range.");
-            // }
-            this.bookedTo = bookedTo;
-        }
-
-    public Date getBookedFrom() {
+    public GregorianCalendar getBookedFrom() {
         return bookedFrom;
     }
 
-    public void setBookedFrom(Date bookedFrom) {
+    public void setBookedFrom(GregorianCalendar bookedFrom) {
         // if (bookedTo != null) {
         //     if (bookedTo.before(bookedFrom)) {
         //         throw new IllegalArgumentException("Cannot book in a negative range.");
@@ -58,9 +47,21 @@ public class Room {
         this.bookedFrom = bookedFrom;
     }
 
-    public void bookRoom (Date bookedTo, Date bookedFrom) {
-        setBookedTo(bookedTo);
+    public GregorianCalendar getBookedTo() {
+        return bookedTo;
+    }
+    
+    public void setBookedTo(GregorianCalendar bookedTo) {
+        // if (bookedFrom != null && bookedFrom.after(bookedFrom)) {
+        //     throw new IllegalArgumentException("Cannot book in a negative range.");
+        // }
+        this.bookedTo = bookedTo;
+    }
+
+
+    public void bookRoom (GregorianCalendar bookedFrom, GregorianCalendar bookedTo) {
         setBookedFrom(bookedFrom);
+        setBookedTo(bookedTo);
     }
 
     public int getPricePerNight() {
@@ -71,8 +72,8 @@ public class Room {
         this.pricePerNight = pricePerNight;
     }
 
-    public boolean isAvailableOn (Date targetDate) {
-        return !(targetDate.after(bookedFrom) && targetDate.before(bookedTo));
+    public boolean isAvailableOn (GregorianCalendar targetDate) {
+        return targetDate.before(bookedFrom) || targetDate.after(bookedTo);
     }
 
     private boolean isBooked () {
@@ -87,11 +88,10 @@ public class Room {
     }
 
     public static void main(String[] args) {
-        // isAvailableOn gir feil resultat
         Room r1 = new Room(1, 1, 10);
-        Date from = new Date(2023, 9, 12);
-        Date to = new Date(2023, 9, 14);
-        Date test = new Date(2023, 9, 13);
+        GregorianCalendar from = new GregorianCalendar(123, 8, 12);
+        GregorianCalendar to = new GregorianCalendar(123, 8, 14);
+        GregorianCalendar test = new GregorianCalendar(123, 8, 15);
         r1.bookRoom(from, to);
         System.out.println(r1.isAvailableOn(test));
     }
