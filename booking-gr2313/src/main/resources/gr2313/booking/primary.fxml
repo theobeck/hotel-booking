@@ -32,8 +32,8 @@
               </rowConstraints>
                <children>
                   <DatePicker fx:id="fromDate" prefHeight="26.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Button fx:id="searchButton" mnemonicParsing="false" text="Search Dates" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <DatePicker fx:id="toDate" prefHeight="26.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button id="searchButton" mnemonicParsing="false" text="Search Dates" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <DatePicker id="toDate" prefHeight="26.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To:" wrappingWidth="195.7183837890625" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Magneto Bold" size="18.0" />
@@ -58,7 +58,7 @@
             <Font name="Magneto Bold" size="56.0" />
          </font>
       </Text>
-      <Text fill="#3a3379" layoutX="200.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget about you boyfriend. Meet me at the hotel room" textAlignment="CENTER" wrappingWidth="450.13677978515625">
+      <Text fill="#3a3379" layoutX="204.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget about you boyfriend. Meet me at the hotel room" textAlignment="CENTER" wrappingWidth="450.13677978515625">
          <font>
             <Font name="Magneto Bold" size="29.0" />
          </font>
