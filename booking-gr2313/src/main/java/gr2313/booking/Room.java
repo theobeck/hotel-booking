@@ -80,9 +80,9 @@ public class Room {
         return !(bookedTo == null && bookedFrom == null);
     }
 
-    public int totalBookingCost () {
+    public int totalCostOfBooking () {
         if (!isBooked()) {
-            throw new IllegalStateException("Cannot check booking price when room isn't booked.");
+            throw new IllegalStateException("Cannot check booking cost when room isn't booked.");
         }
         return pricePerNight * bookedFrom.compareTo(bookedTo);
     }
