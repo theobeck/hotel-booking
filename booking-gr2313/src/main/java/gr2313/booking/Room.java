@@ -77,8 +77,7 @@ public class Room {
     }
 
     private boolean isBooked () {
-        // return !(bookedTo == null && bookedFrom == null);
-        return true;
+        return !(bookedTo == null && bookedFrom == null);
     }
 
     public int totalCostOfBooking () {
