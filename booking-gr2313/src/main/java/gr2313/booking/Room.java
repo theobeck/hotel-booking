@@ -65,7 +65,8 @@ public class Room {
     }
 
     public int getPricePerNight() {
-        return pricePerNight;
+        // return pricePerNight;
+        return 0;
     }
 
     public void setPricePerNight(int pricePerNight) {
