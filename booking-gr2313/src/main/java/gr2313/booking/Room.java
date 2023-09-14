@@ -1,6 +1,9 @@
 package gr2313.booking;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.concurrent.TimeUnit;
 
 public class Room {
     private int roomNumber;
@@ -84,7 +87,19 @@ public class Room {
         if (!isBooked()) {
             throw new IllegalStateException("Cannot check booking cost when room isn't booked.");
         }
-        return pricePerNight * bookedFrom.compareTo(bookedTo);
+        
+        Date date1Date = getBookedFrom().getTime();
+        Date date2Date = getBookedTo().getTime();
+
+        long timeDifferenceInMillis = date2Date.getTime() - date1Date.getTime();
+        long daysBetween = TimeUnit.DAYS.convert(timeDifferenceInMillis, TimeUnit.MILLISECONDS);
+        return pricePerNight * ((int)daysBetween);
+    }
+
+    @Override
+    public String toString() {
+        return "Room " + roomNumber + " has a capacity of " + roomCapacity + " and costs " + pricePerNight
+                + " per night.";
     }
 
     public static void main(String[] args) {
