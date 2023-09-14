@@ -1,6 +1,5 @@
 package gr2313.booking;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.concurrent.TimeUnit;
@@ -87,7 +86,7 @@ public class Room {
         if (!isBooked()) {
             throw new IllegalStateException("Cannot check booking cost when room isn't booked.");
         }
-        
+
         Date date1Date = getBookedFrom().getTime();
         Date date2Date = getBookedTo().getTime();
 
