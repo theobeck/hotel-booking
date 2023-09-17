@@ -19,26 +19,44 @@ public class Room {
         bookedTo = null;
     }
 
+    /**
+     * @return Room number
+     */
     public int getRoomNumber () {
         return roomNumber;
     }
 
+    /**
+     * @param roomNumber Room number to change to
+     */
     public void setRoomNumber(int roomNumber) {
         this.roomNumber = roomNumber;
     }
 
+    /**
+     * @return Room capacity
+     */
     public int getRoomCapacity() {
         return roomCapacity;
     }
 
+    /**
+     * @param roomNumber Room capacity to change to
+     */
     public void setRoomCapacity(int roomCapacity) {
         this.roomCapacity = roomCapacity;
     }
     
+    /**
+     * @return Time room is booked from
+     */
     public LocalDateTime getBookedFrom() {
         return bookedFrom;
     }
 
+    /**
+     * @param bookedFrom Time booking starts
+     */
     public void setBookedFrom(LocalDateTime bookedFrom) {
         // #TODO - fix proper edge case check
         // if (bookedTo != null) {
@@ -49,10 +67,16 @@ public class Room {
         this.bookedFrom = bookedFrom;
     }
 
+    /**
+     * @return Time room is booked to
+     */
     public LocalDateTime getBookedTo() {
         return bookedTo;
     }
     
+    /**
+     * @param bookedTo Time booking ends
+     */
     public void setBookedTo(LocalDateTime bookedTo) {
         // #TODO - fix proper edge case check
         // if (bookedFrom != null && bookedFrom.after(bookedFrom)) {
@@ -62,32 +86,52 @@ public class Room {
     }
 
 
+    /**
+     * @param bookedFrom Time to start booking
+     * @param bookedTo TIme to end booking
+     */
     public void bookRoom (LocalDateTime bookedFrom, LocalDateTime bookedTo) {
         setBookedFrom(bookedFrom);
         setBookedTo(bookedTo);
     }
 
+    /**
+     * @return Price per night
+     */
     public int getPricePerNight() {
         return pricePerNight;
     }
 
+    /**
+     * @param pricePerNight How much room will cost per night
+     */
     public void setPricePerNight(int pricePerNight) {
         this.pricePerNight = pricePerNight;
     }
 
+    /**
+     * @param targetDate Date to check if available on
+     * @return Whether or not it is available on the date given
+     */
     public boolean isAvailableOn (LocalDateTime targetDate) {
         return targetDate.isBefore(bookedFrom) || targetDate.isAfter(bookedTo);
     }
 
+    /**
+     * @return Whether or not room is booked
+     */
     private boolean isBooked () {
         return !(bookedTo == null && bookedFrom == null);
     }
 
+    /**
+     * @return Price of entire booking
+     */
     public int totalCostOfBooking () {
+        // FUCK DINNE FUNKSJONEN
         if (!isBooked()) {
             throw new IllegalStateException("Cannot check booking cost when room isn't booked.");
         }
-
         return (int) (pricePerNight * (ChronoUnit.DAYS.between(bookedFrom, bookedTo)));
     }
 
