@@ -4,7 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.*;
 
@@ -12,14 +13,14 @@ import org.junit.jupiter.api.*;
 public class RoomTest {
 
 	Room r1;
-	GregorianCalendar bookedFrom;
-	GregorianCalendar bookedTo;
+	LocalDateTime bookedFrom;
+	LocalDateTime bookedTo;
 
 	@BeforeEach
     void setUp() {
 		r1 = new Room(1, 1, 100);
-		bookedFrom = new GregorianCalendar(123, 0, 1);
-		bookedTo = new GregorianCalendar(123, 0, 7);
+		bookedFrom = LocalDateTime.of(2023, 1, 1, 0, 0, 0);
+		bookedTo = LocalDateTime.of(2023, 1, 7, 0, 0, 0);
     }
 	
 	@Test
@@ -33,13 +34,13 @@ public class RoomTest {
 	}
 
 	@Test
-	public void testBookRoom() {
+	public void testBooking() {
 		r1.bookRoom(bookedFrom, bookedTo);
 		assertEquals(bookedFrom, r1.getBookedFrom());
 		assertEquals(bookedTo, r1.getBookedTo());
 		assertEquals(600, r1.totalCostOfBooking());
-		GregorianCalendar t1 = new GregorianCalendar(123, 0, 3);
-		GregorianCalendar t2 = new GregorianCalendar(123, 0, 8);
+		LocalDateTime t1 = LocalDateTime.of(2023, 1, 3, 0, 0, 0);
+		LocalDateTime t2 = LocalDateTime.of(2023, 1, 8, 0, 0, 0);
 		assertFalse(r1.isAvailableOn(t1));
 		assertTrue(r1.isAvailableOn(t2));
 	}
