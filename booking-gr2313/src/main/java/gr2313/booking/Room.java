@@ -7,9 +7,11 @@ public class Room {
     private int roomNumber;
     // Kanskje endre roomCapacity til å være en samling av antall f.eks. singleBed, doubleBed, osv?
     private int roomCapacity;
+    private int pricePerNight;
+
     private LocalDateTime bookedFrom;
     private LocalDateTime bookedTo;
-    private int pricePerNight;
+    private String bookedBy;
 
     public Room (int roomNumber, int roomCapacity, int pricePerNight) {
         this.roomNumber = roomNumber;
@@ -111,6 +113,7 @@ public class Room {
      * @param targetDate Date to check if available on
      * @return Whether or not it is available on the date given
      */
+    // Dette er en funksjon for i fremtiden når vi evt kan la ett rom bli booket flere ganger, så lenge de forskjellige bookingene ikke skjer samtidig.
     public boolean isAvailableOn (LocalDateTime targetDate) {
         return targetDate.isBefore(bookedFrom) || targetDate.isAfter(bookedTo);
     }
