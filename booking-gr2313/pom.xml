@@ -80,7 +80,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>gr2313.booking.App</mainClass>
+                            <mainClass>gr2313.booking.BookingApp</mainClass>
                         </configuration>
                     </execution>
                 </executions>

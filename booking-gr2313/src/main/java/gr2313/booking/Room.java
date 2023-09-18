@@ -56,14 +56,12 @@ public class Room {
 
     /**
      * @param bookedFrom Time booking starts
+     * @throws IllegalArgumentException when attempting to book in negative range
      */
     public void setBookedFrom(LocalDateTime bookedFrom) {
-        // #TODO - fix proper edge case check
-        // if (bookedTo != null) {
-        //     if (bookedTo.before(bookedFrom)) {
-        //         throw new IllegalArgumentException("Cannot book in a negative range.");
-        //     }
-        // }
+        if (bookedTo != null && bookedTo.isAfter(bookedFrom)) {
+            throw new IllegalArgumentException("Cannot book in a negative range.");
+        }
         this.bookedFrom = bookedFrom;
     }
 
@@ -76,12 +74,12 @@ public class Room {
     
     /**
      * @param bookedTo Time booking ends
+     * @throws IllegalArgumentException when attempting to book in negative range
      */
     public void setBookedTo(LocalDateTime bookedTo) {
-        // #TODO - fix proper edge case check
-        // if (bookedFrom != null && bookedFrom.after(bookedFrom)) {
-        //     throw new IllegalArgumentException("Cannot book in a negative range.");
-        // }
+        if (bookedFrom != null && bookedFrom.isAfter(bookedTo)) {
+            throw new IllegalArgumentException("Cannot book in a negative range.");
+        }
         this.bookedTo = bookedTo;
     }
 
