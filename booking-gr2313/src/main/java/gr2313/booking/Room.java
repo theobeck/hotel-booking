@@ -1,9 +1,10 @@
 package gr2313.booking;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class Room {
+public class Room implements Serializable{
     private int roomNumber;
     // Kanskje endre roomCapacity til å være en samling av antall f.eks. singleBed, doubleBed, osv?
     private int roomCapacity;
