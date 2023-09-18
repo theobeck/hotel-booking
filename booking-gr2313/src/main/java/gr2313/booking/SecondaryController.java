@@ -10,4 +10,3 @@ public class SecondaryController {
         BookingApp.setRoot("booking");
     }
 }
-//yo
