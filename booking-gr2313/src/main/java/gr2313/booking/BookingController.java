@@ -3,7 +3,6 @@ package gr2313.booking;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.random.*;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
