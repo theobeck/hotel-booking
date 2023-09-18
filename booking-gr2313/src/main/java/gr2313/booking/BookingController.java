@@ -13,4 +13,6 @@ public class BookingController {
 
     @FXML private DatePicker fromDate;
     @FXML private DatePicker toDate;
+
+    
 }

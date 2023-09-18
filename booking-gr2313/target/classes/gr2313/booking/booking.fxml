@@ -32,7 +32,7 @@
               </rowConstraints>
                <children>
                   <DatePicker fx:id="fromDate" prefHeight="26.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Button id="searchButton" mnemonicParsing="false" text="Search Dates" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button id="searchButton" mnemonicParsing="false" onAction="#searchDates" text="Search Dates" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <DatePicker id="toDate" prefHeight="26.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To:" wrappingWidth="195.7183837890625" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
