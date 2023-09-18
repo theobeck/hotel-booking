@@ -58,7 +58,7 @@
             <Font name="Magneto Bold" size="56.0" />
          </font>
       </Text>
-      <Text fill="#3a3379" layoutX="204.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget about you boyfriend. Meet me at the hotel room" textAlignment="CENTER" wrappingWidth="450.13677978515625">
+      <Text fill="#3a3379" layoutX="204.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget about your boyfriend. Meet me at the hotel room" textAlignment="CENTER" wrappingWidth="450.13677978515625">
          <font>
             <Font name="Magneto Bold" size="29.0" />
          </font>
