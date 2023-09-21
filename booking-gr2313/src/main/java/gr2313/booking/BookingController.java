@@ -44,13 +44,4 @@ public class BookingController {
     public ArrayList<Room> getRooms() {
         return rooms;
     }
-
-    public void generateRooms(){
-        Random random = new Random();
-        for(int i = 0; i<10; i++){
-            int cap = random.nextInt(8)+1;
-            Room room = new Room(i, cap, cap*750);
-        }
-    }
-
 }
