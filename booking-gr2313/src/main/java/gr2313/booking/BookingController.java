@@ -5,17 +5,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
 
 public class BookingController {
 
     @FXML
-    private void switchToSecondary() throws IOException {
+    private void goToBookRoom() throws IOException {
         BookingApp.setRoot("secondary");
     }
 
-    @FXML private DatePicker fromDate;
-    @FXML private DatePicker toDate;
 
     ArrayList<Room> rooms = new ArrayList<>();
 
