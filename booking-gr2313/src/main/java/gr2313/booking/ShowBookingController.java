@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class ShowBookingController {
 
-     @FXML
+    @FXML
     private void goToBooking(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
