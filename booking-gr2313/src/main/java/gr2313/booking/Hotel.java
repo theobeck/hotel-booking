@@ -11,7 +11,7 @@ public class Hotel {
     List<Room> rooms = new ArrayList<>();
     int nmbRooms = 10;
     
-    private Hotel(String filename){
+    public Hotel(String filename){
         rooms = fileManager.gjenopprettListeFraFil(filename);
         if(rooms.isEmpty()){
             for(int i = 0; i<nmbRooms; i++){
@@ -22,5 +22,9 @@ public class Hotel {
             }
             fileManager.skrivTilFil(rooms, filename);
         }
+    }
+
+    public List<Room> getRooms(){
+        return rooms;
     }
 }

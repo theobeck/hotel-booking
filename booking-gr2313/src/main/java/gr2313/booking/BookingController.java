@@ -1,8 +1,7 @@
 package gr2313.booking;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,10 +12,13 @@ import javafx.stage.Stage;
 
 public class BookingController {
 
+    String filename = "rom.ser";
+    Hotel hotel = new Hotel(filename);
+
+    List<Room> rooms = hotel.getRooms();
 
     @FXML
     private void goToShowBooking(ActionEvent event) throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("showBooking.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -34,14 +36,5 @@ public class BookingController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-    }
-
-
-
-
-    ArrayList<Room> rooms = new ArrayList<>();
-
-    public ArrayList<Room> getRooms() {
-        return rooms;
     }
 }

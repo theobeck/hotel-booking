@@ -122,7 +122,7 @@ public class Room implements Serializable{
     /**
      * @return Whether or not room is booked
      */
-    private boolean isBooked () {
+    public boolean isBooked () {
         return !(bookedTo == null && bookedFrom == null);
     }
 
