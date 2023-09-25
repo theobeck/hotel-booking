@@ -1,15 +1,45 @@
 package gr2313.booking;
 
 import java.io.IOException;
+import java.util.List;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 public class AvaliableController {
+
+    SkrivHent filemanager = new SkrivHent();
+    String filename = "rom.ser";
+
+    List<Room> rooms = filemanager.gjenopprettListeFraFil(filename);
+
+    @FXML
+    ListView<Room> roomList;
+
+    private ObservableList<Room> availableRooms = FXCollections.observableArrayList();
+
+    @FXML
+    private void initialize() {
+        addObjects();
+    }
+
+    
+    private void addObjects(){
+        for(Room r : rooms){
+            if(!r.isBooked()){
+                availableRooms.add(r);
+            }
+        }
+        roomList.setItems(availableRooms);
+    }
     
     @FXML
     private void goToBooking(ActionEvent event) throws IOException {
@@ -21,6 +51,4 @@ public class AvaliableController {
         stage.setScene(scene);
         stage.show();
     }
-    
-
 }

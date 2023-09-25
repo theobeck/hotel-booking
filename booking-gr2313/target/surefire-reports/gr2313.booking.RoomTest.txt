@@ -1,4 +1,32 @@
 -------------------------------------------------------------------------------
 Test set: gr2313.booking.RoomTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 s -- in gr2313.booking.RoomTest
+Tests run: 7, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 0.006 sec <<< FAILURE!
+gr2313.booking.RoomTest.testToString()  Time elapsed: 0.003 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "gr2313.booking.Room.toString()" because "this.r1" is null
+	at gr2313.booking.RoomTest.testToString(RoomTest.java:28)
+
+gr2313.booking.RoomTest.testBooking()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "gr2313.booking.Room.bookRoom(java.time.LocalDateTime, java.time.LocalDateTime)" because "this.r1" is null
+	at gr2313.booking.RoomTest.testBooking(RoomTest.java:33)
+
+gr2313.booking.RoomTest.testBookedFrom()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "gr2313.booking.Room.setBookedFrom(java.time.LocalDateTime)" because "this.r1" is null
+	at gr2313.booking.RoomTest.testBookedFrom(RoomTest.java:45)
+
+gr2313.booking.RoomTest.testBookedTo()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "gr2313.booking.Room.setBookedTo(java.time.LocalDateTime)" because "this.r1" is null
+	at gr2313.booking.RoomTest.testBookedTo(RoomTest.java:51)
+
+gr2313.booking.RoomTest.testPricePerNight()  Time elapsed: 0.002 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "gr2313.booking.Room.getPricePerNight()" because "this.r1" is null
+	at gr2313.booking.RoomTest.testPricePerNight(RoomTest.java:57)
+
+gr2313.booking.RoomTest.testRoomCapacity()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "gr2313.booking.Room.getRoomCapacity()" because "this.r1" is null
+	at gr2313.booking.RoomTest.testRoomCapacity(RoomTest.java:63)
+
+gr2313.booking.RoomTest.testRoomNumber()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "gr2313.booking.Room.getRoomNumber()" because "this.r1" is null
+	at gr2313.booking.RoomTest.testRoomNumber(RoomTest.java:70)
+

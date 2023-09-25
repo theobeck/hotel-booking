@@ -122,7 +122,7 @@ public class Room implements Serializable{
     /**
      * @return Whether or not room is booked
      */
-    private boolean isBooked () {
+    public boolean isBooked () {
         return !(bookedTo == null && bookedFrom == null);
     }
 
@@ -139,7 +139,7 @@ public class Room implements Serializable{
 
     @Override
     public String toString() {
-        return "Room " + roomNumber + " has a capacity of " + roomCapacity + " and costs " + pricePerNight
+        return "Room number: " + roomNumber + ", capacity: " + roomCapacity + ", price: " + pricePerNight
                 + " per night.";
     }
 
