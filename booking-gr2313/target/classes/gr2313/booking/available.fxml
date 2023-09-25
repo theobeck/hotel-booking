@@ -13,7 +13,7 @@
             <Font name="Gill Sans MT" size="57.0" />
          </font>
       </Text>
-      <ListView fx:id="roomList" layoutX="330.0" layoutY="182.0" prefHeight="328.0" prefWidth="246.0" />
+      <ListView fx:id="roomList" layoutX="246.0" layoutY="182.0" prefHeight="328.0" prefWidth="375.0" />
       <Button fx:id="back" layoutX="45.0" layoutY="52.0" mnemonicParsing="false" onAction="#goToBooking" prefHeight="31.0" prefWidth="94.0" text="Back" />
    </children>
 </Pane>
