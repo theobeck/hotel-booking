@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
@@ -29,6 +28,7 @@ public class AvaliableController {
     @FXML
     private void initialize() {
         addObjects();
+        roomList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.SINGLE);
     }
 
     
@@ -39,6 +39,15 @@ public class AvaliableController {
             }
         }
         roomList.setItems(availableRooms);
+    }
+
+    @FXML
+    private void book(ActionEvent event) throws IOException{
+        Room thisRoom = roomList.getSelectionModel().getSelectedItem();
+        System.out.println(thisRoom);
+        System.out.println(thisRoom.getIsBooked());
+        thisRoom.setBooked(true);
+        filemanager.skrivTilFil(rooms, filename);
     }
     
     @FXML

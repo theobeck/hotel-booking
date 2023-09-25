@@ -13,6 +13,15 @@ public class Room implements Serializable{
     private LocalDateTime bookedFrom;
     private LocalDateTime bookedTo;
     private String bookedBy;
+    private boolean isBooked;
+
+    public void setBooked(boolean isBooked){
+        this.isBooked = isBooked;
+    }
+
+    public boolean getIsBooked(){
+        return isBooked;
+    }
 
     public Room (int roomNumber, int roomCapacity, int pricePerNight) {
         this.roomNumber = roomNumber;
