@@ -1,8 +1,6 @@
-package gr2313.booking;
+package booking.core;
 
 import org.junit.jupiter.api.*;
-
-import booking.core.Room;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDateTime;
@@ -15,7 +13,7 @@ public class RoomTest {
 	LocalDateTime bookedTo;
 
 	@BeforeEach
-    void setUp() {
+    public void setUp() {
 		r1 = new Room(1, 1, 100);
 		bookedFrom = LocalDateTime.of(2023, 1, 1, 0, 0, 0);
 		bookedTo = LocalDateTime.of(2023, 1, 7, 0, 0, 0);

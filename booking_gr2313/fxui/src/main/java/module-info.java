@@ -1,4 +1,4 @@
-module booking_gr2313.fxui {
+module booking_gr2313.ui {
     requires com.fasterxml.jackson.databind;
 
     requires java.net.http;

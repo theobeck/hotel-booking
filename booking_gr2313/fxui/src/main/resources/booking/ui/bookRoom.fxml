@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="906.0" style="-fx-background-color: #f3f6fd;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr2313.booking.BookRoomController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="906.0" style="-fx-background-color: #f3f6fd;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="booking.ui.BookRoomController">
    <children>
       <Ellipse fill="#d8d8f8" layoutX="711.0" layoutY="401.0" radiusX="195.0" radiusY="212.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Ellipse fill="#5c5699" layoutX="337.0" layoutY="353.0" radiusX="459.0" radiusY="206.0" stroke="TRANSPARENT" strokeType="INSIDE" />
