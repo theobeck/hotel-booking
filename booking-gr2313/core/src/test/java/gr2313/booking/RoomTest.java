@@ -1,6 +1,9 @@
 package gr2313.booking;
 
 import org.junit.jupiter.api.*;
+
+import gr2313.booking.core.Room;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDateTime;
 

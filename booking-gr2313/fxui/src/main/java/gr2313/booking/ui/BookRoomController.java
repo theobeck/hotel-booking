@@ -1,4 +1,4 @@
-package gr2313.booking;
+package gr2313.booking.ui;
 
 import java.io.IOException;
 

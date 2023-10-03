@@ -1,4 +1,4 @@
-package gr2313.booking;
+package gr2313.booking.core;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

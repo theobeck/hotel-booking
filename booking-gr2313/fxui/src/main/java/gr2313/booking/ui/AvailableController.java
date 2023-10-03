@@ -1,8 +1,10 @@
-package gr2313.booking;
+package gr2313.booking.ui;
 
 import java.io.IOException;
 import java.util.List;
 
+import gr2313.booking.core.Room;
+import gr2313.booking.json.ReadWrite;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

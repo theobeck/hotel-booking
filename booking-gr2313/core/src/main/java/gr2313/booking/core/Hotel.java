@@ -1,8 +1,10 @@
-package gr2313.booking;
+package gr2313.booking.core;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import gr2313.booking.json.ReadWrite;
 
 public class Hotel {
 

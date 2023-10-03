@@ -1,8 +1,10 @@
-package gr2313.booking;
+package gr2313.booking.ui;
 
 import java.io.IOException;
 import java.util.List;
 
+import gr2313.booking.core.Hotel;
+import gr2313.booking.core.Room;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

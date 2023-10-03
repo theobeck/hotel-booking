@@ -1,4 +1,4 @@
-package gr2313.booking;
+package gr2313.booking.json;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import gr2313.booking.core.Room;
 
 public class ReadWrite {
 
