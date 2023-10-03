@@ -13,7 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-public class AvaliableController {
+public class AvailableController {
 
     ReadWrite filemanager = new ReadWrite();
     String filename = "rom.ser";
