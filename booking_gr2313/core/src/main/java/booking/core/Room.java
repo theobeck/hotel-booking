@@ -12,7 +12,7 @@ public class Room implements Serializable{
 
     private LocalDateTime bookedFrom;
     private LocalDateTime bookedTo;
-    private String bookedBy;
+    // private String bookedBy;
     private boolean isBooked;
 
     public void setBooked(boolean isBooked){
