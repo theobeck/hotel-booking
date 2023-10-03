@@ -15,10 +15,10 @@ import javafx.stage.Stage;
 
 public class AvaliableController {
 
-    SkrivHent filemanager = new SkrivHent();
+    ReadWrite filemanager = new ReadWrite();
     String filename = "rom.ser";
 
-    List<Room> rooms = filemanager.gjenopprettListeFraFil(filename);
+    List<Room> rooms = filemanager.restoredListFromFile(filename);
 
     @FXML
     ListView<Room> roomList;
@@ -47,7 +47,7 @@ public class AvaliableController {
         System.out.println(thisRoom);
         System.out.println(thisRoom.getIsBooked());
         thisRoom.setBooked(true);
-        filemanager.skrivTilFil(rooms, filename);
+        filemanager.writeToFile(rooms, filename);
     }
     
     @FXML

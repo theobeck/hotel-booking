@@ -12,15 +12,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ShowBookingController {
 
-    SkrivHent filemanager = new SkrivHent();
+    ReadWrite filemanager = new ReadWrite();
     String filename = "rom.ser";
 
-    List<Room> rooms = filemanager.gjenopprettListeFraFil(filename);
+    List<Room> rooms = filemanager.restoredListFromFile(filename);
 
     private ObservableList<Room> yourRooms = FXCollections.observableArrayList();
 

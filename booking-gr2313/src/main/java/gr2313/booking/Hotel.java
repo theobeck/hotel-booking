@@ -6,13 +6,13 @@ import java.util.Random;
 
 public class Hotel {
 
-    SkrivHent fileManager = new SkrivHent();
+    ReadWrite fileManager = new ReadWrite();
 
     List<Room> rooms = new ArrayList<>();
     int nmbRooms = 10;
     
     public Hotel(String filename){
-        rooms = fileManager.gjenopprettListeFraFil(filename);
+        rooms = fileManager.restoredListFromFile(filename);
         if(rooms.isEmpty()){
             for(int i = 0; i<nmbRooms; i++){
                 Random random = new Random();
@@ -20,7 +20,7 @@ public class Hotel {
                 Room room = new Room(i, cap, cap*750);
                 rooms.add(room);
             }
-            fileManager.skrivTilFil(rooms, filename);
+            fileManager.writeToFile(rooms, filename);
         }
     }
 
