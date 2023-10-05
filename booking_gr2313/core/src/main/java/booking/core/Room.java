@@ -1,10 +1,9 @@
 package booking.core;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class Room implements Serializable{
+public class Room{
     private int roomNumber;
     // Kanskje endre roomCapacity til å være en samling av antall f.eks. singleBed, doubleBed, osv?
     private int roomCapacity;
@@ -21,6 +20,9 @@ public class Room implements Serializable{
 
     public boolean getIsBooked(){
         return isBooked;
+    }
+
+    public Room () {
     }
 
     public Room (int roomNumber, int roomCapacity, int pricePerNight) {
@@ -151,7 +153,7 @@ public class Room implements Serializable{
     @Override
     public String toString() {
         return "Room number: " + roomNumber + ", capacity: " + roomCapacity + ", price: " + pricePerNight
-                + " per night.";
+                + " per night. isBooked: "+isBooked+", booked:"+isBooked();
     }
 
     public static void main(String[] args) {

@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class ShowBookingController {
 
     ReadWrite filemanager = new ReadWrite();
-    String filename = "rom.ser";
+    String filename = "src/main/resources/booking/ui/bookings.json";
 
     List<Room> rooms = filemanager.restoredListFromFile(filename);
 
@@ -38,8 +38,10 @@ public class ShowBookingController {
     }
 
     private void show(){
+        rooms = filemanager.restoredListFromFile(filename);
         for(Room r : rooms){
-            System.out.println(r.getIsBooked());
+            System.out.println("ShowBookingController "+r.getIsBooked());
+            System.out.println(r);
             if(r.getIsBooked()){
                 yourRooms.add(r);
             }
