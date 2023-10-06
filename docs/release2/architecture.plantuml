@@ -1,0 +1,40 @@
+@startuml architecture
+
+!define RECT_CLASS class
+!define RECT_INTERFACE interface
+!define RECT_ABSTRACT abstract class
+!define RECT_ENUM enum
+!define RECT_ANNOTATION annotation
+
+!define RECT_ENTITY entity
+!define RECT_DATABASE database
+!define RECT_FILE file
+!define RECT_CLOUD cloud
+
+skinparam component {
+  ArrowColor #FF6655
+}
+
+component "core" {
+  package booking.core
+  package booking.json
+}
+
+component "fxui" {
+  package booking.ui
+}
+
+component "javafx"{
+   component [fxml] #FF6655
+}
+
+component "jackson" #FF6655
+
+[fxui] ..> [javafx]
+[fxui] ..> [fxml]
+[booking.ui] ..> [booking.core]
+[booking.ui] ..> [booking.json]
+[booking.core] ..> [booking.json]
+[booking.json] ..> [jackson]
+
+@enduml
