@@ -1,10 +1,9 @@
 package booking.json;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,26 +11,35 @@ import booking.core.Room;
 
 public class ReadWrite {
 
+    private ObjectMapper objectMapper = new ObjectMapper();
+
+    /**
+     * @param rooms
+     * @param fileName
+     */
     public void writeToFile(List<Room> rooms, String fileName) {
-        try (FileOutputStream fileStream = new FileOutputStream(fileName);
-            ObjectOutputStream objectStream = new ObjectOutputStream(fileStream)) {
-
-            objectStream.writeObject(rooms);
-
-        } catch (IOException e) {
+        try {
+            objectMapper.writeValue(new File(fileName), rooms);
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * @param fileName
+     * @return
+     */
     public List<Room> restoredListFromFile(String fileName) {
         List<Room> restoredList = new ArrayList<>();
 
-        try (FileInputStream fileStream = new FileInputStream(fileName);
-             ObjectInputStream objectStream = new ObjectInputStream(fileStream)) {
+        try {
 
-            restoredList = (List<Room>) objectStream.readObject();
+            restoredList = objectMapper.readValue(new File(fileName), new TypeReference<List<Room>>(){});
+            System.out.println("restoredList" + restoredList);
 
-        } catch (IOException | ClassNotFoundException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
         }
 

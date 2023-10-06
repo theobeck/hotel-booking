@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class BookingController {
 
-    String filename = "rom.ser";
+    String filename = "src/main/resources/booking/ui/bookings.json";
     Hotel hotel = new Hotel(filename);
 
     List<Room> rooms = hotel.getRooms();

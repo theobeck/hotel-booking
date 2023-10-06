@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class AvailableController {
 
     ReadWrite filemanager = new ReadWrite();
-    String filename = "rom.ser";
+    String filename = "src/main/resources/booking/ui/bookings.json";
 
     List<Room> rooms = filemanager.restoredListFromFile(filename);
 
@@ -47,8 +47,9 @@ public class AvailableController {
     private void book(ActionEvent event) throws IOException{
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
         System.out.println(thisRoom);
-        System.out.println(thisRoom.getIsBooked());
+        System.out.println("Before "+thisRoom.getIsBooked());
         thisRoom.setBooked(true);
+        System.out.println("After "+thisRoom.getIsBooked());
         filemanager.writeToFile(rooms, filename);
     }
     

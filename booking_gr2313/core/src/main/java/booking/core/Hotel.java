@@ -11,7 +11,7 @@ public class Hotel {
     ReadWrite fileManager = new ReadWrite();
 
     List<Room> rooms = new ArrayList<>();
-    int nmbRooms = 10;
+    int nmbRooms = 1;
     
     public Hotel(String filename){
         rooms = fileManager.restoredListFromFile(filename);
