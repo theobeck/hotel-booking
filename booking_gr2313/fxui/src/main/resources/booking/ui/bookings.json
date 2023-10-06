@@ -1,0 +1,8 @@
+[ {
+  "roomNumber" : 1,
+  "roomCapacity" : 2,
+  "pricePerNight" : 1500,
+  "bookedFrom" : null,
+  "bookedTo" : null,
+  "isBooked" : true
+} ]
