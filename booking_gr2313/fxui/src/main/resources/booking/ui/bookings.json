@@ -11,7 +11,7 @@
   "pricePerNight" : 2250,
   "bookedFrom" : null,
   "bookedTo" : null,
-  "isBooked" : false
+  "isBooked" : true
 }, {
   "roomNumber" : 3,
   "roomCapacity" : 2,

@@ -10,9 +10,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class BookRoomController {
-    
+
     @FXML
-    private void goToBooking(ActionEvent event) throws IOException {
+    private void goToBooking(final ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
         Parent root = loader.load();
@@ -23,7 +23,7 @@ public class BookRoomController {
     }
 
     @FXML
-    private void goToAvailable(ActionEvent event) throws IOException {
+    private void goToAvailable(final ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("available.fxml"));
         Parent root = loader.load();
