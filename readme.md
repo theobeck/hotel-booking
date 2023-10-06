@@ -23,6 +23,9 @@ Dette prosjektet er organisert som følger:
     - `core/` - Her ligger hovedlogikken for prosjektet og de tilhørende testene. Innad i `core/`, er loggiken delt opp enda litt til, med at hoved logikk filene og filene som kontrollerer skriving/lesing til/fra JSON filer ligger i sine egne mapper.
     - `fxui/` - Her ligger filene for GUIen, altså fxml filer, de tilhørende kontrollerne, og tester for disse.
 
+## Sekvensdiagram 
+
+
 ## Nødvendigheter for kjøring av prosjektet
 
 Maven versjon - 4.0.0
