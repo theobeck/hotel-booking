@@ -17,14 +17,31 @@ import javafx.stage.Stage;
 
 public class AvailableController {
 
-    ReadWrite filemanager = new ReadWrite();
-    String filename = "src/main/resources/booking/ui/bookings.json";
+    /**
+     * The file manager object.
+     */
+    private ReadWrite filemanager = new ReadWrite();
 
-    List<Room> rooms = filemanager.restoredListFromFile(filename);
+    /**
+     * The filepath bookings are saved to.
+     */
+    private String filename = "src/main/resources/booking/ui/bookings.json";
 
+
+    /**
+     * The list of all rooms.
+     */
+    private List<Room> rooms = filemanager.restoredListFromFile(filename);
+
+    /**
+     * List view for available rooms.
+     */
     @FXML
-    ListView<Room> roomList;
+    private ListView<Room> roomList;
 
+    /**
+     * The list of available rooms.
+     */
     private ObservableList<Room> availableRooms = FXCollections.observableArrayList();
 
     @FXML
@@ -33,10 +50,10 @@ public class AvailableController {
         roomList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.SINGLE);
     }
 
-    
-    private void addObjects(){
-        for(Room r : rooms){
-            if(!r.getIsBooked()){
+
+    private void addObjects() {
+        for (Room r : rooms) {
+            if (!r.getIsBooked()) {
                 availableRooms.add(r);
             }
         }
@@ -44,17 +61,14 @@ public class AvailableController {
     }
 
     @FXML
-    private void book(ActionEvent event) throws IOException{
+    private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
-        System.out.println(thisRoom);
-        System.out.println("Before "+thisRoom.getIsBooked());
         thisRoom.setBooked(true);
-        System.out.println("After "+thisRoom.getIsBooked());
         filemanager.writeToFile(rooms, filename);
     }
-    
+
     @FXML
-    private void goToBooking(ActionEvent event) throws IOException {
+    private void goToBooking(final ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
         Parent root = loader.load();
@@ -62,5 +76,35 @@ public class AvailableController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    /**
+     * @return The filepath bookings are saved to.
+     */
+    public String getFilename() {
+        return filename;
+    }
+
+
+    /**
+     * @param newFilename The filepath bookings will be saved to.
+     */
+    public void setFilename(final String newFilename) {
+        filename = newFilename;
+    }
+
+    /**
+     * @return The list of available rooms.
+     */
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+
+    /**
+     * @param newRooms Change the list of available rooms.
+     */
+    public void setRooms(final List<Room> newRooms) {
+        rooms = newRooms;
     }
 }
