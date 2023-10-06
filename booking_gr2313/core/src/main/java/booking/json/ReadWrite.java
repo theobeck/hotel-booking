@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import booking.core.Room;
@@ -21,6 +23,7 @@ public class ReadWrite {
     public void writeToFile(List<Room> rooms, String fileName) {
         try {
             ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
+            Collections.sort(rooms, Comparator.comparingInt(Room::getRoomNumber));
             objectWriter.writeValue(new File(fileName), rooms);
         }
         catch (IOException e) {
