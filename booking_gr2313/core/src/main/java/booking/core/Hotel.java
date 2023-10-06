@@ -15,8 +15,9 @@ public class Hotel {
     
     public Hotel(String filename){
         rooms = fileManager.restoredListFromFile(filename);
+        System.out.println("hotel" + rooms);
         if(rooms.isEmpty()){
-            for(int i = 0; i<nmbRooms; i++){
+            for(int i = 1; i<=nmbRooms; i++){
                 Random random = new Random();
                 int cap = random.nextInt(8)+1;
                 Room room = new Room(i, cap, cap*750);

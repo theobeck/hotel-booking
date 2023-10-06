@@ -36,7 +36,7 @@ public class AvailableController {
     
     private void addObjects(){
         for(Room r : rooms){
-            if(!r.isBooked()){
+            if(!r.getIsBooked()){
                 availableRooms.add(r);
             }
         }

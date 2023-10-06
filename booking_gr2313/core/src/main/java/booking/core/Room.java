@@ -3,15 +3,28 @@ package booking.core;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Room{
+    @JsonProperty("roomNumber")
     private int roomNumber;
+
     // Kanskje endre roomCapacity til å være en samling av antall f.eks. singleBed, doubleBed, osv?
+    @JsonProperty("roomCapacity")
     private int roomCapacity;
+
+    @JsonProperty("pricePerNight")
     private int pricePerNight;
 
+
+    @JsonProperty("bookedFrom")
     private LocalDateTime bookedFrom;
+
+    @JsonProperty("bookedTo")
     private LocalDateTime bookedTo;
+    
     // private String bookedBy;
+    @JsonProperty("isBooked")
     private boolean isBooked;
 
     public void setBooked(boolean isBooked){
@@ -135,16 +148,16 @@ public class Room{
     /**
      * @return Whether or not room is booked
      */
-    public boolean isBooked () {
-        return !(bookedTo == null && bookedFrom == null);
-    }
+    // public boolean isBooked () {
+    //     return !(bookedTo == null && bookedFrom == null);
+    // }
 
     /**
      * @return Price of entire booking
      */
     public int totalCostOfBooking () {
         // FUCK DINNE FUNKSJONEN
-        if (!isBooked()) {
+        if ((bookedTo == null && bookedFrom == null)) {
             throw new IllegalStateException("Cannot check booking cost when room isn't booked.");
         }
         return (int) (pricePerNight * (ChronoUnit.DAYS.between(bookedFrom, bookedTo)));
@@ -153,7 +166,7 @@ public class Room{
     @Override
     public String toString() {
         return "Room number: " + roomNumber + ", capacity: " + roomCapacity + ", price: " + pricePerNight
-                + " per night. isBooked: "+isBooked+", booked:"+isBooked();
+                + " per night. isBooked: "+isBooked;
     }
 
     public static void main(String[] args) {
