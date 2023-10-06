@@ -2,6 +2,7 @@ package booking.json;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +20,8 @@ public class ReadWrite {
      */
     public void writeToFile(List<Room> rooms, String fileName) {
         try {
-            objectMapper.writeValue(new File(fileName), rooms);
+            ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
+            objectWriter.writeValue(new File(fileName), rooms);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -31,19 +33,25 @@ public class ReadWrite {
      * @return
      */
     public List<Room> restoredListFromFile(String fileName) {
-        List<Room> restoredList = new ArrayList<>();
-
+        List<Room> rooms = new ArrayList<>();
+        
         try {
-
-            restoredList = objectMapper.readValue(new File(fileName), new TypeReference<List<Room>>(){});
-            System.out.println("restoredList" + restoredList);
+            FileInputStream fileInputStream = new FileInputStream(fileName);
+            TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() {};
+            rooms = objectMapper.readValue(fileInputStream, typeReference);
+            fileInputStream.close();
+            System.out.println("restoredList" + rooms);
 
         } 
         catch (IOException e) {
             e.printStackTrace();
         }
 
-        return restoredList;
+        return rooms;
+    }
+    public static void main(String[] args) {
+        ReadWrite r = new ReadWrite();
+        r.restoredListFromFile("booking_gr2313/fxui/src/main/resources/booking/ui/bookings.json");
     }
 }
 
