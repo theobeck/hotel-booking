@@ -15,7 +15,8 @@ import javafx.stage.Stage;
 public class BookingController {
 
     String filename = "src/main/resources/booking/ui/bookings.json";
-    Hotel hotel = new Hotel(filename);
+    int nmbRooms = 10;
+    Hotel hotel = new Hotel(filename, nmbRooms);
 
     List<Room> rooms = hotel.getRooms();
 
