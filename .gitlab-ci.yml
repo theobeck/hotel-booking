@@ -5,24 +5,10 @@ stages:
   - test
   - clean
 
-build-root:
+build:
   stage: build
   script:
     - cd booking_gr2313
-    - mvn clean install -U
-    - mvn compile
-
-build-core:
-  stage: build
-  script:
-    - cd booking_gr2313/core
-    - mvn clean install -U
-    - mvn compile
-
-build-fxui:
-  stage: build
-  script:
-    - cd booking_gr2313/fxui
     - mvn clean install -U
     - mvn compile
 
@@ -30,6 +16,7 @@ checkstyle-test:
   stage: test
   script:
     - cd booking_gr2313
+    - mvn clean install -U
     - mvn checkstyle:checkstyle
 
 maven-test:
