@@ -111,7 +111,7 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.7.2.0</version>
+                    <version>4.7.2.1</version>
                     <configuration>
                         <xmlOutput>false</xmlOutput>
                         <htmlOutput>true</htmlOutput>
@@ -132,7 +132,7 @@
                 <plugin>
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-maven-plugin</artifactId>
-                    <configuration>                    
+                    <configuration>
                         <mainClass>booking_gr2313.ui/booking.ui.BookingApp</mainClass>
                         <compress>2</compress>
                         <noHeaderFiles>true</noHeaderFiles>
@@ -159,18 +159,18 @@
                         <javaOptions>
                             <option>-Dfile.encoding=UTF-8</option>
                         </javaOptions>
-                        <!-- linux options --> 
+                        <!-- linux options -->
                         <linuxShortcut>true</linuxShortcut>
                         <linuxMenuGroup>BookingFx</linuxMenuGroup>
-    
-                        <!-- windows options --> 
+
+                        <!-- windows options -->
                         <winDirChooser>true</winDirChooser>
                         <winShortcut>true</winShortcut>
                         <winMenu>true</winMenu>
                         <winMenuGroup>BookingFx</winMenuGroup>
                     </configuration>
                 </plugin>
-    
+
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.1</version>
@@ -184,7 +184,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M5</version>
                     <configuration>
-                        <!-- 
+                        <!--
                             <argLine>dash dash enable-preview</argLine>
                         -->
                     </configuration>
