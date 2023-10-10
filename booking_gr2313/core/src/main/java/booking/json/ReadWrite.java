@@ -43,12 +43,9 @@ public class ReadWrite {
     public List<Room> restoredListFromFile(final String fileName) {
         List<Room> rooms = new ArrayList<>();
 
-        try {
-            FileInputStream fileInputStream = new FileInputStream(fileName);
+        try (FileInputStream fileInputStream = new FileInputStream(fileName)) {
             TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() { };
             rooms = objectMapper.readValue(fileInputStream, typeReference);
-            fileInputStream.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -11,6 +11,7 @@
 
 - Introduced CheckStyle for code quality assurance, ensuring adherence to coding standards and best practices.
 - Added Jacoco coverage to monitor and improve test coverage, enhancing code reliability.
+- Integrated SpotBugs for static code analysis, identifying and addressing potential bugs and code quality issues.
 
 ### Git Branch Structure
 
