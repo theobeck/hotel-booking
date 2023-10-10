@@ -10,6 +10,7 @@
 ### Code Quality Assurance
 
 - Introduced CheckStyle for code quality assurance, ensuring adherence to coding standards and best practices.
+- Added Jacoco coverage to monitor and improve test coverage, enhancing code reliability.
 
 ### Git Branch Structure
 
@@ -23,6 +24,11 @@
 ### Data Persistence
 
 - Transformed the data persistence mechanism from being object-saving oriented to JSON-oriented, providing more flexibility in data storage and retrieval along with more human readability.
+
+### Testing
+
+- Added TestFX files to comprehensively test all FXML files, ensuring a robust and reliable user interface.
+- Added a test file for ReadWrite.java to ensure robust functionality and maintain code integrity.
 
 ## Bug Fixes
 
