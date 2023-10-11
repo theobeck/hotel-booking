@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
@@ -17,10 +18,20 @@ import javafx.fxml.FXMLLoader;
 
 public class BookingAppTest extends ApplicationTest  {
 
-    FXMLLoader loader;
+    @BeforeAll
+    public static void setUpClass() {
+        if (Boolean.getBoolean("headless")) {
+            System.setProperty("testfx.robot", "glass");
+            System.setProperty("testfx.headless", "true");
+            System.setProperty("prism.order", "sw");
+            System.setProperty("prism.text", "t2k");
+            System.setProperty("java.awt.headless", "true");
+        }
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
-        loader = new FXMLLoader(getClass().getResource("booking.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -29,7 +40,6 @@ public class BookingAppTest extends ApplicationTest  {
 
     @Test
     public void testBookRoomAndShowBooking() {
-        loader.getController();
         clickOn("#bookRoom");
         clickOn("#search");
 

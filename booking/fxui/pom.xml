@@ -42,7 +42,13 @@
             <version>20.0.2</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.testfx/openjfx-monocle -->
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>openjfx-monocle</artifactId>
+            <version>jdk-12.0.1+2</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/de.jensd/fontawesomefx-controls -->
         <dependency>
