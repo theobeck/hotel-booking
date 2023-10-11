@@ -33,13 +33,13 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>20</version>
+            <version>20.0.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>20</version>
+            <version>20.0.2</version>
         </dependency>
 
 
@@ -69,13 +69,13 @@
 		<dependency>
 			<groupId>org.testfx</groupId>
 			<artifactId>testfx-core</artifactId>
-			<version>4.0.16-alpha</version>
+			<version>4.0.17</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.testfx</groupId>
 			<artifactId>testfx-junit5</artifactId>
-			<version>4.0.16-alpha</version>
+			<version>4.0.17</version>
 			<scope>test</scope>
         </dependency>
 
