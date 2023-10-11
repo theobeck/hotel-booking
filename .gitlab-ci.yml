@@ -1,25 +1,25 @@
-image: maven:latest
+# image: maven:latest
 
-stages:
-  - build
-  - test
-  - clean
+# stages:
+#   - build
+#   - test
+#   - clean
 
-build:
-  stage: build
-  script:
-    - cd booking
-    - mvn clean install -U
-    - mvn compile
+# build:
+#   stage: build
+#   script:
+#     - cd booking
+#     - mvn clean install -U
+#     - mvn compile
 
-maven-test:
-  stage: test
-  script:
-    - cd booking
-    - mvn clean test
+# maven-test:
+#   stage: test
+#   script:
+#     - cd booking
+#     - mvn clean test
 
-clean-up:
-  stage: clean
-  script:
-    - cd booking
-    - mvn clean
+# clean-up:
+#   stage: clean
+#   script:
+#     - cd booking
+#     - mvn clean
