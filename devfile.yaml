@@ -1,3 +1,4 @@
+---
 schemaVersion: 2.1.0
 metadata:
   name: booking_gr2313
@@ -37,4 +38,3 @@ commands:
       component: booking_gr2313
       commandLine: cd booking_gr2313
       label: change directory
-
