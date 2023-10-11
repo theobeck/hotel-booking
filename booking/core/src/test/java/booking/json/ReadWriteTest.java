@@ -28,6 +28,10 @@ public class ReadWriteTest {
         rooms.add(new Room(3, 1, 100));
     }
 
+
+    /**
+     * @throws IOException
+     */
     @Test
     public void testWriteAndReadFromFile() throws IOException {
 

@@ -193,6 +193,10 @@ public final class Room {
         return (int) (pricePerNight * (ChronoUnit.DAYS.between(bookedFrom, bookedTo)));
     }
 
+
+    /**
+     * @return String
+     */
     @Override
     public String toString() {
         return "Room number: " + roomNumber + ", capacity: " + roomCapacity + ", price: " + pricePerNight + " per night. isBooked: " + isBooked;

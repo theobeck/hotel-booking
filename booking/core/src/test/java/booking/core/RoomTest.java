@@ -18,7 +18,7 @@ public class RoomTest {
 		bookedFrom = LocalDateTime.of(2023, 1, 1, 0, 0, 0);
 		bookedTo = LocalDateTime.of(2023, 1, 7, 0, 0, 0);
     }
-	
+
 	@Test
 	public void testToString() {
 		int roomNumber = 1;
