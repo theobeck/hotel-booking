@@ -29,6 +29,6 @@ Dette prosjektet er organisert som følger:
 
 ## Nødvendigheter for kjøring av prosjektet
 
-Maven versjon - 4.0.0
+Maven versjon - 3.9.4
 
 Java versjon - 20
