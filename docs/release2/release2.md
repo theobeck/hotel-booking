@@ -38,6 +38,6 @@
 
 ## Known Issues
 
-- There are currently no known issues in this release.
+- BookingAppTest does not work unless you minimize all other apps on your computer, and after test has run, bookings.json has to be reset to the values it had before the test was run.
 
 For more details and specific implementation changes, please refer to the commit history and release documentation.
