@@ -33,4 +33,4 @@ Dette prosjektet er organisert som følger:
 
 Maven versjon - 3.9.4
 
-Java versjon - 20
+Java versjon - 20.0.2
