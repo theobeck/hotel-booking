@@ -1,6 +1,6 @@
 # Hotellbooking App
 
-[Open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2313/gr2313)
+[Open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2313/gr2313?new)
 
 Dette kodingsprosjektet inneholder en hotellbookingapplikasjon som lar brukere søke etter og bestille hotellrom. Her er en oversikt over prosjektet og hvordan du kan bruke det.
 
@@ -22,9 +22,8 @@ Dette prosjektet er organisert som følger:
 
 - `docs/` - Her ligger gruppekontrakten, i tillegg til release-spesifikk dokumentasjon.
 - `booking_gr2313/` - Dette er selve kodelageret for prosjektet.
-    - `core/` - Her ligger hovedlogikken for prosjektet og de tilhørende testene. Innad i `core/`, er loggiken delt opp enda litt til, med at hoved logikk filene og filene som kontrollerer skriving/lesing til/fra JSON filer ligger i sine egne mapper.
-    - `fxui/` - Her ligger filene for GUIen, altså fxml filer, de tilhørende kontrollerne, og tester for disse.
-
+  - `core/` - Her ligger hovedlogikken for prosjektet og de tilhørende testene. Innad i `core/`, er loggiken delt opp enda litt til, med at hoved logikk filene og filene som kontrollerer skriving/lesing til/fra JSON filer ligger i sine egne mapper.
+  - `fxui/` - Her ligger filene for GUIen, altså fxml filer, de tilhørende kontrollerne, og tester for disse.
 
 ![Prosjektets struktur vha PlantUML](img/architecture.png)
 
