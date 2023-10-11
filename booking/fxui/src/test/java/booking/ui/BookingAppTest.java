@@ -2,10 +2,13 @@ package booking.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import booking.core.Room;
+import booking.json.ReadWrite;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
@@ -47,5 +50,16 @@ public class BookingAppTest extends ApplicationTest  {
 
         ListView<Room> bookingList = lookup("#bookingList").query();
         assertEquals(1, bookingList.getItems().size());
+
+        String fileName = "src/main/resources/booking/ui/bookings.json";
+        ReadWrite rw = new ReadWrite();
+        List<Room> rooms = rw.restoredListFromFile(fileName);
+        for (Room room : rooms) {
+            if (room.getIsBooked()) {
+                room.setBooked(false);
+            }
+        }
+        rw.writeToFile(rooms, fileName);
+
     }
 }
