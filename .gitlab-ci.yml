@@ -8,18 +8,18 @@ stages:
 build:
   stage: build
   script:
-    - cd booking_gr2313
+    - cd booking
     - mvn clean install -U
     - mvn compile
 
 maven-test:
   stage: test
   script:
-    - cd booking_gr2313
+    - cd booking
     - mvn clean test
 
 clean-up:
   stage: clean
   script:
-    - cd booking_gr2313
+    - cd booking
     - mvn clean
