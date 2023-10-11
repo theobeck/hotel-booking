@@ -12,8 +12,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jupiter.version>5.8.1</jupiter.version>
         <jackson.version>2.13.0</jackson.version>
-        <skipUiTests>true</skipUiTests>
-        <headlessTests>true</headlessTests>
+        <skipUiTests>false</skipUiTests>
+        <headlessTests>false</headlessTests>
     </properties>
 
     <dependencyManagement>
@@ -57,14 +57,6 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.testfx/openjfx-monocle -->
-            <dependency>
-                <groupId>org.testfx</groupId>
-                <artifactId>openjfx-monocle</artifactId>
-                <version>jdk-12.0.1+2</version>
-                <scope>test</scope>
             </dependency>
 
             <dependency>
