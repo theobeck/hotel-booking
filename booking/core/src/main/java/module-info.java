@@ -1,4 +1,4 @@
-module booking_gr2313.core {
+module booking.core {
     exports booking.core;
     exports booking.json;
 

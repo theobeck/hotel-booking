@@ -133,7 +133,7 @@
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-maven-plugin</artifactId>
                     <configuration>
-                        <mainClass>booking_gr2313.ui/booking.ui.BookingApp</mainClass>
+                        <mainClass>booking.ui/booking.ui.BookingApp</mainClass>
                         <compress>2</compress>
                         <noHeaderFiles>true</noHeaderFiles>
                         <stripDebug>true</stripDebug>
@@ -154,7 +154,7 @@
                         <appVersion>1.0.0</appVersion>
                         <vendor>gr2313</vendor>
                         <destination>target/dist</destination>
-                        <module>booking_gr2313.ui/booking.ui.BookingApp</module>
+                        <module>booking.ui/booking.ui.BookingApp</module>
                         <runtimeImage>target/bookingfx</runtimeImage>
                         <javaOptions>
                             <option>-Dfile.encoding=UTF-8</option>

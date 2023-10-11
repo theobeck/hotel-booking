@@ -1,9 +1,9 @@
 ---
 schemaVersion: 2.1.0
 metadata:
-  name: booking_gr2313
+  name: booking
 components:
-  - name: booking_gr2313
+  - name: booking
     container:
       image: adrianstoica/it1901:latest
       memoryLimit: 3Gi
@@ -35,6 +35,6 @@ components:
 commands:
   - id: changedir
     exec:
-      component: booking_gr2313
-      commandLine: cd booking_gr2313
+      component: booking
+      commandLine: cd booking
       label: change directory

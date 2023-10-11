@@ -1,4 +1,4 @@
-module booking_gr2313.ui {
+module booking.ui {
     requires com.fasterxml.jackson.databind;
 
     requires java.net.http;
@@ -7,7 +7,7 @@ module booking_gr2313.ui {
     requires javafx.controls;
     requires javafx.fxml;
 
-    requires booking_gr2313.core;
+    requires booking.core;
 
     opens booking.ui to javafx.graphics, javafx.fxml;
 }

@@ -117,7 +117,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>booking_gr2313.ui/booking.ui.BookingApp</mainClass>
+                    <mainClass>booking.ui/booking.ui.BookingApp</mainClass>
                 </configuration>
             </plugin>
 
