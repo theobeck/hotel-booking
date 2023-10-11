@@ -21,12 +21,17 @@ public class Hotel {
     /**
      * The upper bound for capacity of a newly generated room.
      */
-    private final int UPPER_BOUND_CAPACITY = 8;
+    private static final int UPPER_BOUND_CAPACITY = 8;
 
     /**
      * How much the room's cost increases with the capacity.
      */
-    private final int COST_PER_PERSON = 750;
+    private static final int COST_PER_PERSON = 750;
+
+    /**
+     * Random object used to generate random numbers.
+     */
+    private final Random random = new Random();
 
     /**
      * Constructs a new Hotel object with the following variables defined.
@@ -44,7 +49,6 @@ public class Hotel {
                 if (occupiedRoomNumbers.contains(i)) {
                     continue;
                 }
-                Random random = new Random();
                 int cap = random.nextInt(UPPER_BOUND_CAPACITY) + 1;
                 Room room = new Room(i, cap, cap * COST_PER_PERSON);
                 rooms.add(room);

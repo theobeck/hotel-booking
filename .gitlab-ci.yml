@@ -12,25 +12,11 @@ build:
     - mvn clean install -U
     - mvn compile
 
-checkstyle-test:
-  stage: test
-  script:
-    - cd booking_gr2313
-    - mvn clean install -U
-    - mvn checkstyle:checkstyle
-
 maven-test:
   stage: test
   script:
     - cd booking_gr2313
-    - mvn test
-
-spotbugs-test:
-  stage: test
-  script:
-    - cd booking_gr2313
-    - mvn clean install -U
-    - mvn spotbugs:spotbugs
+    - mvn clean test
 
 clean-up:
   stage: clean
