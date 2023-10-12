@@ -13,7 +13,7 @@
         <jupiter.version>5.8.1</jupiter.version>
         <jackson.version>2.13.0</jackson.version>
         <skipUiTests>false</skipUiTests>
-        <headlessTests>false</headlessTests>
+        <headlessTests>true</headlessTests>
     </properties>
 
     <dependencyManagement>
