@@ -5,15 +5,15 @@ variables:
   MAVEN_CLI_OPTS: "--batch-mode -P headless -DskipUiTests=true"
 
 stages:
-  - test
   - build
-
-test:
-  stage: test
-  script:
-    - "cd booking; mvn clean test $MAVEN_CLI_OPTS"
+  - test
 
 build:
   stage: build
   script:
     - "cd booking; mvn clean install $MAVEN_CLI_OPTS"
+
+test:
+  stage: test
+  script:
+    - "cd booking; mvn clean test $MAVEN_CLI_OPTS"
