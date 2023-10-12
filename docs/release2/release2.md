@@ -39,7 +39,5 @@
 ## Known Issues
 
 - Eclipse Che won't load for us, so we couldn't test for it.
-- (**MAC ONLY**) BookingAppTest does not work unless you minimize all other apps on your computer.
-- After test has run, bookings.json has to be reset to the values it had before the test was run.
 
 For more details and specific implementation changes, please refer to the commit history and release documentation.
