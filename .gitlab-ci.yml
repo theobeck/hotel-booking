@@ -1,25 +1,19 @@
 image: maven:latest
 
+variables:
+  MAVEN_OPTS: "-Djava.awt.headless=true -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+  MAVEN_CLI_OPTS: "--batch-mode -DskipUiTests=true"
+
 stages:
   - build
   - test
-  - clean
 
 build:
   stage: build
   script:
-    - cd booking
-    - mvn clean install -U
-    - mvn compile
+    - "cd booking; mvn clean install $MAVEN_CLI_OPTS"
 
-maven-test:
+test:
   stage: test
   script:
-    - cd booking
-    - mvn clean test
-
-clean-up:
-  stage: clean
-  script:
-    - cd booking
-    - mvn clean
+    - "cd booking; mvn clean test $MAVEN_CLI_OPTS"
