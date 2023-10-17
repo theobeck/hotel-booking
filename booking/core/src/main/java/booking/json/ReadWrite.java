@@ -3,6 +3,7 @@ package booking.json;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,6 +21,13 @@ public class ReadWrite {
      * The object mapper object for the file manager object.
      */
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    /**
+     * Create a new file manager object.
+     */
+    public ReadWrite() {
+        objectMapper.registerModule(new JavaTimeModule());
+    }
 
     /**
      * Write the given rooms to the given file.
