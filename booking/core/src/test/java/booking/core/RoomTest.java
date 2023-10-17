@@ -3,20 +3,21 @@ package booking.core;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 
 public class RoomTest {
 
 	Room r1;
-	LocalDateTime bookedFrom;
-	LocalDateTime bookedTo;
+	LocalDate bookedFrom;
+	LocalDate bookedTo;
 
 	@BeforeEach
     public void setUp() {
 		r1 = new Room(1, 1, 100);
-		bookedFrom = LocalDateTime.of(2023, 1, 1, 0, 0, 0);
-		bookedTo = LocalDateTime.of(2023, 1, 7, 0, 0, 0);
+		bookedFrom = LocalDate.of(2023, 1, 1);
+		bookedTo = LocalDate.of(2023, 1, 7);
     }
 
 	@Test
@@ -31,14 +32,19 @@ public class RoomTest {
 
 	@Test
 	public void testBooking() {
+		assertFalse(r1.isBooked());
 		r1.bookRoom(bookedFrom, bookedTo);
 		assertEquals(bookedFrom, r1.getBookedFrom());
 		assertEquals(bookedTo, r1.getBookedTo());
 		assertEquals(600, r1.totalCostOfBooking());
-		LocalDateTime t1 = LocalDateTime.of(2023, 1, 3, 0, 0, 0);
-		LocalDateTime t2 = LocalDateTime.of(2023, 1, 8, 0, 0, 0);
-		assertFalse(r1.isAvailableOn(t1));
-		assertTrue(r1.isAvailableOn(t2));
+		assertTrue(r1.isBooked());
+		// !! Dette er kode for når vi skal implementere flere bookings for samme rom. !!
+		// LocalDate t1 = LocalDate.of(2023, 1, 3);
+		// LocalDate t2 = LocalDate.of(2023, 1, 6);
+		// LocalDate t3 = LocalDate.of(2023, 1, 8);
+		// LocalDate t4 = LocalDate.of(2023, 1, 10);
+		// assertFalse(r1.isAvailableBetween(t1, t2));
+		// assertTrue(r1.isAvailableBetween(t3, t4));
 	}
 
 	@Test

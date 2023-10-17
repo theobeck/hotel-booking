@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +24,9 @@ public class ReadWriteTest {
     public void setUp() {
         readWrite = new ReadWrite();
         rooms = new ArrayList<>();
-        rooms.add(new Room(1, 2, 200));
-        rooms.add(new Room(2, 3, 400));
-        rooms.add(new Room(3, 1, 100));
+        rooms.add(new Room(1, 2, 200, LocalDate.of(2023, 1, 1), LocalDate.of(2023, 1, 7)));
+        rooms.add(new Room(2, 4, 400, LocalDate.of(2023, 1, 10), LocalDate.of(2023, 1, 20)));
+        rooms.add(new Room(3, 6, 600, LocalDate.of(2023, 2, 7), LocalDate.of(2023, 2, 10)));
     }
 
 
@@ -49,6 +50,8 @@ public class ReadWriteTest {
             assertEquals(originalRoom.getRoomNumber(), restoredRoom.getRoomNumber());
             assertEquals(originalRoom.getRoomCapacity(), restoredRoom.getRoomCapacity());
             assertEquals(originalRoom.getPricePerNight(), restoredRoom.getPricePerNight());
+            assertEquals(originalRoom.getBookedFrom(), restoredRoom.getBookedFrom());
+            assertEquals(originalRoom.getBookedTo(), restoredRoom.getBookedTo());
         }
 
         // Clean up the test file

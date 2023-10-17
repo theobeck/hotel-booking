@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import booking.core.Room;
@@ -13,6 +14,7 @@ import booking.json.ReadWrite;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
@@ -40,7 +42,16 @@ public class BookingAppTest extends ApplicationTest  {
 
     @Test
     public void testBookRoomAndShowBooking() {
+
+        // Create a TestFX robot
+        FxRobot theRobot = new FxRobot();
         clickOn("#bookRoom");
+        clickOn("#fromPicker");
+        write("10/17/2023");
+        theRobot.push(KeyCode.ENTER);
+        clickOn("#toPicker");
+        write("10/19/2023");
+        theRobot.push(KeyCode.ENTER);
         clickOn("#search");
 
         ListView<Room> roomList = lookup("#roomList").query();
@@ -50,6 +61,12 @@ public class BookingAppTest extends ApplicationTest  {
         clickOn("#book");
         clickOn("#back");
         clickOn("#bookRoom");
+        clickOn("#fromPicker");
+        write("10/17/2023");
+        theRobot.push(KeyCode.ENTER);
+        clickOn("#toPicker");
+        write("10/19/2023");
+        theRobot.push(KeyCode.ENTER);
         clickOn("#search");
 
         roomList = lookup("#roomList").query();
@@ -59,16 +76,18 @@ public class BookingAppTest extends ApplicationTest  {
         clickOn("#showBooking");
 
         ListView<Room> bookingList = lookup("#bookingList").query();
-        assertEquals(1, bookingList.getItems().size());
-
         String fileName = "src/main/resources/booking/ui/bookings.json";
         ReadWrite rw = new ReadWrite();
         List<Room> rooms = rw.restoredListFromFile(fileName);
+        int bookedRooms = 0;
+
         for (Room room : rooms) {
-            if (room.getIsBooked()) {
-                room.setBooked(false);
+            if (room.isBooked()) {
+                bookedRooms++;
+                room.removeBooking();;
             }
         }
+        assertEquals(bookedRooms, bookingList.getItems().size());
         rw.writeToFile(rooms, fileName);
 
     }

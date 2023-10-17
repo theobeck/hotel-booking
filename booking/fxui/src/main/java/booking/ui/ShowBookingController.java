@@ -57,7 +57,7 @@ public final class ShowBookingController {
     private void show() {
         rooms = filemanager.restoredListFromFile(filename);
         for (Room r : rooms) {
-            if (r.getIsBooked()) {
+            if (r.isBooked()) {
                 yourRooms.add(r);
             }
         }
