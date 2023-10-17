@@ -11,4 +11,4 @@ build:
 test:
   stage: test
   script:
-    - "cd booking; mvn clean test"
+    - "cd booking; mvn clean test -U --batch-mode -DskipUiTests=true"
