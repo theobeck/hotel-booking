@@ -28,13 +28,13 @@ public class AvailableController {
     /**
      * The filepath bookings are saved to.
      */
-    private String filename = "src/main/resources/booking/ui/bookings.json";
+    private String filePath = "src/main/resources/booking/ui/bookings.json";
 
 
     /**
      * The list of all rooms.
      */
-    private List<Room> rooms = fileManager.restoredListFromFile(filename);
+    private List<Room> rooms = fileManager.restoredListFromFile(filePath);
 
     /**
      * List view for available rooms.
@@ -98,7 +98,7 @@ public class AvailableController {
                 Room room = new Room(i, cap, cap * COST_PER_PERSON);
                 rooms.add(room);
             }
-            fileManager.writeToFile(rooms, filename);
+            fileManager.writeToFile(rooms, filePath);
         }
         for (Room r : rooms) {
             // !! Dette er kode for når vi skal implementere flere bookings for samme rom. !!
@@ -114,7 +114,7 @@ public class AvailableController {
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
         thisRoom.bookRoom(from, to);
-        fileManager.writeToFile(rooms, filename);
+        fileManager.writeToFile(rooms, filePath);
     }
 
     @FXML
@@ -130,16 +130,16 @@ public class AvailableController {
     /**
      * @return The filepath bookings are saved to.
      */
-    public String getFilename() {
-        return filename;
+    public String getFilePath() {
+        return filePath;
     }
 
 
     /**
-     * @param newFilename The filepath bookings will be saved to.
+     * @param filePath The filepath bookings will be saved to.
      */
-    public void setFilename(final String newFilename) {
-        filename = newFilename;
+    public void setFilePath(final String filePath) {
+        this.filePath = filePath;
     }
 
     /**
@@ -151,10 +151,10 @@ public class AvailableController {
 
 
     /**
-     * @param newRooms Change the list of available rooms.
+     * @param rooms Change the list of available rooms.
      */
-    public void setRooms(final List<Room> newRooms) {
-        rooms = newRooms;
+    public void setRooms(final List<Room> rooms) {
+        this.rooms = rooms;
     }
 
     /**

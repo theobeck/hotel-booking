@@ -25,12 +25,12 @@ public final class ShowBookingController {
     /**
      * The filepath bookings are saved to.
      */
-    private String filename = "src/main/resources/booking/ui/bookings.json";
+    private String filePath = "src/main/resources/booking/ui/bookings.json";
 
     /**
      * The list of all rooms.
      */
-    private List<Room> rooms = filemanager.restoredListFromFile(filename);
+    private List<Room> rooms = filemanager.restoredListFromFile(filePath);
 
     /**
      * The list of available rooms.
@@ -55,7 +55,7 @@ public final class ShowBookingController {
     }
 
     private void show() {
-        rooms = filemanager.restoredListFromFile(filename);
+        rooms = filemanager.restoredListFromFile(filePath);
         for (Room r : rooms) {
             if (r.isBooked()) {
                 yourRooms.add(r);
@@ -95,15 +95,15 @@ public final class ShowBookingController {
     /**
      * @return The filepath bookings are saved to.
      */
-    public String getFilename() {
-        return filename;
+    public String getFilePath() {
+        return filePath;
     }
 
 
     /**
-     * @param newFilename The filepath bookings will be saved to.
+     * @param filePath The filepath bookings will be saved to.
      */
-    public void setFilename(final String newFilename) {
-        filename = newFilename;
+    public void setFilePath(final String filePath) {
+        this.filePath = filePath;
     }
 }

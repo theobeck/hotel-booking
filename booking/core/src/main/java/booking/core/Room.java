@@ -46,32 +46,32 @@ public final class Room {
 
     /**
      * Create a new room object with the following variables defined.
-     * @param newRoomNumber
-     * @param newRoomCapacity
-     * @param newPricePerNight
+     * @param roomNumber
+     * @param roomCapacity
+     * @param pricePerNight
      */
-    public Room(final int newRoomNumber, final int newRoomCapacity, final int newPricePerNight) {
-        roomNumber = newRoomNumber;
-        roomCapacity = newRoomCapacity;
-        pricePerNight = newPricePerNight;
+    public Room(final int roomNumber, final int roomCapacity, final int pricePerNight) {
+        this.roomNumber = roomNumber;
+        this.roomCapacity = roomCapacity;
+        this.pricePerNight = pricePerNight;
         bookedFrom = null;
         bookedTo = null;
     }
 
     /**
      * Create a new room object with the following variables defined.
-     * @param newRoomNumber
-     * @param newRoomCapacity
-     * @param newPricePerNight
-     * @param newBookedFrom
-     * @param newBookedTo
+     * @param roomNumber
+     * @param roomCapacity
+     * @param pricePerNight
+     * @param bookedFrom
+     * @param bookedTo
      */
-    public Room(final int newRoomNumber, final int newRoomCapacity, final int newPricePerNight, final LocalDate newBookedFrom, final LocalDate newBookedTo) {
-        roomNumber = newRoomNumber;
-        roomCapacity = newRoomCapacity;
-        pricePerNight = newPricePerNight;
-        bookedFrom = newBookedFrom;
-        bookedTo = newBookedTo;
+    public Room(final int roomNumber, final int roomCapacity, final int pricePerNight, final LocalDate bookedFrom, final LocalDate bookedTo) {
+        this.roomNumber = roomNumber;
+        this.roomCapacity = roomCapacity;
+        this.pricePerNight = pricePerNight;
+        this.bookedFrom = bookedFrom;
+        this.bookedTo = bookedTo;
     }
 
     /**
@@ -82,10 +82,10 @@ public final class Room {
     }
 
     /**
-     * @param newRoomNumber Room number to change to
+     * @param roomNumber Room number to change to
      */
-    public void setRoomNumber(final int newRoomNumber) {
-        roomNumber = newRoomNumber;
+    public void setRoomNumber(final int roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
     /**
@@ -96,10 +96,10 @@ public final class Room {
     }
 
     /**
-     * @param newRoomCapacity Room capacity to change to.
+     * @param roomCapacity Room capacity to change to.
      */
-    public void setRoomCapacity(final int newRoomCapacity) {
-        roomCapacity = newRoomCapacity;
+    public void setRoomCapacity(final int roomCapacity) {
+        this.roomCapacity = roomCapacity;
     }
 
     /**
@@ -110,14 +110,14 @@ public final class Room {
     }
 
     /**
-     * @param newBookedFrom Time booking starts
+     * @param bookedFrom Time booking starts
      * @throws IllegalArgumentException when attempting to book in negative range
      */
-    public void setBookedFrom(final LocalDate newBookedFrom) {
-        if (bookedTo != null && bookedTo.isAfter(newBookedFrom)) {
+    public void setBookedFrom(final LocalDate bookedFrom) {
+        if (bookedTo != null && bookedTo.isAfter(bookedFrom)) {
             throw new IllegalArgumentException("Cannot book in a negative range.");
         }
-        bookedFrom = newBookedFrom;
+        this.bookedFrom = bookedFrom;
     }
 
     /**
@@ -128,24 +128,24 @@ public final class Room {
     }
 
     /**
-     * @param newBookedTo Time booking ends
+     * @param bookedTo Time booking ends
      * @throws IllegalArgumentException when attempting to book in negative range
      */
-    public void setBookedTo(final LocalDate newBookedTo) {
-        if (bookedFrom != null && bookedFrom.isAfter(newBookedTo)) {
+    public void setBookedTo(final LocalDate bookedTo) {
+        if (bookedFrom != null && bookedFrom.isAfter(bookedTo)) {
             throw new IllegalArgumentException("Cannot book in a negative range.");
         }
-        bookedTo = newBookedTo;
+        this.bookedTo = bookedTo;
     }
 
 
     /**
-     * @param newBookedFrom Time to start booking
-     * @param newBookedTo TIme to end booking
+     * @param bookedFrom Time to start booking
+     * @param bookedTo TIme to end booking
      */
-    public void bookRoom(final LocalDate newBookedFrom, final LocalDate newBookedTo) {
-        setBookedFrom(newBookedFrom);
-        setBookedTo(newBookedTo);
+    public void bookRoom(final LocalDate bookedFrom, final LocalDate bookedTo) {
+        setBookedFrom(bookedFrom);
+        setBookedTo(bookedTo);
     }
 
     /**
@@ -164,10 +164,10 @@ public final class Room {
     }
 
     /**
-     * @param newPricePerNight How much room will cost per night
+     * @param pricePerNight How much room will cost per night
      */
-    public void setPricePerNight(final int newPricePerNight) {
-        pricePerNight = newPricePerNight;
+    public void setPricePerNight(final int pricePerNight) {
+        this.pricePerNight = pricePerNight;
     }
 
     /**
