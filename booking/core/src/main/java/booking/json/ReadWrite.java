@@ -32,26 +32,26 @@ public class ReadWrite {
     /**
      * Write the given rooms to the given file.
      * @param rooms
-     * @param fileName
+     * @param filePath
      */
-    public void writeToFile(final List<Room> rooms, final String fileName) {
+    public void writeToFile(final List<Room> rooms, final String filePath) {
         try {
             ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
             Collections.sort(rooms, Comparator.comparingInt(Room::getRoomNumber));
-            objectWriter.writeValue(new File(fileName), rooms);
+            objectWriter.writeValue(new File(filePath), rooms);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * @param fileName Takes in a filepath.
+     * @param filePath Takes in a filepath.
      * @return The list found at the end of the filepath.
      */
-    public List<Room> restoredListFromFile(final String fileName) {
+    public List<Room> restoredListFromFile(final String filePath) {
         List<Room> rooms = new ArrayList<>();
 
-        try (FileInputStream fileInputStream = new FileInputStream(fileName)) {
+        try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
             TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() { };
             rooms = objectMapper.readValue(fileInputStream, typeReference);
         } catch (IOException e) {
