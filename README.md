@@ -12,7 +12,7 @@ For å bygge, kjør `mvn install` fra rot-prosjektet (**booking**-mappa). Dette 
 
 For å kjøre prosjektet, må man kjøre den fra fxui mappa.
 
-På **Mac**, gjøres dette med `cd fxui/`
+På **Mac** og **Linux**, gjøres dette med `cd fxui/`
 
 Deretter, skal prosjektet kjøres med `mvn javafx:run`.
 
