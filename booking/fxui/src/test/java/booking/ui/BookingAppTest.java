@@ -84,7 +84,7 @@ public class BookingAppTest extends ApplicationTest  {
         for (Room room : rooms) {
             if (room.isBooked()) {
                 bookedRooms++;
-                room.removeBooking();;
+                room.cancelBooking();;
             }
         }
         assertEquals(bookedRooms, bookingList.getItems().size());
