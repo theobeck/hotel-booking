@@ -50,7 +50,6 @@ public class BookRoomController {
     private void goToAvailable(final ActionEvent event) throws IOException {
         if (fromPicker.getValue() == null || toPicker.getValue() == null) {
             return;
-            //#TODO add error message
         }
 
         LocalDate from = fromPicker.getValue();
