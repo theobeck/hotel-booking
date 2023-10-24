@@ -18,7 +18,7 @@
          </font>
       </Text>
       <TextField fx:id="inputUsername" layoutX="428.0" layoutY="189.0" prefHeight="48.0" prefWidth="234.0" promptText="Username" />
-      <TextField layoutX="428.0" layoutY="269.0" prefHeight="48.0" prefWidth="234.0" promptText="Password" />
-      <Button fx:id="btnLogin" layoutX="428.0" layoutY="346.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="234.0" text="Log In" />
+      <TextField fx:id="inputPassword" layoutX="428.0" layoutY="269.0" prefHeight="48.0" prefWidth="234.0" promptText="Password" />
+      <Button fx:id="btnLogin" layoutX="428.0" layoutY="346.0" mnemonicParsing="false" onAction="#goToBooking" prefHeight="65.0" prefWidth="234.0" text="Log In" />
    </children>
 </Pane>
