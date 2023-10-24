@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LogInController {
+public class LoginController {
     /**
      * The username of the user.
      */
