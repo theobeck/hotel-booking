@@ -29,6 +29,12 @@ public class BookRoomController {
      */
     private AvailableController availableController = new AvailableController();
 
+    /**
+     * The username of the user.
+     */
+    //#TODO fix after login page has been created
+    private String username = "filler";
+
 
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
@@ -51,6 +57,7 @@ public class BookRoomController {
         LocalDate to = toPicker.getValue();
         availableController.setFrom(from);
         availableController.setTo(to);
+        availableController.setUsername(username);
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("available.fxml"));
@@ -60,5 +67,19 @@ public class BookRoomController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Change the username of the user.
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
