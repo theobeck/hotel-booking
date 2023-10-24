@@ -1,0 +1,52 @@
+package booking.ui;
+
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+public class LogInController {
+    /**
+     * The username of the user.
+     */
+    private String username;
+
+    @FXML
+    private TextField inputUsername;
+
+    /**
+     * The BookingController.
+     */
+    private BookingController bookingController = new BookingController();
+
+    @FXML
+    private void goToBooking(final ActionEvent event) throws IOException {
+        bookingController.setUsername(inputUsername.getText());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
+        loader.setController(bookingController);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Change the username of the user.
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+}
