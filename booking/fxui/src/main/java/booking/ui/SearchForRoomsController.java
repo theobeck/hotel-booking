@@ -29,7 +29,6 @@ public class SearchForRoomsController {
      */
     private String username;
 
-
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
@@ -41,20 +40,20 @@ public class SearchForRoomsController {
     }
 
     @FXML
-    private void goToAvailable(final ActionEvent event) throws IOException {
-        AvailableRoomsController availableController = new AvailableRoomsController();
+    private void goToAvailableRooms(final ActionEvent event) throws IOException {
+        AvailableRoomsController availableRoomsController = new AvailableRoomsController();
         if (fromPicker.getValue() == null || toPicker.getValue() == null) {
             return;
         }
 
         LocalDate from = fromPicker.getValue();
         LocalDate to = toPicker.getValue();
-        availableController.setFrom(from);
-        availableController.setTo(to);
-        availableController.setUsername(username);
+        availableRoomsController.setFrom(from);
+        availableRoomsController.setTo(to);
+        availableRoomsController.setUsername(username);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("available.fxml"));
-        loader.setController(availableController);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("availableRooms.fxml"));
+        loader.setController(availableRoomsController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

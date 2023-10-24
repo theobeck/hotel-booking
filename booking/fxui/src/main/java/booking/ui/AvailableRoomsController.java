@@ -30,7 +30,6 @@ public class AvailableRoomsController {
      */
     private String filePath = "src/main/resources/booking/ui/bookings.json";
 
-
     /**
      * The list of all rooms.
      */
@@ -88,7 +87,6 @@ public class AvailableRoomsController {
         roomList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.SINGLE);
     }
 
-
     private void addObjects() {
         if (rooms.size() < AMT_OF_ROOMS) {
             List<Integer> occupiedRoomNumbers = new ArrayList<>();
@@ -106,7 +104,8 @@ public class AvailableRoomsController {
             fileManager.writeToFile(rooms, filePath);
         }
         for (Room r : rooms) {
-            // !! Dette er kode for når vi skal implementere flere bookings for samme rom. !!
+            // !! Dette er kode for når vi skal implementere flere bookings for samme rom.
+            // !!
             // if (r.isAvailableBetween(from, to)) {
             if (!r.isBooked()) {
                 availableRooms.add(r);
@@ -123,47 +122,17 @@ public class AvailableRoomsController {
     }
 
     @FXML
-    private void goToBooking(final ActionEvent event) throws IOException {
-        MainPageController bookingController = new MainPageController();
-        bookingController.setUsername(username);
+    private void goToMainMenu(final ActionEvent event) throws IOException {
+        MainMenuController mainMenuController = new MainMenuController();
+        mainMenuController.setUsername(username);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
-        loader.setController(bookingController);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+        loader.setController(mainMenuController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * @return The filepath bookings are saved to.
-     */
-    public String getFilePath() {
-        return filePath;
-    }
-
-
-    /**
-     * @param filePath The filepath bookings will be saved to.
-     */
-    public void setFilePath(final String filePath) {
-        this.filePath = filePath;
-    }
-
-    /**
-     * @return The list of available rooms.
-     */
-    public List<Room> getRooms() {
-        return rooms;
-    }
-
-
-    /**
-     * @param rooms Change the list of available rooms.
-     */
-    public void setRooms(final List<Room> rooms) {
-        this.rooms = rooms;
     }
 
     /**

@@ -23,11 +23,11 @@ public class LoginController {
     private TextField inputUsername;
 
     @FXML
-    private void goToBooking(final ActionEvent event) throws IOException {
-        MainPageController bookingController = new MainPageController();
-        bookingController.setUsername(inputUsername.getText());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
-        loader.setController(bookingController);
+    private void goToMainMenu(final ActionEvent event) throws IOException {
+        MainMenuController mainMenuController = new MainMenuController();
+        mainMenuController.setUsername(inputUsername.getText());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+        loader.setController(mainMenuController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
