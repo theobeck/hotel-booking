@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-public final class ShowBookingController {
+public final class ShowUserBookingsController {
 
     /**
      * The file manager object.
@@ -46,14 +46,13 @@ public final class ShowBookingController {
     @FXML
     private ListView<Room> bookingList;
 
-
     /**
      * The username of the user.
      */
     private String username;
 
     /**
-     *  Initialize method for controller.
+     * Initialize method for controller.
      */
     @FXML
     public void initialize() {
@@ -71,31 +70,16 @@ public final class ShowBookingController {
     }
 
     @FXML
-    private void goToBooking(final ActionEvent event) throws IOException {
-        BookingController bookingController = new BookingController();
-        bookingController.setUsername(username);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
-        loader.setController(bookingController);
+    private void goToMainMenu(final ActionEvent event) throws IOException {
+        MainMenuController mainMenuController = new MainMenuController();
+        mainMenuController.setUsername(username);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+        loader.setController(mainMenuController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * @return The filepath bookings are saved to.
-     */
-    public String getFilePath() {
-        return filePath;
-    }
-
-
-    /**
-     * @param filePath The filepath bookings will be saved to.
-     */
-    public void setFilePath(final String filePath) {
-        this.filePath = filePath;
     }
 
     /**

@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class BookingController {
+public class MainMenuController {
 
     /**
      * The username of the user.
@@ -27,11 +27,11 @@ public class BookingController {
     }
 
     @FXML
-    private void goToShowBooking(final ActionEvent event) throws IOException {
-        ShowBookingController showBookingController = new ShowBookingController();
-        showBookingController.setUsername(username);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("showBooking.fxml"));
-        loader.setController(showBookingController);
+    private void goToShowUserBookings(final ActionEvent event) throws IOException {
+        ShowUserBookingsController showUserBookingsController = new ShowUserBookingsController();
+        showUserBookingsController.setUsername(username);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("showUserBookings.fxml"));
+        loader.setController(showUserBookingsController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -40,11 +40,11 @@ public class BookingController {
     }
 
     @FXML
-    private void goToBookRoom(final ActionEvent event) throws IOException {
-        BookRoomController bookRoomController = new BookRoomController();
-        bookRoomController.setUsername(username);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("bookRoom.fxml"));
-        loader.setController(bookRoomController);
+    private void goToSearchForRooms(final ActionEvent event) throws IOException {
+        SearchForRoomsController searchForRoomsController = new SearchForRoomsController();
+        searchForRoomsController.setUsername(username);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("searchForRooms.fxml"));
+        loader.setController(searchForRoomsController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
