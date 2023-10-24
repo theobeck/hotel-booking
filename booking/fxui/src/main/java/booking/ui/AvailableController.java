@@ -113,7 +113,8 @@ public class AvailableController {
     @FXML
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
-        thisRoom.bookRoom(from, to);
+        // #TODO fix takk
+        thisRoom.bookRoom(from, to, "filler");
         fileManager.writeToFile(rooms, filePath);
     }
 

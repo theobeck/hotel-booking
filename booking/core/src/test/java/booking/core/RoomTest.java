@@ -34,8 +34,8 @@ public class RoomTest {
 	public void testBooking() {
 		assertFalse(r1.isBooked());
 		assertThrows(IllegalStateException.class,() -> r1.totalCostOfBooking());
-		r1.bookRoom(bookedFrom, bookedTo);
-		assertThrows(IllegalStateException.class,() -> r1.bookRoom(bookedFrom, bookedTo));
+		r1.bookRoom(bookedFrom, bookedTo, "test");
+		assertThrows(IllegalStateException.class,() -> r1.bookRoom(bookedFrom, bookedTo, "test"));
 		assertEquals(bookedFrom, r1.getBookedFrom());
 		assertEquals(bookedTo, r1.getBookedTo());
 		assertThrows(IllegalArgumentException.class,() -> r1.setBookedTo(LocalDate.of(2023, 1, 1)));
