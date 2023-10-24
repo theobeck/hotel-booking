@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-public final class ShowBookingController {
+public final class ShowUserBookingsController {
 
     /**
      * The file manager object.
@@ -72,7 +72,7 @@ public final class ShowBookingController {
 
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
-        BookingController bookingController = new BookingController();
+        MainPageController bookingController = new MainPageController();
         bookingController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
         loader.setController(bookingController);

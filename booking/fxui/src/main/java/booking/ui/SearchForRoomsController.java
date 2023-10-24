@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
-public class BookRoomController {
+public class SearchForRoomsController {
 
     /**
      * The date picker for the start of the booking.
@@ -42,7 +42,7 @@ public class BookRoomController {
 
     @FXML
     private void goToAvailable(final ActionEvent event) throws IOException {
-        AvailableController availableController = new AvailableController();
+        AvailableRoomsController availableController = new AvailableRoomsController();
         if (fromPicker.getValue() == null || toPicker.getValue() == null) {
             return;
         }

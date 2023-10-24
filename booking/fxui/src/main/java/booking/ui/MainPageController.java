@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class BookingController {
+public class MainPageController {
 
     /**
      * The username of the user.
@@ -28,7 +28,7 @@ public class BookingController {
 
     @FXML
     private void goToShowBooking(final ActionEvent event) throws IOException {
-        ShowBookingController showBookingController = new ShowBookingController();
+        ShowUserBookingsController showBookingController = new ShowUserBookingsController();
         showBookingController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("showBooking.fxml"));
         loader.setController(showBookingController);
@@ -41,7 +41,7 @@ public class BookingController {
 
     @FXML
     private void goToBookRoom(final ActionEvent event) throws IOException {
-        BookRoomController bookRoomController = new BookRoomController();
+        SearchForRoomsController bookRoomController = new SearchForRoomsController();
         bookRoomController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bookRoom.fxml"));
         loader.setController(bookRoomController);

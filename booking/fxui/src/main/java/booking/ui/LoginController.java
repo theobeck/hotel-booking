@@ -24,7 +24,7 @@ public class LoginController {
 
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
-        BookingController bookingController = new BookingController();
+        MainPageController bookingController = new MainPageController();
         bookingController.setUsername(inputUsername.getText());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
         loader.setController(bookingController);
