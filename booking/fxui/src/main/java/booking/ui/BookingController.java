@@ -27,6 +27,16 @@ public class BookingController {
     private BookRoomController bookRoomController = new BookRoomController();
 
     @FXML
+    private void goToLogin(final ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     private void goToShowBooking(final ActionEvent event) throws IOException {
         showBookingController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("showBooking.fxml"));
