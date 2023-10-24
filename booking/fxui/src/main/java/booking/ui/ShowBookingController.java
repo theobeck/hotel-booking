@@ -46,6 +46,12 @@ public final class ShowBookingController {
     @FXML
     private ListView<Room> bookingList;
 
+
+    /**
+     * The username of the user.
+     */
+    private String username;
+
     /**
      *  Initialize method for controller.
      */
@@ -88,5 +94,19 @@ public final class ShowBookingController {
      */
     public void setFilePath(final String filePath) {
         this.filePath = filePath;
+    }
+
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Change the username of the user.
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

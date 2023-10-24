@@ -11,6 +11,11 @@ import javafx.stage.Stage;
 
 public class BookingController {
 
+    /**
+     * The username of the user.
+     */
+    private String username;
+
     @FXML
     private void goToShowBooking(final ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("showBooking.fxml"));
@@ -30,5 +35,19 @@ public class BookingController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Change the username of the user.
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

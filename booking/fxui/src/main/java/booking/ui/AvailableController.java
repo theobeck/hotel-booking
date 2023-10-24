@@ -77,6 +77,11 @@ public class AvailableController {
      */
     private final Random random = new Random();
 
+    /**
+     * The username of the user.
+     */
+    private String username;
+
     @FXML
     private void initialize() {
         addObjects();
@@ -113,8 +118,7 @@ public class AvailableController {
     @FXML
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
-        // #TODO fix takk
-        thisRoom.bookRoom(from, to, "filler");
+        thisRoom.bookRoom(from, to, username);
         fileManager.writeToFile(rooms, filePath);
     }
 
@@ -186,4 +190,17 @@ public class AvailableController {
         this.to = to;
     }
 
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Change the username of the user.
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
