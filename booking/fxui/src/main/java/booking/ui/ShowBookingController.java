@@ -53,11 +53,6 @@ public final class ShowBookingController {
     private String username;
 
     /**
-     * The bookingController.
-     */
-    private BookingController bookingController = new BookingController();
-
-    /**
      *  Initialize method for controller.
      */
     @FXML
@@ -77,6 +72,7 @@ public final class ShowBookingController {
 
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
+        BookingController bookingController = new BookingController();
         bookingController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
         loader.setController(bookingController);

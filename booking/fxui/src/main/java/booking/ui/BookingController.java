@@ -16,16 +16,6 @@ public class BookingController {
      */
     private String username;
 
-    /**
-     * The showBookingController.
-     */
-    private ShowBookingController showBookingController = new ShowBookingController();
-
-    /**
-     * The bookRoomController.
-     */
-    private BookRoomController bookRoomController = new BookRoomController();
-
     @FXML
     private void goToLogin(final ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
@@ -38,6 +28,7 @@ public class BookingController {
 
     @FXML
     private void goToShowBooking(final ActionEvent event) throws IOException {
+        ShowBookingController showBookingController = new ShowBookingController();
         showBookingController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("showBooking.fxml"));
         loader.setController(showBookingController);
@@ -50,6 +41,7 @@ public class BookingController {
 
     @FXML
     private void goToBookRoom(final ActionEvent event) throws IOException {
+        BookRoomController bookRoomController = new BookRoomController();
         bookRoomController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bookRoom.fxml"));
         loader.setController(bookRoomController);

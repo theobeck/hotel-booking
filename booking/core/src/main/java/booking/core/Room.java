@@ -170,6 +170,7 @@ public final class Room {
         }
         setBookedFrom(bookedFrom);
         setBookedTo(bookedTo);
+        setBookedBy(bookedBy);
     }
 
     /**

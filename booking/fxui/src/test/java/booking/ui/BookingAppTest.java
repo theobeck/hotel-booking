@@ -18,6 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
+//#TODO Currently fails bc of the new landing page. pls fix:)
 public class BookingAppTest extends ApplicationTest  {
 
     @BeforeAll
