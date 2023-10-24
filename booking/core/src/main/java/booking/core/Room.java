@@ -2,6 +2,8 @@ package booking.core;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +15,6 @@ public final class Room {
     @JsonProperty("roomNumber")
     private int roomNumber;
 
-    // Kanskje endre roomCapacity til å være en samling av antall f.eks. singleBed, doubleBed, osv?
     /**
      * The room's capacity.
      */
@@ -26,32 +27,21 @@ public final class Room {
     @JsonProperty("pricePerNight")
     private int pricePerNight;
 
-
     /**
-     * The time the room's current booking starts.
+     * The list of bookings for the room.
      */
-    @JsonProperty("bookedFrom")
-    private LocalDate bookedFrom;
-
-    /**
-     * The time the room's current booking ends.
-     */
-    @JsonProperty("bookedTo")
-    private LocalDate bookedTo;
-
-    /**
-     * The name of the person who booked the room.
-     */
-    @JsonProperty("bookedBy")
-    private String bookedBy;
+    @JsonProperty("bookings")
+    private List<Booking> bookings;
 
     /**
      * Create a new room object with no variables defined.
      */
-    public Room() { }
+    public Room() {
+    }
 
     /**
      * Create a new room object with the following variables defined.
+     *
      * @param roomNumber
      * @param roomCapacity
      * @param pricePerNight
@@ -60,24 +50,26 @@ public final class Room {
         this.roomNumber = roomNumber;
         this.roomCapacity = roomCapacity;
         this.pricePerNight = pricePerNight;
-        bookedFrom = null;
-        bookedTo = null;
+        bookings = new ArrayList<>();
     }
 
     /**
      * Create a new room object with the following variables defined.
+     *
      * @param roomNumber
      * @param roomCapacity
      * @param pricePerNight
      * @param bookedFrom
      * @param bookedTo
+     * @param bookedBy
      */
-    public Room(final int roomNumber, final int roomCapacity, final int pricePerNight, final LocalDate bookedFrom, final LocalDate bookedTo) {
+    public Room(final int roomNumber, final int roomCapacity, final int pricePerNight, final LocalDate bookedFrom,
+            final LocalDate bookedTo, final String bookedBy) {
         this.roomNumber = roomNumber;
         this.roomCapacity = roomCapacity;
         this.pricePerNight = pricePerNight;
-        this.bookedFrom = bookedFrom;
-        this.bookedTo = bookedTo;
+        bookings = new ArrayList<>();
+        bookRoom(bookedFrom, bookedTo, bookedBy);
     }
 
     /**
@@ -102,87 +94,40 @@ public final class Room {
     }
 
     /**
-     * @param roomCapacity Room capacity to change to.
+     * @param roomCapacity Room capacity to change to
      */
     public void setRoomCapacity(final int roomCapacity) {
         this.roomCapacity = roomCapacity;
     }
 
     /**
-     * @return Time room is booked from
+     * @return List of bookings
      */
-    public LocalDate getBookedFrom() {
-        return bookedFrom;
+    public List<Booking> getBookings() {
+        return bookings;
     }
-
-    /**
-     * @param bookedFrom Time booking starts
-     * @throws IllegalArgumentException when attempting to book in negative range
-     */
-    public void setBookedFrom(final LocalDate bookedFrom) {
-        if (bookedTo != null && bookedTo.isBefore(bookedFrom)) {
-            throw new IllegalArgumentException("Cannot book in a negative range.");
-        }
-        this.bookedFrom = bookedFrom;
-    }
-
-    /**
-     * @return Time room is booked to
-     */
-    public LocalDate getBookedTo() {
-        return bookedTo;
-    }
-
-    /**
-     * @param bookedTo Time booking ends
-     * @throws IllegalArgumentException when attempting to book in negative range
-     */
-    public void setBookedTo(final LocalDate bookedTo) {
-        if (bookedFrom != null && bookedFrom.isAfter(bookedTo)) {
-            throw new IllegalArgumentException("Cannot book in a negative range.");
-        }
-        this.bookedTo = bookedTo;
-    }
-
-    /**
-     * @return Who the room is booked by
-     */
-    public String getBookedBy() {
-        return bookedBy;
-    }
-
-    /**
-     * @param bookedBy Who the room is booked by
-     */
-    public void setBookedBy(final String bookedBy) {
-        this.bookedBy = bookedBy;
-    }
-
 
     /**
      * @param bookedFrom Time to start booking
-     * @param bookedTo TIme to end booking
-     * @param bookedBy Who the room is booked by
+     * @param bookedTo   TIme to end booking
+     * @param bookedBy   Who the room is booked by
      */
     public void bookRoom(final LocalDate bookedFrom, final LocalDate bookedTo, final String bookedBy) {
-        if (isBooked()) {
-            throw new IllegalStateException("Cannot book room when room is already booked.");
+        if (!isAvailableBetween(bookedFrom, bookedTo)) {
+            throw new IllegalStateException("Cannot book room in a time period where room is already booked.");
         }
-        setBookedFrom(bookedFrom);
-        setBookedTo(bookedTo);
-        setBookedBy(bookedBy);
+        bookings.add(new Booking(bookedFrom, bookedTo, bookedBy));
     }
 
     /**
-     *  Remove booking from room.
+     * @param bookedBy Cancel booking by user.
+     * @throws IllegalStateException If room isn't booked by user.
      */
-    public void cancelBooking() {
-        if (!isBooked()) {
-            throw new IllegalStateException("Cannot cancel booking when room isn't booked.");
+    public void cancelBooking(final String bookedBy) {
+        if (!isBookedBy(bookedBy)) {
+            throw new IllegalStateException("Cannot cancel booking when room isn't booked by user.");
         }
-        bookedFrom = null;
-        bookedTo = null;
-        bookedBy = null;
+        bookings.remove(getBookingByUser(bookedBy));
     }
 
     /**
@@ -199,60 +144,70 @@ public final class Room {
         this.pricePerNight = pricePerNight;
     }
 
-    // /**
-    //  * @param targetFrom Time to start booking
-    //  * @param targetTo Time to end booking
-    //  * @return Whether or not room is available between given times
-    //  */
-    // public boolean isAvailableBetween(final LocalDate targetFrom, final LocalDate targetTo) {
-    //     return isBooked();
-
-    //     !! Dette er kode for når vi skal implementere flere bookings for samme rom. !!
-    //     if (!isBooked()) {
-    //         return true;
-    //     }
-    //     return targetFrom.isBefore(bookedFrom) && targetTo.isBefore(bookedTo) || targetFrom.isAfter(bookedFrom) && targetTo.isAfter(bookedTo);
-    // }
+    /**
+     * @param targetFrom Time to start booking
+     * @param targetTo   Time to end booking
+     * @return Whether or not room is available between given times
+     */
+    public boolean isAvailableBetween(final LocalDate targetFrom, final LocalDate targetTo) {
+        for (Booking booking : bookings) {
+            if (booking.getTo().isAfter(targetFrom) && booking.getFrom().isBefore(targetTo)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
+     * @param bookedBy User to check booking of
      * @return Whether or not room is booked
      */
     @JsonIgnore
-    public boolean isBooked() {
-        return isBookedFrom() && isBookedTo();
+    public boolean isBookedBy(final String bookedBy) {
+        return getBookingByUser(bookedBy) != null;
     }
 
     /**
-     * @return Whether or not room is booked from
-     */
-    public boolean isBookedFrom() {
-        return bookedFrom != null;
-    }
-
-    /**
-     * @return Whether or not room is booked to
-     */
-    public boolean isBookedTo() {
-        return bookedTo != null;
-    }
-
-    /**
+     * @param bookedBy User to check booking of
      * @return Price of entire booking
      */
-    public int totalCostOfBooking() {
-        // FUCK DINNE FUNKSJONEN
-        if (!isBooked()) {
+    public int totalCostOfUserBooking(final String bookedBy) {
+        if (!isBookedBy(bookedBy)) {
             throw new IllegalStateException("Cannot check booking cost when room isn't booked.");
         }
-        return (int) (pricePerNight * (ChronoUnit.DAYS.between(bookedFrom, bookedTo)));
+        Booking userBooking = getBookingByUser(bookedBy);
+        return (int) (pricePerNight
+                * (ChronoUnit.DAYS.between(userBooking.getFrom(), userBooking.getTo())));
     }
 
+    /**
+     * @param bookedBy User to get booking of
+     * @return Booking of user
+     */
+    public Booking getBookingByUser(final String bookedBy) {
+        for (Booking booking : bookings) {
+            if (booking.getBookedBy().equals(bookedBy)) {
+                return booking;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param room Room to compare to
+     * @return Whether or not rooms are equal
+     */
+    public Boolean equals(final Room room) {
+        return roomNumber == room.getRoomNumber() && roomCapacity == room.getRoomCapacity()
+                && pricePerNight == room.getPricePerNight();
+    }
 
     /**
      * @return String
      */
     @Override
     public String toString() {
-        return "Room number: " + roomNumber + ", capacity: " + roomCapacity + ", price: " + pricePerNight + " per night.";
+        return "Room number: " + roomNumber + ", capacity: " + roomCapacity + ", price: " + pricePerNight
+                + " per night.";
     }
 }

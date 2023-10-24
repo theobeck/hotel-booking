@@ -28,7 +28,7 @@ public class MainMenuController {
 
     @FXML
     private void goToUserBookings(final ActionEvent event) throws IOException {
-        ShowUserBookingsController showUserBookingsController = new ShowUserBookingsController();
+        UserBookingsController showUserBookingsController = new UserBookingsController();
         showUserBookingsController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("userBookings.fxml"));
         loader.setController(showUserBookingsController);

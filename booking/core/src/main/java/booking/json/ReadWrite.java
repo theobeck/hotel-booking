@@ -31,6 +31,7 @@ public class ReadWrite {
 
     /**
      * Write the given rooms to the given file.
+     *
      * @param rooms
      * @param filePath
      */
@@ -52,7 +53,8 @@ public class ReadWrite {
         List<Room> rooms = new ArrayList<>();
 
         try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
-            TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() { };
+            TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() {
+            };
             rooms = objectMapper.readValue(fileInputStream, typeReference);
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,4 +63,3 @@ public class ReadWrite {
         return rooms;
     }
 }
-

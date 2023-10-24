@@ -24,11 +24,10 @@ public class ReadWriteTest {
     public void setUp() {
         readWrite = new ReadWrite();
         rooms = new ArrayList<>();
-        rooms.add(new Room(1, 2, 200, LocalDate.of(2023, 1, 1), LocalDate.of(2023, 1, 7)));
-        rooms.add(new Room(2, 4, 400, LocalDate.of(2023, 1, 10), LocalDate.of(2023, 1, 20)));
-        rooms.add(new Room(3, 6, 600, LocalDate.of(2023, 2, 7), LocalDate.of(2023, 2, 10)));
+        rooms.add(new Room(1, 2, 200, LocalDate.of(2023, 1, 1), LocalDate.of(2023, 1, 7), "test"));
+        rooms.add(new Room(2, 4, 400, LocalDate.of(2023, 1, 10), LocalDate.of(2023, 1, 20), "test"));
+        rooms.add(new Room(3, 6, 600, LocalDate.of(2023, 2, 7), LocalDate.of(2023, 2, 10), "test"));
     }
-
 
     /**
      * @throws IOException
@@ -47,11 +46,11 @@ public class ReadWriteTest {
         for (int i = 0; i < rooms.size(); i++) {
             Room originalRoom = rooms.get(i);
             Room restoredRoom = restoredRooms.get(i);
-            assertEquals(originalRoom.getRoomNumber(), restoredRoom.getRoomNumber());
-            assertEquals(originalRoom.getRoomCapacity(), restoredRoom.getRoomCapacity());
-            assertEquals(originalRoom.getPricePerNight(), restoredRoom.getPricePerNight());
-            assertEquals(originalRoom.getBookedFrom(), restoredRoom.getBookedFrom());
-            assertEquals(originalRoom.getBookedTo(), restoredRoom.getBookedTo());
+            assertTrue(originalRoom.equals(restoredRoom));
+            for (int j = 0; j < originalRoom.getBookings().size(); j++) {
+                assertTrue(originalRoom.getBookings().get(j).equals(restoredRoom.getBookings().get(j)));
+
+            }
         }
 
         // Clean up the test file
