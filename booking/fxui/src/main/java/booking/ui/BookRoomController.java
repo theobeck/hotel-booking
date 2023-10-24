@@ -27,8 +27,7 @@ public class BookRoomController {
     /**
      * The username of the user.
      */
-    //#TODO fix after login page has been created
-    private String username = "filler";
+    private String username;
 
 
     @FXML
