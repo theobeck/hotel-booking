@@ -59,7 +59,6 @@ public class BookRoomController {
         availableController.setTo(to);
         availableController.setUsername(username);
 
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("available.fxml"));
         loader.setController(availableController);
         Parent root = loader.load();
