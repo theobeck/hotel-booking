@@ -77,7 +77,7 @@ public class BookRoomController {
     /**
      * @param username Change the username of the user.
      */
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 }
