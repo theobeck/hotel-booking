@@ -12,11 +12,6 @@ import javafx.stage.Stage;
 
 public class LoginController {
     /**
-     * The username of the user.
-     */
-    private String username;
-
-    /**
      * The input field for the username.
      */
     @FXML
@@ -33,19 +28,5 @@ public class LoginController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * @return The username of the user.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username Change the username of the user.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
     }
 }
