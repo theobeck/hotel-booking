@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-public final class ShowUserBookingsController {
+public final class UserBookingsController {
 
     /**
      * The file manager object.
@@ -62,7 +62,7 @@ public final class ShowUserBookingsController {
     private void show() {
         rooms = filemanager.restoredListFromFile(filePath);
         for (Room r : rooms) {
-            if (r.isBooked() && r.getBookedBy().equals(username)) {
+            if (r.isBookedBy(username)) {
                 yourRooms.add(r);
             }
         }

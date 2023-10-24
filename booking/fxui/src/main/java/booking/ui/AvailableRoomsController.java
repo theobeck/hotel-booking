@@ -104,10 +104,7 @@ public class AvailableRoomsController {
             fileManager.writeToFile(rooms, filePath);
         }
         for (Room r : rooms) {
-            // !! Dette er kode for når vi skal implementere flere bookings for samme rom.
-            // !!
-            // if (r.isAvailableBetween(from, to)) {
-            if (!r.isBooked()) {
+            if (r.isAvailableBetween(from, to)) {
                 availableRooms.add(r);
             }
         }
