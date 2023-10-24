@@ -82,11 +82,6 @@ public class AvailableController {
      */
     private String username;
 
-    /**
-     * The bookingController.
-     */
-    private BookingController bookingController = new BookingController();
-
     @FXML
     private void initialize() {
         addObjects();
@@ -129,6 +124,7 @@ public class AvailableController {
 
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
+        BookingController bookingController = new BookingController();
         bookingController.setUsername(username);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));

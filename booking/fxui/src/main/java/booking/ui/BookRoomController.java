@@ -25,11 +25,6 @@ public class BookRoomController {
     private DatePicker fromPicker;
 
     /**
-     * The availableController.
-     */
-    private AvailableController availableController = new AvailableController();
-
-    /**
      * The username of the user.
      */
     //#TODO fix after login page has been created
@@ -48,6 +43,7 @@ public class BookRoomController {
 
     @FXML
     private void goToAvailable(final ActionEvent event) throws IOException {
+        AvailableController availableController = new AvailableController();
         if (fromPicker.getValue() == null || toPicker.getValue() == null) {
             return;
         }
