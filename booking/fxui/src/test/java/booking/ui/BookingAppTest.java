@@ -91,7 +91,7 @@ public class BookingAppTest extends ApplicationTest {
         int bookedRooms = 0;
 
         for (Room room : rooms) {
-            if (room.isBooked()) {
+            if (room.isBookedBy("test")) {
                 bookedRooms++;
             }
         }
@@ -113,9 +113,9 @@ public class BookingAppTest extends ApplicationTest {
         rooms = rw.restoredListFromFile(filePath);
         bookedRooms = 0;
         for (Room room : rooms) {
-            if (room.isBooked()) {
+            if (room.isBookedBy("test")) {
                 bookedRooms++;
-                room.cancelBooking();
+                room.cancelBooking("test");
             }
         }
         assertEquals(1, bookedRooms);
