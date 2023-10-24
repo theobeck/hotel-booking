@@ -65,23 +65,6 @@ public final class ShowBookingController {
     }
 
     @FXML
-    private void searchUser(final ActionEvent event) throws IOException {
-        System.out.println("hei");
-    }
-
-    /*
-    @FXML
-    private void searchUser(ActionEvent event) throws IOException{
-        for(Room r : rooms){
-            if(r.getBookedBy() == username.getText()){
-                yourRooms.add(r);
-            }
-        }
-        bookingList.setItems(yourRooms);
-    }
-    */
-
-    @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));

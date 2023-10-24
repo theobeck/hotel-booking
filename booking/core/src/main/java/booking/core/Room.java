@@ -114,7 +114,7 @@ public final class Room {
      * @throws IllegalArgumentException when attempting to book in negative range
      */
     public void setBookedFrom(final LocalDate bookedFrom) {
-        if (bookedTo != null && bookedTo.isAfter(bookedFrom)) {
+        if (bookedTo != null && bookedTo.isBefore(bookedFrom)) {
             throw new IllegalArgumentException("Cannot book in a negative range.");
         }
         this.bookedFrom = bookedFrom;
@@ -144,6 +144,9 @@ public final class Room {
      * @param bookedTo TIme to end booking
      */
     public void bookRoom(final LocalDate bookedFrom, final LocalDate bookedTo) {
+        if (isBooked()) {
+            throw new IllegalStateException("Cannot book room when room is already booked.");
+        }
         setBookedFrom(bookedFrom);
         setBookedTo(bookedTo);
     }
@@ -151,7 +154,10 @@ public final class Room {
     /**
      *  Remove booking from room.
      */
-    public void removeBooking() {
+    public void cancelBooking() {
+        if (!isBooked()) {
+            throw new IllegalStateException("Cannot cancel booking when room isn't booked.");
+        }
         bookedFrom = null;
         bookedTo = null;
     }
@@ -170,27 +176,41 @@ public final class Room {
         this.pricePerNight = pricePerNight;
     }
 
-    /**
-     * @param targetFrom Time to start booking
-     * @param targetTo Time to end booking
-     * @return Whether or not room is available between given times
-     */
-    public boolean isAvailableBetween(final LocalDate targetFrom, final LocalDate targetTo) {
-        return isBooked();
+    // /**
+    //  * @param targetFrom Time to start booking
+    //  * @param targetTo Time to end booking
+    //  * @return Whether or not room is available between given times
+    //  */
+    // public boolean isAvailableBetween(final LocalDate targetFrom, final LocalDate targetTo) {
+    //     return isBooked();
 
-        // !! Dette er kode for når vi skal implementere flere bookings for samme rom. !!
-        // if (!isBooked()) {
-        //     return true;
-        // }
-        // return targetFrom.isBefore(bookedFrom) && targetTo.isBefore(bookedTo) || targetFrom.isAfter(bookedFrom) && targetTo.isAfter(bookedTo);
-    }
+    //     !! Dette er kode for når vi skal implementere flere bookings for samme rom. !!
+    //     if (!isBooked()) {
+    //         return true;
+    //     }
+    //     return targetFrom.isBefore(bookedFrom) && targetTo.isBefore(bookedTo) || targetFrom.isAfter(bookedFrom) && targetTo.isAfter(bookedTo);
+    // }
 
     /**
      * @return Whether or not room is booked
      */
     @JsonIgnore
     public boolean isBooked() {
-        return bookedTo != null || bookedFrom != null;
+        return isBookedFrom() && isBookedTo();
+    }
+
+    /**
+     * @return Whether or not room is booked from
+     */
+    public boolean isBookedFrom() {
+        return bookedFrom != null;
+    }
+
+    /**
+     * @return Whether or not room is booked to
+     */
+    public boolean isBookedTo() {
+        return bookedTo != null;
     }
 
     /**
@@ -198,7 +218,7 @@ public final class Room {
      */
     public int totalCostOfBooking() {
         // FUCK DINNE FUNKSJONEN
-        if ((bookedTo == null && bookedFrom == null)) {
+        if (!isBooked()) {
             throw new IllegalStateException("Cannot check booking cost when room isn't booked.");
         }
         return (int) (pricePerNight * (ChronoUnit.DAYS.between(bookedFrom, bookedTo)));
