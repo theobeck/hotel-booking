@@ -154,7 +154,7 @@ public final class Room {
     /**
      * @param bookedBy Who the room is booked by
      */
-    public void setBookedBy(String bookedBy) {
+    public void setBookedBy(final String bookedBy) {
         this.bookedBy = bookedBy;
     }
 
@@ -162,6 +162,7 @@ public final class Room {
     /**
      * @param bookedFrom Time to start booking
      * @param bookedTo TIme to end booking
+     * @param bookedBy Who the room is booked by
      */
     public void bookRoom(final LocalDate bookedFrom, final LocalDate bookedTo, final String bookedBy) {
         if (isBooked()) {

@@ -16,6 +16,9 @@ public class LogInController {
      */
     private String username;
 
+    /**
+     * The input field for the username.
+     */
     @FXML
     private TextField inputUsername;
 
@@ -46,7 +49,7 @@ public class LogInController {
     /**
      * @param username Change the username of the user.
      */
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 }
