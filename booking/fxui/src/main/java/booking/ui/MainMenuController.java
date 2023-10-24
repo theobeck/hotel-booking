@@ -27,10 +27,10 @@ public class MainMenuController {
     }
 
     @FXML
-    private void goToShowUserBookings(final ActionEvent event) throws IOException {
+    private void goToUserBookings(final ActionEvent event) throws IOException {
         ShowUserBookingsController showUserBookingsController = new ShowUserBookingsController();
         showUserBookingsController.setUsername(username);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("showUserBookings.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("userBookings.fxml"));
         loader.setController(showUserBookingsController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
