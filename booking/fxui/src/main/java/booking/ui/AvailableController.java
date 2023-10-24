@@ -82,6 +82,11 @@ public class AvailableController {
      */
     private String username;
 
+    /**
+     * The bookingController.
+     */
+    private BookingController bookingController = new BookingController();
+
     @FXML
     private void initialize() {
         addObjects();
@@ -124,7 +129,10 @@ public class AvailableController {
 
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
+        bookingController.setUsername(username);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
+        loader.setController(bookingController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

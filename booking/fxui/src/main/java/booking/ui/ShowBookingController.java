@@ -53,6 +53,11 @@ public final class ShowBookingController {
     private String username;
 
     /**
+     * The bookingController.
+     */
+    private BookingController bookingController = new BookingController();
+
+    /**
      *  Initialize method for controller.
      */
     @FXML
@@ -63,7 +68,7 @@ public final class ShowBookingController {
     private void show() {
         rooms = filemanager.restoredListFromFile(filePath);
         for (Room r : rooms) {
-            if (r.isBooked()) {
+            if (r.isBooked() && r.getBookedBy().equals(username)) {
                 yourRooms.add(r);
             }
         }
@@ -72,8 +77,9 @@ public final class ShowBookingController {
 
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
-
+        bookingController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
+        loader.setController(bookingController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
