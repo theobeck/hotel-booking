@@ -19,7 +19,7 @@
             <Font name="Goudy Old Style" size="25.0" />
          </font>
       </Text>
-      <Button fx:id="showBooking" layoutX="600.0" layoutY="130.0" mnemonicParsing="false" onAction="#goToShowUserBookings" prefHeight="131.0" prefWidth="263.0" text="Show booking" />
+      <Button fx:id="showBooking" layoutX="600.0" layoutY="130.0" mnemonicParsing="false" onAction="#goToUserBookings" prefHeight="131.0" prefWidth="263.0" text="Show booking" />
       <Button fx:id="bookRoom" layoutX="596.0" layoutY="312.0" mnemonicParsing="false" onAction="#goToSearchForRooms" prefHeight="149.0" prefWidth="270.0" text="Book room" />
       <Button fx:id="btnSignOut" layoutX="779.0" layoutY="21.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="39.0" prefWidth="104.0" text="Sign out" />
    </children>
