@@ -18,7 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
-public class BookingAppTest extends ApplicationTest  {
+public class BookingAppTest extends ApplicationTest {
 
     @BeforeAll
     public static void setUpClass() {
@@ -33,7 +33,7 @@ public class BookingAppTest extends ApplicationTest  {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -45,7 +45,13 @@ public class BookingAppTest extends ApplicationTest  {
 
         // Create a TestFX robot
         FxRobot theRobot = new FxRobot();
+
+        clickOn("#inputUsername");
+        write("test");
+        clickOn("#btnLogin");
+
         clickOn("#bookRoom");
+
         clickOn("#fromPicker");
         write("10/17/2023");
         theRobot.push(KeyCode.ENTER);
@@ -60,7 +66,9 @@ public class BookingAppTest extends ApplicationTest  {
         roomList.getSelectionModel().select(0);
         clickOn("#book");
         clickOn("#back");
+
         clickOn("#bookRoom");
+
         clickOn("#fromPicker");
         write("10/17/2023");
         theRobot.push(KeyCode.ENTER);
@@ -70,9 +78,10 @@ public class BookingAppTest extends ApplicationTest  {
         clickOn("#search");
 
         roomList = lookup("#roomList").query();
-        assertEquals(current-1, roomList.getItems().size());
+        assertEquals(current - 1, roomList.getItems().size());
 
         clickOn("#back");
+
         clickOn("#showBooking");
 
         ListView<Room> bookingList = lookup("#bookingList").query();
@@ -84,10 +93,33 @@ public class BookingAppTest extends ApplicationTest  {
         for (Room room : rooms) {
             if (room.isBooked()) {
                 bookedRooms++;
-                room.cancelBooking();;
             }
         }
         assertEquals(bookedRooms, bookingList.getItems().size());
+
+        clickOn("#btnBack");
+
+        clickOn("#btnSignOut");
+
+        clickOn("#inputUsername");
+        write("test2");
+        clickOn("#btnLogin");
+
+        clickOn("#showBooking");
+
+        bookingList = lookup("#bookingList").query();
+        assertEquals(0, bookingList.getItems().size());
+
+        rooms = rw.restoredListFromFile(filePath);
+        bookedRooms = 0;
+        for (Room room : rooms) {
+            if (room.isBooked()) {
+                bookedRooms++;
+                room.cancelBooking();
+            }
+        }
+        assertEquals(1, bookedRooms);
+
         rw.writeToFile(rooms, filePath);
 
     }

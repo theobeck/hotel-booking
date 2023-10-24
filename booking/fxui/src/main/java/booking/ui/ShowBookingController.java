@@ -46,6 +46,12 @@ public final class ShowBookingController {
     @FXML
     private ListView<Room> bookingList;
 
+
+    /**
+     * The username of the user.
+     */
+    private String username;
+
     /**
      *  Initialize method for controller.
      */
@@ -57,7 +63,7 @@ public final class ShowBookingController {
     private void show() {
         rooms = filemanager.restoredListFromFile(filePath);
         for (Room r : rooms) {
-            if (r.isBooked()) {
+            if (r.isBooked() && r.getBookedBy().equals(username)) {
                 yourRooms.add(r);
             }
         }
@@ -66,8 +72,10 @@ public final class ShowBookingController {
 
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
-
+        BookingController bookingController = new BookingController();
+        bookingController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
+        loader.setController(bookingController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -88,5 +96,19 @@ public final class ShowBookingController {
      */
     public void setFilePath(final String filePath) {
         this.filePath = filePath;
+    }
+
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Change the username of the user.
+     */
+    public void setUsername(final String username) {
+        this.username = username;
     }
 }

@@ -77,6 +77,11 @@ public class AvailableController {
      */
     private final Random random = new Random();
 
+    /**
+     * The username of the user.
+     */
+    private String username;
+
     @FXML
     private void initialize() {
         addObjects();
@@ -113,13 +118,17 @@ public class AvailableController {
     @FXML
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
-        thisRoom.bookRoom(from, to);
+        thisRoom.bookRoom(from, to, username);
         fileManager.writeToFile(rooms, filePath);
     }
 
     @FXML
     private void goToBooking(final ActionEvent event) throws IOException {
+        BookingController bookingController = new BookingController();
+        bookingController.setUsername(username);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booking.fxml"));
+        loader.setController(bookingController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -185,4 +194,17 @@ public class AvailableController {
         this.to = to;
     }
 
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Change the username of the user.
+     */
+    public void setUsername(final String username) {
+        this.username = username;
+    }
 }

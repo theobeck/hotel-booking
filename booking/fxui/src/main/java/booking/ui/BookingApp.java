@@ -20,7 +20,7 @@ public final class BookingApp extends Application {
 
     @Override
     public void start(final Stage stage) throws IOException {
-        Parent parent = loadFXML("booking");
+        Parent parent = loadFXML("login");
         stage.setScene(new Scene(parent));
         stage.show();
     }

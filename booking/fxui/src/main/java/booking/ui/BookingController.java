@@ -11,9 +11,27 @@ import javafx.stage.Stage;
 
 public class BookingController {
 
+    /**
+     * The username of the user.
+     */
+    private String username;
+
+    @FXML
+    private void goToLogin(final ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML
     private void goToShowBooking(final ActionEvent event) throws IOException {
+        ShowBookingController showBookingController = new ShowBookingController();
+        showBookingController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("showBooking.fxml"));
+        loader.setController(showBookingController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -23,12 +41,28 @@ public class BookingController {
 
     @FXML
     private void goToBookRoom(final ActionEvent event) throws IOException {
-
+        BookRoomController bookRoomController = new BookRoomController();
+        bookRoomController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bookRoom.fxml"));
+        loader.setController(bookRoomController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Change the username of the user.
+     */
+    public void setUsername(final String username) {
+        this.username = username;
     }
 }

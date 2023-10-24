@@ -40,6 +40,12 @@ public final class Room {
     private LocalDate bookedTo;
 
     /**
+     * The name of the person who booked the room.
+     */
+    @JsonProperty("bookedBy")
+    private String bookedBy;
+
+    /**
      * Create a new room object with no variables defined.
      */
     public Room() { }
@@ -138,17 +144,33 @@ public final class Room {
         this.bookedTo = bookedTo;
     }
 
+    /**
+     * @return Who the room is booked by
+     */
+    public String getBookedBy() {
+        return bookedBy;
+    }
+
+    /**
+     * @param bookedBy Who the room is booked by
+     */
+    public void setBookedBy(final String bookedBy) {
+        this.bookedBy = bookedBy;
+    }
+
 
     /**
      * @param bookedFrom Time to start booking
      * @param bookedTo TIme to end booking
+     * @param bookedBy Who the room is booked by
      */
-    public void bookRoom(final LocalDate bookedFrom, final LocalDate bookedTo) {
+    public void bookRoom(final LocalDate bookedFrom, final LocalDate bookedTo, final String bookedBy) {
         if (isBooked()) {
             throw new IllegalStateException("Cannot book room when room is already booked.");
         }
         setBookedFrom(bookedFrom);
         setBookedTo(bookedTo);
+        setBookedBy(bookedBy);
     }
 
     /**
@@ -160,6 +182,7 @@ public final class Room {
         }
         bookedFrom = null;
         bookedTo = null;
+        bookedBy = null;
     }
 
     /**

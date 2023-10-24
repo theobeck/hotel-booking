@@ -25,9 +25,9 @@ public class BookRoomController {
     private DatePicker fromPicker;
 
     /**
-     * The availableController.
+     * The username of the user.
      */
-    private AvailableController availableController = new AvailableController();
+    private String username;
 
 
     @FXML
@@ -42,16 +42,16 @@ public class BookRoomController {
 
     @FXML
     private void goToAvailable(final ActionEvent event) throws IOException {
+        AvailableController availableController = new AvailableController();
         if (fromPicker.getValue() == null || toPicker.getValue() == null) {
             return;
-            //#TODO add error message
         }
 
         LocalDate from = fromPicker.getValue();
         LocalDate to = toPicker.getValue();
         availableController.setFrom(from);
         availableController.setTo(to);
-
+        availableController.setUsername(username);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("available.fxml"));
         loader.setController(availableController);
@@ -60,5 +60,19 @@ public class BookRoomController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Change the username of the user.
+     */
+    public void setUsername(final String username) {
+        this.username = username;
     }
 }
