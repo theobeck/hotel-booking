@@ -3,59 +3,69 @@
   "roomCapacity" : 4,
   "pricePerNight" : 3000,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 }, {
   "roomNumber" : 2,
   "roomCapacity" : 7,
   "pricePerNight" : 5250,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 }, {
   "roomNumber" : 3,
   "roomCapacity" : 3,
   "pricePerNight" : 2250,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 }, {
   "roomNumber" : 4,
   "roomCapacity" : 6,
   "pricePerNight" : 4500,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 }, {
   "roomNumber" : 5,
   "roomCapacity" : 7,
   "pricePerNight" : 5250,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 }, {
   "roomNumber" : 6,
   "roomCapacity" : 6,
   "pricePerNight" : 4500,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 }, {
   "roomNumber" : 7,
   "roomCapacity" : 6,
   "pricePerNight" : 4500,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 }, {
   "roomNumber" : 8,
   "roomCapacity" : 4,
   "pricePerNight" : 3000,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 }, {
   "roomNumber" : 9,
   "roomCapacity" : 8,
   "pricePerNight" : 6000,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 }, {
   "roomNumber" : 10,
   "roomCapacity" : 6,
   "pricePerNight" : 4500,
   "bookedFrom" : null,
-  "bookedTo" : null
+  "bookedTo" : null,
+  "bookedBy" : null
 } ]

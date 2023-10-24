@@ -182,6 +182,7 @@ public final class Room {
         }
         bookedFrom = null;
         bookedTo = null;
+        bookedBy = null;
     }
 
     /**
