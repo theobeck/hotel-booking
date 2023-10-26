@@ -87,7 +87,7 @@ public class BookingAppTest extends ApplicationTest {
         ListView<Room> bookingList = lookup("#bookingList").query();
         String filePath = "src/main/resources/booking/ui/bookings.json";
         ReadWrite rw = new ReadWrite();
-        List<Room> rooms = rw.restoredListFromFile(filePath);
+        List<Room> rooms = rw.readFromFile(filePath);
         int bookedRooms = 0;
 
         for (Room room : rooms) {
@@ -110,7 +110,7 @@ public class BookingAppTest extends ApplicationTest {
         bookingList = lookup("#bookingList").query();
         assertEquals(0, bookingList.getItems().size());
 
-        rooms = rw.restoredListFromFile(filePath);
+        rooms = rw.readFromFile(filePath);
         bookedRooms = 0;
         for (Room room : rooms) {
             if (room.isBookedBy("test")) {

@@ -3,7 +3,7 @@ package booking.json;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +14,9 @@ import java.util.Comparator;
 import java.util.List;
 
 import booking.core.Room;
+import booking.json.internal.BookingSerializer;
+import booking.json.internal.RoomDeserializer;
+import booking.json.internal.RoomSerializer;
 
 public class ReadWrite {
 
@@ -26,7 +29,11 @@ public class ReadWrite {
      * Create a new file manager object.
      */
     public ReadWrite() {
-        objectMapper.registerModule(new JavaTimeModule());
+        SimpleModule module = new SimpleModule();
+        module.addDeserializer(Room.class, new RoomDeserializer());
+        module.addSerializer(Room.class, new RoomSerializer());
+        module.addSerializer(booking.core.Booking.class, new BookingSerializer());
+        objectMapper.registerModule(module);
     }
 
     /**
@@ -49,7 +56,7 @@ public class ReadWrite {
      * @param filePath Takes in a filepath.
      * @return The list found at the end of the filepath.
      */
-    public List<Room> restoredListFromFile(final String filePath) {
+    public List<Room> readFromFile(final String filePath) {
         List<Room> rooms = new ArrayList<>();
 
         try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
