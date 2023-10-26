@@ -9,6 +9,11 @@ import booking.core.Booking;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * A serializer for the {@link Booking} class.
+ *
+ * Used by the {@link RoomSerializer} to serialize its bookings.
+ */
 public final class BookingSerializer extends JsonSerializer<Booking> {
 
     @Override

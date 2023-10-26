@@ -18,6 +18,9 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
+/**
+ * A test class for the {@link BookingApp} class.
+ */
 public class BookingAppTest extends ApplicationTest {
 
     @BeforeAll

@@ -14,6 +14,9 @@ import org.junit.jupiter.api.Test;
 
 import booking.core.Room;
 
+/**
+ * A test class for the {@link ReadWrite} class.
+ */
 public class ReadWriteTest {
 
     private final String filePath = "readWrite-" + System.currentTimeMillis() + ".json";

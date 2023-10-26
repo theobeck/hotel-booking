@@ -15,6 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * A controller for the user bookings view.
+ */
 public final class UserBookingsController {
 
     /**
@@ -37,9 +40,6 @@ public final class UserBookingsController {
      */
     private ObservableList<Room> yourRooms = FXCollections.observableArrayList();
 
-    // @FXML
-    // TextField username;
-
     /**
      * List view of booked rooms.
      */
@@ -50,6 +50,20 @@ public final class UserBookingsController {
      * The username of the user.
      */
     private String username;
+
+    /**
+     * Default constructor for UserBookingsController.
+     */
+    public UserBookingsController() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(final String username) {
+        this.username = username;
+    }
 
     /**
      * Initialize method for controller.
@@ -80,19 +94,5 @@ public final class UserBookingsController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * @return The username of the user.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username Change the username of the user.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
     }
 }

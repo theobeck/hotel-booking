@@ -11,7 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
-public class SearchForRoomsController {
+/**
+ * A controller for the search for rooms view.
+ */
+public final class SearchForRoomsController {
 
     /**
      * The date picker for the start of the booking.
@@ -28,6 +31,20 @@ public class SearchForRoomsController {
      * The username of the user.
      */
     private String username;
+
+    /**
+     * Default constructor for SearchForRoomsController.
+     */
+    public SearchForRoomsController() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(final String username) {
+        this.username = username;
+    }
 
     @FXML
     private void goToMainMenu(final ActionEvent event) throws IOException {
@@ -59,19 +76,5 @@ public class SearchForRoomsController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * @return The username of the user.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username Change the username of the user.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
     }
 }
