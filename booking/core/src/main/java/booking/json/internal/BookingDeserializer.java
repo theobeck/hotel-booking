@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import booking.core.Booking;
 
@@ -14,30 +15,25 @@ public final class BookingDeserializer extends JsonDeserializer<Booking> {
 
     @Override
     public Booking deserialize(final JsonParser parser, final DeserializationContext ctxt) throws IOException {
-        JsonNode treeNode = parser.getCodec().readTree(parser);
-        return deserialize(treeNode);
-    }
+        JsonNode jsonNode = parser.getCodec().readTree(parser);
+        if (jsonNode instanceof ObjectNode objectNode) {
+            Booking booking = new Booking();
 
-    Booking deserialize(final JsonNode jsonNode) {
-        Booking booking = new Booking();
+            JsonNode bookedByNode = objectNode.get("bookedBy");
+            JsonNode fromNode = objectNode.get("from");
+            JsonNode toNode = objectNode.get("to");
 
-        JsonNode bookedByNode = jsonNode.get("bookedBy");
-        if (bookedByNode != null && bookedByNode.isTextual()) {
-            booking.setBookedBy(bookedByNode.asText());
+            if (bookedByNode != null && bookedByNode.isTextual() && fromNode != null && fromNode.isTextual()
+                    && toNode != null && toNode.isTextual()) {
+                LocalDate from = LocalDate.parse(fromNode.asText());
+                LocalDate to = LocalDate.parse(toNode.asText());
+                booking.setBookedBy(bookedByNode.asText());
+                booking.setFrom(from);
+                booking.setTo(to);
+            }
+
+            return booking;
         }
-
-        JsonNode fromNode = jsonNode.get("from");
-        if (fromNode != null && fromNode.isTextual()) {
-            LocalDate from = LocalDate.parse(fromNode.asText());
-            booking.setFrom(from);
-        }
-
-        JsonNode toNode = jsonNode.get("to");
-        if (toNode != null && toNode.isTextual()) {
-            LocalDate to = LocalDate.parse(toNode.asText());
-            booking.setTo(to);
-        }
-
-        return booking;
+        return null;
     }
 }
