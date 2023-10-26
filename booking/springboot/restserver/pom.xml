@@ -97,7 +97,7 @@
                 <configuration>
                     <argLine>
                         @{jaCoCoArgLine} --add-opens
-                        todolist.springboot.rest/todolist.springboot.restserver=ALL-UNNAMED
+                        booking.springboot.restserver/booking.springboot.restserver=ALL-UNNAMED
                     </argLine>
                 </configuration>
             </plugin>

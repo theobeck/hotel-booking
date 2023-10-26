@@ -1,5 +1,6 @@
 package booking.springboot.restserver;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ public final class RoomController {
     /**
      * Inject the service that manages Room objects.
      */
+    @Autowired
     private final RoomService roomService;
 
     /**
