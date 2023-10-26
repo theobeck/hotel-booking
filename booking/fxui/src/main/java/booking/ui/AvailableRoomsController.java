@@ -33,7 +33,7 @@ public class AvailableRoomsController {
     /**
      * The list of all rooms.
      */
-    private List<Room> rooms = fileManager.restoredListFromFile(filePath);
+    private List<Room> rooms = fileManager.readFromFile(filePath);
 
     /**
      * List view for available rooms.

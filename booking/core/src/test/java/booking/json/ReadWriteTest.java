@@ -39,7 +39,7 @@ public class ReadWriteTest {
         readWrite.writeToFile(rooms, filePath);
 
         // Read the rooms back from the test file
-        List<Room> restoredRooms = readWrite.restoredListFromFile(filePath);
+        List<Room> restoredRooms = readWrite.readFromFile(filePath);
 
         // Check if the rooms match what was written
         assertEquals(rooms.size(), restoredRooms.size());

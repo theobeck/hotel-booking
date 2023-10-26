@@ -5,32 +5,25 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public final class Room {
     /**
      * The room's number.
      */
-    @JsonProperty("roomNumber")
     private int roomNumber;
 
     /**
      * The room's capacity.
      */
-    @JsonProperty("roomCapacity")
     private int roomCapacity;
 
     /**
      * How much it costs per night to book the room.
      */
-    @JsonProperty("pricePerNight")
     private int pricePerNight;
 
     /**
      * The list of bookings for the room.
      */
-    @JsonProperty("bookings")
     private List<Booking> bookings;
 
     /**
@@ -108,6 +101,13 @@ public final class Room {
     }
 
     /**
+     * @param bookings List of bookings to change to
+     */
+    public void setBookings(final List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    /**
      * @param bookedFrom Time to start booking
      * @param bookedTo   TIme to end booking
      * @param bookedBy   Who the room is booked by
@@ -162,7 +162,6 @@ public final class Room {
      * @param bookedBy User to check booking of
      * @return Whether or not room is booked
      */
-    @JsonIgnore
     public boolean isBookedBy(final String bookedBy) {
         return getBookingByUser(bookedBy) != null;
     }
