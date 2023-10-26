@@ -19,6 +19,9 @@ public class LoginController {
 
     @FXML
     private void goToMainMenu(final ActionEvent event) throws IOException {
+        if (inputUsername.getText().equals("")) {
+            return;
+        }
         MainMenuController mainMenuController = new MainMenuController();
         mainMenuController.setUsername(inputUsername.getText());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
