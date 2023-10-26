@@ -22,6 +22,10 @@ public class ReadWrite {
      */
     private ObjectMapper objectMapper = new ObjectMapper();
 
+    public enum RoomParts {
+        ROOMS
+    }
+
     /**
      * Create a new file manager object.
      */
