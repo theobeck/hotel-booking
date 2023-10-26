@@ -14,7 +14,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import booking.core.Room;
-import booking.json.internal.BookingSerializer;
 import booking.json.internal.RoomDeserializer;
 import booking.json.internal.RoomSerializer;
 
@@ -32,7 +31,6 @@ public class ReadWrite {
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Room.class, new RoomDeserializer());
         module.addSerializer(Room.class, new RoomSerializer());
-        module.addSerializer(booking.core.Booking.class, new BookingSerializer());
         objectMapper.registerModule(module);
     }
 

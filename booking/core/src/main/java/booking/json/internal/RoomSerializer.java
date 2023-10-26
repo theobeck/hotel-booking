@@ -20,8 +20,9 @@ public final class RoomSerializer extends JsonSerializer<Room> {
         jsonGenerator.writeNumberField("roomCapacity", room.getRoomCapacity());
         jsonGenerator.writeNumberField("pricePerNight", room.getPricePerNight());
         jsonGenerator.writeArrayFieldStart("bookings");
+        BookingSerializer bookingSerializer = new BookingSerializer();
         for (Booking booking : room.getBookings()) {
-            jsonGenerator.writeObject(booking);
+            bookingSerializer.serialize(booking, jsonGenerator, serializerProvider);
         }
         jsonGenerator.writeEndArray();
         jsonGenerator.writeEndObject();
