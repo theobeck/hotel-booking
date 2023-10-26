@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RoomApplication {
 
   /**
+   * boop
    * The main method.
    *
    * @param args The command line arguments
