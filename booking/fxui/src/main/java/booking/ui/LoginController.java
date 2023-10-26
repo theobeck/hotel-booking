@@ -10,6 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * A controller for the login view.
+ */
 public class LoginController {
     /**
      * The input field for the username.

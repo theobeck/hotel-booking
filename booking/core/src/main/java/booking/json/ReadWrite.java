@@ -17,6 +17,9 @@ import booking.core.Room;
 import booking.json.internal.RoomDeserializer;
 import booking.json.internal.RoomSerializer;
 
+/**
+ * A class for reading and writing rooms to a file.
+ */
 public class ReadWrite {
 
     /**

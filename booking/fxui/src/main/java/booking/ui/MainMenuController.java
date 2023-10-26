@@ -9,6 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * A controller for the main menu view.
+ */
 public class MainMenuController {
 
     /**

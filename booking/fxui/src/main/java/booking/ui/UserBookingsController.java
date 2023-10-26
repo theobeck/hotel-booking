@@ -15,6 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * A controller for the user bookings view.
+ */
 public final class UserBookingsController {
 
     /**

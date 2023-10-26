@@ -18,6 +18,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * A controller for the available rooms view.
+ */
 public class AvailableRoomsController {
 
     /**

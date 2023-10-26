@@ -11,6 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
+/**
+ * A controller for the search for rooms view.
+ */
 public class SearchForRoomsController {
 
     /**

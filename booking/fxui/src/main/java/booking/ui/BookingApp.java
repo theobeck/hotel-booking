@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * JavaFX App.
+ * JavaFX Booking App.
  */
 public final class BookingApp extends Application {
 
@@ -36,6 +36,7 @@ public final class BookingApp extends Application {
 
     /**
      * Main method for launching app.
+     * 
      * @param args
      */
     public static void main(final String[] args) {

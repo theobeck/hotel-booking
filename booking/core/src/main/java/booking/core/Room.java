@@ -5,6 +5,18 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A room that can be booked.
+ *
+ * Has three defining characteristics:
+ * <ul>
+ * <li>Room number</li>
+ * <li>Room capacity</li>
+ * <li>Price per night</li>
+ * </ul>
+ *
+ * Also has a list of bookings.
+ */
 public final class Room {
     /**
      * The room's number.

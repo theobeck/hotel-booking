@@ -3,6 +3,16 @@ package booking.core;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * A specific booking of a {@link Room}.
+ *
+ * Has three defining characteristics:
+ * <ul>
+ * <li>Who the booking is for</li>
+ * <li>When the booking starts</li>
+ * <li>When the booking ends</li>
+ * </ul>
+ */
 public final class Booking {
 
     /**
