@@ -39,7 +39,7 @@ public final class Room {
     private List<Booking> bookings;
 
     /**
-     * Create a new room object with no variables defined.
+     * Default constructor for Room.
      */
     public Room() {
     }
@@ -47,9 +47,9 @@ public final class Room {
     /**
      * Create a new room object with the following variables defined.
      *
-     * @param roomNumber
-     * @param roomCapacity
-     * @param pricePerNight
+     * @param roomNumber    The room's number.
+     * @param roomCapacity  The room's capacity.
+     * @param pricePerNight How much it costs per night to book the room.
      */
     public Room(final int roomNumber, final int roomCapacity, final int pricePerNight) {
         this.roomNumber = roomNumber;
@@ -61,12 +61,12 @@ public final class Room {
     /**
      * Create a new room object with the following variables defined.
      *
-     * @param roomNumber
-     * @param roomCapacity
-     * @param pricePerNight
-     * @param bookedFrom
-     * @param bookedTo
-     * @param bookedBy
+     * @param roomNumber    The room's number.
+     * @param roomCapacity  The room's capacity.
+     * @param pricePerNight How much it costs per night to book the room.
+     * @param bookedFrom    When the booking starts.
+     * @param bookedTo      When the booking ends.
+     * @param bookedBy      Who the booking is for.
      */
     public Room(final int roomNumber, final int roomCapacity, final int pricePerNight, final LocalDate bookedFrom,
             final LocalDate bookedTo, final String bookedBy) {
@@ -77,49 +77,41 @@ public final class Room {
         bookRoom(bookedFrom, bookedTo, bookedBy);
     }
 
-    /**
-     * @return Room number
-     */
     public int getRoomNumber() {
         return roomNumber;
     }
 
-    /**
-     * @param roomNumber Room number to change to
-     */
     public void setRoomNumber(final int roomNumber) {
         this.roomNumber = roomNumber;
     }
 
-    /**
-     * @return Room capacity
-     */
     public int getRoomCapacity() {
         return roomCapacity;
     }
 
-    /**
-     * @param roomCapacity Room capacity to change to
-     */
     public void setRoomCapacity(final int roomCapacity) {
         this.roomCapacity = roomCapacity;
     }
 
-    /**
-     * @return List of bookings
-     */
     public List<Booking> getBookings() {
         return bookings;
     }
 
-    /**
-     * @param bookings List of bookings to change to
-     */
     public void setBookings(final List<Booking> bookings) {
         this.bookings = bookings;
     }
 
+    public int getPricePerNight() {
+        return pricePerNight;
+    }
+
+    public void setPricePerNight(final int pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
+
     /**
+     * Book room with given booking parameters.
+     *
      * @param bookedFrom Time to start booking
      * @param bookedTo   TIme to end booking
      * @param bookedBy   Who the room is booked by
@@ -132,7 +124,10 @@ public final class Room {
     }
 
     /**
-     * @param bookedBy Cancel booking by user.
+     * Cancel booking by user.
+     *
+     * @param bookedBy User to cancel booking of
+     *
      * @throws IllegalStateException If room isn't booked by user.
      */
     public void cancelBooking(final String bookedBy) {
@@ -143,22 +138,11 @@ public final class Room {
     }
 
     /**
-     * @return Price per night
-     */
-    public int getPricePerNight() {
-        return pricePerNight;
-    }
-
-    /**
-     * @param pricePerNight How much room will cost per night
-     */
-    public void setPricePerNight(final int pricePerNight) {
-        this.pricePerNight = pricePerNight;
-    }
-
-    /**
-     * @param targetFrom Time to start booking
-     * @param targetTo   Time to end booking
+     * Check if room is available between given times.
+     *
+     * @param targetFrom Wanted start of booking
+     * @param targetTo   Wanted end of booking
+     *
      * @return Whether or not room is available between given times
      */
     public boolean isAvailableBetween(final LocalDate targetFrom, final LocalDate targetTo) {
@@ -171,7 +155,10 @@ public final class Room {
     }
 
     /**
+     * Check if room is booked by the given user.
+     *
      * @param bookedBy User to check booking of
+     *
      * @return Whether or not room is booked
      */
     public boolean isBookedBy(final String bookedBy) {
@@ -179,7 +166,10 @@ public final class Room {
     }
 
     /**
+     * Get total cost of user's booking.
+     *
      * @param bookedBy User to check booking of
+     *
      * @return Price of entire booking
      */
     public int totalCostOfUserBooking(final String bookedBy) {
@@ -192,7 +182,10 @@ public final class Room {
     }
 
     /**
+     * Get user's booking.
+     *
      * @param bookedBy User to get booking of
+     *
      * @return Booking of user
      */
     public Booking getBookingByUser(final String bookedBy) {
@@ -205,7 +198,10 @@ public final class Room {
     }
 
     /**
+     * Check if given room is equal to this room.
+     *
      * @param room Room to compare to
+     *
      * @return Whether or not rooms are equal
      */
     public Boolean equals(final Room room) {

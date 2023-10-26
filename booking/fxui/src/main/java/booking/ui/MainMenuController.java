@@ -12,12 +12,26 @@ import javafx.stage.Stage;
 /**
  * A controller for the main menu view.
  */
-public class MainMenuController {
+public final class MainMenuController {
 
     /**
      * The username of the user.
      */
     private String username;
+
+    /**
+     * Default constructor for MainMenuController.
+     */
+    public MainMenuController() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(final String username) {
+        this.username = username;
+    }
 
     @FXML
     private void goToLogin(final ActionEvent event) throws IOException {
@@ -55,17 +69,4 @@ public class MainMenuController {
         stage.show();
     }
 
-    /**
-     * @return The username of the user.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username Change the username of the user.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
-    }
 }

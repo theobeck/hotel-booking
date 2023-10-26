@@ -18,6 +18,12 @@ public final class BookingApp extends Application {
      */
     private static Scene scene;
 
+    /**
+     * Default constructor for BookingApp.
+     */
+    public BookingApp() {
+    }
+
     @Override
     public void start(final Stage stage) throws IOException {
         Parent parent = loadFXML("login");
@@ -32,14 +38,5 @@ public final class BookingApp extends Application {
     private static Parent loadFXML(final String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(BookingApp.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
-    }
-
-    /**
-     * Main method for launching app.
-     *
-     * @param args
-     */
-    public static void main(final String[] args) {
-        launch();
     }
 }

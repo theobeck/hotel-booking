@@ -20,6 +20,12 @@ public class LoginController {
     @FXML
     private TextField inputUsername;
 
+    /**
+     * Default constructor for LoginController.
+     */
+    public LoginController() {
+    }
+
     @FXML
     private void goToMainMenu(final ActionEvent event) throws IOException {
         if (inputUsername.getText().equals("")) {

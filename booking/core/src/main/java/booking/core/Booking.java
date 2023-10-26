@@ -16,11 +16,6 @@ import java.util.Objects;
 public final class Booking {
 
     /**
-     * Who the booking is for.
-     */
-    private String bookedBy;
-
-    /**
      * When the booking starts.
      */
     private LocalDate from;
@@ -31,7 +26,12 @@ public final class Booking {
     private LocalDate to;
 
     /**
-     * Default constructor.
+     * Who the booking is for.
+     */
+    private String bookedBy;
+
+    /**
+     * Default constructor for Booking.
      */
     public Booking() {
     }
@@ -39,9 +39,9 @@ public final class Booking {
     /**
      * Create a new booking object with the following variables defined.
      *
-     * @param from
-     * @param to
-     * @param bookedBy
+     * @param from     When the booking starts.
+     * @param to       When the booking ends.
+     * @param bookedBy Who the booking is for.
      */
     public Booking(final LocalDate from, final LocalDate to, final String bookedBy) {
         this.from = from;
@@ -49,50 +49,33 @@ public final class Booking {
         this.bookedBy = bookedBy;
     }
 
-    /**
-     * @return When the booking starts.
-     */
     public LocalDate getFrom() {
         return from;
     }
 
-    /**
-     * @param bookedFrom When the booking will start.
-     */
     public void setFrom(final LocalDate bookedFrom) {
         this.from = bookedFrom;
     }
 
-    /**
-     * @return When the booking ends.
-     */
     public LocalDate getTo() {
         return to;
     }
 
-    /**
-     * @param bookedTo When the booking will end.
-     */
     public void setTo(final LocalDate bookedTo) {
         this.to = bookedTo;
     }
 
-    /**
-     * @return Who the booking is for.
-     */
     public String getBookedBy() {
         return bookedBy;
     }
 
-    /**
-     * @param bookedBy Who the booking will be for.
-     */
     public void setBookedBy(final String bookedBy) {
         this.bookedBy = bookedBy;
     }
 
     /**
      * @param obj The booking to compare to.
+     *
      * @return Whether the bookings are equal.
      */
     @Override
@@ -104,13 +87,13 @@ public final class Booking {
             return false;
         }
         Booking booking = (Booking) obj;
-        return this.bookedBy.equals(booking.getBookedBy())
-                && this.from.equals(booking.getFrom())
-                && this.to.equals(booking.getTo());
+        return this.from.equals(booking.getFrom())
+                && this.to.equals(booking.getTo())
+                && this.bookedBy.equals(booking.getBookedBy());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookedBy, from, to);
+        return Objects.hash(from, to, bookedBy);
     }
 }
