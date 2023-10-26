@@ -36,7 +36,7 @@ public final class BookingApp extends Application {
 
     /**
      * Main method for launching app.
-     * 
+     *
      * @param args
      */
     public static void main(final String[] args) {
