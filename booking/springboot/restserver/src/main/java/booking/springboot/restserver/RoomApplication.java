@@ -7,9 +7,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * The Spring application.
  */
 @SpringBootApplication
-public class RoomApplication {
+public final class RoomApplication {
 
-  public static void main(String[] args) {
+  private RoomApplication() {
+    throw new IllegalStateException("This class should not be instantiated.");
+  }
+
+  /**
+   * The main method.
+   *
+   * @param args the command line arguments
+   */
+  public static void main(final String[] args) {
     SpringApplication.run(RoomApplication.class, args);
   }
 }

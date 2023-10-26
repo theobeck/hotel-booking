@@ -16,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/rooms")
-public class RoomController {
+public final class RoomController {
 
     /**
      * Inject the service that manages Room objects.
@@ -32,20 +32,38 @@ public class RoomController {
         this.roomService = roomService;
     }
 
+    /**
+     * Get all rooms in the system.
+     *
+     * @return All rooms in the system
+     */
     @GetMapping
     public List<Room> getAllRooms() {
         return roomService.getAllRooms();
     }
 
+    /**
+     * Create a new room.
+     *
+     * @param room The room to create
+     *
+     * @return The created room
+     */
     @PostMapping
     public Room createRoom(final @RequestBody Room room) {
         return roomService.createRoom(room);
     }
 
+    /**
+     * Get a room by its ID.
+     *
+     * @param id The ID of the room to get
+     *
+     * @return The room with the given ID
+     */
     @GetMapping("/{id}")
     public Room getRoomById(final @PathVariable Long id) {
         return roomService.getRoomById(id);
     }
 
-    // Implement other CRUD operations for Room here.
 }
