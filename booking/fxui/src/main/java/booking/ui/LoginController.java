@@ -30,6 +30,9 @@ public class LoginController {
     @FXML
     private TextField inputPassword;
 
+    /**
+     * The error message.
+     */
     @FXML
     private Text errorMsg;
 
@@ -48,7 +51,6 @@ public class LoginController {
      */
     private List<User> users = fileManager.readUsersFromFile(filePath);
 
-
     /**
      * Default constructor for LoginController.
      */
@@ -56,12 +58,15 @@ public class LoginController {
     }
 
     @FXML
-    private void goToMainMenu(final ActionEvent event) throws IOException {
-        if (inputUsername.getText().equals("") && inputPassword.getText().equals("")) {
+    private void login(final ActionEvent event) throws IOException {
+        if (inputUsername.getText().equals("") || inputPassword.getText().equals("")) {
             return;
         }
-        for(User u: users){
-            if(u.getUsername().equals(inputUsername.getText()) && u.getPassword().equals(inputPassword.getText())){
+        if (users.isEmpty()) {
+            return;
+        }
+        for (User u : users) {
+            if (u.getUsername().equals(inputUsername.getText()) && u.getPassword().equals(inputPassword.getText())) {
                 MainMenuController mainMenuController = new MainMenuController();
                 mainMenuController.setUsername(inputUsername.getText());
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
@@ -77,13 +82,12 @@ public class LoginController {
     }
 
     @FXML
-    private void goToMainMenuSignup(final ActionEvent event) throws IOException {
-        if (inputUsername.getText().equals("") && inputPassword.getText().equals("")) {
-            errorMsg.setText("Please enter a username and password");
+    private void signup(final ActionEvent event) throws IOException {
+        if (inputUsername.getText().equals("") || inputPassword.getText().equals("")) {
             return;
         }
-        for(User u: users){
-            if(u.getUsername().equals(inputUsername.getText())){
+        for (User u : users) {
+            if (u.getUsername().equals(inputUsername.getText())) {
                 errorMsg.setText("Username already exists");
                 return;
             }

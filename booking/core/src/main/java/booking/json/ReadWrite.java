@@ -58,20 +58,19 @@ public class ReadWrite {
     /**
      * Read the list of rooms from the given file.
      *
+     * @param users    The users to store
      * @param filePath Takes in a filepath.
-     *
-     * @return Returns the list of users found at the end of the filepath.
      */
     public void writeUsersToFile(final List<User> users, final String filePath) {
         try {
             ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
-            //Collections.sort(users, Comparator.comparingInt(Room::getRoomNumber));
+            // Collections.sort(users, Comparator.comparingInt(Room::getRoomNumber));
             objectWriter.writeValue(new File(filePath), users);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * Read the list of rooms from the given file.
      *

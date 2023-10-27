@@ -1,6 +1,6 @@
 package booking.core;
 
-public class User {
+public final class User {
 
     /**
      * The user's username.
@@ -11,7 +11,7 @@ public class User {
      * The user's password.
      */
     private String password;
-    
+
     /**
      * Default constructor for User.
      */
@@ -24,7 +24,7 @@ public class User {
      * @param username The user's username.
      * @param password The user's password.
      */
-    public User(String username, String password) {
+    public User(final String username, final String password) {
         this.username = username;
         this.password = password;
     }
@@ -33,7 +33,7 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
@@ -41,7 +41,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 }

@@ -51,6 +51,8 @@ public class BookingAppTest extends ApplicationTest {
 
         clickOn("#inputUsername");
         write("test");
+        clickOn("#inputPassword");
+        write("test");
         clickOn("#btnLogin");
 
         clickOn("#bookRoom");
@@ -105,6 +107,8 @@ public class BookingAppTest extends ApplicationTest {
         clickOn("#btnSignOut");
 
         clickOn("#inputUsername");
+        write("test2");
+        clickOn("#inputPassword");
         write("test2");
         clickOn("#btnLogin");
 
