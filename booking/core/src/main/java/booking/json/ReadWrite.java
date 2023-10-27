@@ -17,6 +17,8 @@ import booking.core.Room;
 import booking.core.User;
 import booking.json.internal.RoomDeserializer;
 import booking.json.internal.RoomSerializer;
+import booking.json.internal.UserDeserializer;
+import booking.json.internal.UserSerializer;
 
 /**
  * A class for reading and writing rooms to a file.
@@ -36,6 +38,8 @@ public class ReadWrite {
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Room.class, new RoomDeserializer());
         module.addSerializer(Room.class, new RoomSerializer());
+        module.addDeserializer(User.class, new UserDeserializer());
+        module.addSerializer(User.class, new UserSerializer());
         objectMapper.registerModule(module);
     }
 
