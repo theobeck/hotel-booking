@@ -100,7 +100,7 @@ public class ReadWrite {
      *
      * @return Returns the list of users found at the end of the filepath.
      */
-    public List<User> readUserFromFile(final String filePath) {
+    public List<User> readUsersFromFile(final String filePath) {
         List<User> users = new ArrayList<>();
 
         try (FileInputStream fileInputStream = new FileInputStream(filePath)) {

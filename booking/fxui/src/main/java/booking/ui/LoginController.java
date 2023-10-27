@@ -46,7 +46,7 @@ public class LoginController {
     /**
      * The list of users.
      */
-    private List<User> users = fileManager.readUserFromFile(filePath);
+    private List<User> users = fileManager.readUsersFromFile(filePath);
 
 
     /**
@@ -88,6 +88,11 @@ public class LoginController {
                 return;
             }
         }
+
+        User newUser = new User(inputUsername.getText(), inputPassword.getText());
+        users.add(newUser);
+        fileManager.writeUsersToFile(users, filePath);
+
         MainMenuController mainMenuController = new MainMenuController();
         mainMenuController.setUsername(inputUsername.getText());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
