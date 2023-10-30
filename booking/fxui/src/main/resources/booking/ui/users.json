@@ -1,11 +1,25 @@
 [ {
-  "username" : "test",
-  "firstName" : "test",
-  "lastName" : "test",
-  "password" : "test"
+  "username" : "Jørgen",
+  "firstName" : "Jørgen",
+  "lastName" : "Jørgen",
+  "password" : "Jørgen",
+  "gender" : "Female"
+}, {
+  "username" : "test1",
+  "firstName" : "test1",
+  "lastName" : "test1",
+  "password" : "test1",
+  "gender" : "Male"
 }, {
   "username" : "test2",
   "firstName" : "test2",
   "lastName" : "test2",
-  "password" : "test2"
+  "password" : "test2",
+  "gender" : "Male"
+}, {
+  "username" : "test3",
+  "firstName" : "test3",
+  "lastName" : "test3",
+  "password" : "test3",
+  "gender" : "Male"
 } ]

@@ -23,6 +23,11 @@ public final class User {
     private String password;
 
     /**
+     * The user's gender.
+     */
+    private String gender;
+
+    /**
      * Default constructor for User.
      */
     public User() {
@@ -35,12 +40,14 @@ public final class User {
      * @param firstName The user's first name.
      * @param lastName  The user's last name.
      * @param password  The user's password.
+     * @param gender    The user's gender
      */
-    public User(final String username, final String firstName, final String lastName, final String password) {
+    public User(final String username, final String firstName, final String lastName, final String password, final String gender) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
+        this.gender = gender;
     }
 
     public String getUsername() {
@@ -73,6 +80,14 @@ public final class User {
 
     public void setPassword(final String password) {
         this.password = password;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(final String gender) {
+        this.gender = gender;
     }
 
     public Boolean equals(final User user) {
