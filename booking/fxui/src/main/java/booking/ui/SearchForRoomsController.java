@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 /**
  * A controller for the search for rooms view.
  */
-public final class SearchForRoomsController {
+public final class SearchForRoomsController extends AbstractBookingController {
 
     /**
      * The date picker for the start of the booking.
@@ -28,27 +28,17 @@ public final class SearchForRoomsController {
     private DatePicker fromPicker;
 
     /**
-     * The username of the user.
-     */
-    private String username;
-
-    /**
      * Default constructor for SearchForRoomsController.
      */
     public SearchForRoomsController() {
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(final String username) {
-        this.username = username;
-    }
-
     @FXML
     private void goToMainMenu(final ActionEvent event) throws IOException {
+        MainMenuController mainMenuController = new MainMenuController();
+        mainMenuController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+        loader.setController(mainMenuController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

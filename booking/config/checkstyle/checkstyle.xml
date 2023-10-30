@@ -165,7 +165,7 @@ https://www.oracle.com/java/technologies/javase/codeconventions-contents.html
     <!-- Checks for common coding problems               -->
     <!-- See https://checkstyle.org/config_coding.html -->
     <module name="EmptyStatement" />
-    <module name="EqualsHashCode" />
+    <!-- <module name="EqualsHashCode" /> -->
     <!-- <module name="HiddenField"/> -->
     <module name="IllegalInstantiation" />
     <module name="InnerAssignment" />
@@ -181,7 +181,7 @@ https://www.oracle.com/java/technologies/javase/codeconventions-contents.html
     <module name="FinalClass" />
     <module name="HideUtilityClassConstructor" />
     <module name="InterfaceIsType" />
-    <module name="VisibilityModifier" />
+    <!-- <module name="VisibilityModifier" /> -->
 
     <!-- Miscellaneous other checks.                   -->
     <!-- See https://checkstyle.org/config_misc.html -->

@@ -83,24 +83,7 @@ public class LoginController {
 
     @FXML
     private void signup(final ActionEvent event) throws IOException {
-        if (inputUsername.getText().equals("") || inputPassword.getText().equals("")) {
-            return;
-        }
-        for (User u : users) {
-            if (u.getUsername().equals(inputUsername.getText())) {
-                errorMsg.setText("Username already exists");
-                return;
-            }
-        }
-
-        User newUser = new User(inputUsername.getText(), inputPassword.getText());
-        users.add(newUser);
-        fileManager.writeUsersToFile(users, filePath);
-
-        MainMenuController mainMenuController = new MainMenuController();
-        mainMenuController.setUsername(inputUsername.getText());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
-        loader.setController(mainMenuController);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("register.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
