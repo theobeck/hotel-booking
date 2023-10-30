@@ -70,6 +70,8 @@ public class BookingAppTest extends ApplicationTest {
 
         roomList.getSelectionModel().select(0);
         clickOn("#book");
+        roomList.getSelectionModel().select(1);
+        clickOn("#book");
         clickOn("#back");
 
         clickOn("#bookRoom");
@@ -83,7 +85,7 @@ public class BookingAppTest extends ApplicationTest {
         clickOn("#search");
 
         roomList = lookup("#roomList").query();
-        assertEquals(current - 1, roomList.getItems().size());
+        assertEquals(current - 2, roomList.getItems().size());
 
         clickOn("#back");
 
@@ -94,6 +96,18 @@ public class BookingAppTest extends ApplicationTest {
         ReadWrite rw = new ReadWrite();
         List<Room> rooms = rw.readRoomsFromFile(filePath);
         int bookedRooms = 0;
+
+        for (Room room : rooms) {
+            if (room.isBookedBy("test")) {
+                bookedRooms++;
+            }
+        }
+        assertEquals(bookedRooms, bookingList.getItems().size());
+
+        bookingList.getSelectionModel().select(0);
+        clickOn("#cancelBooking");
+
+        bookedRooms = 0;
 
         for (Room room : rooms) {
             if (room.isBookedBy("test")) {

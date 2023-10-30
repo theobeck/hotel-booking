@@ -2,7 +2,11 @@
   "roomNumber" : 1,
   "roomCapacity" : 8,
   "pricePerNight" : 6000,
-  "bookings" : [ ]
+  "bookings" : [ {
+    "bookedBy" : "jtg",
+    "from" : "2023-09-26",
+    "to" : "2023-09-30"
+  } ]
 }, {
   "roomNumber" : 2,
   "roomCapacity" : 1,
