@@ -226,5 +226,6 @@
     <modules>
         <module>core</module>
         <module>fxui</module>
+        <module>springboot/restserver</module>
     </modules>
 </project>
