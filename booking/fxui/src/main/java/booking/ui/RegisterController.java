@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -44,6 +45,12 @@ public class RegisterController {
     private PasswordField inputPassword;
 
     /**
+     * The menu button for gender.
+     */
+    @FXML
+    private ComboBox<String> genderCombobox;
+
+    /**
      * The error message.
      */
     @FXML
@@ -70,13 +77,20 @@ public class RegisterController {
     public RegisterController() {
     }
 
+    /**
+     * Initialize the controller.
+     */
+    public void initialize() {
+        genderCombobox.getItems().addAll("Male", "Female", "Non-binary");
+    }
+
     @FXML
     private void register(final ActionEvent event) throws IOException {
         if (inputUsername.getText().equals("") || inputPassword.getText().equals("")) {
             return;
         }
         for (User u : users) {
-            if (u.getUsername().equals(inputUsername.getText())) {
+            if (u.getUsername() == inputUsername.getText()) {
                 errorMsg.setText("Username is taken.");
                 return;
             }
@@ -85,7 +99,7 @@ public class RegisterController {
         mainMenuController.setUsername(inputUsername.getText());
 
         User user = new User(inputUsername.getText(), inputFirstName.getText(), inputLastName.getText(),
-                inputPassword.getText());
+                inputPassword.getText(), genderCombobox.getValue());
         users.add(user);
         fileManager.writeUsersToFile(users, filePath);
 

@@ -1,11 +1,7 @@
 [ {
-  "username" : "test",
-  "firstName" : "test",
-  "lastName" : "test",
-  "password" : "test"
-}, {
-  "username" : "test2",
-  "firstName" : "test2",
-  "lastName" : "test2",
-  "password" : "test2"
+  "username" : "Jørgen",
+  "firstName" : "Jørgen",
+  "lastName" : "Jørgen",
+  "password" : "Jørgen",
+  "gender" : "Female"
 } ]
