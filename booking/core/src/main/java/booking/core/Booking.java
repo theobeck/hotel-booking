@@ -73,18 +73,11 @@ public final class Booking {
     }
 
     /**
-     * @param obj The booking to compare to.
+     * @param booking The booking to compare to.
      *
      * @return Whether the bookings are equal.
      */
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Booking booking = (Booking) obj;
+    public Boolean equals(final Booking booking) {
         return from.equals(booking.getFrom())
                 && to.equals(booking.getTo())
                 && bookedBy.equals(booking.getBookedBy());

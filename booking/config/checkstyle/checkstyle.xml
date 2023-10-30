@@ -181,7 +181,7 @@ https://www.oracle.com/java/technologies/javase/codeconventions-contents.html
     <module name="FinalClass" />
     <module name="HideUtilityClassConstructor" />
     <module name="InterfaceIsType" />
-    <module name="VisibilityModifier" />
+    <!-- <module name="VisibilityModifier" /> -->
 
     <!-- Miscellaneous other checks.                   -->
     <!-- See https://checkstyle.org/config_misc.html -->

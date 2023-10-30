@@ -31,8 +31,10 @@ public final class User {
     /**
      * Create a new user object with the following variables defined.
      *
-     * @param username The user's username.
-     * @param password The user's password.
+     * @param username  The user's username.
+     * @param firstName The user's first name.
+     * @param lastName  The user's last name.
+     * @param password  The user's password.
      */
     public User(final String username, final String firstName, final String lastName, final String password) {
         this.username = username;
