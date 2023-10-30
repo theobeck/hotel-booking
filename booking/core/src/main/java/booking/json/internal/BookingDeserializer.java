@@ -11,6 +11,11 @@ import booking.core.Booking;
 import java.io.IOException;
 import java.time.LocalDate;
 
+/**
+ * A deserializer for the {@link Booking} class.
+ *
+ * Used by the {@link RoomDeserializer} to deserialize its bookings.
+ */
 public final class BookingDeserializer extends JsonDeserializer<Booking> {
 
     @Override

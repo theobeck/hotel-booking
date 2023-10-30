@@ -18,6 +18,9 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
+/**
+ * A test class for the {@link BookingApp} class.
+ */
 public class BookingAppTest extends ApplicationTest {
 
     @BeforeAll
@@ -48,6 +51,8 @@ public class BookingAppTest extends ApplicationTest {
 
         clickOn("#inputUsername");
         write("test");
+        clickOn("#inputPassword");
+        write("test");
         clickOn("#btnLogin");
 
         clickOn("#bookRoom");
@@ -65,20 +70,11 @@ public class BookingAppTest extends ApplicationTest {
 
         roomList.getSelectionModel().select(0);
         clickOn("#book");
+        roomList.getSelectionModel().select(0);
+        clickOn("#book");
         clickOn("#back");
-
-        clickOn("#bookRoom");
-
-        clickOn("#fromPicker");
-        write("10/17/2023");
-        theRobot.push(KeyCode.ENTER);
-        clickOn("#toPicker");
-        write("10/19/2023");
-        theRobot.push(KeyCode.ENTER);
-        clickOn("#search");
-
         roomList = lookup("#roomList").query();
-        assertEquals(current - 1, roomList.getItems().size());
+        assertEquals(current - 2, roomList.getItems().size());
 
         clickOn("#back");
 
@@ -87,8 +83,21 @@ public class BookingAppTest extends ApplicationTest {
         ListView<Room> bookingList = lookup("#bookingList").query();
         String filePath = "src/main/resources/booking/ui/bookings.json";
         ReadWrite rw = new ReadWrite();
-        List<Room> rooms = rw.readFromFile(filePath);
+        List<Room> rooms = rw.readRoomsFromFile(filePath);
         int bookedRooms = 0;
+
+        for (Room room : rooms) {
+            if (room.isBookedBy("test")) {
+                bookedRooms++;
+            }
+        }
+        assertEquals(bookedRooms, bookingList.getItems().size());
+
+        bookingList.getSelectionModel().select(0);
+        clickOn("#btnCancelBooking");
+
+        rooms = rw.readRoomsFromFile(filePath);
+        bookedRooms = 0;
 
         for (Room room : rooms) {
             if (room.isBookedBy("test")) {
@@ -103,6 +112,8 @@ public class BookingAppTest extends ApplicationTest {
 
         clickOn("#inputUsername");
         write("test2");
+        clickOn("#inputPassword");
+        write("test2");
         clickOn("#btnLogin");
 
         clickOn("#showBooking");
@@ -110,7 +121,7 @@ public class BookingAppTest extends ApplicationTest {
         bookingList = lookup("#bookingList").query();
         assertEquals(0, bookingList.getItems().size());
 
-        rooms = rw.readFromFile(filePath);
+        rooms = rw.readRoomsFromFile(filePath);
         bookedRooms = 0;
         for (Room room : rooms) {
             if (room.isBookedBy("test")) {
@@ -120,7 +131,7 @@ public class BookingAppTest extends ApplicationTest {
         }
         assertEquals(1, bookedRooms);
 
-        rw.writeToFile(rooms, filePath);
+        rw.writeRoomsToFile(rooms, filePath);
 
     }
 }

@@ -15,5 +15,6 @@
             <Font name="Gill Sans MT" size="57.0" />
          </font>
       </Text>
+      <Button fx:id="btnCancelBooking" layoutX="713.0" layoutY="293.0" mnemonicParsing="false" onAction="#cancelBooking" prefHeight="31.0" prefWidth="94.0" text="Cancel booking" />
    </children>
 </Pane>

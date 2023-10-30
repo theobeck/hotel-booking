@@ -14,33 +14,42 @@ import java.util.Comparator;
 import java.util.List;
 
 import booking.core.Room;
+import booking.core.User;
 import booking.json.internal.RoomDeserializer;
 import booking.json.internal.RoomSerializer;
+import booking.json.internal.UserDeserializer;
+import booking.json.internal.UserSerializer;
 
+/**
+ * A class for reading and writing rooms to a file.
+ */
 public class ReadWrite {
 
     /**
      * The object mapper object for the file manager object.
      */
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper;
 
     /**
      * Create a new file manager object.
      */
     public ReadWrite() {
+        objectMapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Room.class, new RoomDeserializer());
         module.addSerializer(Room.class, new RoomSerializer());
+        module.addDeserializer(User.class, new UserDeserializer());
+        module.addSerializer(User.class, new UserSerializer());
         objectMapper.registerModule(module);
     }
 
     /**
      * Write the given rooms to the given file.
      *
-     * @param rooms
-     * @param filePath
+     * @param rooms    The rooms to store
+     * @param filePath The file to write to
      */
-    public void writeToFile(final List<Room> rooms, final String filePath) {
+    public void writeRoomsToFile(final List<Room> rooms, final String filePath) {
         try {
             ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
             Collections.sort(rooms, Comparator.comparingInt(Room::getRoomNumber));
@@ -51,10 +60,29 @@ public class ReadWrite {
     }
 
     /**
+     * Read the list of rooms from the given file.
+     *
+     * @param users    The users to store
      * @param filePath Takes in a filepath.
-     * @return The list found at the end of the filepath.
      */
-    public List<Room> readFromFile(final String filePath) {
+    public void writeUsersToFile(final List<User> users, final String filePath) {
+        try {
+            ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
+            // Collections.sort(users, Comparator.comparingInt(Room::getRoomNumber));
+            objectWriter.writeValue(new File(filePath), users);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Read the list of rooms from the given file.
+     *
+     * @param filePath Takes in a filepath.
+     *
+     * @return Returns the list of rooms found at the end of the filepath.
+     */
+    public List<Room> readRoomsFromFile(final String filePath) {
         List<Room> rooms = new ArrayList<>();
 
         try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
@@ -67,4 +95,26 @@ public class ReadWrite {
 
         return rooms;
     }
+
+    /**
+     * Read the list of users from the given file.
+     *
+     * @param filePath Takes in a filepath.
+     *
+     * @return Returns the list of users found at the end of the filepath.
+     */
+    public List<User> readUsersFromFile(final String filePath) {
+        List<User> users = new ArrayList<>();
+
+        try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
+            TypeReference<List<User>> typeReference = new TypeReference<List<User>>() {
+            };
+            users = objectMapper.readValue(fileInputStream, typeReference);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
 }

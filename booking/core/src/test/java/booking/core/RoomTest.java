@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 
+/**
+ * A test class for the {@link Room} class.
+ *
+ */
 public class RoomTest {
 
 	Room r1;

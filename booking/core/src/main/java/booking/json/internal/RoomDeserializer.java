@@ -13,6 +13,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A deserializer for the {@link Room} class.
+ *
+ * Uses the {@link BookingDeserializer} to deserialize the bookings.
+ */
 public final class RoomDeserializer extends JsonDeserializer<Room> {
 
     @Override

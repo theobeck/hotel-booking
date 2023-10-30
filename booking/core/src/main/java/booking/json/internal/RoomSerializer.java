@@ -9,6 +9,11 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import booking.core.Booking;
 import booking.core.Room;
 
+/**
+ * A serializer for the {@link Room} class.
+ *
+ * Uses the {@link BookingSerializer} to serialize the bookings.
+ */
 public final class RoomSerializer extends JsonSerializer<Room> {
 
     @Override
