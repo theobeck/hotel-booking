@@ -1,5 +1,5 @@
 module booking.springboot.restserver {
-    requires com.fasterxml.jackson.databind;
+    requires transitive com.fasterxml.jackson.databind;
 
     requires spring.web;
     requires spring.beans;
@@ -9,5 +9,5 @@ module booking.springboot.restserver {
 
     requires booking.core;
 
-    opens booking.springboot.restserver to spring.beans, spring.context, spring.web;
+    opens booking.springboot.restserver to spring.beans, spring.context, spring.web, com.fasterxml.jackson.databind;
 }

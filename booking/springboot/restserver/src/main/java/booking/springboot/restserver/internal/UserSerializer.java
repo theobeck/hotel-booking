@@ -1,4 +1,4 @@
-package booking.json.internal;
+package booking.springboot.restserver.internal;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import booking.core.Room;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -33,6 +33,21 @@ public final class RoomController {
     }
 
     /**
+     * Create a new room.
+     *
+     * @param roomNumber    The room number of the room to create
+     * @param roomCapacity  The room capacity of the room to create
+     * @param pricePerNight The price per night of the room to create
+     *
+     * @return The created room
+     */
+    @PostMapping("/rooms/{roomNumber}, {roomCapacity}, {pricePerNight}")
+    public void createRoom(final @PathVariable int roomNumber,
+            final @PathVariable int roomCapacity, final @PathVariable int pricePerNight) {
+        roomService.createRoom(roomNumber, roomCapacity, pricePerNight);
+    }
+
+    /**
      * Get all rooms in the system.
      *
      * @return All rooms in the system
@@ -40,18 +55,6 @@ public final class RoomController {
     @GetMapping("/rooms")
     public List<Room> getAllRooms() {
         return roomService.getAllRooms();
-    }
-
-    /**
-     * Create a new room.
-     *
-     * @param room The room to create
-     *
-     * @return The created room
-     */
-    @PostMapping("/rooms/{roomNumber}")
-    public Room createRoom(final @RequestBody Room room) {
-        return roomService.createRoom(room);
     }
 
     /**
@@ -63,7 +66,54 @@ public final class RoomController {
      */
     @GetMapping("/rooms/{roomNumber}")
     public Room getRoomByNumber(final @PathVariable int roomNumber) {
-        return roomService.getRoomById(roomNumber);
+        return roomService.getRoomByNumber(roomNumber);
     }
 
+    /**
+     * Update the given rooms.
+     *
+     * @param rooms The rooms to update
+     */
+    public void updateRooms(final List<Room> rooms) {
+        roomService.updateRooms(rooms);
+    }
+
+    /**
+     * Book a room by its room number.
+     *
+     * @param roomNumber The room number of the room to update
+     * @param from       The start date of the booking
+     * @param to         The end date of the booking
+     * @param username   The username of the user booking the room
+     *
+     * @return The updated room
+     */
+    @PostMapping("/rooms/{roomNumber}, {from}, {to}, {username}")
+    public void bookRoomByNumber(final @PathVariable int roomNumber,
+            final @PathVariable LocalDate from, final @PathVariable LocalDate to, final @PathVariable String username) {
+        roomService.bookRoomByNumber(roomNumber, from, to, username);
+    }
+
+    // create a method that unbooks room by number.
+    /**
+     * Unbook a room by its room number.
+     *
+     * @param roomNumber The room number of the room to unbook
+     *
+     * @return The updated room
+     */
+    @PostMapping("/rooms/{roomNumber}/cancel/{username}")
+    public void cancelBooking(final @PathVariable int roomNumber, final @PathVariable String username) {
+        roomService.cancelBooking(roomNumber, username);
+    }
+
+    /**
+     * Delete a room by its room number.
+     *
+     * @param roomNumber The room number of the room to delete
+     */
+    @PostMapping("/rooms/{roomNumber}")
+    public void deleteRoomByNumber(final @PathVariable int roomNumber) {
+        roomService.deleteRoomByNumber(roomNumber);
+    }
 }

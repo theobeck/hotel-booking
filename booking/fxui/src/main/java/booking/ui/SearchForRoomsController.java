@@ -53,6 +53,11 @@ public final class SearchForRoomsController extends AbstractBookingController {
             return;
         }
 
+        if (fromPicker.getValue().isAfter(toPicker.getValue())) {
+            return;
+            // #TODO show error message
+        }
+
         LocalDate from = fromPicker.getValue();
         LocalDate to = toPicker.getValue();
         availableRoomsController.setFrom(from);

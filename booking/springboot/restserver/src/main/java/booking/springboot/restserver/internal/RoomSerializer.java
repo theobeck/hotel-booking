@@ -1,4 +1,4 @@
-package booking.json.internal;
+package booking.springboot.restserver.internal;
 
 import java.io.IOException;
 
