@@ -15,7 +15,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-public final class UserBookingsController {
+/**
+ * A controller for the user bookings view.
+ */
+public final class UserBookingsController extends AbstractBookingController {
 
     /**
      * The file manager object.
@@ -30,15 +33,12 @@ public final class UserBookingsController {
     /**
      * The list of all rooms.
      */
-    private List<Room> rooms = filemanager.restoredListFromFile(filePath);
+    private List<Room> rooms = filemanager.readRoomsFromFile(filePath);
 
     /**
      * The list of available rooms.
      */
     private ObservableList<Room> yourRooms = FXCollections.observableArrayList();
-
-    // @FXML
-    // TextField username;
 
     /**
      * List view of booked rooms.
@@ -47,9 +47,10 @@ public final class UserBookingsController {
     private ListView<Room> bookingList;
 
     /**
-     * The username of the user.
+     * Default constructor for UserBookingsController.
      */
-    private String username;
+    public UserBookingsController() {
+    }
 
     /**
      * Initialize method for controller.
@@ -60,13 +61,23 @@ public final class UserBookingsController {
     }
 
     private void show() {
-        rooms = filemanager.restoredListFromFile(filePath);
+        rooms = filemanager.readRoomsFromFile(filePath);
         for (Room r : rooms) {
             if (r.isBookedBy(username)) {
                 yourRooms.add(r);
             }
         }
         bookingList.setItems(yourRooms);
+    }
+
+    @FXML
+    private void cancelBooking(final ActionEvent event) throws IOException {
+        Room room = bookingList.getSelectionModel().getSelectedItem();
+        if (room != null) {
+            room.cancelBooking(username);
+            filemanager.writeRoomsToFile(rooms, filePath);
+            yourRooms.remove(room);
+        }
     }
 
     @FXML
@@ -80,19 +91,5 @@ public final class UserBookingsController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * @return The username of the user.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username Change the username of the user.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
     }
 }

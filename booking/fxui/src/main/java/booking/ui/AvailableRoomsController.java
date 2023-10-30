@@ -18,7 +18,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-public class AvailableRoomsController {
+/**
+ * A controller for the available rooms view.
+ */
+public final class AvailableRoomsController extends AbstractBookingController {
 
     /**
      * The file manager object.
@@ -33,7 +36,7 @@ public class AvailableRoomsController {
     /**
      * The list of all rooms.
      */
-    private List<Room> rooms = fileManager.restoredListFromFile(filePath);
+    private List<Room> rooms = fileManager.readRoomsFromFile(filePath);
 
     /**
      * List view for available rooms.
@@ -77,9 +80,26 @@ public class AvailableRoomsController {
     private final Random random = new Random();
 
     /**
-     * The username of the user.
+     * Default constructor for AvailableRoomsController.
      */
-    private String username;
+    public AvailableRoomsController() {
+    }
+
+    public LocalDate getFrom() {
+        return from;
+    }
+
+    public void setFrom(final LocalDate from) {
+        this.from = from;
+    }
+
+    public LocalDate getTo() {
+        return to;
+    }
+
+    public void setTo(final LocalDate to) {
+        this.to = to;
+    }
 
     @FXML
     private void initialize() {
@@ -101,7 +121,7 @@ public class AvailableRoomsController {
                 Room room = new Room(i, cap, cap * COST_PER_PERSON);
                 rooms.add(room);
             }
-            fileManager.writeToFile(rooms, filePath);
+            fileManager.writeRoomsToFile(rooms, filePath);
         }
         for (Room r : rooms) {
             if (r.isAvailableBetween(from, to)) {
@@ -115,7 +135,8 @@ public class AvailableRoomsController {
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
         thisRoom.bookRoom(from, to, username);
-        fileManager.writeToFile(rooms, filePath);
+        fileManager.writeRoomsToFile(rooms, filePath);
+        availableRooms.remove(thisRoom);
     }
 
     @FXML
@@ -130,47 +151,5 @@ public class AvailableRoomsController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * @return The date the booking starts.
-     */
-    public LocalDate getFrom() {
-        return from;
-    }
-
-    /**
-     * @param from Change the date the booking starts.
-     */
-    public void setFrom(final LocalDate from) {
-        this.from = from;
-    }
-
-    /**
-     * @return The date the booking ends.
-     */
-    public LocalDate getTo() {
-        return to;
-    }
-
-    /**
-     * @param to Change the date the booking ends.
-     */
-    public void setTo(final LocalDate to) {
-        this.to = to;
-    }
-
-    /**
-     * @return The username of the user.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username Change the username of the user.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
     }
 }

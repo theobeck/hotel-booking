@@ -9,12 +9,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainMenuController {
+/**
+ * A controller for the main menu view.
+ */
+public final class MainMenuController extends AbstractBookingController {
 
     /**
-     * The username of the user.
+     * Default constructor for MainMenuController.
      */
-    private String username;
+    public MainMenuController() {
+    }
 
     @FXML
     private void goToLogin(final ActionEvent event) throws IOException {
@@ -52,17 +56,4 @@ public class MainMenuController {
         stage.show();
     }
 
-    /**
-     * @return The username of the user.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username Change the username of the user.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
-    }
 }
