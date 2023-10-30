@@ -44,4 +44,8 @@ public final class User {
     public void setPassword(final String password) {
         this.password = password;
     }
+
+    public Boolean equals(final User user) {
+        return username.equals(user.getUsername()) && password.equals(user.getPassword());
+    }
 }
