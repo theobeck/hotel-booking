@@ -136,6 +136,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
         thisRoom.bookRoom(from, to, username);
         fileManager.writeRoomsToFile(rooms, filePath);
+        availableRooms.remove(thisRoom);
     }
 
     @FXML

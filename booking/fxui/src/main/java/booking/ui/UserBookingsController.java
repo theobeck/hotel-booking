@@ -71,6 +71,16 @@ public final class UserBookingsController extends AbstractBookingController {
     }
 
     @FXML
+    private void cancelBooking(final ActionEvent event) throws IOException {
+        Room room = bookingList.getSelectionModel().getSelectedItem();
+        if (room != null) {
+            room.cancelBooking(username);
+            filemanager.writeRoomsToFile(rooms, filePath);
+            yourRooms.remove(room);
+        }
+    }
+
+    @FXML
     private void goToMainMenu(final ActionEvent event) throws IOException {
         MainMenuController mainMenuController = new MainMenuController();
         mainMenuController.setUsername(username);
