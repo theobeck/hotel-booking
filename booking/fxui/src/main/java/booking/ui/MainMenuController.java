@@ -12,25 +12,12 @@ import javafx.stage.Stage;
 /**
  * A controller for the main menu view.
  */
-public final class MainMenuController {
-
-    /**
-     * The username of the user.
-     */
-    private String username;
+public final class MainMenuController extends AbstractBookingController {
 
     /**
      * Default constructor for MainMenuController.
      */
     public MainMenuController() {
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(final String username) {
-        this.username = username;
     }
 
     @FXML

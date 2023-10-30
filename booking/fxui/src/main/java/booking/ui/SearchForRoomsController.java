@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 /**
  * A controller for the search for rooms view.
  */
-public final class SearchForRoomsController {
+public final class SearchForRoomsController extends AbstractBookingController {
 
     /**
      * The date picker for the start of the booking.
@@ -28,22 +28,9 @@ public final class SearchForRoomsController {
     private DatePicker fromPicker;
 
     /**
-     * The username of the user.
-     */
-    private String username;
-
-    /**
      * Default constructor for SearchForRoomsController.
      */
     public SearchForRoomsController() {
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(final String username) {
-        this.username = username;
     }
 
     @FXML

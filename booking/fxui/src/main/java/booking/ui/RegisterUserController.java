@@ -15,9 +15,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
- * A controller for the login view.
+ * A controller for the register user view.
  */
-public class LoginController {
+public class RegisterUserController {
     /**
      * The input field for the username.
      */
@@ -52,13 +52,13 @@ public class LoginController {
     private List<User> users = fileManager.readUsersFromFile(filePath);
 
     /**
-     * Default constructor for LoginController.
+     * Default constructor for RegisterUserController.
      */
-    public LoginController() {
+    public RegisterUserController() {
     }
 
     @FXML
-    private void login(final ActionEvent event) throws IOException {
+    private void signup(final ActionEvent event) throws IOException {
         if (inputUsername.getText().equals("") || inputPassword.getText().equals("")) {
             return;
         }
@@ -79,15 +79,5 @@ public class LoginController {
             }
         }
         errorMsg.setText("Wrong username or password");
-    }
-
-    @FXML
-    private void signup(final ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("registerUser.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
     }
 }
