@@ -35,7 +35,10 @@ public final class SearchForRoomsController extends AbstractBookingController {
 
     @FXML
     private void goToMainMenu(final ActionEvent event) throws IOException {
+        MainMenuController mainMenuController = new MainMenuController();
+        mainMenuController.setUsername(username);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+        loader.setController(mainMenuController);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
