@@ -1,31 +1,30 @@
-[ {
-  "username" : "Jørgen",
-  "firstName" : "Jørgen",
-  "lastName" : "Jørgen",
-  "password" : "Jørgen",
-  "gender" : "Female"
-}, {
-  "username" : "test",
-  "firstName" : "test",
-  "lastName" : "test",
-  "password" : "test",
-  "gender" : "Male"
-}, {
-  "username" : "test2",
-  "firstName" : "test2",
-  "lastName" : "test2",
-  "password" : "test2",
-  "gender" : "Male"
-}, {
-  "username" : "test3",
-  "firstName" : "test3",
-  "lastName" : "test3",
-  "password" : "test3",
-  "gender" : "Male"
-}, {
-  "username" : "theo",
-  "firstName" : "Theodor",
-  "lastName" : "Beck",
-  "password" : "123",
-  "gender" : "Male"
-} ]
+[
+  {
+    "username": "test",
+    "firstName": "test",
+    "lastName": "test",
+    "password": "test",
+    "gender": "Male"
+  },
+  {
+    "username": "test2",
+    "firstName": "test2",
+    "lastName": "test2",
+    "password": "test2",
+    "gender": "Male"
+  },
+  {
+    "username": "test3",
+    "firstName": "test3",
+    "lastName": "test3",
+    "password": "test3",
+    "gender": "Male"
+  },
+  {
+    "username": "theo",
+    "firstName": "Theodor",
+    "lastName": "Beck",
+    "password": "123",
+    "gender": "Male"
+  }
+]
