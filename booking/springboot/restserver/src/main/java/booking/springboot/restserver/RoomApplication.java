@@ -9,13 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RoomApplication {
 
-  /**
-   * boop
-   * The main method.
-   *
-   * @param args The command line arguments
-   */
-  public static void main(final String[] args) {
-    SpringApplication.run(RoomApplication.class, args);
-  }
+    /**
+     * The main method.
+     *
+     * @param args The command line arguments
+     */
+    public static void main(final String[] args) {
+        SpringApplication.run(RoomApplication.class, args);
+    }
 }

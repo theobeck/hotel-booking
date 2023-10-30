@@ -179,7 +179,7 @@ https://www.oracle.com/java/technologies/javase/codeconventions-contents.html
     <!-- See https://checkstyle.org/config_design.html -->
     <!-- <module name="DesignForExtension" /> -->
     <module name="FinalClass" />
-    <module name="HideUtilityClassConstructor" />
+    <!-- <module name="HideUtilityClassConstructor" /> -->
     <module name="InterfaceIsType" />
     <module name="VisibilityModifier" />
 

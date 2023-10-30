@@ -32,13 +32,14 @@ public final class RoomService {
     }
 
     /**
-     * Get a room by ID.
+     * Get a room by room number.
      *
-     * @param id the ID of the room to get.
+     * @param id the room number of the room to get.
      *
-     * @return the room with the given ID, or null if no room exists with that ID.
+     * @return the room with the given room number, or null if no room exists with
+     *         that room number.
      */
-    public Room getRoomById(final Long id) {
+    public Room getRoomById(final int id) {
         // #TODO: Implement logic to get a room by ID.
         return null;
     }

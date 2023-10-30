@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import booking.core.Room;
@@ -16,7 +15,6 @@ import java.util.List;
  * The controller for Room objects.
  */
 @RestController
-@RequestMapping("/rooms")
 public final class RoomController {
 
     /**
@@ -39,7 +37,7 @@ public final class RoomController {
      *
      * @return All rooms in the system
      */
-    @GetMapping
+    @GetMapping("/rooms")
     public List<Room> getAllRooms() {
         return roomService.getAllRooms();
     }
@@ -51,21 +49,21 @@ public final class RoomController {
      *
      * @return The created room
      */
-    @PostMapping
+    @PostMapping("/rooms/{roomNumber}")
     public Room createRoom(final @RequestBody Room room) {
         return roomService.createRoom(room);
     }
 
     /**
-     * Get a room by its ID.
+     * Get a room by its room number.
      *
-     * @param id The ID of the room to get
+     * @param roomNumber The room Number of the room to get
      *
-     * @return The room with the given ID
+     * @return The room with the given room number
      */
-    @GetMapping("/{id}")
-    public Room getRoomById(final @PathVariable Long id) {
-        return roomService.getRoomById(id);
+    @GetMapping("/rooms/{roomNumber}")
+    public Room getRoomByNumber(final @PathVariable int roomNumber) {
+        return roomService.getRoomById(roomNumber);
     }
 
 }
