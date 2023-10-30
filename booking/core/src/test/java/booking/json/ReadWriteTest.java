@@ -39,10 +39,10 @@ public class ReadWriteTest {
     public void testWriteAndReadFromFile() throws IOException {
 
         // Write the rooms to a test file
-        readWrite.writeToFile(rooms, filePath);
+        readWrite.writeRoomsToFile(rooms, filePath);
 
         // Read the rooms back from the test file
-        List<Room> restoredRooms = readWrite.readFromFile(filePath);
+        List<Room> restoredRooms = readWrite.readRoomsFromFile(filePath);
 
         // Check if the rooms match what was written
         assertEquals(rooms.size(), restoredRooms.size());

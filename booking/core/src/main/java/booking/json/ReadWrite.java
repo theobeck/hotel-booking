@@ -49,7 +49,7 @@ public class ReadWrite {
      * @param rooms    The rooms to store
      * @param filePath The file to write to
      */
-    public void writeToFile(final List<Room> rooms, final String filePath) {
+    public void writeRoomsToFile(final List<Room> rooms, final String filePath) {
         try {
             ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
             Collections.sort(rooms, Comparator.comparingInt(Room::getRoomNumber));
@@ -82,7 +82,7 @@ public class ReadWrite {
      *
      * @return Returns the list of rooms found at the end of the filepath.
      */
-    public List<Room> readFromFile(final String filePath) {
+    public List<Room> readRoomsFromFile(final String filePath) {
         List<Room> rooms = new ArrayList<>();
 
         try (FileInputStream fileInputStream = new FileInputStream(filePath)) {

@@ -36,7 +36,7 @@ public final class AvailableRoomsController {
     /**
      * The list of all rooms.
      */
-    private List<Room> rooms = fileManager.readFromFile(filePath);
+    private List<Room> rooms = fileManager.readRoomsFromFile(filePath);
 
     /**
      * List view for available rooms.
@@ -134,7 +134,7 @@ public final class AvailableRoomsController {
                 Room room = new Room(i, cap, cap * COST_PER_PERSON);
                 rooms.add(room);
             }
-            fileManager.writeToFile(rooms, filePath);
+            fileManager.writeRoomsToFile(rooms, filePath);
         }
         for (Room r : rooms) {
             if (r.isAvailableBetween(from, to)) {
@@ -148,7 +148,7 @@ public final class AvailableRoomsController {
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
         thisRoom.bookRoom(from, to, username);
-        fileManager.writeToFile(rooms, filePath);
+        fileManager.writeRoomsToFile(rooms, filePath);
     }
 
     @FXML
