@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 /**
  * A controller for the user bookings view.
  */
-public final class UserBookingsController {
+public final class UserBookingsController extends AbstractBookingController {
 
     /**
      * The file manager object.
@@ -47,22 +47,9 @@ public final class UserBookingsController {
     private ListView<Room> bookingList;
 
     /**
-     * The username of the user.
-     */
-    private String username;
-
-    /**
      * Default constructor for UserBookingsController.
      */
     public UserBookingsController() {
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(final String username) {
-        this.username = username;
     }
 
     /**

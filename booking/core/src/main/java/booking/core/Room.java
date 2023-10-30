@@ -205,7 +205,8 @@ public final class Room {
      * @return Whether or not rooms are equal
      */
     public Boolean equals(final Room room) {
-        return roomNumber == room.getRoomNumber() && roomCapacity == room.getRoomCapacity()
+        return roomNumber == room.getRoomNumber()
+                && roomCapacity == room.getRoomCapacity()
                 && pricePerNight == room.getPricePerNight();
     }
 

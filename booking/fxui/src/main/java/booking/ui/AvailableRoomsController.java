@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 /**
  * A controller for the available rooms view.
  */
-public final class AvailableRoomsController {
+public final class AvailableRoomsController extends AbstractBookingController {
 
     /**
      * The file manager object.
@@ -80,11 +80,6 @@ public final class AvailableRoomsController {
     private final Random random = new Random();
 
     /**
-     * The username of the user.
-     */
-    private String username;
-
-    /**
      * Default constructor for AvailableRoomsController.
      */
     public AvailableRoomsController() {
@@ -104,14 +99,6 @@ public final class AvailableRoomsController {
 
     public void setTo(final LocalDate to) {
         this.to = to;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(final String username) {
-        this.username = username;
     }
 
     @FXML

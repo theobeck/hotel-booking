@@ -1,7 +1,6 @@
 package booking.core;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * A specific booking of a {@link Room}.
@@ -74,26 +73,13 @@ public final class Booking {
     }
 
     /**
-     * @param obj The booking to compare to.
+     * @param booking The booking to compare to.
      *
      * @return Whether the bookings are equal.
      */
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Booking booking = (Booking) obj;
-        return this.from.equals(booking.getFrom())
-                && this.to.equals(booking.getTo())
-                && this.bookedBy.equals(booking.getBookedBy());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(from, to, bookedBy);
+    public Boolean equals(final Booking booking) {
+        return from.equals(booking.getFrom())
+                && to.equals(booking.getTo())
+                && bookedBy.equals(booking.getBookedBy());
     }
 }
