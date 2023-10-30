@@ -67,18 +67,4 @@ public final class SearchForRoomsController extends AbstractBookingController {
         stage.setScene(scene);
         stage.show();
     }
-
-    /**
-     * @return The username of the user.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username Change the username of the user.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
-    }
 }
