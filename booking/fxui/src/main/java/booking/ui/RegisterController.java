@@ -89,8 +89,9 @@ public class RegisterController {
         if (inputUsername.getText().equals("") || inputPassword.getText().equals("")) {
             return;
         }
+        String usernameToCompareTo = inputUsername.getText();
         for (User u : users) {
-            if (u.getUsername() == inputUsername.getText()) {
+            if (u.getUsername().equals(usernameToCompareTo)) {
                 errorMsg.setText("Username is taken.");
                 return;
             }
