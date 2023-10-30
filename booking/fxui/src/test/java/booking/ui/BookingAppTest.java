@@ -105,8 +105,9 @@ public class BookingAppTest extends ApplicationTest {
         assertEquals(bookedRooms, bookingList.getItems().size());
 
         bookingList.getSelectionModel().select(0);
-        clickOn("#cancelBooking");
+        clickOn("#btnCancelBooking");
 
+        rooms = rw.readRoomsFromFile(filePath);
         bookedRooms = 0;
 
         for (Room room : rooms) {
