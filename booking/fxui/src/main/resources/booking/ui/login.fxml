@@ -19,13 +19,15 @@
       <TextField fx:id="inputUsername" layoutX="154.0" layoutY="177.0" prefHeight="48.0" prefWidth="234.0" promptText="Username">
          <font>
             <Font name="Goudy Old Style" size="23.0" />
-         </font>
-      </TextField>
-      <Button fx:id="btnLogin" layoutX="151.0" layoutY="328.0" mnemonicParsing="false" onAction="#login" prefHeight="58.0" prefWidth="100.0" style="-fx-background-color: d8d8f8;" text="Log In">
+         </font></TextField>
+      <TextField fx:id="inputPassword" layoutX="153.0" layoutY="252.0" prefHeight="48.0" prefWidth="234.0" promptText="Password">
          <font>
             <Font name="Goudy Old Style" size="23.0" />
-         </font>
-      </Button>
+         </font></TextField>
+      <Button fx:id="btnLogin" layoutX="151.0" layoutY="328.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="58.0" prefWidth="234.0" style="-fx-background-color: d8d8f8;" text="Log In">
+         <font>
+            <Font name="Goudy Old Style" size="23.0" />
+         </font></Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d8f8" height="153.0" layoutX="516.0" layoutY="20.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="357.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d8f8" height="65.0" layoutX="516.0" layoutY="108.0" stroke="TRANSPARENT" strokeType="INSIDE" width="166.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d8f8" height="70.0" layoutX="707.0" layoutY="20.0" stroke="TRANSPARENT" strokeType="INSIDE" width="166.0" />
