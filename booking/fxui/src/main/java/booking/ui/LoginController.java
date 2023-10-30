@@ -83,7 +83,7 @@ public class LoginController {
 
     @FXML
     private void signup(final ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("registerUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("register.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
