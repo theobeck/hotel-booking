@@ -38,8 +38,6 @@ public final class RoomController {
      * @param roomNumber    The room number of the room to create
      * @param roomCapacity  The room capacity of the room to create
      * @param pricePerNight The price per night of the room to create
-     *
-     * @return The created room
      */
     @PostMapping("/rooms/{roomNumber}, {roomCapacity}, {pricePerNight}")
     public void createRoom(final @PathVariable int roomNumber,
@@ -85,8 +83,6 @@ public final class RoomController {
      * @param from       The start date of the booking
      * @param to         The end date of the booking
      * @param username   The username of the user booking the room
-     *
-     * @return The updated room
      */
     @PostMapping("/rooms/{roomNumber}, {from}, {to}, {username}")
     public void bookRoomByNumber(final @PathVariable int roomNumber,
@@ -99,8 +95,7 @@ public final class RoomController {
      * Unbook a room by its room number.
      *
      * @param roomNumber The room number of the room to unbook
-     *
-     * @return The updated room
+     * @param username   The username of the user unbooking the room
      */
     @PostMapping("/rooms/{roomNumber}/cancel/{username}")
     public void cancelBooking(final @PathVariable int roomNumber, final @PathVariable String username) {
