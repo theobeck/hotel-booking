@@ -33,7 +33,7 @@ public final class UserBookingsController {
     /**
      * The list of all rooms.
      */
-    private List<Room> rooms = filemanager.readFromFile(filePath);
+    private List<Room> rooms = filemanager.readRoomsFromFile(filePath);
 
     /**
      * The list of available rooms.
@@ -74,7 +74,7 @@ public final class UserBookingsController {
     }
 
     private void show() {
-        rooms = filemanager.readFromFile(filePath);
+        rooms = filemanager.readRoomsFromFile(filePath);
         for (Room r : rooms) {
             if (r.isBookedBy(username)) {
                 yourRooms.add(r);
