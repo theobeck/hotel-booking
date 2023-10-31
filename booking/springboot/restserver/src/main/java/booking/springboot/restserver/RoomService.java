@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -35,7 +34,7 @@ public final class RoomService {
     /**
      * The filepath bookings are saved to.
      */
-    private String bookingPath = "booking/springboot/restserver/src/main/resources/booking/ui/bookings.json";
+    private String bookingPath;
 
     /**
      * Random object used to generate random numbers.
@@ -48,6 +47,7 @@ public final class RoomService {
         module.addDeserializer(User.class, new UserDeserializer());
         module.addSerializer(User.class, new UserSerializer());
         objectMapper.registerModule(module);
+        bookingPath = "src/main/resources/booking/springboot/restserver/bookings.json";
     }
 
     /**
@@ -72,14 +72,14 @@ public final class RoomService {
     public List<Room> getAllRooms() {
         List<Room> rooms = new ArrayList<>();
 
-        try {
-            Resource resource = resourceLoader.getResource("classpath:booking/springboot/restserver/bookings.json");
+        try (FileInputStream fileInputStream = new FileInputStream(bookingPath)) {
             TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() {
             };
             rooms = objectMapper.readValue(fileInputStream, typeReference);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return rooms;
     }
 
@@ -165,9 +165,5 @@ public final class RoomService {
                 updateRooms(rooms);
             }
         }
-    }
-
-    public static void main(final String[] args) {
-        System.out.println("Current Working Directory: " + System.getProperty("user.dir"));
     }
 }
