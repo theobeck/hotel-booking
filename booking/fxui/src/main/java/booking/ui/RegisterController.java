@@ -4,12 +4,13 @@ import java.io.IOException;
 import java.util.List;
 
 import booking.core.User;
-import booking.springboot.restserver.UsersAccess;
+import booking.json.ReadWrite;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -44,27 +45,43 @@ public class RegisterController {
     private PasswordField inputPassword;
 
     /**
+     * The menu button for gender.
+     */
+    @FXML
+    private ComboBox<String> genderCombobox;
+
+    /**
      * The error message.
      */
     @FXML
     private Text errorMsg;
 
     /**
-     * The users access object.
+     * The file manager object.
      */
-    private UsersAccess usersAccess;
+    private ReadWrite fileManager = new ReadWrite();
+
+    /**
+     * The file path to the users file.
+     */
+    private String filePath = "src/main/resources/booking/ui/users.json";
 
     /**
      * The list of users.
      */
-    private List<User> users;
+    private List<User> users = fileManager.readUsersFromFile(filePath);
 
     /**
      * Default constructor for RegisterUserController.
      */
     public RegisterController() {
-        usersAccess = new UsersAccess();
-        users = usersAccess.getAllUsers();
+    }
+
+    /**
+     * Initialize the controller.
+     */
+    public void initialize() {
+        genderCombobox.getItems().addAll("Male", "Female", "Non-binary");
     }
 
     @FXML
@@ -72,8 +89,9 @@ public class RegisterController {
         if (inputUsername.getText().equals("") || inputPassword.getText().equals("")) {
             return;
         }
+        String usernameToCompareTo = inputUsername.getText();
         for (User u : users) {
-            if (u.getUsername().equals(inputUsername.getText())) {
+            if (u.getUsername().equals(usernameToCompareTo)) {
                 errorMsg.setText("Username is taken.");
                 return;
             }
@@ -81,8 +99,10 @@ public class RegisterController {
         MainMenuController mainMenuController = new MainMenuController();
         mainMenuController.setUsername(inputUsername.getText());
 
-        usersAccess.createUser(inputUsername.getText(), inputFirstName.getText(), inputLastName.getText(),
-                inputPassword.getText());
+        User user = new User(inputUsername.getText(), inputFirstName.getText(), inputLastName.getText(),
+                inputPassword.getText(), genderCombobox.getValue());
+        users.add(user);
+        fileManager.writeUsersToFile(users, filePath);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         loader.setController(mainMenuController);
