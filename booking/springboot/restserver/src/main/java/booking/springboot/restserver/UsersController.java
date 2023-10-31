@@ -77,11 +77,13 @@ public final class UsersController {
      * @param firstName The first name of the user to update
      * @param lastName  The last name of the user to update
      * @param password  The password of the user to update
+     * @param gender    The gender of the user to update
      */
-    @PutMapping("/users/{username}/{firstName}/{lastName}/{password}")
+    @PutMapping("/users/{username}/{firstName}/{lastName}/{password}/{gender}")
     public void updateUserByUsername(final @PathVariable String username, final @PathVariable String firstName,
-            final @PathVariable String lastName, final @PathVariable String password) {
-        usersService.updateUserByUsername(username, firstName, lastName, password);
+            final @PathVariable String lastName, final @PathVariable String password,
+            final @PathVariable String gender) {
+        usersService.updateUserByUsername(username, firstName, lastName, password, gender);
     }
 
     /**

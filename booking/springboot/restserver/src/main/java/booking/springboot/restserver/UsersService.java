@@ -28,7 +28,7 @@ public final class UsersService {
     /**
      * The filepath bookings are saved to.
      */
-    private final String usersPath;
+    private static final String USERS_PATH = "src/main/resources/booking/springboot/restserver/users.json";
 
     /**
      * Random object used to generate random numbers.
@@ -39,7 +39,6 @@ public final class UsersService {
         module.addDeserializer(User.class, new UserDeserializer());
         module.addSerializer(User.class, new UserSerializer());
         objectMapper.registerModule(module);
-        usersPath = "src/main/resources/booking/springboot/restserver/users.json";
     }
 
     /**
@@ -66,7 +65,7 @@ public final class UsersService {
      */
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        try (FileInputStream fileInputStream = new FileInputStream(usersPath)) {
+        try (FileInputStream fileInputStream = new FileInputStream(USERS_PATH)) {
             TypeReference<List<User>> typeReference = new TypeReference<List<User>>() {
             };
             users = objectMapper.readValue(fileInputStream, typeReference);
@@ -100,15 +99,17 @@ public final class UsersService {
      * @param firstName the first name of the user to update.
      * @param lastName  the last name of the user to update.
      * @param password  the password of the user to update.
+     * @param gender    the gender of the user to update.
      */
     public void updateUserByUsername(final String username, final String firstName, final String lastName,
-            final String password) {
+            final String password, final String gender) {
         final List<User> users = getAllUsers();
         for (final User user : users) {
             if (user.getUsername().equals(username)) {
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
                 user.setPassword(password);
+                user.setGender(gender);
                 updateUsers(users);
                 return;
             }
@@ -134,7 +135,7 @@ public final class UsersService {
     private void updateUsers(final List<User> users) {
         try {
             final ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
-            objectWriter.writeValue(new File(usersPath), users);
+            objectWriter.writeValue(new File(USERS_PATH), users);
         } catch (final IOException e) {
             e.printStackTrace();
         }

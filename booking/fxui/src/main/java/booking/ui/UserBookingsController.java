@@ -71,6 +71,7 @@ public final class UserBookingsController extends AbstractBookingController {
         Room room = bookingList.getSelectionModel().getSelectedItem();
         if (room != null) {
             roomAccess.cancelBooking(room.getRoomNumber(), username);
+            yourRooms.remove(room);
         }
     }
 

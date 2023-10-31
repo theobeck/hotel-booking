@@ -28,4 +28,10 @@
   "lastName" : "Vassbotn",
   "password" : "123",
   "gender" : "Male"
+}, {
+  "username" : "jorgen",
+  "firstName" : "change",
+  "lastName" : "Grønn",
+  "password" : "123",
+  "gender" : "Male"
 } ]
