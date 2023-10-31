@@ -5,10 +5,10 @@
   "password" : "Jørgen",
   "gender" : "Female"
 }, {
-  "username" : "test1",
-  "firstName" : "test1",
-  "lastName" : "test1",
-  "password" : "test1",
+  "username" : "test",
+  "firstName" : "test",
+  "lastName" : "test",
+  "password" : "test",
   "gender" : "Male"
 }, {
   "username" : "test2",
@@ -21,5 +21,11 @@
   "firstName" : "test3",
   "lastName" : "test3",
   "password" : "test3",
+  "gender" : "Male"
+}, {
+  "username" : "theo",
+  "firstName" : "Theodor",
+  "lastName" : "Beck",
+  "password" : "123",
   "gender" : "Male"
 } ]
