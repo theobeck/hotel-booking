@@ -22,6 +22,10 @@ public final class User {
      */
     private String password;
 
+    // TODO: Add a list of bookings to the user.
+
+    // TODO: CREATE REST API FOR USER
+
     /**
      * The user's gender.
      */

@@ -1,9 +1,11 @@
 package booking.springboot.restserver;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import booking.core.Room;
@@ -39,7 +41,7 @@ public final class RoomController {
      * @param roomCapacity  The room capacity of the room to create
      * @param pricePerNight The price per night of the room to create
      */
-    @PostMapping("/rooms/{roomNumber}, {roomCapacity}, {pricePerNight}")
+    @PostMapping("/rooms/{roomNumber}/{roomCapacity}/{pricePerNight}")
     public void createRoom(final @PathVariable int roomNumber,
             final @PathVariable int roomCapacity, final @PathVariable int pricePerNight) {
         roomService.createRoom(roomNumber, roomCapacity, pricePerNight);
@@ -84,7 +86,7 @@ public final class RoomController {
      * @param to         The end date of the booking
      * @param username   The username of the user booking the room
      */
-    @PostMapping("/rooms/{roomNumber}, {from}, {to}, {username}")
+    @PutMapping("/rooms/{roomNumber}/{from}/{to}/{username}")
     public void bookRoomByNumber(final @PathVariable int roomNumber,
             final @PathVariable LocalDate from, final @PathVariable LocalDate to, final @PathVariable String username) {
         roomService.bookRoomByNumber(roomNumber, from, to, username);
@@ -97,7 +99,7 @@ public final class RoomController {
      * @param roomNumber The room number of the room to unbook
      * @param username   The username of the user unbooking the room
      */
-    @PostMapping("/rooms/{roomNumber}/cancel/{username}")
+    @PutMapping("/rooms/{roomNumber}/cancel/{username}")
     public void cancelBooking(final @PathVariable int roomNumber, final @PathVariable String username) {
         roomService.cancelBooking(roomNumber, username);
     }
@@ -107,7 +109,7 @@ public final class RoomController {
      *
      * @param roomNumber The room number of the room to delete
      */
-    @PostMapping("/rooms/{roomNumber}")
+    @DeleteMapping("/rooms/{roomNumber}")
     public void deleteRoomByNumber(final @PathVariable int roomNumber) {
         roomService.deleteRoomByNumber(roomNumber);
     }
