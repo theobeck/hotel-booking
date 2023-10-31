@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = BookingApplication.class)
+@SpringBootTest(classes = RestApplication.class)
 @AutoConfigureMockMvc
-public class BookingApplicationTest {
+public class RestApplicationTest {
     // @Autowired
     // private MockMvc mvc;
 
