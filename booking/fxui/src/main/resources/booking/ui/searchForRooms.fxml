@@ -35,19 +35,19 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5c5699" height="192.0" layoutX="530.0" layoutY="270.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="352.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="101.0" layoutX="189.0" layoutY="225.0" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5c5699" height="103.0" layoutX="718.0" layoutY="359.0" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
-      <DatePicker fx:id="toPicker" layoutX="238.0" layoutY="317.0" />
-      <DatePicker fx:id="fromPicker" layoutX="579.0" layoutY="374.0" style="-fx-background-color: d8d8f8;" />
+      <DatePicker fx:id="toPicker" layoutX="583.0" layoutY="347.0" />
+      <DatePicker fx:id="fromPicker" layoutX="217.0" layoutY="313.0" style="-fx-background-color: d8d8f8;" />
       <Text fill="#3e3e91" layoutX="86.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book a room" wrappingWidth="302.5367431640625">
          <font>
             <Font name="Goudy Old Style" size="57.0" />
          </font>
       </Text>
-      <Text fill="#d8d8f8" layoutX="238.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+      <Text fill="#d8d8f8" layoutX="575.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
          <font>
             <Font name="Goudy Old Style" size="33.0" />
          </font>
       </Text>
-      <Text fill="#d8d8f8" layoutX="576.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
+      <Text fill="#d8d8f8" layoutX="209.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
          <font>
             <Font name="Goudy Old Style" size="32.0" />
          </font>
