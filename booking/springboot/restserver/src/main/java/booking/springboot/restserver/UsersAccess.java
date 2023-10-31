@@ -91,20 +91,4 @@ public class UsersAccess {
         final String url = BASE_URL + username;
         restTemplate.delete(url);
     }
-
-    public static void main(final String[] args) {
-        UsersAccess usersAccess = new UsersAccess();
-        List<User> users = usersAccess.getAllUsers();
-
-        if (users != null && !users.isEmpty()) {
-            for (User user : users) {
-                System.out.println("Username: " + user.getUsername());
-                System.out.println("First Name: " + user.getFirstName());
-                System.out.println("Last Name: " + user.getLastName());
-                System.out.println();
-            }
-        } else {
-            System.out.println("No users found.");
-        }
-    }
 }

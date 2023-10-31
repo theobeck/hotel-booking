@@ -1,6 +1,9 @@
 package booking.springboot.restserver;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -89,11 +92,22 @@ public final class RoomController {
      * @param from       The start date of the booking
      * @param to         The end date of the booking
      * @param username   The username of the user booking the room
+     *
+     * @return A response entity with a message and status code
      */
     @PutMapping("/rooms/{roomNumber}/book/{from}/{to}/{username}")
-    public void bookRoomByNumber(final @PathVariable int roomNumber,
-            final @PathVariable LocalDate from, final @PathVariable LocalDate to, final @PathVariable String username) {
-        roomService.bookRoomByNumber(roomNumber, from, to, username);
+    public ResponseEntity<String> bookRoomByNumber(final @PathVariable int roomNumber,
+            final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+            final @PathVariable String username) {
+
+        try {
+            roomService.bookRoomByNumber(roomNumber, from, to, username);
+            return new ResponseEntity<>("Room booked successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            // Handle the exception and return an error response
+            return new ResponseEntity<>("Booking failed: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     // create a method that unbooks room by number.
