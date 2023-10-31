@@ -38,6 +38,7 @@ public class UsersAccess {
      * @param firstName The first name.
      * @param lastName  The last name.
      * @param password  The password.
+     * @param gender    The gender.
      */
     public void createUser(final String username, final String firstName, final String lastName,
             final String password, final String gender) {

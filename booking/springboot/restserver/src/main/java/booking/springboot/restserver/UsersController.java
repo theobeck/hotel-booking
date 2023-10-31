@@ -40,6 +40,7 @@ public final class UsersController {
      * @param firstName The first name of the user to create
      * @param lastName  The last name of the user to create
      * @param password  The password of the user to create
+     * @param gender    The gender of the user to create
      */
     @PostMapping("/users/{username}/{firstName}/{lastName}/{password}/{gender}")
     public void createUser(final @PathVariable String username, final @PathVariable String firstName,

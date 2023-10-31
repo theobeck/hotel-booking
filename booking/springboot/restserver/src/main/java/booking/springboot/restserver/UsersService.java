@@ -49,6 +49,7 @@ public final class UsersService {
      * @param firstName the first name of the user to create.
      * @param lastName  the last name of the user to create.
      * @param password  the password of the user to create.
+     * @param gender    the gender of the user to create.
      */
     public void createUser(final String username, final String firstName, final String lastName,
             final String password, final String gender) {
