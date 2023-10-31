@@ -71,10 +71,10 @@ https://www.oracle.com/java/technologies/javase/codeconventions-contents.html
   <!-- Checks for Size Violations.                    -->
   <!-- See https://checkstyle.org/config_sizes.html -->
   <module name="FileLength" />
-  <!-- <module name="LineLength">
-    <property name="max" value="135"/>
-    <property name="fileExtensions" value="java"/>
-  </module> -->
+  <module name="LineLength">
+    <property name="max" value="135" />
+    <property name="fileExtensions" value="java" />
+  </module>
 
   <!-- Checks for whitespace                               -->
   <!-- See https://checkstyle.org/config_whitespace.html -->
@@ -94,10 +94,10 @@ https://www.oracle.com/java/technologies/javase/codeconventions-contents.html
 
   <!-- Checks for Headers                                -->
   <!-- See https://checkstyle.org/config_header.html   -->
-  <!-- <module name="Header"> -->
-  <!--   <property name="headerFile" value="${checkstyle.header.file}"/> -->
-  <!--   <property name="fileExtensions" value="java"/> -->
-  <!-- </module> -->
+  <!-- <module name="Header">
+    <property name="headerFile" value="${checkstyle.header.file}" />
+    <property name="fileExtensions" value="java" />
+  </module> -->
 
   <module name="TreeWalker">
 
@@ -115,7 +115,7 @@ https://www.oracle.com/java/technologies/javase/codeconventions-contents.html
     <module name="ConstantName" />
     <module name="LocalFinalVariableName" />
     <module name="LocalVariableName" />
-    <!-- <module name="MemberName"/> -->
+    <module name="MemberName" />
     <module name="MethodName" />
     <module name="PackageName" />
     <module name="ParameterName" />
@@ -165,19 +165,19 @@ https://www.oracle.com/java/technologies/javase/codeconventions-contents.html
     <!-- Checks for common coding problems               -->
     <!-- See https://checkstyle.org/config_coding.html -->
     <module name="EmptyStatement" />
-    <!-- <module name="EqualsHashCode" /> -->
-    <!-- <module name="HiddenField"/> -->
+    <module name="EqualsHashCode" />
+    <!-- <module name="HiddenField" /> -->
     <module name="IllegalInstantiation" />
     <module name="InnerAssignment" />
-    <!-- <module name="MagicNumber"/> -->
+    <module name="MagicNumber" />
     <module name="MissingSwitchDefault" />
-    <!-- <module name="MultipleVariableDeclarations"/> -->
+    <module name="MultipleVariableDeclarations" />
     <module name="SimplifyBooleanExpression" />
     <module name="SimplifyBooleanReturn" />
 
     <!-- Checks for class design                         -->
     <!-- See https://checkstyle.org/config_design.html -->
-    <!-- <module name="DesignForExtension" /> -->
+    <module name="DesignForExtension" />
     <module name="FinalClass" />
     <!-- <module name="HideUtilityClassConstructor" /> -->
     <module name="InterfaceIsType" />
@@ -187,7 +187,7 @@ https://www.oracle.com/java/technologies/javase/codeconventions-contents.html
     <!-- See https://checkstyle.org/config_misc.html -->
     <module name="ArrayTypeStyle" />
     <module name="FinalParameters" />
-    <!-- <module name="TodoComment"/> -->
+    <!-- <module name="TodoComment" /> -->
     <module name="UpperEll" />
 
     <!-- https://checkstyle.org/config_filters.html#SuppressionXpathFilter -->

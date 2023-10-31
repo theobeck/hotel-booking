@@ -26,7 +26,8 @@ public final class UserDeserializer extends JsonDeserializer<User> {
 
             if (usernameNode != null && usernameNode.isTextual()
                     && firstNameNode != null && firstNameNode.isTextual() && lastNameNode != null
-                    && lastNameNode.isTextual() && passwordNode != null && passwordNode.isTextual() && genderNode != null && genderNode.isTextual()) {
+                    && lastNameNode.isTextual() && passwordNode != null && passwordNode.isTextual()
+                    && genderNode != null && genderNode.isTextual()) {
                 user.setUsername(usernameNode.asText());
                 user.setFirstName(firstNameNode.asText());
                 user.setLastName(lastNameNode.asText());
