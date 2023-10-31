@@ -70,12 +70,16 @@ public final class RoomController {
     }
 
     /**
-     * Update the given rooms.
+     * Update the room by given number.
      *
-     * @param rooms The rooms to update
+     * @param roomNumber    The room number of the room to update
+     * @param roomCapacity  The new room capacity
+     * @param pricePerNight The new price per night
      */
-    public void updateRooms(final List<Room> rooms) {
-        roomService.updateRooms(rooms);
+    @PutMapping("/rooms/{roomNumber}/update/{roomCapacity}/{pricePerNight}")
+    public void updateRoomByNumber(final @PathVariable int roomNumber, final @PathVariable int roomCapacity,
+            final @PathVariable int pricePerNight) {
+        roomService.updateRoomByNumber(roomNumber, roomCapacity, pricePerNight);
     }
 
     /**
@@ -86,7 +90,7 @@ public final class RoomController {
      * @param to         The end date of the booking
      * @param username   The username of the user booking the room
      */
-    @PutMapping("/rooms/{roomNumber}/{from}/{to}/{username}")
+    @PutMapping("/rooms/{roomNumber}/book/{from}/{to}/{username}")
     public void bookRoomByNumber(final @PathVariable int roomNumber,
             final @PathVariable LocalDate from, final @PathVariable LocalDate to, final @PathVariable String username) {
         roomService.bookRoomByNumber(roomNumber, from, to, username);

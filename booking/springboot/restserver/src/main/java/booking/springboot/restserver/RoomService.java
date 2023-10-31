@@ -17,11 +17,8 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import booking.core.Room;
-import booking.core.User;
 import booking.springboot.restserver.internal.RoomDeserializer;
 import booking.springboot.restserver.internal.RoomSerializer;
-import booking.springboot.restserver.internal.UserDeserializer;
-import booking.springboot.restserver.internal.UserSerializer;
 
 @Service
 public final class RoomService {
@@ -29,12 +26,12 @@ public final class RoomService {
     /**
      * The object mapper object for the file manager object.
      */
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
     /**
      * The filepath bookings are saved to.
      */
-    private String bookingPath;
+    private final String bookingPath;
 
     /**
      * Random object used to generate random numbers.
@@ -44,10 +41,8 @@ public final class RoomService {
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Room.class, new RoomDeserializer());
         module.addSerializer(Room.class, new RoomSerializer());
-        module.addDeserializer(User.class, new UserDeserializer());
-        module.addSerializer(User.class, new UserSerializer());
         objectMapper.registerModule(module);
-        bookingPath = "src/main/resources/booking/springboot/restserver/bookings.json";
+        bookingPath = "src/main/resources/booking/springboot/restserver/rooms.json";
     }
 
     /**
@@ -70,6 +65,7 @@ public final class RoomService {
      * @return all rooms.
      */
     public List<Room> getAllRooms() {
+
         List<Room> rooms = new ArrayList<>();
 
         try (FileInputStream fileInputStream = new FileInputStream(bookingPath)) {
@@ -106,7 +102,7 @@ public final class RoomService {
      *
      * @param rooms The rooms to store
      */
-    public void updateRooms(final List<Room> rooms) {
+    private void updateRooms(final List<Room> rooms) {
         try {
             ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
             Collections.sort(rooms, Comparator.comparingInt(Room::getRoomNumber));
@@ -162,6 +158,17 @@ public final class RoomService {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 rooms.remove(room);
+                updateRooms(rooms);
+            }
+        }
+    }
+
+    public void updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
+        List<Room> rooms = getAllRooms();
+        for (Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber) {
+                room.setRoomCapacity(roomCapacity);
+                room.setPricePerNight(pricePerNight);
                 updateRooms(rooms);
             }
         }
