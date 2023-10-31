@@ -1,13 +1,12 @@
 package booking.springboot.restserver;
 
 import org.junit.jupiter.api.Test;
-
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = RoomApplication.class)
+@SpringBootTest(classes = BookingApplication.class)
 @AutoConfigureMockMvc
-public class RoomApplicationTest {
+public class BookingApplicationTest {
     // @Autowired
     // private MockMvc mvc;
 

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * The Spring application.
  */
 @SpringBootApplication
-public class RoomApplication {
+public class BookingApplication {
 
     /**
      * The main method.
@@ -15,6 +15,6 @@ public class RoomApplication {
      * @param args The command line arguments
      */
     public static void main(final String[] args) {
-        SpringApplication.run(RoomApplication.class, args);
+        SpringApplication.run(BookingApplication.class, args);
     }
 }

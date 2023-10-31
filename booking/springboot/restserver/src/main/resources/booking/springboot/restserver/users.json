@@ -13,4 +13,9 @@
   "firstName" : "Theodor",
   "lastName" : "Beck",
   "password" : "123"
+}, {
+  "username" : "ola",
+  "firstName" : "Ola",
+  "lastName" : "Vassbotn",
+  "password" : "123"
 } ]
