@@ -113,6 +113,24 @@ public final class RoomService {
     }
 
     /**
+     * Update a room.
+     *
+     * @param room the room to update.
+     */
+    private void updateOneRoom(final Room room) {
+        List<Room> rooms = getAllRooms();
+        Room roomToRemove = new Room();
+        for (Room r : rooms) {
+            if (r.getRoomNumber() == room.getRoomNumber()) {
+                roomToRemove = r;
+            }
+        }
+        rooms.remove(roomToRemove);
+        rooms.add(room);
+        updateRooms(rooms);
+    }
+
+    /**
      * Update a room by room number.
      *
      * @param roomNumber the room number of the room to update.
@@ -122,14 +140,9 @@ public final class RoomService {
      */
     public void bookRoomByNumber(final int roomNumber, final LocalDate from, final LocalDate to,
             final String username) {
-        List<Room> rooms = getAllRooms();
-
-        for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber) {
-                room.bookRoom(from, to, username);
-                updateRooms(rooms);
-            }
-        }
+        Room room = getRoomByNumber(roomNumber);
+        room.bookRoom(from, to, username);
+        updateOneRoom(room);
     }
 
     /**
@@ -139,13 +152,9 @@ public final class RoomService {
      * @param username   the username of the user unbooking the room.
      */
     public void cancelBooking(final int roomNumber, final String username) {
-        List<Room> rooms = getAllRooms();
-        for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber) {
-                room.cancelBooking(username);
-                updateRooms(rooms);
-            }
-        }
+        Room room = getRoomByNumber(roomNumber);
+        room.cancelBooking(username);
+        updateOneRoom(room);
     }
 
     /**

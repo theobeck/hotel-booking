@@ -8,6 +8,7 @@ module booking.ui {
     requires javafx.fxml;
 
     requires booking.core;
+    requires booking.springboot.restserver;
 
     opens booking.ui to javafx.graphics, javafx.fxml;
 }

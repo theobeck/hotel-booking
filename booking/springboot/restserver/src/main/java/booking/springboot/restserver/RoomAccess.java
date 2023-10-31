@@ -115,20 +115,4 @@ public class RoomAccess {
         final String url = BASE_URL + roomNumber;
         restTemplate.delete(url);
     }
-
-    public static void main(final String[] args) {
-        RoomAccess roomAccess = new RoomAccess();
-        List<Room> rooms = roomAccess.getAllRooms();
-
-        if (rooms != null && !rooms.isEmpty()) {
-            for (Room room : rooms) {
-                System.out.println("Room Number: " + room.getRoomNumber());
-                System.out.println("Room Capacity: " + room.getRoomCapacity());
-                System.out.println("Price Per Night: " + room.getPricePerNight());
-                System.out.println();
-            }
-        } else {
-            System.out.println("No rooms found.");
-        }
-    }
 }

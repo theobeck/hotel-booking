@@ -24,8 +24,8 @@ public final class User {
 
     // TODO: Add a list of bookings to the user.
 
-    // TODO: CREATE REST API FOR USER
-
+    // TODO: fix so that things work when a user books the same room at different
+    // times
     /**
      * The user's gender.
      */
