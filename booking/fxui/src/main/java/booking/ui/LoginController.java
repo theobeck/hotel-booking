@@ -61,6 +61,7 @@ public class LoginController {
         }
         if (users.isEmpty()) {
             return;
+            // boop
         }
         for (User u : users) {
             if (u.getUsername().equals(inputUsername.getText())
