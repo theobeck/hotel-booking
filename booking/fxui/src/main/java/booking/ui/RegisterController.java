@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import booking.core.User;
-import booking.json.ReadWrite;
+import booking.springboot.restserver.UsersAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,24 +57,21 @@ public class RegisterController {
     private Text errorMsg;
 
     /**
-     * The file manager object.
+     * The users access object.
      */
-    private ReadWrite fileManager = new ReadWrite();
-
-    /**
-     * The file path to the users file.
-     */
-    private String filePath = "src/main/resources/booking/ui/users.json";
+    private UsersAccess usersAccess;
 
     /**
      * The list of users.
      */
-    private List<User> users = fileManager.readUsersFromFile(filePath);
+    private List<User> users;
 
     /**
      * Default constructor for RegisterUserController.
      */
     public RegisterController() {
+        usersAccess = new UsersAccess();
+        users = usersAccess.getAllUsers();
     }
 
     /**
@@ -98,11 +95,9 @@ public class RegisterController {
         }
         MainMenuController mainMenuController = new MainMenuController();
         mainMenuController.setUsername(inputUsername.getText());
-
-        User user = new User(inputUsername.getText(), inputFirstName.getText(), inputLastName.getText(),
-                inputPassword.getText(), genderCombobox.getValue());
-        users.add(user);
-        fileManager.writeUsersToFile(users, filePath);
+        // #TODO
+        usersAccess.createUser(inputUsername.getText(), inputFirstName.getText(), inputLastName.getText(),
+                inputPassword.getText(), "male");
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         loader.setController(mainMenuController);

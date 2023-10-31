@@ -51,8 +51,8 @@ public final class UsersService {
      * @param password  the password of the user to create.
      */
     public void createUser(final String username, final String firstName, final String lastName,
-            final String password) {
-        final User user = new User(username, firstName, lastName, password);
+            final String password, final String gender) {
+        final User user = new User(username, firstName, lastName, password, gender);
         final List<User> users = getAllUsers();
         users.add(user);
         updateUsers(users);

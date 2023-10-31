@@ -40,8 +40,8 @@ public class UsersAccess {
      * @param password  The password.
      */
     public void createUser(final String username, final String firstName, final String lastName,
-            final String password) {
-        final String url = BASE_URL + username + "/" + firstName + "/" + lastName + "/" + password;
+            final String password, final String gender) {
+        final String url = BASE_URL + username + "/" + firstName + "/" + lastName + "/" + password + "/" + gender;
         restTemplate.postForLocation(url, null);
     }
 

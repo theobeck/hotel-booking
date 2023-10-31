@@ -41,10 +41,11 @@ public final class UsersController {
      * @param lastName  The last name of the user to create
      * @param password  The password of the user to create
      */
-    @PostMapping("/users/{username}/{firstName}/{lastName}/{password}")
+    @PostMapping("/users/{username}/{firstName}/{lastName}/{password}/{gender}")
     public void createUser(final @PathVariable String username, final @PathVariable String firstName,
-            final @PathVariable String lastName, final @PathVariable String password) {
-        usersService.createUser(username, firstName, lastName, password);
+            final @PathVariable String lastName, final @PathVariable String password,
+            final @PathVariable String gender) {
+        usersService.createUser(username, firstName, lastName, password, gender);
     }
 
     /**
