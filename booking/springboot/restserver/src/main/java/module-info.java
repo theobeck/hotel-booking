@@ -6,8 +6,10 @@ module booking.springboot.restserver {
     requires spring.boot;
     requires spring.context;
     requires spring.boot.autoconfigure;
+    requires spring.core;
 
     requires booking.core;
 
-    opens booking.springboot.restserver to spring.beans, spring.context, spring.web, com.fasterxml.jackson.databind;
+    opens booking.springboot.restserver
+            to spring.beans, spring.context, spring.web, spring.core, com.fasterxml.jackson.databind;
 }
