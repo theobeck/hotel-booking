@@ -57,14 +57,19 @@ public class RegisterController {
     private Text errorMsg;
 
     /**
-     * The users access object.
+     * The file manager object.
      */
-    private UsersAccess usersAccess;
+    private ReadWrite fileManager = new ReadWrite();
+
+    /**
+     * The file path to the users file.
+     */
+    private String filePath = "src/main/resources/booking/ui/users.json";
 
     /**
      * The list of users.
      */
-    private List<User> users;
+    private List<User> users = fileManager.readUsersFromFile(filePath);
 
     /**
      * Default constructor for RegisterUserController.
