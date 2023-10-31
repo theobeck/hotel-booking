@@ -72,7 +72,6 @@ public class BookingAppTest extends ApplicationTest {
         clickOn("#book");
         roomList.getSelectionModel().select(0);
         clickOn("#book");
-        clickOn("#back");
         roomList = lookup("#roomList").query();
         assertEquals(current - 2, roomList.getItems().size());
 

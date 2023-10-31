@@ -17,11 +17,7 @@
   "roomNumber" : 4,
   "roomCapacity" : 6,
   "pricePerNight" : 4500,
-  "bookings" : [ {
-    "bookedBy" : "dsfs",
-    "from" : "2023-10-12",
-    "to" : "2023-10-25"
-  } ]
+  "bookings" : [ ]
 }, {
   "roomNumber" : 5,
   "roomCapacity" : 5,
