@@ -2,44 +2,64 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.QuadCurve?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="906.0" style="-fx-background-color: #f3f6fd;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa797" height="111.0" layoutX="672.0" layoutY="453.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="182.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa797" height="54.0" layoutX="672.0" layoutY="510.0" stroke="TRANSPARENT" strokeType="INSIDE" width="90.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="322.0" layoutX="337.0" layoutY="308.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="272.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5c5699" height="322.0" layoutX="473.0" layoutY="-46.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="272.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa797" height="54.0" layoutX="772.0" layoutY="453.0" stroke="TRANSPARENT" strokeType="INSIDE" width="82.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5c5699" height="89.0" layoutX="599.0" layoutY="187.0" stroke="TRANSPARENT" strokeType="INSIDE" width="146.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="101.0" layoutX="337.0" layoutY="308.0" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
-      <DatePicker fx:id="fromPicker" layoutX="522.0" layoutY="148.0" style="-fx-background-color: d8d8f8;" />
-      <DatePicker fx:id="toPicker" layoutX="391.0" layoutY="428.0" />
+      <ImageView fitHeight="895.0" fitWidth="953.0" layoutX="167.0" layoutY="-473.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@shapes.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="895.0" fitWidth="953.0" layoutX="-530.0" layoutY="222.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@shapes.png" />
+         </image>
+      </ImageView>
+      <Polygon fill="#f3f6fd" layoutX="205.0" layoutY="423.0" points="-67.0, 58.400054931640625, 61.79998779296875, 58.4000244140625, -111.00001525878906, -74.39999389648438" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Polygon fill="#f3f6fd" layoutX="215.0" layoutY="433.0" points="-97.00001525878906, -48.399993896484375, 61.79998779296875, 58.4000244140625, -64.59999084472656, -161.19998168945312" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f6fd" height="101.0" layoutX="79.0" layoutY="275.0" stroke="TRANSPARENT" strokeType="INSIDE" width="252.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f6fd" height="244.0" layoutX="217.0" layoutY="1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="272.0" />
+      <Rectangle fill="#f3f6fd" height="122.0" layoutX="322.0" layoutY="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="272.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f6fd" height="101.0" layoutX="28.0" layoutY="241.0" stroke="TRANSPARENT" strokeType="INSIDE" width="252.0" />
+      <Rectangle fill="#f3f6fd" height="122.0" layoutX="209.0" layoutY="463.0" stroke="TRANSPARENT" strokeType="INSIDE" width="262.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f6fd" height="122.0" layoutX="368.0" layoutY="202.0" stroke="TRANSPARENT" strokeType="INSIDE" width="546.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="198.0" layoutX="189.0" layoutY="225.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="303.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5c5699" height="192.0" layoutX="530.0" layoutY="270.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="352.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="101.0" layoutX="189.0" layoutY="225.0" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5c5699" height="103.0" layoutX="718.0" layoutY="359.0" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
+      <DatePicker fx:id="toPicker" layoutX="238.0" layoutY="317.0" />
+      <DatePicker fx:id="fromPicker" layoutX="579.0" layoutY="374.0" style="-fx-background-color: d8d8f8;" />
       <Text fill="#3e3e91" layoutX="86.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book a room" wrappingWidth="302.5367431640625">
          <font>
             <Font name="Goudy Old Style" size="57.0" />
          </font>
       </Text>
-      <Text fill="#d8d8f8" layoutX="391.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+      <Text fill="#d8d8f8" layoutX="238.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
          <font>
             <Font name="Goudy Old Style" size="33.0" />
          </font>
       </Text>
-      <Text fill="#d8d8f8" layoutX="522.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
+      <Text fill="#d8d8f8" layoutX="576.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
          <font>
             <Font name="Goudy Old Style" size="32.0" />
          </font>
       </Text>
-      <Button fx:id="search" layoutX="708.0" layoutY="454.0" mnemonicParsing="false" onAction="#goToAvailableRooms" prefHeight="101.0" prefWidth="125.0" style="-fx-background-color: ffa797;" text="Search">
+      <Button fx:id="search" layoutX="774.0" layoutY="364.0" mnemonicParsing="false" onAction="#goToAvailableRooms" prefHeight="45.0" prefWidth="97.0" style="-fx-background-color: ffa797;" text="Search">
          <font>
-            <Font name="Goudy Old Style" size="30.0" />
+            <Font name="Goudy Old Style" size="20.0" />
          </font></Button>
-      <Button fx:id="back" layoutX="28.0" layoutY="29.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="36.0" prefWidth="82.0" style="-fx-background-color: ffa797;" text="back">
+      <Button fx:id="back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="45.0" prefWidth="97.0" style="-fx-background-color: ffa797;" text="back">
          <font>
             <Font name="Goudy Old Style" size="25.0" />
          </font></Button>
+      <QuadCurve controlX="-125.20001220703125" controlY="143.0" endX="56.4000244140625" endY="79.79998779296875" fill="#f3f6fd" layoutX="104.0" layoutY="280.0" startX="-107.5999755859375" startY="-49.79998779296875" stroke="TRANSPARENT" strokeType="INSIDE" />
    </children>
 </Pane>
