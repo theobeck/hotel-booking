@@ -68,6 +68,7 @@ public final class UserBookingsController extends AbstractBookingController {
             }
         }
         bookingList.setItems(yourRooms);
+        
     }
 
     @FXML
