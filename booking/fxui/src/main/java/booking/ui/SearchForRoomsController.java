@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -26,6 +27,12 @@ public final class SearchForRoomsController extends AbstractBookingController {
      */
     @FXML
     private DatePicker fromPicker;
+
+    /**
+     * The error message.
+     */
+    @FXML
+    private Text errorMsg;
 
     /**
      * Default constructor for SearchForRoomsController.
@@ -54,8 +61,8 @@ public final class SearchForRoomsController extends AbstractBookingController {
         }
 
         if (fromPicker.getValue().isAfter(toPicker.getValue())) {
+            errorMsg.setText("From date must be before to date");
             return;
-            // #TODO show error message
         }
 
         LocalDate from = fromPicker.getValue();

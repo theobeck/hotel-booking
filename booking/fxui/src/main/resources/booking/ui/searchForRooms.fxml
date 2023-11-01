@@ -61,5 +61,10 @@
             <Font name="Goudy Old Style" size="25.0" />
          </font></Button>
       <QuadCurve controlX="-125.20001220703125" controlY="143.0" endX="56.4000244140625" endY="79.79998779296875" fill="#f3f6fd" layoutX="104.0" layoutY="280.0" startX="-107.5999755859375" startY="-49.79998779296875" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Text fx:id="errorMsg" fill="#ffa797" layoutX="296.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="393.0">
+         <font>
+            <Font name="Goudy Old Style" size="30.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
