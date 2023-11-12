@@ -17,6 +17,16 @@ import javafx.stage.Stage;
  */
 public final class UserBookingsController extends AbstractBookingController {
 
+    // /**
+    // * The file manager object.
+    // */
+    // private RoomAccess roomAccess;
+
+    // /**
+    // * The list of all rooms.
+    // */
+    // private List<Room> rooms;
+
     /**
      * The file manager object.
      */

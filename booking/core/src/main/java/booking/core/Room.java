@@ -217,5 +217,3 @@ public final class Room {
     }
 
 }
-
-    
