@@ -122,7 +122,7 @@ public final class Room {
         }
         Booking newBooking = new Booking(bookedFrom, bookedTo, bookedBy, this);
         bookings.add(newBooking);
-        bookedBy.getBookings().add(newBooking);
+        bookedBy.addBooking(newBooking);
     }
 
     /**
@@ -155,14 +155,14 @@ public final class Room {
     }
 
     // /**
-    //  * Check if room is booked by the given user.
-    //  *
-    //  * @param bookedBy User to check booking of
-    //  *
-    //  * @return Whether or not room is booked
-    //  */
+    // * Check if room is booked by the given user.
+    // *
+    // * @param bookedBy User to check booking of
+    // *
+    // * @return Whether or not room is booked
+    // */
     // public boolean isBookedBy(final User bookedBy) {
-    //     return getBookingsByUser(bookedBy) != null;
+    // return getBookingsByUser(bookedBy) != null;
     // }
 
     /**

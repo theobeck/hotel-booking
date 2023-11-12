@@ -21,6 +21,16 @@ import javafx.stage.Stage;
  */
 public final class UserBookingsController extends AbstractBookingController {
 
+    // /**
+    // * The file manager object.
+    // */
+    // private RoomAccess roomAccess;
+
+    // /**
+    // * The list of all rooms.
+    // */
+    // private List<Room> rooms;
+
     /**
      * The file manager object.
      */
@@ -42,7 +52,7 @@ public final class UserBookingsController extends AbstractBookingController {
      */
     public UserBookingsController() {
         restAccess = new RestAccess();
-        rooms = restAccess.getAllRooms();
+        yourBookings = FXCollections.observableArrayList();
     }
 
     /**
@@ -54,19 +64,31 @@ public final class UserBookingsController extends AbstractBookingController {
     }
 
     private void show() {
-        for (Booking booking : usersAccess.getBookingsByUsername(user)) {
-            yourBookings.add(booking);
-        }
-        bookingList.setItems(yourBookings);
+        // for (Booking booking : restAccess.getBookingsByUser(username)) {
+        // yourBookings.add(booking);
+        // }
+        // bookingList.setItems(yourBookings);
     }
+
+    // private void show() {
+    // for (Room r : rooms) {
+    // if (r.isBookedBy(username)) {
+    // for (Booking userBooking : r.getBookingsByUser(username)) {
+    // yourBookings.add(userBooking);
+    // }
+    // }
+    // }
+    // bookingList.setItems(yourBookings);
+    // }
 
     @FXML
     private void cancelBooking(final ActionEvent event) throws IOException {
-        Room room = bookingList.getSelectionModel().getSelectedItem();
-        if (room != null) {
-            restAccess.cancelBooking(room.getRoomNumber(), username);
-            yourRooms.remove(room);
-        }
+        // Room room = bookingList.getSelectionModel().getSelectedItem();
+        // if (room != null) {
+        // roomAccess.cancelBooking(room.getRoomNumber(), username);
+        // yourRooms.remove(room);
+    }
+
     }
 
     @FXML

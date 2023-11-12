@@ -11,6 +11,7 @@ import java.time.LocalDate;
  * <li>When the booking starts</li>
  * <li>When the booking ends</li>
  * <li>The room that is booked</li>
+ * <li>The room that is booked</li>
  * </ul>
  */
 public final class Booking {
@@ -52,6 +53,7 @@ public final class Booking {
         this.from = from;
         this.to = to;
         this.bookedBy = bookedBy;
+        this.room = room;
         this.room = room;
     }
 
