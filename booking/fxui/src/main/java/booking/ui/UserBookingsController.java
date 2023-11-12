@@ -1,10 +1,13 @@
 package booking.ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import booking.core.Booking;
 import booking.core.Room;
 import booking.springboot.restserver.RoomAccess;
+import booking.springboot.restserver.UsersAccess;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,33 +23,40 @@ import javafx.stage.Stage;
  */
 public final class UserBookingsController extends AbstractBookingController {
 
+    // /**
+    // * The file manager object.
+    // */
+    // private RoomAccess roomAccess;
+
+    // /**
+    // * The list of all rooms.
+    // */
+    // private List<Room> rooms;
+
     /**
      * The file manager object.
      */
-    private RoomAccess roomAccess;
+    private UsersAccess usersAccess;
 
     /**
-     * The list of all rooms.
+     * The list of user's bookings.
      */
-    private List<Room> rooms;
-
-    /**
-     * The list of available rooms.
-     */
-    private ObservableList<Room> yourRooms = FXCollections.observableArrayList();
+    private ObservableList<Booking> yourBookings;
 
     /**
      * List view of booked rooms.
      */
     @FXML
-    private ListView<Room> bookingList;
+    private ListView<Booking> bookingList;
 
     /**
      * Default constructor for UserBookingsController.
      */
     public UserBookingsController() {
-        roomAccess = new RoomAccess();
-        rooms = roomAccess.getAllRooms();
+        // roomAccess = new RoomAccess();
+        // rooms = roomAccess.getAllRooms();
+        usersAccess = new UsersAccess();
+        yourBookings = FXCollections.observableArrayList();
     }
 
     /**
@@ -58,20 +68,30 @@ public final class UserBookingsController extends AbstractBookingController {
     }
 
     private void show() {
-        for (Room r : rooms) {
-            if (r.isBookedBy(username)) {
-                yourRooms.add(r);
-            }
+        for (Booking booking : usersAccess.getBookingsByUsername(username)) {
+            yourBookings.add(booking);
         }
-        bookingList.setItems(yourRooms);
+        bookingList.setItems(yourBookings);
     }
+
+    // private void show() {
+    // for (Room r : rooms) {
+    // if (r.isBookedBy(username)) {
+    // for (Booking userBooking : r.getBookingsByUser(username)) {
+    // yourBookings.add(userBooking);
+    // }
+    // }
+    // }
+    // bookingList.setItems(yourBookings);
+    // }
 
     @FXML
     private void cancelBooking(final ActionEvent event) throws IOException {
-        Room room = bookingList.getSelectionModel().getSelectedItem();
-        if (room != null) {
-            roomAccess.cancelBooking(room.getRoomNumber(), username);
-            yourRooms.remove(room);
+        Booking booking = bookingList.getSelectionModel().getSelectedItem();
+        if (booking != null) {
+            usersAccess.cancelBooking(username, booking.getRoom().getRoomNumber(), booking.getFrom(),
+                    booking.getTo());
+            yourBookings.remove(booking);
         }
     }
 

@@ -8,7 +8,7 @@ import java.util.Random;
 
 import booking.core.Room;
 import booking.springboot.restserver.RoomAccess;
-
+import booking.springboot.restserver.UsersAccess;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,6 +28,11 @@ public final class AvailableRoomsController extends AbstractBookingController {
      * The room access object.
      */
     private RoomAccess roomAccess;
+
+    /**
+     * The users access object.
+     */
+    private UsersAccess usersAccess;
 
     /**
      * The list of all rooms.
@@ -133,6 +138,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
         roomAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, username);
+        usersAccess.bookRoom(username, thisRoom.getRoomNumber(), from, to);
         availableRooms.remove(thisRoom);
     }
 

@@ -10,6 +10,7 @@ import java.time.LocalDate;
  * <li>Who the booking is for</li>
  * <li>When the booking starts</li>
  * <li>When the booking ends</li>
+ * <li>The room that is booked</li>
  * </ul>
  */
 public final class Booking {
@@ -30,6 +31,11 @@ public final class Booking {
     private String bookedBy;
 
     /**
+     * The room that is booked.
+     */
+    private Room room;
+
+    /**
      * Default constructor for Booking.
      */
     public Booking() {
@@ -42,10 +48,11 @@ public final class Booking {
      * @param to       When the booking ends.
      * @param bookedBy Who the booking is for.
      */
-    public Booking(final LocalDate from, final LocalDate to, final String bookedBy) {
+    public Booking(final LocalDate from, final LocalDate to, final String bookedBy, final Room room) {
         this.from = from;
         this.to = to;
         this.bookedBy = bookedBy;
+        this.room = room;
     }
 
     public LocalDate getFrom() {
@@ -72,14 +79,23 @@ public final class Booking {
         this.bookedBy = bookedBy;
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(final Room room) {
+        this.room = room;
+    }
+
     /**
      * @param booking The booking to compare to.
      *
      * @return Whether the bookings are equal.
      */
-    public Boolean equals(final Booking booking) {
+    public boolean equals(final Booking booking) {
         return from.equals(booking.getFrom())
                 && to.equals(booking.getTo())
-                && bookedBy.equals(booking.getBookedBy());
+                && bookedBy.equals(booking.getBookedBy())
+                && room.equals(booking.getRoom());
     }
 }

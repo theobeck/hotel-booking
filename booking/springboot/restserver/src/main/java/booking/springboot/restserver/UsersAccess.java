@@ -1,5 +1,6 @@
 package booking.springboot.restserver;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.core.ParameterizedTypeReference;
@@ -7,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import booking.core.Booking;
 import booking.core.User;
 
 /**
@@ -67,6 +69,48 @@ public class UsersAccess {
     public User getUserByUsername(final String username) {
         final String url = BASE_URL + username;
         return restTemplate.getForObject(url, User.class);
+    }
+
+    /**
+     * Get all bookings for a user.
+     *
+     * @param username The username.
+     * @return A list of all bookings for the user.
+     */
+    public List<Booking> getBookingsByUsername(final String username) {
+        final String url = BASE_URL + username + "/bookings";
+        ResponseEntity<List<Booking>> response = restTemplate.exchange(url,
+                HttpMethod.GET, null, new ParameterizedTypeReference<List<Booking>>() {
+                });
+        return response.getBody();
+    }
+
+    /**
+     * Book a room.
+     *
+     * @param username   The username.
+     * @param roomNumber The room number.
+     * @param bookedFrom When the booking starts.
+     * @param bookedTo   When the booking ends.
+     */
+    public void bookRoom(final String username, final int roomNumber, final LocalDate bookedFrom,
+            final LocalDate bookedTo) {
+        final String url = BASE_URL + username + "/book/" + roomNumber + "/" + bookedFrom + "/" + bookedTo;
+        restTemplate.put(url, null);
+    }
+
+    /**
+     * Cancel a booking.
+     *
+     * @param username   The username.
+     * @param roomNumber The room number.
+     * @param bookedFrom When the booking starts.
+     * @param bookedTo   When the booking ends.
+     */
+    public void cancelBooking(final String username, final int roomNumber, final LocalDate bookedFrom,
+            final LocalDate bookedTo) {
+        final String url = BASE_URL + username + "/cancel/" + roomNumber + "/" + bookedFrom + "/" + bookedTo;
+        restTemplate.put(url, null);
     }
 
     /**
