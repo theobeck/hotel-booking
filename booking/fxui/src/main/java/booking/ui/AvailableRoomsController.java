@@ -137,15 +137,15 @@ public final class AvailableRoomsController extends AbstractBookingController {
     @FXML
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
-        roomAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, username);
-        usersAccess.bookRoom(username, thisRoom.getRoomNumber(), from, to);
+        roomAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, user);
+        usersAccess.bookRoom(user, thisRoom.getRoomNumber(), from, to);
         availableRooms.remove(thisRoom);
     }
 
     @FXML
     private void goToMainMenu(final ActionEvent event) throws IOException {
         MainMenuController mainMenuController = new MainMenuController();
-        mainMenuController.setUsername(username);
+        mainMenuController.setUser(user);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         loader.setController(mainMenuController);

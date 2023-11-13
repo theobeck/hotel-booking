@@ -28,7 +28,7 @@ public final class Booking {
     /**
      * Who the booking is for.
      */
-    private String bookedBy;
+    private User bookedBy;
 
     /**
      * The room that is booked.
@@ -48,7 +48,7 @@ public final class Booking {
      * @param to       When the booking ends.
      * @param bookedBy Who the booking is for.
      */
-    public Booking(final LocalDate from, final LocalDate to, final String bookedBy, final Room room) {
+    public Booking(final LocalDate from, final LocalDate to, final User bookedBy, final Room room) {
         this.from = from;
         this.to = to;
         this.bookedBy = bookedBy;
@@ -71,11 +71,11 @@ public final class Booking {
         this.to = bookedTo;
     }
 
-    public String getBookedBy() {
+    public User getBookedBy() {
         return bookedBy;
     }
 
-    public void setBookedBy(final String bookedBy) {
+    public void setBookedBy(final User bookedBy) {
         this.bookedBy = bookedBy;
     }
 

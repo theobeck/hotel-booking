@@ -39,7 +39,7 @@ public class RoomTest {
 
 	@Test
 	public void testBooking() {
-		assertFalse(r1.isBookedBy(bookedBy));
+		assertTrue(r1.getBookings().isEmpty());
 		assertThrows(IllegalStateException.class, () -> r1.totalCostOfUserBooking(bookedBy));
 		r1.bookRoom(bookedFrom, bookedTo, "test");
 		assertThrows(IllegalStateException.class, () -> r1.bookRoom(bookedFrom, bookedTo, "test"));

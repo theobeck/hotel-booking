@@ -66,7 +66,7 @@ public class LoginController {
             if (u.getUsername().equals(inputUsername.getText())
                     && u.getPassword().equals(inputPassword.getText())) {
                 MainMenuController mainMenuController = new MainMenuController();
-                mainMenuController.setUsername(inputUsername.getText());
+                mainMenuController.setUser(u);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
                 loader.setController(mainMenuController);
                 Parent root = loader.load();

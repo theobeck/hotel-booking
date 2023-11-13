@@ -94,10 +94,14 @@ public class RegisterController {
             }
         }
         MainMenuController mainMenuController = new MainMenuController();
-        mainMenuController.setUsername(inputUsername.getText());
         usersAccess.createUser(inputUsername.getText(), inputFirstName.getText(), inputLastName.getText(),
                 inputPassword.getText(), genderCombobox.getSelectionModel().getSelectedItem());
-
+        users = usersAccess.getAllUsers();
+        for (User u : users) {
+            if (u.getUsername().equals(usernameToCompareTo)) {
+                mainMenuController.setUser(u);
+            }
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         loader.setController(mainMenuController);
         Parent root = loader.load();
