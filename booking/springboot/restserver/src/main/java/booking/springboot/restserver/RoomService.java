@@ -31,7 +31,7 @@ public final class RoomService {
     /**
      * The filepath bookings are saved to.
      */
-    private final String bookingPath;
+    private static final String ROOMS_PATH = "src/main/resources/booking/springboot/restserver/rooms.json";
 
     /**
      * Random object used to generate random numbers.
@@ -42,7 +42,6 @@ public final class RoomService {
         module.addDeserializer(Room.class, new RoomDeserializer());
         module.addSerializer(Room.class, new RoomSerializer());
         objectMapper.registerModule(module);
-        bookingPath = "src/main/resources/booking/springboot/restserver/rooms.json";
     }
 
     /**
@@ -68,7 +67,7 @@ public final class RoomService {
 
         List<Room> rooms = new ArrayList<>();
 
-        try (FileInputStream fileInputStream = new FileInputStream(bookingPath)) {
+        try (FileInputStream fileInputStream = new FileInputStream(ROOMS_PATH)) {
             TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() {
             };
             rooms = objectMapper.readValue(fileInputStream, typeReference);
@@ -106,7 +105,7 @@ public final class RoomService {
         try {
             ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
             Collections.sort(rooms, Comparator.comparingInt(Room::getRoomNumber));
-            objectWriter.writeValue(new File(bookingPath), rooms);
+            objectWriter.writeValue(new File(ROOMS_PATH), rooms);
         } catch (IOException e) {
             e.printStackTrace();
         }
