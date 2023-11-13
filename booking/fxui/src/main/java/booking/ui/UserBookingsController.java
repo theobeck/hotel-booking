@@ -2,6 +2,7 @@ package booking.ui;
 
 import java.io.IOException;
 import booking.core.Booking;
+import booking.ui.internal.RestAccess;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -60,7 +61,8 @@ public final class UserBookingsController extends AbstractBookingController {
     private void cancelBooking(final ActionEvent event) throws IOException {
         Booking booking = bookingList.getSelectionModel().getSelectedItem();
         if (booking != null) {
-            restAccess.cancelBooking(booking.getRoomNumber(), user.getUsername());
+            restAccess.cancelBooking(booking.getRoomNumber(), booking.getBookedBy(), booking.getFrom(),
+                    booking.getTo(), booking.getTotalCostOfBooking());
             yourBookings.remove(booking);
         }
     }

@@ -120,7 +120,8 @@ public final class Room {
         if (!isAvailableBetween(bookedFrom, bookedTo)) {
             throw new IllegalStateException("Cannot book room in a time period where room is already booked.");
         }
-        Booking newBooking = new Booking(bookedBy.getUsername(), roomNumber, bookedFrom, bookedTo);
+        Booking newBooking = new Booking(bookedBy.getUsername(), roomNumber, bookedFrom, bookedTo,
+                totalCostOfBooking(bookedFrom, bookedTo));
         bookings.add(newBooking);
         bookedBy.addBooking(newBooking);
     }
@@ -156,26 +157,27 @@ public final class Room {
     /**
      * Get total cost of a booking.
      *
-     * @param booking Booking to get cost of
+     * @param from Start of booking
+     * @param to   End of booking
      *
      * @return Price of entire booking
      */
-    public int totalCostOfBooking(final Booking booking) {
+    public int totalCostOfBooking(final LocalDate from, final LocalDate to) {
         return (int) (pricePerNight
-                * (ChronoUnit.DAYS.between(booking.getFrom(), booking.getTo())));
+                * (ChronoUnit.DAYS.between(from, to)));
     }
 
     /**
      * Get user's booking.
      *
-     * @param bookedBy User to get booking of
+     * @param username Username of user to get booking of
      *
      * @return Booking of user
      */
-    public List<Booking> getBookingsByUser(final User bookedBy) {
+    public List<Booking> getBookingsByUsername(final String username) {
         List<Booking> userBookings = new ArrayList<>();
         for (Booking booking : userBookings) {
-            if (booking.getBookedBy().equals(bookedBy.getUsername())) {
+            if (booking.getBookedBy().equals(username)) {
                 userBookings.add(booking);
             }
         }

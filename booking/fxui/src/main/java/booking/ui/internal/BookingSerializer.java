@@ -25,6 +25,7 @@ public final class BookingSerializer extends JsonSerializer<Booking> {
         jsonGenerator.writeNumberField("roomNumber", booking.getRoomNumber());
         jsonGenerator.writeStringField("from", booking.getFrom().format(DateTimeFormatter.ISO_LOCAL_DATE));
         jsonGenerator.writeStringField("to", booking.getTo().format(DateTimeFormatter.ISO_LOCAL_DATE));
+        jsonGenerator.writeNumberField("totalCostOfBooking", booking.getTotalCostOfBooking());
         jsonGenerator.writeEndObject();
     }
 }

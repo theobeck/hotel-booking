@@ -105,27 +105,35 @@ public final class UsersController {
     /**
      * Book a room by its room number.
      *
-     * @param username   The username of the user booking the room
-     * @param roomNumber The room number of the room to book
-     * @param from       The start date of the booking
-     * @param to         The end date of the booking
+     * @param username           The username of the user booking the room
+     * @param roomNumber         The room number of the room to book
+     * @param from               The start date of the booking
+     * @param to                 The end date of the booking
+     * @param totalCostOfBooking The total cost of the booking
      */
-    @PutMapping("/users/{username}/book/{roomNumber}/{from}/{to}")
+    @PutMapping("/users/{username}/book/{roomNumber}/{from}/{to}/{totalCostOfBooking}")
     public void bookRoomByUsername(final @PathVariable String username, final @PathVariable int roomNumber,
             final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-            final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
-        usersService.bookRoomByUsername(username, roomNumber, from, to);
+            final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+            final @PathVariable int totalCostOfBooking) {
+        usersService.bookRoomByUsername(username, roomNumber, from, to, totalCostOfBooking);
     }
 
     /**
      * Unbook a room by the booking.
      *
-     * @param username The username of the user unbooking the room
-     * @param booking  The booking being cancelled
+     * @param username           The username of the user unbooking the room
+     * @param roomNumber         The room number of the room to unbook
+     * @param from               The start date of the booking
+     * @param to                 The end date of the booking
+     * @param totalCostOfBooking The total cost of the booking
      */
-    @PutMapping("/users/{username}/cancel/{booking}")
-    public void cancelBooking(final @PathVariable String username, final @PathVariable Booking booking) {
-        usersService.cancelBooking(username, booking);
+    @PutMapping("/users/{username}/cancel/{roomNumber}/{from}/{to}/{totalCostOfBooking}")
+    public void cancelBooking(final @PathVariable String username, final @PathVariable int roomNumber,
+            final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+            final @PathVariable int totalCostOfBooking) {
+        usersService.cancelBooking(new Booking(username, roomNumber, from, to, totalCostOfBooking));
     }
 
     /**

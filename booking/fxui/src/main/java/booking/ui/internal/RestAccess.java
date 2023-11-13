@@ -1,4 +1,4 @@
-package booking.ui;
+package booking.ui.internal;
 
 import java.io.IOException;
 import java.net.URI;
@@ -16,9 +16,6 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import booking.core.Booking;
 import booking.core.Room;
 import booking.core.User;
-import booking.ui.internal.BookingDeserializer;
-import booking.ui.internal.RoomDeserializer;
-import booking.ui.internal.UserDeserializer;
 
 /**
  * A REST API access file.
@@ -187,13 +184,14 @@ public final class RestAccess {
     /**
      * Book a room.
      *
-     * @param roomNumber The room number.
-     * @param from       The start date of the booking.
-     * @param to         The end date of the booking.
-     * @param username   The username of the user booking the room.
+     * @param roomNumber         The room number.
+     * @param from               The start date of the booking.
+     * @param to                 The end date of the booking.
+     * @param username           The username of the user booking the room.
+     * @param totalCostOfBooking The total cost of the booking.
      */
     public void bookRoomByNumber(final int roomNumber, final LocalDate from, final LocalDate to,
-            final String username) {
+            final String username, final int totalCostOfBooking) {
         final String url = BASE_URL + ROOMS_PATH + roomNumber + "/book/" + from + "/" + to + "/" + username;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -205,7 +203,8 @@ public final class RestAccess {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        final String url2 = BASE_URL + USERS_PATH + username + "/book/" + roomNumber + "/" + from + "/" + to;
+        final String url2 = BASE_URL + USERS_PATH + username + "/book/" + roomNumber + "/" + from + "/" + to + "/"
+                + totalCostOfBooking;
         HttpRequest request2 = HttpRequest.newBuilder()
                 .uri(URI.create(url2))
                 .PUT(HttpRequest.BodyPublishers.noBody())
@@ -221,11 +220,16 @@ public final class RestAccess {
     /**
      * Cancel a booking.
      *
-     * @param roomNumber The room number.
-     * @param username   The username.
+     * @param roomNumber         The room number.
+     * @param username           The username.
+     * @param from               The start date of the booking.
+     * @param to                 The end date of the booking.
+     * @param totalCostOfBooking The total cost of the booking.
      */
-    public void cancelBooking(final int roomNumber, final String username) {
-        final String url = BASE_URL + ROOMS_PATH + roomNumber + "/cancel/" + username;
+    public void cancelBooking(final int roomNumber, final String username, final LocalDate from, final LocalDate to,
+            final int totalCostOfBooking) {
+        final String url = BASE_URL + ROOMS_PATH + roomNumber + "/cancel/" + username + "/" + from + "/" + to + "/"
+                + totalCostOfBooking;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .PUT(HttpRequest.BodyPublishers.noBody())
@@ -236,7 +240,8 @@ public final class RestAccess {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        final String url2 = BASE_URL + USERS_PATH + username + "/cancel/" + roomNumber;
+        final String url2 = BASE_URL + USERS_PATH + username + "/cancel/" + roomNumber + "/" + from + "/" + to + "/"
+                + totalCostOfBooking;
         HttpRequest request2 = HttpRequest.newBuilder()
                 .uri(URI.create(url2))
                 .PUT(HttpRequest.BodyPublishers.noBody())

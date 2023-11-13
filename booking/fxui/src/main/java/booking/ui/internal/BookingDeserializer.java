@@ -28,18 +28,21 @@ public final class BookingDeserializer extends JsonDeserializer<Booking> {
             JsonNode roomNumberNode = objectNode.get("roomNumber");
             JsonNode fromNode = objectNode.get("from");
             JsonNode toNode = objectNode.get("to");
+            JsonNode totalCostNode = objectNode.get("totalCostOfBooking");
 
             if (bookedByNode != null && fromNode != null && toNode != null && roomNumberNode != null
                     && bookedByNode.isTextual() && fromNode.isTextual() && toNode.isTextual()
-                    && roomNumberNode.isInt()) {
+                    && roomNumberNode.isInt() && totalCostNode != null && totalCostNode.isInt()) {
                 String bookedBy = bookedByNode.asText();
                 int roomNumber = roomNumberNode.asInt();
                 LocalDate from = LocalDate.parse(fromNode.asText());
                 LocalDate to = LocalDate.parse(toNode.asText());
+                int totalCost = totalCostNode.asInt();
                 booking.setBookedBy(bookedBy);
                 booking.setRoomNumber(roomNumber);
                 booking.setFrom(from);
                 booking.setTo(to);
+                booking.setTotalCostOfBooking(totalCost);
             }
 
             return booking;
