@@ -17,16 +17,6 @@ import javafx.stage.Stage;
  */
 public final class UserBookingsController extends AbstractBookingController {
 
-    // /**
-    // * The file manager object.
-    // */
-    // private RoomAccess roomAccess;
-
-    // /**
-    // * The list of all rooms.
-    // */
-    // private List<Room> rooms;
-
     /**
      * The file manager object.
      */
@@ -66,6 +56,7 @@ public final class UserBookingsController extends AbstractBookingController {
         // bookingList.setItems(yourBookings);
     }
 
+    
     @FXML
     private void cancelBooking(final ActionEvent event) throws IOException {
         // Room room = bookingList.getSelectionModel().getSelectedItem();
