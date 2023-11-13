@@ -50,19 +50,19 @@ public final class UserBookingsController extends AbstractBookingController {
     }
 
     private void show() {
-        // for (Booking booking : restAccess.getBookingsByUser(username)) {
-        // yourBookings.add(booking);
-        // }
-        // bookingList.setItems(yourBookings);
+        for (Booking booking : restAccess.getBookingsByUsername(user.getUsername())) {
+            yourBookings.add(booking);
+        }
+        bookingList.setItems(yourBookings);
     }
 
-    
     @FXML
     private void cancelBooking(final ActionEvent event) throws IOException {
-        // Room room = bookingList.getSelectionModel().getSelectedItem();
-        // if (room != null) {
-        // roomAccess.cancelBooking(room.getRoomNumber(), username);
-        // yourRooms.remove(room);
+        Booking booking = bookingList.getSelectionModel().getSelectedItem();
+        if (booking != null) {
+            restAccess.cancelBooking(booking.getRoomNumber(), user.getUsername());
+            yourBookings.remove(booking);
+        }
     }
 
     /**

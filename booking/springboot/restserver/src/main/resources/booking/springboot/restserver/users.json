@@ -1,37 +1,18 @@
 [ {
-  "username" : "test",
-  "firstName" : "test",
-  "lastName" : "test",
-  "password" : "test",
-  "gender" : "Male"
-}, {
-  "username" : "test2",
-  "firstName" : "test2",
-  "lastName" : "test2",
-  "password" : "test2",
-  "gender" : "Male"
-}, {
-  "username" : "test3",
-  "firstName" : "test3",
-  "lastName" : "test3",
-  "password" : "test3",
-  "gender" : "Male"
-}, {
   "username" : "theo",
   "firstName" : "Theodor",
   "lastName" : "Beck",
   "password" : "123",
-  "gender" : "Male"
-}, {
-  "username" : "ola",
-  "firstName" : "Ola",
-  "lastName" : "Vassbotn",
-  "password" : "123",
-  "gender" : "Male"
-}, {
-  "username" : "jorgen",
-  "firstName" : "change",
-  "lastName" : "Grønn",
-  "password" : "123",
-  "gender" : "Male"
+  "gender" : "Male",
+  "bookings" : [ {
+    "bookedBy" : "theo",
+    "roomNumber" : 6,
+    "from" : "2023-11-14",
+    "to" : "2023-11-15"
+  }, {
+    "bookedBy" : "theo",
+    "roomNumber" : 6,
+    "from" : "2023-11-16",
+    "to" : "2023-11-17"
+  } ]
 } ]

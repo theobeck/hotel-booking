@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
+import booking.core.Booking;
 import booking.core.User;
 
 import java.io.IOException;
@@ -25,6 +26,12 @@ public final class UserSerializer extends JsonSerializer<User> {
         jsonGenerator.writeStringField("lastName", user.getLastName());
         jsonGenerator.writeStringField("password", user.getPassword());
         jsonGenerator.writeStringField("gender", user.getGender());
+        jsonGenerator.writeArrayFieldStart("bookings");
+        BookingSerializer bookingSerializer = new BookingSerializer();
+        for (Booking booking : user.getBookings()) {
+            bookingSerializer.serialize(booking, jsonGenerator, serializerProvider);
+        }
+        jsonGenerator.writeEndArray();
         jsonGenerator.writeEndObject();
     }
 }

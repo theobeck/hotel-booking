@@ -13,8 +13,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
+import booking.core.Booking;
 import booking.core.Room;
 import booking.core.User;
+import booking.ui.internal.BookingDeserializer;
 import booking.ui.internal.RoomDeserializer;
 import booking.ui.internal.UserDeserializer;
 
@@ -62,6 +64,16 @@ public final class RestAccess {
     private static final String BASE_URL = "http://localhost:8080/";
 
     /**
+     * The path for room requests.
+     */
+    private static final String ROOMS_PATH = "rooms/";
+
+    /**
+     * The path for user requests.
+     */
+    private static final String USERS_PATH = "users/";
+
+    /**
      * Create a room.
      *
      * @param roomNumber    The room number.
@@ -69,7 +81,7 @@ public final class RestAccess {
      * @param pricePerNight The price per night.
      */
     public void createRoom(final int roomNumber, final int roomCapacity, final int pricePerNight) {
-        final String url = BASE_URL + "rooms/" + roomNumber + "/" + roomCapacity + "/" + pricePerNight;
+        final String url = BASE_URL + ROOMS_PATH + roomNumber + "/" + roomCapacity + "/" + pricePerNight;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .POST(HttpRequest.BodyPublishers.noBody())
@@ -88,7 +100,7 @@ public final class RestAccess {
      * @return A list of all rooms.
      */
     public List<Room> getAllRooms() {
-        final String url = BASE_URL + "rooms/";
+        final String url = BASE_URL + ROOMS_PATH;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
@@ -105,13 +117,9 @@ public final class RestAccess {
                 module.addDeserializer(Room.class, new RoomDeserializer());
                 objectMapper.registerModule(module);
 
-                List<Room> rooms = objectMapper.readValue(response.body(), new TypeReference<List<Room>>() {
+                return objectMapper.readValue(response.body(), new TypeReference<List<Room>>() {
                 });
-
-                return rooms;
             } else {
-                // Handle the response status code other than 200 (e.g., error handling)
-                System.err.println("Error: HTTP " + response.statusCode());
                 return Collections.emptyList();
             }
         } catch (IOException | InterruptedException e) {
@@ -128,7 +136,7 @@ public final class RestAccess {
      * @return The room.
      */
     public Room getRoomByNumber(final int roomNumber) {
-        final String url = BASE_URL + "rooms/" + roomNumber;
+        final String url = BASE_URL + ROOMS_PATH + roomNumber;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
@@ -145,12 +153,8 @@ public final class RestAccess {
                 module.addDeserializer(Room.class, new RoomDeserializer());
                 objectMapper.registerModule(module);
 
-                Room room = objectMapper.readValue(response.body(), Room.class);
-
-                return room;
+                return objectMapper.readValue(response.body(), Room.class);
             } else {
-                // Handle the response status code other than 200 (e.g., error handling)
-                System.err.println("Error: HTTP " + response.statusCode());
                 return null;
             }
         } catch (IOException | InterruptedException e) {
@@ -167,7 +171,7 @@ public final class RestAccess {
      * @param pricePerNight The price per night.
      */
     public void updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
-        final String url = BASE_URL + "rooms/" + roomNumber + "/update/" + roomCapacity + "/" + pricePerNight;
+        final String url = BASE_URL + ROOMS_PATH + roomNumber + "/update/" + roomCapacity + "/" + pricePerNight;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .PUT(HttpRequest.BodyPublishers.noBody())
@@ -186,11 +190,11 @@ public final class RestAccess {
      * @param roomNumber The room number.
      * @param from       The start date of the booking.
      * @param to         The end date of the booking.
-     * @param user       The username of the user booking the room.
+     * @param username   The username of the user booking the room.
      */
     public void bookRoomByNumber(final int roomNumber, final LocalDate from, final LocalDate to,
-            final User user) {
-        final String url = BASE_URL + "rooms/" + roomNumber + "/book/" + from + "/" + to + "/" + user;
+            final String username) {
+        final String url = BASE_URL + ROOMS_PATH + roomNumber + "/book/" + from + "/" + to + "/" + username;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .PUT(HttpRequest.BodyPublishers.noBody())
@@ -198,6 +202,17 @@ public final class RestAccess {
 
         try {
             HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        final String url2 = BASE_URL + USERS_PATH + username + "/book/" + roomNumber + "/" + from + "/" + to;
+        HttpRequest request2 = HttpRequest.newBuilder()
+                .uri(URI.create(url2))
+                .PUT(HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        try {
+            HttpClient.newHttpClient().send(request2, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -210,7 +225,7 @@ public final class RestAccess {
      * @param username   The username.
      */
     public void cancelBooking(final int roomNumber, final String username) {
-        final String url = BASE_URL + "rooms/" + roomNumber + "/cancel/" + username;
+        final String url = BASE_URL + ROOMS_PATH + roomNumber + "/cancel/" + username;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .PUT(HttpRequest.BodyPublishers.noBody())
@@ -218,6 +233,17 @@ public final class RestAccess {
 
         try {
             HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        final String url2 = BASE_URL + USERS_PATH + username + "/cancel/" + roomNumber;
+        HttpRequest request2 = HttpRequest.newBuilder()
+                .uri(URI.create(url2))
+                .PUT(HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        try {
+            HttpClient.newHttpClient().send(request2, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -229,7 +255,7 @@ public final class RestAccess {
      * @param roomNumber The room number.
      */
     public void deleteRoomByNumber(final int roomNumber) {
-        final String url = BASE_URL + "rooms/" + roomNumber;
+        final String url = BASE_URL + ROOMS_PATH + roomNumber;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .DELETE()
@@ -253,7 +279,7 @@ public final class RestAccess {
      */
     public void createUser(final String username, final String firstName, final String lastName, final String password,
             final String gender) {
-        final String url = BASE_URL + "users/" + username + "/" + firstName + "/" + lastName + "/" + password + "/"
+        final String url = BASE_URL + USERS_PATH + username + "/" + firstName + "/" + lastName + "/" + password + "/"
                 + gender;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -273,7 +299,7 @@ public final class RestAccess {
      * @return A list of all users.
      */
     public List<User> getAllUsers() {
-        final String url = BASE_URL + "users/";
+        final String url = BASE_URL + USERS_PATH;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
@@ -290,13 +316,9 @@ public final class RestAccess {
                 module.addDeserializer(User.class, new UserDeserializer());
                 objectMapper.registerModule(module);
 
-                List<User> users = objectMapper.readValue(response.body(), new TypeReference<List<User>>() {
+                return objectMapper.readValue(response.body(), new TypeReference<List<User>>() {
                 });
-
-                return users;
             } else {
-                // Handle the response status code other than 200 (e.g., error handling)
-                System.err.println("Error: HTTP " + response.statusCode());
                 return Collections.emptyList();
             }
         } catch (IOException | InterruptedException e) {
@@ -312,7 +334,7 @@ public final class RestAccess {
      * @return The user.
      */
     public User getUserByUsername(final String username) {
-        final String url = BASE_URL + "users/" + username;
+        final String url = BASE_URL + USERS_PATH + username;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
@@ -329,17 +351,42 @@ public final class RestAccess {
                 module.addDeserializer(User.class, new UserDeserializer());
                 objectMapper.registerModule(module);
 
-                User user = objectMapper.readValue(response.body(), User.class);
-
-                return user;
+                return objectMapper.readValue(response.body(), User.class);
             } else {
-                // Handle the response status code other than 200 (e.g., error handling)
-                System.err.println("Error: HTTP " + response.statusCode());
                 return null;
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public List<Booking> getBookingsByUsername(final String username) {
+        final String url = BASE_URL + USERS_PATH + username + "/bookings";
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+
+        try {
+            HttpResponse<String> response = HttpClient.newHttpClient().send(request,
+                    HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == HTTPCodes.OK.getCode()) {
+                // Parse the JSON response and convert it to a List<Booking>
+                ObjectMapper objectMapper = new ObjectMapper();
+                SimpleModule module = new SimpleModule();
+                module.addDeserializer(Booking.class, new BookingDeserializer());
+                objectMapper.registerModule(module);
+
+                return objectMapper.readValue(response.body(), new TypeReference<List<Booking>>() {
+                });
+            } else {
+                return Collections.emptyList();
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
         }
     }
 
@@ -354,7 +401,7 @@ public final class RestAccess {
      */
     public void updateUserByUsername(final String username, final String firstName, final String lastName,
             final String password, final String gender) {
-        final String url = BASE_URL + "users/" + username + "/" + firstName + "/" + lastName + "/" + password + "/"
+        final String url = BASE_URL + USERS_PATH + username + "/" + firstName + "/" + lastName + "/" + password + "/"
                 + gender;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -374,7 +421,7 @@ public final class RestAccess {
      * @param username The username.
      */
     public void deleteUserByUsername(final String username) {
-        final String url = BASE_URL + "users/" + username;
+        final String url = BASE_URL + USERS_PATH + username;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .DELETE()

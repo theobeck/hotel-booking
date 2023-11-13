@@ -61,11 +61,11 @@ public class LoginController {
         if (users.isEmpty()) {
             return;
         }
-        for (User u : users) {
-            if (u.getUsername().equals(inputUsername.getText())
-                    && u.getPassword().equals(inputPassword.getText())) {
+        for (User targetUser : users) {
+            if (targetUser.getUsername().equals(inputUsername.getText())
+                    && targetUser.getPassword().equals(inputPassword.getText())) {
                 MainMenuController mainMenuController = new MainMenuController();
-                mainMenuController.setUser(u);
+                mainMenuController.setUser(targetUser);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
                 loader.setController(mainMenuController);
                 Parent root = loader.load();

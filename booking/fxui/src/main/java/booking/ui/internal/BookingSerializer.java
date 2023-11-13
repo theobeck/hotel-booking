@@ -21,7 +21,8 @@ public final class BookingSerializer extends JsonSerializer<Booking> {
             final SerializerProvider serializerProvider)
             throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeObjectField("bookedBy", booking.getBookedBy());
+        jsonGenerator.writeStringField("bookedBy", booking.getBookedBy());
+        jsonGenerator.writeNumberField("roomNumber", booking.getRoomNumber());
         jsonGenerator.writeStringField("from", booking.getFrom().format(DateTimeFormatter.ISO_LOCAL_DATE));
         jsonGenerator.writeStringField("to", booking.getTo().format(DateTimeFormatter.ISO_LOCAL_DATE));
         jsonGenerator.writeEndObject();

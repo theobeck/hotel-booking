@@ -17,6 +17,15 @@ import java.time.LocalDate;
 public final class Booking {
 
     /**
+     * Who the booking is for.
+     */
+    private String bookedBy;
+
+    /**
+     * The room number of the room that is booked.
+     */
+    private int roomNumber;
+    /**
      * When the booking starts.
      */
     private LocalDate from;
@@ -27,16 +36,6 @@ public final class Booking {
     private LocalDate to;
 
     /**
-     * Who the booking is for.
-     */
-    private User bookedBy;
-
-    /**
-     * The room that is booked.
-     */
-    private Room room;
-
-    /**
      * Default constructor for Booking.
      */
     public Booking() {
@@ -45,16 +44,32 @@ public final class Booking {
     /**
      * Create a new booking object with the following variables defined.
      *
-     * @param from     When the booking starts.
-     * @param to       When the booking ends.
-     * @param bookedBy Who the booking is for.
+     * @param bookedBy   Who the booking is for.
+     * @param roomNumber The room number of the room that is booked.
+     * @param from       When the booking starts.
+     * @param to         When the booking ends.
      */
-    public Booking(final LocalDate from, final LocalDate to, final User bookedBy, final Room room) {
+    public Booking(final String bookedBy, final int roomNumber, final LocalDate from, final LocalDate to) {
+        this.bookedBy = bookedBy;
+        this.roomNumber = roomNumber;
         this.from = from;
         this.to = to;
+    }
+
+    public String getBookedBy() {
+        return bookedBy;
+    }
+
+    public void setBookedBy(final String bookedBy) {
         this.bookedBy = bookedBy;
-        this.room = room;
-        this.room = room;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(final int room) {
+        this.roomNumber = room;
     }
 
     public LocalDate getFrom() {
@@ -73,31 +88,13 @@ public final class Booking {
         this.to = bookedTo;
     }
 
-    public User getBookedBy() {
-        return bookedBy;
-    }
-
-    public void setBookedBy(final User bookedBy) {
-        this.bookedBy = bookedBy;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(final Room room) {
-        this.room = room;
-    }
-
     /**
      * @param booking The booking to compare to.
      *
      * @return Whether the bookings are equal.
      */
-    public boolean equals(final Booking booking) {
-        return from.equals(booking.getFrom())
-                && to.equals(booking.getTo())
-                && bookedBy.equals(booking.getBookedBy())
-                && room.equals(booking.getRoom());
+    public boolean isEqualTo(final Booking booking) {
+        return this.bookedBy.equals(booking.getBookedBy()) && this.roomNumber == booking.getRoomNumber()
+                && this.from.equals(booking.getFrom()) && this.to.equals(booking.getTo());
     }
 }

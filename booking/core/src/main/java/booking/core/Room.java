@@ -120,21 +120,20 @@ public final class Room {
         if (!isAvailableBetween(bookedFrom, bookedTo)) {
             throw new IllegalStateException("Cannot book room in a time period where room is already booked.");
         }
-        Booking newBooking = new Booking(bookedFrom, bookedTo, bookedBy, this);
+        Booking newBooking = new Booking(bookedBy.getUsername(), roomNumber, bookedFrom, bookedTo);
         bookings.add(newBooking);
         bookedBy.addBooking(newBooking);
     }
 
     /**
-     * Cancel booking by user.
+     * Cancel booking by booking.
      *
-     * @param bookedBy User to cancel booking of
+     * @param booking Booking to cancel
      *
      * @throws IllegalStateException If room isn't booked by user.
      */
     public void cancelBooking(final Booking booking) {
         bookings.remove(booking);
-        booking.getBookedBy().getBookings().remove(booking);
     }
 
     /**
@@ -154,27 +153,16 @@ public final class Room {
         return true;
     }
 
-    // /**
-    // * Check if room is booked by the given user.
-    // *
-    // * @param bookedBy User to check booking of
-    // *
-    // * @return Whether or not room is booked
-    // */
-    // public boolean isBookedBy(final User bookedBy) {
-    // return getBookingsByUser(bookedBy) != null;
-    // }
-
     /**
-     * Get total cost of user's booking.
+     * Get total cost of a booking.
      *
-     * @param bookedBy User to check booking of
+     * @param booking Booking to get cost of
      *
      * @return Price of entire booking
      */
-    public int totalCostOfUserBooking(final Booking userBooking) {
+    public int totalCostOfBooking(final Booking booking) {
         return (int) (pricePerNight
-                * (ChronoUnit.DAYS.between(userBooking.getFrom(), userBooking.getTo())));
+                * (ChronoUnit.DAYS.between(booking.getFrom(), booking.getTo())));
     }
 
     /**
@@ -187,7 +175,7 @@ public final class Room {
     public List<Booking> getBookingsByUser(final User bookedBy) {
         List<Booking> userBookings = new ArrayList<>();
         for (Booking booking : userBookings) {
-            if (booking.getBookedBy().equals(bookedBy)) {
+            if (booking.getBookedBy().equals(bookedBy.getUsername())) {
                 userBookings.add(booking);
             }
         }
@@ -201,7 +189,7 @@ public final class Room {
      *
      * @return Whether or not rooms are equal
      */
-    public boolean equals(final Room room) {
+    public boolean isEqualTo(final Room room) {
         return roomNumber == room.getRoomNumber()
                 && roomCapacity == room.getRoomCapacity()
                 && pricePerNight == room.getPricePerNight();

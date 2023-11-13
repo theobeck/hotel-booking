@@ -72,6 +72,9 @@ public final class RoomService {
         try (FileInputStream fileInputStream = new FileInputStream(ROOMS_PATH)) {
             TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() {
             };
+            if (fileInputStream.available() == 0) {
+                return rooms;
+            }
             rooms = objectMapper.readValue(fileInputStream, typeReference);
         } catch (IOException e) {
             e.printStackTrace();
@@ -140,8 +143,10 @@ public final class RoomService {
      * @param username   the username of the user booking the room.
      */
     public void bookRoomByNumber(final int roomNumber, final LocalDate from, final LocalDate to,
-            final User user) {
+            final String username) {
         Room room = getRoomByNumber(roomNumber);
+        UsersService usersService = new UsersService();
+        User user = usersService.getUserByUsername(username);
         room.bookRoom(from, to, user);
         updateOneRoom(room);
     }
@@ -152,7 +157,7 @@ public final class RoomService {
      * @param booking the booking to cancel.
      */
     public void cancelBooking(final Booking booking) {
-        Room room = booking.getRoom();
+        Room room = getRoomByNumber(booking.getRoomNumber());
         room.cancelBooking(booking);
         updateOneRoom(room);
     }
