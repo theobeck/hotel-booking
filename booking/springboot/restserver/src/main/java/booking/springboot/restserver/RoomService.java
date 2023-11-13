@@ -40,7 +40,7 @@ public final class RoomService {
      */
     public RoomService() {
         objectMapper = new ObjectMapper();
-        SimpleModule module = new SimpleModule();
+        final SimpleModule module = new SimpleModule();
         module.addDeserializer(Room.class, new RoomDeserializer());
         module.addSerializer(Room.class, new RoomSerializer());
         objectMapper.registerModule(module);
@@ -54,8 +54,8 @@ public final class RoomService {
      * @param pricePerNight the price per night of the room to create.
      */
     public void createRoom(final int roomNumber, final int roomCapacity, final int pricePerNight) {
-        List<Room> rooms = getAllRooms();
-        Room room = new Room(roomNumber, roomCapacity, pricePerNight);
+        final List<Room> rooms = getAllRooms();
+        final Room room = new Room(roomNumber, roomCapacity, pricePerNight);
         rooms.add(room);
         updateRooms(rooms);
     }
@@ -70,13 +70,13 @@ public final class RoomService {
         List<Room> rooms = new ArrayList<>();
 
         try (FileInputStream fileInputStream = new FileInputStream(ROOMS_PATH)) {
-            TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() {
+            final TypeReference<List<Room>> typeReference = new TypeReference<List<Room>>() {
             };
             if (fileInputStream.available() == 0) {
                 return rooms;
             }
             rooms = objectMapper.readValue(fileInputStream, typeReference);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
 
@@ -92,8 +92,8 @@ public final class RoomService {
      *         that room number.
      */
     public Room getRoomByNumber(final int roomNumber) {
-        List<Room> rooms = getAllRooms();
-        for (Room room : rooms) {
+        final List<Room> rooms = getAllRooms();
+        for (final Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 return room;
             }
@@ -108,10 +108,10 @@ public final class RoomService {
      */
     private void updateRooms(final List<Room> rooms) {
         try {
-            ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
+            final ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
             Collections.sort(rooms, Comparator.comparingInt(Room::getRoomNumber));
             objectWriter.writeValue(new File(ROOMS_PATH), rooms);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
     }
@@ -122,9 +122,9 @@ public final class RoomService {
      * @param room the room to update.
      */
     private void updateOneRoom(final Room room) {
-        List<Room> rooms = getAllRooms();
+        final List<Room> rooms = getAllRooms();
         Room roomToRemove = new Room();
-        for (Room r : rooms) {
+        for (final Room r : rooms) {
             if (r.getRoomNumber() == room.getRoomNumber()) {
                 roomToRemove = r;
             }
@@ -144,9 +144,9 @@ public final class RoomService {
      */
     public void bookRoomByNumber(final int roomNumber, final LocalDate from, final LocalDate to,
             final String username) {
-        Room room = getRoomByNumber(roomNumber);
-        UsersService usersService = new UsersService();
-        User user = usersService.getUserByUsername(username);
+        final Room room = getRoomByNumber(roomNumber);
+        final UsersService usersService = new UsersService();
+        final User user = usersService.getUserByUsername(username);
         room.bookRoom(from, to, user);
         updateOneRoom(room);
     }
@@ -157,8 +157,14 @@ public final class RoomService {
      * @param booking the booking to cancel.
      */
     public void cancelBooking(final Booking booking) {
-        Room room = getRoomByNumber(booking.getRoomNumber());
-        room.cancelBooking(booking);
+        final Room room = getRoomByNumber(booking.getRoomNumber());
+        Booking bookingToCancel = new Booking();
+        for (final Booking b : room.getBookings()) {
+            if (b.isEqualTo(booking)) {
+                bookingToCancel = b;
+            }
+        }
+        room.cancelBooking(bookingToCancel);
         updateOneRoom(room);
     }
 
@@ -168,8 +174,8 @@ public final class RoomService {
      * @param roomNumber the room number of the room to delete.
      */
     public void deleteRoomByNumber(final int roomNumber) {
-        List<Room> rooms = getAllRooms();
-        for (Room room : rooms) {
+        final List<Room> rooms = getAllRooms();
+        for (final Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 rooms.remove(room);
                 updateRooms(rooms);
@@ -178,8 +184,8 @@ public final class RoomService {
     }
 
     public void updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
-        List<Room> rooms = getAllRooms();
-        for (Room room : rooms) {
+        final List<Room> rooms = getAllRooms();
+        for (final Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 room.setRoomCapacity(roomCapacity);
                 room.setPricePerNight(pricePerNight);

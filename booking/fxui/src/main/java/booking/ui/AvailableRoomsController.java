@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import booking.core.Room;
-
+import booking.ui.internal.RestAccess;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -67,7 +67,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     /**
      * How much the room's cost increases with the capacity.
      */
-    private static final int COST_PER_PERSON = 750;
+    private static final int COST_PER_PERSON = 75;
 
     /**
      * Random object used to generate random numbers.
@@ -132,7 +132,8 @@ public final class AvailableRoomsController extends AbstractBookingController {
     @FXML
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
-        restAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, user.getUsername());
+        restAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, user.getUsername(),
+                thisRoom.totalCostOfBooking(from, to));
         availableRooms.remove(thisRoom);
     }
 

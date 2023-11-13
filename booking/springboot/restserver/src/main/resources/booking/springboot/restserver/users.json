@@ -1,18 +1,15 @@
 [ {
+  "username" : "ola",
+  "firstName" : "Ola",
+  "lastName" : "Vassbotn",
+  "password" : "123",
+  "gender" : "Male",
+  "bookings" : [ ]
+}, {
   "username" : "theo",
   "firstName" : "Theodor",
   "lastName" : "Beck",
   "password" : "123",
   "gender" : "Male",
-  "bookings" : [ {
-    "bookedBy" : "theo",
-    "roomNumber" : 6,
-    "from" : "2023-11-14",
-    "to" : "2023-11-15"
-  }, {
-    "bookedBy" : "theo",
-    "roomNumber" : 6,
-    "from" : "2023-11-16",
-    "to" : "2023-11-17"
-  } ]
+  "bookings" : [ ]
 } ]

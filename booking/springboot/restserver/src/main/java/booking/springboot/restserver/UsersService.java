@@ -37,7 +37,7 @@ public final class UsersService {
      */
     public UsersService() {
         objectMapper = new ObjectMapper();
-        SimpleModule module = new SimpleModule();
+        final SimpleModule module = new SimpleModule();
         module.addDeserializer(User.class, new UserDeserializer());
         module.addSerializer(User.class, new UserSerializer());
         objectMapper.registerModule(module);
@@ -68,13 +68,13 @@ public final class UsersService {
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         try (FileInputStream fileInputStream = new FileInputStream(USERS_PATH)) {
-            TypeReference<List<User>> typeReference = new TypeReference<List<User>>() {
+            final TypeReference<List<User>> typeReference = new TypeReference<List<User>>() {
             };
             if (fileInputStream.available() == 0) {
                 return users;
             }
             users = objectMapper.readValue(fileInputStream, typeReference);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
 
@@ -90,7 +90,7 @@ public final class UsersService {
      */
     public User getUserByUsername(final String username) {
         final List<User> users = getAllUsers();
-        for (User user : users) {
+        for (final User user : users) {
             if (user.getUsername().equals(username)) {
                 return user;
             }
@@ -136,21 +136,33 @@ public final class UsersService {
     /**
      * Book a room by username.
      *
-     * @param username   the username of the user to book the room.
-     * @param roomNumber the room number of the room to book.
-     * @param from       the start date of the booking.
-     * @param to         the end date of the booking.
+     * @param username           the username of the user to book the room.
+     * @param roomNumber         the room number of the room to book.
+     * @param from               the start date of the booking.
+     * @param to                 the end date of the booking.
+     * @param totalCostOfBooking the total cost of the booking.
      */
     public void bookRoomByUsername(final String username, final int roomNumber, final LocalDate from,
-            final LocalDate to) {
+            final LocalDate to, final int totalCostOfBooking) {
         final User user = getUserByUsername(username);
-        user.addBooking(new Booking(user.getUsername(), roomNumber, from, to));
+        user.addBooking(new Booking(user.getUsername(), roomNumber, from, to, totalCostOfBooking));
         updateOneUser(user);
     }
 
-    public void cancelBooking(final String username, final Booking booking) {
-        final User user = getUserByUsername(username);
-        user.removeBooking(booking);
+    /**
+     * Cancel a booking.
+     *
+     * @param booking the booking to cancel.
+     */
+    public void cancelBooking(final Booking booking) {
+        final User user = getUserByUsername(booking.getBookedBy());
+        Booking bookingToCancel = new Booking();
+        for (final Booking b : user.getBookings()) {
+            if (b.isEqualTo(booking)) {
+                bookingToCancel = b;
+            }
+        }
+        user.removeBooking(bookingToCancel);
         updateOneUser(user);
     }
 

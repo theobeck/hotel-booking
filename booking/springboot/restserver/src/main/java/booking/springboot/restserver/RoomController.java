@@ -114,11 +114,18 @@ public final class RoomController {
     /**
      * Unbook a room by the booking.
      *
-     * @param booking The booking of the user unbooking the room
+     * @param roomNumber         The room number of the room to unbook
+     * @param username           The username of the user cancelling the booking
+     * @param from               The start date of the booking
+     * @param to                 The end date of the booking
+     * @param totalCostOfBooking The total cost of the booking
      */
-    @PutMapping("/room/{booking}/cancel/")
-    public void cancelBooking(final @PathVariable Booking booking) {
-        roomService.cancelBooking(booking);
+    @PutMapping("/rooms/{roomNumber}/cancel/{username}/{from}/{to}/{totalCostOfBooking}")
+    public void cancelBooking(final @PathVariable int roomNumber, final @PathVariable String username,
+            final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+            final @PathVariable int totalCostOfBooking) {
+        roomService.cancelBooking(new Booking(username, roomNumber, from, to, totalCostOfBooking));
     }
 
     /**
