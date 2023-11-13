@@ -14,8 +14,8 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import booking.core.User;
-import booking.springboot.restserver.internal.UserDeserializer;
-import booking.springboot.restserver.internal.UserSerializer;
+import booking.ui.internal.UserDeserializer;
+import booking.ui.internal.UserSerializer;
 
 @Service
 public final class UsersService {

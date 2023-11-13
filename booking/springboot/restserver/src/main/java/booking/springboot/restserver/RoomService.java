@@ -17,8 +17,8 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import booking.core.Room;
-import booking.springboot.restserver.internal.RoomDeserializer;
-import booking.springboot.restserver.internal.RoomSerializer;
+import booking.ui.internal.RoomDeserializer;
+import booking.ui.internal.RoomSerializer;
 
 @Service
 public final class RoomService {

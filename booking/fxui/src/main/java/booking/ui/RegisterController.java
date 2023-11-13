@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import booking.core.User;
-import booking.springboot.restserver.UsersAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,7 +58,7 @@ public class RegisterController {
     /**
      * The users access object.
      */
-    private UsersAccess usersAccess;
+    private RestAccess restAccess;
 
     /**
      * The list of users.
@@ -70,8 +69,8 @@ public class RegisterController {
      * Default constructor for RegisterUserController.
      */
     public RegisterController() {
-        usersAccess = new UsersAccess();
-        users = usersAccess.getAllUsers();
+        restAccess = new RestAccess();
+        users = restAccess.getAllUsers();
     }
 
     /**
@@ -95,7 +94,7 @@ public class RegisterController {
         }
         MainMenuController mainMenuController = new MainMenuController();
         mainMenuController.setUsername(inputUsername.getText());
-        usersAccess.createUser(inputUsername.getText(), inputFirstName.getText(), inputLastName.getText(),
+        restAccess.createUser(inputUsername.getText(), inputFirstName.getText(), inputLastName.getText(),
                 inputPassword.getText(), genderCombobox.getSelectionModel().getSelectedItem());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));

@@ -61,24 +61,30 @@
                 <version>${jackson.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-fxml</artifactId>
-                <version>17.0.2</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-controls</artifactId>
-                <version>17.0.2</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <release>16</release>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M5</version>
+                    <configuration>
+                        <!--
+                            <argLine>dash dash enable-preview</argLine>
+                        -->
+                    </configuration>
+                </plugin>
                 <!-- Run the checkstyle code quality tool -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -128,68 +134,6 @@
                             </goals>
                         </execution>
                     </executions>
-                </plugin>
-
-
-                <plugin>
-                    <groupId>org.openjfx</groupId>
-                    <artifactId>javafx-maven-plugin</artifactId>
-                    <configuration>
-                        <mainClass>booking.ui/booking.ui.BookingApp</mainClass>
-                        <compress>2</compress>
-                        <noHeaderFiles>true</noHeaderFiles>
-                        <stripDebug>true</stripDebug>
-                        <noManPages>true</noManPages>
-                        <launcher>todolistfx</launcher>
-                        <jlinkImageName>bookingfx</jlinkImageName>
-                        <jlinkZipName>bookingfx</jlinkZipName>
-
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.panteleyev</groupId>
-                    <artifactId>jpackage-maven-plugin</artifactId>
-                    <version>1.4.0</version>
-                    <configuration>
-                        <name>BookingFX</name>
-                        <appVersion>1.0.0</appVersion>
-                        <vendor>gr2313</vendor>
-                        <destination>target/dist</destination>
-                        <module>booking.ui/booking.ui.BookingApp</module>
-                        <runtimeImage>target/bookingfx</runtimeImage>
-                        <javaOptions>
-                            <option>-Dfile.encoding=UTF-8</option>
-                        </javaOptions>
-                        <!-- linux options -->
-                        <linuxShortcut>true</linuxShortcut>
-                        <linuxMenuGroup>BookingFx</linuxMenuGroup>
-
-                        <!-- windows options -->
-                        <winDirChooser>true</winDirChooser>
-                        <winShortcut>true</winShortcut>
-                        <winMenu>true</winMenu>
-                        <winMenuGroup>BookingFx</winMenuGroup>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
-                    <configuration>
-                        <encoding>UTF-8</encoding>
-                        <release>16</release>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M5</version>
-                    <configuration>
-                        <!--
-                            <argLine>dash dash enable-preview</argLine>
-                        -->
-                    </configuration>
                 </plugin>
                 <!-- Configure jacoco code coverage -->
                 <plugin>

@@ -19,11 +19,6 @@
             <artifactId>core</artifactId>
             <version>3.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>gr2313.booking</groupId>
-            <artifactId>springboot.restserver</artifactId>
-            <version>3.0.0</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <dependency>
@@ -89,13 +84,6 @@
             <groupId>org.testfx</groupId>
             <artifactId>testfx-junit5</artifactId>
             <version>4.0.17</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>openjfx-monocle</artifactId>
-            <version>jdk-12.0.1+2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

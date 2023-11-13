@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import booking.core.User;
-import booking.springboot.restserver.UsersAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +38,7 @@ public class LoginController {
     /**
      * The room access object.
      */
-    private UsersAccess usersAccess;
+    private RestAccess restAccess;
 
     /**
      * The list of users.
@@ -50,8 +49,8 @@ public class LoginController {
      * Default constructor for LoginController.
      */
     public LoginController() {
-        usersAccess = new UsersAccess();
-        users = usersAccess.getAllUsers();
+        restAccess = new RestAccess();
+        users = restAccess.getAllUsers();
     }
 
     @FXML
