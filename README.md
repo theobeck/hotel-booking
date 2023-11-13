@@ -2,19 +2,19 @@
 
 [Open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2313/gr2313?new)
 
+I eclipse che, etter at du har bygget og kjørt prosjektet, må du se på panelet som heter `endpoints`, og trykke på public port 6080, kopiere denne, og sette den i en ny fane for å få opp GUIen.
+
 Dette kodingsprosjektet inneholder en hotellbookingapplikasjon som lar brukere søke etter og bestille hotellrom. Her er en oversikt over prosjektet og hvordan du kan bruke det.
 
 ## Bygging og kjøring av prosjektet
 
 Prosjektet bruker maven til bygging og kjøring.
 
-For å bygge, kjør `mvn install` fra rot-prosjektet (**booking**-mappa). Dette vil kjøre alle tester og kvalitetssjekker.
+For å bygge, kjør `mvn install` fra rot-prosjektet `booking/`. Dette vil kjøre alle tester og kvalitetssjekker.
 
-For å kjøre prosjektet, må man kjøre den fra fxui mappa.
+For å kjøre prosjektet, må man først starte opp Springboot serveren. Dette gjores ved å kjøre `mvn spring-boot:run` fra springboot mappa `booking/springboot/restserver`. Dette vil starte opp serveren på port 8080.
 
-På **Mac** og **Linux**, gjøres dette med `cd fxui/`
-
-Deretter, skal prosjektet kjøres med `mvn javafx:run`.
+Etter det, åpner du en ny terminal, og navigerer til `booking/fxui`. Herfra kjorer du `mvn javafx:run`. Dette vil starte opp GUIen.
 
 ## Prosjektets Struktur
 
