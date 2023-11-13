@@ -1,11 +1,7 @@
 package booking.ui;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import booking.core.Booking;
-import booking.core.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,16 +16,6 @@ import javafx.stage.Stage;
  * A controller for the user bookings view.
  */
 public final class UserBookingsController extends AbstractBookingController {
-
-    // /**
-    // * The file manager object.
-    // */
-    // private RoomAccess roomAccess;
-
-    // /**
-    // * The list of all rooms.
-    // */
-    // private List<Room> rooms;
 
     /**
      * The file manager object.
@@ -70,17 +56,6 @@ public final class UserBookingsController extends AbstractBookingController {
         // bookingList.setItems(yourBookings);
     }
 
-    // private void show() {
-    // for (Room r : rooms) {
-    // if (r.isBookedBy(username)) {
-    // for (Booking userBooking : r.getBookingsByUser(username)) {
-    // yourBookings.add(userBooking);
-    // }
-    // }
-    // }
-    // bookingList.setItems(yourBookings);
-    // }
-
     @FXML
     private void cancelBooking(final ActionEvent event) throws IOException {
         // Room room = bookingList.getSelectionModel().getSelectedItem();
@@ -89,8 +64,12 @@ public final class UserBookingsController extends AbstractBookingController {
         // yourRooms.remove(room);
     }
 
-    }
-
+    /**
+     * Go to the main menu.
+     *
+     * @param event the event
+     * @throws IOException if an error occurs during loading
+     */
     @FXML
     private void goToMainMenu(final ActionEvent event) throws IOException {
         MainMenuController mainMenuController = new MainMenuController();

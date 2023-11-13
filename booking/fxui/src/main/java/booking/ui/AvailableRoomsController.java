@@ -131,7 +131,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     @FXML
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
-        restAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, username);
+        restAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, user);
         availableRooms.remove(thisRoom);
     }
 

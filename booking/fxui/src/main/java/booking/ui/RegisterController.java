@@ -93,10 +93,9 @@ public class RegisterController {
             }
         }
         MainMenuController mainMenuController = new MainMenuController();
-        mainMenuController.setUsername(inputUsername.getText());
         restAccess.createUser(inputUsername.getText(), inputFirstName.getText(), inputLastName.getText(),
                 inputPassword.getText(), genderCombobox.getSelectionModel().getSelectedItem());
-        users = usersAccess.getAllUsers();
+        users = restAccess.getAllUsers();
         for (User u : users) {
             if (u.getUsername().equals(usernameToCompareTo)) {
                 mainMenuController.setUser(u);
