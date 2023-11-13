@@ -6,6 +6,7 @@ import booking.core.User;
  * An abstract controller for the booking application.
  */
 public abstract class AbstractBookingController {
+
     /**
      * The user.
      */

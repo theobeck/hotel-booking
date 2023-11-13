@@ -3,6 +3,9 @@ package booking.core;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A user of the system.
+ */
 public final class User {
 
     /**
@@ -34,9 +37,6 @@ public final class User {
      * The list of bookings for the user.
      */
     private List<Booking> bookings;
-
-    // TODO: fix so that things work when a user books the same room at different
-    // times
 
     /**
      * Default constructor for User.
@@ -118,7 +118,7 @@ public final class User {
      * @return Whether the users are equal.
      */
 
-    public boolean equals(final User user) {
+    public boolean isEqualTo(final User user) {
         return username.equals(user.getUsername())
                 && password.equals(user.getPassword())
                 && firstName.equals(user.getFirstName())

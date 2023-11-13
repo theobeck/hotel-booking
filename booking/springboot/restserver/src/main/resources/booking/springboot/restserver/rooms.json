@@ -1,17 +1,13 @@
 [ {
   "roomNumber" : 1,
-  "roomCapacity" : 8,
-  "pricePerNight" : 6000,
+  "roomCapacity" : 3,
+  "pricePerNight" : 2250,
   "bookings" : [ ]
 }, {
   "roomNumber" : 2,
-  "roomCapacity" : 1,
-  "pricePerNight" : 750,
-  "bookings" : [ {
-    "bookedBy" : "theo",
-    "from" : "2023-11-10",
-    "to" : "2023-11-12"
-  } ]
+  "roomCapacity" : 3,
+  "pricePerNight" : 2250,
+  "bookings" : [ ]
 }, {
   "roomNumber" : 3,
   "roomCapacity" : 3,
@@ -24,40 +20,42 @@
   "bookings" : [ ]
 }, {
   "roomNumber" : 5,
+  "roomCapacity" : 6,
+  "pricePerNight" : 4500,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 6,
+  "roomCapacity" : 1,
+  "pricePerNight" : 750,
+  "bookings" : [ {
+    "bookedBy" : "theo",
+    "roomNumber" : 6,
+    "from" : "2023-11-14",
+    "to" : "2023-11-15"
+  }, {
+    "bookedBy" : "theo",
+    "roomNumber" : 6,
+    "from" : "2023-11-16",
+    "to" : "2023-11-17"
+  } ]
+}, {
+  "roomNumber" : 7,
   "roomCapacity" : 5,
   "pricePerNight" : 3750,
   "bookings" : [ ]
 }, {
-  "roomNumber" : 6,
-  "roomCapacity" : 7,
-  "pricePerNight" : 5250,
-  "bookings" : [ ]
-}, {
-  "roomNumber" : 7,
-  "roomCapacity" : 4,
-  "pricePerNight" : 3000,
-  "bookings" : [ {
-    "bookedBy" : "theo",
-    "from" : "2023-11-10",
-    "to" : "2023-11-12"
-  }, {
-    "bookedBy" : "theo",
-    "from" : "2023-11-13",
-    "to" : "2023-11-14"
-  } ]
-}, {
   "roomNumber" : 8,
-  "roomCapacity" : 1,
-  "pricePerNight" : 750,
+  "roomCapacity" : 8,
+  "pricePerNight" : 6000,
   "bookings" : [ ]
 }, {
   "roomNumber" : 9,
-  "roomCapacity" : 3,
-  "pricePerNight" : 2250,
+  "roomCapacity" : 6,
+  "pricePerNight" : 4500,
   "bookings" : [ ]
 }, {
   "roomNumber" : 10,
-  "roomCapacity" : 8,
-  "pricePerNight" : 6000,
+  "roomCapacity" : 7,
+  "pricePerNight" : 5250,
   "bookings" : [ ]
 } ]

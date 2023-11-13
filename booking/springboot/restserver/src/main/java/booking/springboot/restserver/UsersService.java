@@ -3,6 +3,7 @@ package booking.springboot.restserver;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
+import booking.core.Booking;
 import booking.core.User;
 import booking.ui.internal.UserDeserializer;
 import booking.ui.internal.UserSerializer;
@@ -68,6 +70,9 @@ public final class UsersService {
         try (FileInputStream fileInputStream = new FileInputStream(USERS_PATH)) {
             TypeReference<List<User>> typeReference = new TypeReference<List<User>>() {
             };
+            if (fileInputStream.available() == 0) {
+                return users;
+            }
             users = objectMapper.readValue(fileInputStream, typeReference);
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,16 +85,28 @@ public final class UsersService {
      * Get a user by its username.
      *
      * @param username the username of the user to get.
+     *
      * @return the user with the given username.
      */
     public User getUserByUsername(final String username) {
         final List<User> users = getAllUsers();
-        for (final User user : users) {
+        for (User user : users) {
             if (user.getUsername().equals(username)) {
                 return user;
             }
         }
         return null;
+    }
+
+    /**
+     * Get all bookings for a user.
+     *
+     * @param username the username of the user to get bookings for.
+     *
+     * @return all bookings for the given user.
+     */
+    public List<Booking> getBookingsByUsername(final String username) {
+        return getUserByUsername(username).getBookings();
     }
 
     /**
@@ -117,6 +134,27 @@ public final class UsersService {
     }
 
     /**
+     * Book a room by username.
+     *
+     * @param username   the username of the user to book the room.
+     * @param roomNumber the room number of the room to book.
+     * @param from       the start date of the booking.
+     * @param to         the end date of the booking.
+     */
+    public void bookRoomByUsername(final String username, final int roomNumber, final LocalDate from,
+            final LocalDate to) {
+        final User user = getUserByUsername(username);
+        user.addBooking(new Booking(user.getUsername(), roomNumber, from, to));
+        updateOneUser(user);
+    }
+
+    public void cancelBooking(final String username, final Booking booking) {
+        final User user = getUserByUsername(username);
+        user.removeBooking(booking);
+        updateOneUser(user);
+    }
+
+    /**
      * Delete a user by username.
      *
      * @param username the username of the user to delete.
@@ -139,5 +177,18 @@ public final class UsersService {
         } catch (final IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void updateOneUser(final User user) {
+        final List<User> users = getAllUsers();
+        User userToRemove = new User();
+        for (final User u : users) {
+            if (u.getUsername().equals(user.getUsername())) {
+                userToRemove = u;
+            }
+        }
+        users.remove(userToRemove);
+        users.add(user);
+        updateUsers(users);
     }
 }

@@ -120,6 +120,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
                 restAccess.createRoom(i, cap, cap * COST_PER_PERSON);
             }
         }
+        rooms = restAccess.getAllRooms();
         for (Room r : rooms) {
             if (r.isAvailableBetween(from, to)) {
                 availableRooms.add(r);
@@ -131,7 +132,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     @FXML
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
-        restAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, user);
+        restAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, user.getUsername());
         availableRooms.remove(thisRoom);
     }
 
