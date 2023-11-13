@@ -1,20 +1,22 @@
 package booking.ui;
 
+import booking.core.User;
+
 /**
  * An abstract controller for the booking application.
  */
 public abstract class AbstractBookingController {
     /**
-     * The username of the user.
+     * The user.
      */
-    protected String username;
+    protected User user;
 
-    final String getUsername() {
-        return username;
+    final User getUser() {
+        return user;
     }
 
-    final void setUsername(final String username) {
-        this.username = username;
+    final void setUser(final User user) {
+        this.user = user;
     }
 
 }

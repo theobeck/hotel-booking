@@ -69,7 +69,7 @@ public final class Room {
      * @param bookedBy      Who the booking is for.
      */
     public Room(final int roomNumber, final int roomCapacity, final int pricePerNight, final LocalDate bookedFrom,
-            final LocalDate bookedTo, final String bookedBy) {
+            final LocalDate bookedTo, final User bookedBy) {
         this.roomNumber = roomNumber;
         this.roomCapacity = roomCapacity;
         this.pricePerNight = pricePerNight;
@@ -113,14 +113,16 @@ public final class Room {
      * Book room with given booking parameters.
      *
      * @param bookedFrom Time to start booking
-     * @param bookedTo   TIme to end booking
+     * @param bookedTo   Time to end booking
      * @param bookedBy   Who the room is booked by
      */
-    public void bookRoom(final LocalDate bookedFrom, final LocalDate bookedTo, final String bookedBy) {
+    public void bookRoom(final LocalDate bookedFrom, final LocalDate bookedTo, final User bookedBy) {
         if (!isAvailableBetween(bookedFrom, bookedTo)) {
             throw new IllegalStateException("Cannot book room in a time period where room is already booked.");
         }
-        bookings.add(new Booking(bookedFrom, bookedTo, bookedBy));
+        Booking newBooking = new Booking(bookedFrom, bookedTo, bookedBy, this);
+        bookings.add(newBooking);
+        bookedBy.addBooking(newBooking);
     }
 
     /**
@@ -130,11 +132,9 @@ public final class Room {
      *
      * @throws IllegalStateException If room isn't booked by user.
      */
-    public void cancelBooking(final String bookedBy) {
-        if (!isBookedBy(bookedBy)) {
-            throw new IllegalStateException("Cannot cancel booking when room isn't booked by user.");
-        }
-        bookings.remove(getBookingByUser(bookedBy));
+    public void cancelBooking(final Booking booking) {
+        bookings.remove(booking);
+        booking.getBookedBy().getBookings().remove(booking);
     }
 
     /**
@@ -154,16 +154,16 @@ public final class Room {
         return true;
     }
 
-    /**
-     * Check if room is booked by the given user.
-     *
-     * @param bookedBy User to check booking of
-     *
-     * @return Whether or not room is booked
-     */
-    public boolean isBookedBy(final String bookedBy) {
-        return getBookingByUser(bookedBy) != null;
-    }
+    // /**
+    // * Check if room is booked by the given user.
+    // *
+    // * @param bookedBy User to check booking of
+    // *
+    // * @return Whether or not room is booked
+    // */
+    // public boolean isBookedBy(final User bookedBy) {
+    // return getBookingsByUser(bookedBy) != null;
+    // }
 
     /**
      * Get total cost of user's booking.
@@ -172,11 +172,7 @@ public final class Room {
      *
      * @return Price of entire booking
      */
-    public int totalCostOfUserBooking(final String bookedBy) {
-        if (!isBookedBy(bookedBy)) {
-            throw new IllegalStateException("Cannot check booking cost when room isn't booked.");
-        }
-        Booking userBooking = getBookingByUser(bookedBy);
+    public int totalCostOfUserBooking(final Booking userBooking) {
         return (int) (pricePerNight
                 * (ChronoUnit.DAYS.between(userBooking.getFrom(), userBooking.getTo())));
     }
@@ -188,13 +184,14 @@ public final class Room {
      *
      * @return Booking of user
      */
-    public Booking getBookingByUser(final String bookedBy) {
-        for (Booking booking : bookings) {
+    public List<Booking> getBookingsByUser(final User bookedBy) {
+        List<Booking> userBookings = new ArrayList<>();
+        for (Booking booking : userBookings) {
             if (booking.getBookedBy().equals(bookedBy)) {
-                return booking;
+                userBookings.add(booking);
             }
         }
-        return null;
+        return userBookings;
     }
 
     /**
@@ -204,7 +201,7 @@ public final class Room {
      *
      * @return Whether or not rooms are equal
      */
-    public Boolean equals(final Room room) {
+    public boolean equals(final Room room) {
         return roomNumber == room.getRoomNumber()
                 && roomCapacity == room.getRoomCapacity()
                 && pricePerNight == room.getPricePerNight();
@@ -215,7 +212,8 @@ public final class Room {
      */
     @Override
     public String toString() {
-        return "Room number: " + roomNumber + ", capacity: " + roomCapacity + ", price: " + pricePerNight
+        return "Room " + roomNumber + ", capacity: " + roomCapacity + ", price: " + pricePerNight
                 + " per night.";
     }
+
 }

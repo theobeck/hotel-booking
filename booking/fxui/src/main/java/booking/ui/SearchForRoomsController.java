@@ -43,7 +43,7 @@ public final class SearchForRoomsController extends AbstractBookingController {
     @FXML
     private void goToMainMenu(final ActionEvent event) throws IOException {
         MainMenuController mainMenuController = new MainMenuController();
-        mainMenuController.setUsername(username);
+        mainMenuController.setUser(user);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
         loader.setController(mainMenuController);
         Parent root = loader.load();
@@ -69,7 +69,7 @@ public final class SearchForRoomsController extends AbstractBookingController {
         LocalDate to = toPicker.getValue();
         availableRoomsController.setFrom(from);
         availableRoomsController.setTo(to);
-        availableRoomsController.setUsername(username);
+        availableRoomsController.setUser(user);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("availableRooms.fxml"));
         loader.setController(availableRoomsController);

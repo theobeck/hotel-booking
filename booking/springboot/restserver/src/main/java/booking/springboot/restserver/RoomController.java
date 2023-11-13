@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import booking.core.Booking;
 import booking.core.Room;
+import booking.core.User;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -99,10 +101,10 @@ public final class RoomController {
     public ResponseEntity<String> bookRoomByNumber(final @PathVariable int roomNumber,
             final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
             final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-            final @PathVariable String username) {
+            final @PathVariable User user) {
 
         try {
-            roomService.bookRoomByNumber(roomNumber, from, to, username);
+            roomService.bookRoomByNumber(roomNumber, from, to, user);
             return new ResponseEntity<>("Room booked successfully", HttpStatus.OK);
         } catch (Exception e) {
             // Handle the exception and return an error response
@@ -118,8 +120,8 @@ public final class RoomController {
      * @param username   The username of the user unbooking the room
      */
     @PutMapping("/rooms/{roomNumber}/cancel/{username}")
-    public void cancelBooking(final @PathVariable int roomNumber, final @PathVariable String username) {
-        roomService.cancelBooking(roomNumber, username);
+    public void cancelBooking(final @PathVariable int roomNumber, final @PathVariable Booking booking) {
+        roomService.cancelBooking(booking);
     }
 
     /**

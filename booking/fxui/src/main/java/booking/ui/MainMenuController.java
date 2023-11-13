@@ -33,7 +33,7 @@ public final class MainMenuController extends AbstractBookingController {
     @FXML
     private void goToUserBookings(final ActionEvent event) throws IOException {
         UserBookingsController showUserBookingsController = new UserBookingsController();
-        showUserBookingsController.setUsername(username);
+        showUserBookingsController.setUser(user);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("userBookings.fxml"));
         loader.setController(showUserBookingsController);
         Parent root = loader.load();
@@ -46,7 +46,7 @@ public final class MainMenuController extends AbstractBookingController {
     @FXML
     private void goToSearchForRooms(final ActionEvent event) throws IOException {
         SearchForRoomsController searchForRoomsController = new SearchForRoomsController();
-        searchForRoomsController.setUsername(username);
+        searchForRoomsController.setUser(user);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("searchForRooms.fxml"));
         loader.setController(searchForRoomsController);
         Parent root = loader.load();

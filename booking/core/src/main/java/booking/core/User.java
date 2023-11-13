@@ -1,5 +1,8 @@
 package booking.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class User {
 
     /**
@@ -22,19 +25,24 @@ public final class User {
      */
     private String password;
 
-    // TODO: Add a list of bookings to the user.
-
-    // TODO: fix so that things work when a user books the same room at different
-    // times
     /**
      * The user's gender.
      */
     private String gender;
 
     /**
+     * The list of bookings for the user.
+     */
+    private List<Booking> bookings;
+
+    // TODO: fix so that things work when a user books the same room at different
+    // times
+
+    /**
      * Default constructor for User.
      */
     public User() {
+        bookings = new ArrayList<>();
     }
 
     /**
@@ -46,12 +54,14 @@ public final class User {
      * @param password  The user's password.
      * @param gender    The user's gender
      */
-    public User(final String username, final String firstName, final String lastName, final String password, final String gender) {
+    public User(final String username, final String firstName, final String lastName, final String password,
+            final String gender) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.gender = gender;
+        bookings = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -94,10 +104,39 @@ public final class User {
         this.gender = gender;
     }
 
-    public Boolean equals(final User user) {
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(final List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    /**
+     * @param user The user to compare to.
+     *
+     * @return Whether the users are equal.
+     */
+
+    public boolean equals(final User user) {
         return username.equals(user.getUsername())
                 && password.equals(user.getPassword())
                 && firstName.equals(user.getFirstName())
-                && lastName.equals(user.getLastName());
+                && lastName.equals(user.getLastName())
+                && gender.equals(user.getGender());
+    }
+
+    /**
+     * @param booking The booking to add to the user.
+     */
+    public void addBooking(final Booking booking) {
+        bookings.add(booking);
+    }
+
+    /**
+     * @param booking The booking to remove from the user.
+     */
+    public void removeBooking(final Booking booking) {
+        bookings.remove(booking);
     }
 }

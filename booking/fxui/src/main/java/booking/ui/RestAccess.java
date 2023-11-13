@@ -186,11 +186,11 @@ public final class RestAccess {
      * @param roomNumber The room number.
      * @param from       The start date of the booking.
      * @param to         The end date of the booking.
-     * @param username   The username of the user booking the room.
+     * @param user       The username of the user booking the room.
      */
     public void bookRoomByNumber(final int roomNumber, final LocalDate from, final LocalDate to,
-            final String username) {
-        final String url = BASE_URL + "rooms/" + roomNumber + "/book/" + from + "/" + to + "/" + username;
+            final User user) {
+        final String url = BASE_URL + "rooms/" + roomNumber + "/book/" + from + "/" + to + "/" + user;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .PUT(HttpRequest.BodyPublishers.noBody())

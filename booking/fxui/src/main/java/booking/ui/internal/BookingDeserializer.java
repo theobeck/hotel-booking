@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import booking.core.Booking;
+import booking.core.User;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -28,11 +29,13 @@ public final class BookingDeserializer extends JsonDeserializer<Booking> {
             JsonNode fromNode = objectNode.get("from");
             JsonNode toNode = objectNode.get("to");
 
-            if (bookedByNode != null && bookedByNode.isTextual() && fromNode != null && fromNode.isTextual()
-                    && toNode != null && toNode.isTextual()) {
+            UserDeserializer userDeserializer = new UserDeserializer();
+
+            if (bookedByNode != null && fromNode != null && toNode != null) {
                 LocalDate from = LocalDate.parse(fromNode.asText());
                 LocalDate to = LocalDate.parse(toNode.asText());
-                booking.setBookedBy(bookedByNode.asText());
+                User bookedBy = userDeserializer.deserialize(bookedByNode.traverse(parser.getCodec()), ctxt);
+                booking.setBookedBy(bookedBy);
                 booking.setFrom(from);
                 booking.setTo(to);
             }

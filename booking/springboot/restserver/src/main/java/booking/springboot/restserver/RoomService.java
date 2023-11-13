@@ -16,7 +16,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
+import booking.core.Booking;
 import booking.core.Room;
+import booking.core.User;
 import booking.ui.internal.RoomDeserializer;
 import booking.ui.internal.RoomSerializer;
 
@@ -138,21 +140,20 @@ public final class RoomService {
      * @param username   the username of the user booking the room.
      */
     public void bookRoomByNumber(final int roomNumber, final LocalDate from, final LocalDate to,
-            final String username) {
+            final User user) {
         Room room = getRoomByNumber(roomNumber);
-        room.bookRoom(from, to, username);
+        room.bookRoom(from, to, user);
         updateOneRoom(room);
     }
 
     /**
      * Unbook a room by room number.
      *
-     * @param roomNumber the room number of the room to unbook.
-     * @param username   the username of the user unbooking the room.
+     * @param booking the booking to cancel.
      */
-    public void cancelBooking(final int roomNumber, final String username) {
-        Room room = getRoomByNumber(roomNumber);
-        room.cancelBooking(username);
+    public void cancelBooking(final Booking booking) {
+        Room room = booking.getRoom();
+        room.cancelBooking(booking);
         updateOneRoom(room);
     }
 

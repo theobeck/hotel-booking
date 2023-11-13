@@ -7,7 +7,11 @@
   "roomNumber" : 2,
   "roomCapacity" : 1,
   "pricePerNight" : 750,
-  "bookings" : [ ]
+  "bookings" : [ {
+    "bookedBy" : "theo",
+    "from" : "2023-11-10",
+    "to" : "2023-11-12"
+  } ]
 }, {
   "roomNumber" : 3,
   "roomCapacity" : 3,
@@ -32,7 +36,15 @@
   "roomNumber" : 7,
   "roomCapacity" : 4,
   "pricePerNight" : 3000,
-  "bookings" : [ ]
+  "bookings" : [ {
+    "bookedBy" : "theo",
+    "from" : "2023-11-10",
+    "to" : "2023-11-12"
+  }, {
+    "bookedBy" : "theo",
+    "from" : "2023-11-13",
+    "to" : "2023-11-14"
+  } ]
 }, {
   "roomNumber" : 8,
   "roomCapacity" : 1,
