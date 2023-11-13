@@ -1,4 +1,4 @@
-package booking.springboot.restserver.internal;
+package booking.ui.internal;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

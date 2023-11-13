@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import booking.core.Room;
-import booking.springboot.restserver.RoomAccess;
-import booking.springboot.restserver.UsersAccess;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,12 +26,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     /**
      * The room access object.
      */
-    private RoomAccess roomAccess;
-
-    /**
-     * The users access object.
-     */
-    private UsersAccess usersAccess;
+    private RestAccess restAccess;
 
     /**
      * The list of all rooms.
@@ -84,8 +78,8 @@ public final class AvailableRoomsController extends AbstractBookingController {
      * Default constructor for AvailableRoomsController.
      */
     public AvailableRoomsController() {
-        roomAccess = new RoomAccess();
-        rooms = roomAccess.getAllRooms();
+        restAccess = new RestAccess();
+        rooms = restAccess.getAllRooms();
         availableRooms = FXCollections.observableArrayList();
         random = new Random();
     }
@@ -123,7 +117,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
                     continue;
                 }
                 int cap = random.nextInt(UPPER_BOUND_CAPACITY) + 1;
-                roomAccess.createRoom(i, cap, cap * COST_PER_PERSON);
+                restAccess.createRoom(i, cap, cap * COST_PER_PERSON);
             }
         }
         for (Room r : rooms) {
@@ -137,8 +131,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     @FXML
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
-        roomAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, user);
-        usersAccess.bookRoom(user, thisRoom.getRoomNumber(), from, to);
+        restAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, username);
         availableRooms.remove(thisRoom);
     }
 

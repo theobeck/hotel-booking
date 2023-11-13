@@ -6,8 +6,6 @@ import java.util.List;
 
 import booking.core.Booking;
 import booking.core.Room;
-import booking.springboot.restserver.RoomAccess;
-import booking.springboot.restserver.UsersAccess;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,7 +24,7 @@ public final class UserBookingsController extends AbstractBookingController {
     /**
      * The file manager object.
      */
-    private UsersAccess usersAccess;
+    private RestAccess restAccess;
 
     /**
      * The list of user's bookings.
@@ -43,8 +41,8 @@ public final class UserBookingsController extends AbstractBookingController {
      * Default constructor for UserBookingsController.
      */
     public UserBookingsController() {
-        usersAccess = new UsersAccess();
-        yourBookings = FXCollections.observableArrayList();
+        restAccess = new RestAccess();
+        rooms = restAccess.getAllRooms();
     }
 
     /**
@@ -64,11 +62,10 @@ public final class UserBookingsController extends AbstractBookingController {
 
     @FXML
     private void cancelBooking(final ActionEvent event) throws IOException {
-        Booking booking = bookingList.getSelectionModel().getSelectedItem();
-        if (booking != null) {
-            usersAccess.cancelBooking(user, booking.getRoom().getRoomNumber(), booking.getFrom(),
-                    booking.getTo());
-            yourBookings.remove(booking);
+        Room room = bookingList.getSelectionModel().getSelectedItem();
+        if (room != null) {
+            restAccess.cancelBooking(room.getRoomNumber(), username);
+            yourRooms.remove(room);
         }
     }
 
