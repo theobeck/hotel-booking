@@ -1,62 +1,51 @@
-[
-  {
-    "roomNumber": 1,
-    "roomCapacity": 8,
-    "pricePerNight": 600,
-    "bookings": []
-  },
-  {
-    "roomNumber": 2,
-    "roomCapacity": 4,
-    "pricePerNight": 300,
-    "bookings": []
-  },
-  {
-    "roomNumber": 3,
-    "roomCapacity": 3,
-    "pricePerNight": 225,
-    "bookings": []
-  },
-  {
-    "roomNumber": 4,
-    "roomCapacity": 4,
-    "pricePerNight": 300,
-    "bookings": []
-  },
-  {
-    "roomNumber": 5,
-    "roomCapacity": 8,
-    "pricePerNight": 600,
-    "bookings": []
-  },
-  {
-    "roomNumber": 6,
-    "roomCapacity": 3,
-    "pricePerNight": 225,
-    "bookings": []
-  },
-  {
-    "roomNumber": 7,
-    "roomCapacity": 8,
-    "pricePerNight": 600,
-    "bookings": []
-  },
-  {
-    "roomNumber": 8,
-    "roomCapacity": 1,
-    "pricePerNight": 75,
-    "bookings": []
-  },
-  {
-    "roomNumber": 9,
-    "roomCapacity": 6,
-    "pricePerNight": 450,
-    "bookings": []
-  },
-  {
-    "roomNumber": 10,
-    "roomCapacity": 4,
-    "pricePerNight": 300,
-    "bookings": []
-  }
-]
+[ {
+  "roomNumber" : 1,
+  "roomCapacity" : 8,
+  "pricePerNight" : 600,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 2,
+  "roomCapacity" : 4,
+  "pricePerNight" : 300,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 3,
+  "roomCapacity" : 3,
+  "pricePerNight" : 225,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 4,
+  "roomCapacity" : 4,
+  "pricePerNight" : 300,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 5,
+  "roomCapacity" : 8,
+  "pricePerNight" : 600,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 6,
+  "roomCapacity" : 3,
+  "pricePerNight" : 225,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 7,
+  "roomCapacity" : 8,
+  "pricePerNight" : 600,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 8,
+  "roomCapacity" : 1,
+  "pricePerNight" : 75,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 9,
+  "roomCapacity" : 6,
+  "pricePerNight" : 450,
+  "bookings" : [ ]
+}, {
+  "roomNumber" : 10,
+  "roomCapacity" : 4,
+  "pricePerNight" : 300,
+  "bookings" : [ ]
+} ]

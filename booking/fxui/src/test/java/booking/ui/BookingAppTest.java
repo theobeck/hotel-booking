@@ -1,6 +1,8 @@
 package booking.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -11,18 +13,22 @@ import org.testfx.framework.junit5.ApplicationTest;
 
 import booking.core.Booking;
 import booking.core.Room;
+import booking.core.User;
 import booking.ui.internal.RestAccess;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
 
 /**
  * A test class for the {@link BookingApp} class.
  */
 public class BookingAppTest extends ApplicationTest {
+
+    private BookingApp bookingApp;
+
+    public BookingAppTest() {
+        bookingApp = new BookingApp();
+    }
 
     @BeforeAll
     public static void setUpClass() {
@@ -37,15 +43,15 @@ public class BookingAppTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        bookingApp.start(stage);
     }
 
     @Test
     public void testBookRoomAndShowBooking() {
+
+        RestAccess restAccess = new RestAccess();
+        Room roomTen = restAccess.getRoomByNumber(10);
+        restAccess.deleteRoomByNumber(10);
 
         // Create a TestFX robot
         FxRobot theRobot = new FxRobot();
@@ -81,7 +87,6 @@ public class BookingAppTest extends ApplicationTest {
         clickOn("#showBooking");
 
         ListView<Room> bookingList = lookup("#bookingList").query();
-        RestAccess restAccess = new RestAccess();
         List<Booking> userBookings = restAccess.getBookingsByUsername("test");
 
         assertEquals(userBookings.size(), bookingList.getItems().size());
@@ -96,16 +101,62 @@ public class BookingAppTest extends ApplicationTest {
 
         clickOn("#btnSignOut");
 
+        clickOn("#btnLogin");
+        List<User> users = restAccess.getAllUsers();
+        for (User user : users) {
+            restAccess.deleteUserByUsername(user.getUsername());
+        }
+        clickOn("#btnLogin");
+        for (User user : users) {
+            restAccess.createUser(user.getUsername(), user.getFirstName(), user.getLastName(), user.getPassword(),
+                    user.getGender());
+            for (Booking booking : user.getBookings()) {
+                restAccess.bookRoomByNumber(booking.getRoomNumber(), booking.getFrom(), booking.getTo(),
+                        booking.getBookedBy(), booking.getTotalCostOfBooking(), "user");
+            }
+        }
+
         clickOn("#inputUsername");
         write("test2");
         clickOn("#inputPassword");
         write("test2");
         clickOn("#btnLogin");
 
+        clickOn("#bookRoom");
+
+        clickOn("#back");
+
         clickOn("#showBooking");
 
         bookingList = lookup("#bookingList").query();
         assertEquals(0, bookingList.getItems().size());
+
+        clickOn("#btnBack");
+
+        clickOn("#btnSignOut");
+
+        assertTrue(null == restAccess.getUserByUsername("test3"));
+
+        clickOn("#btnSignup");
+        clickOn("#btnBack");
+        clickOn("#btnSignup");
+
+        clickOn("#inputUsername");
+        write("test3");
+        clickOn("#inputPassword");
+        write("test3");
+        clickOn("#inputFirstName");
+        write("test3");
+        clickOn("#inputLastName");
+        write("test3");
+        clickOn("#genderCombobox");
+        theRobot.push(KeyCode.DOWN);
+        theRobot.push(KeyCode.ENTER);
+        clickOn("#btnRegister");
+
+        assertFalse(null == restAccess.getUserByUsername("test3"));
+        restAccess.deleteUserByUsername("test3");
+        assertTrue(null == restAccess.getUserByUsername("test3"));
 
         userBookings = restAccess.getBookingsByUsername("test");
 
@@ -117,5 +168,14 @@ public class BookingAppTest extends ApplicationTest {
         userBookings = restAccess.getBookingsByUsername("test");
 
         assertEquals(0, userBookings.size());
+
+        assertTrue(restAccess.getAllRooms().size() == 10);
+        restAccess.deleteRoomByNumber(10);
+        restAccess.createRoom(roomTen.getRoomNumber(), roomTen.getRoomCapacity(), roomTen.getPricePerNight());
+        for (Booking booking : roomTen.getBookings()) {
+            restAccess.bookRoomByNumber(booking.getRoomNumber(), booking.getFrom(), booking.getTo(),
+                    booking.getBookedBy(), booking.getTotalCostOfBooking(), "room");
+
+        }
     }
 }

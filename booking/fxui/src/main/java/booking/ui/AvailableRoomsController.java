@@ -133,7 +133,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     private void book(final ActionEvent event) throws IOException {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
         restAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, user.getUsername(),
-                thisRoom.totalCostOfBooking(from, to));
+                thisRoom.totalCostOfBooking(from, to), "both");
         availableRooms.remove(thisRoom);
     }
 
