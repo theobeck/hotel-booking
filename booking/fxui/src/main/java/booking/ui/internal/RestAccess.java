@@ -189,8 +189,26 @@ public final class RestAccess {
      * @param to                 The end date of the booking.
      * @param username           The username of the user booking the room.
      * @param totalCostOfBooking The total cost of the booking.
+     * @param which              If which = "room", only update room, if which =
+     *                           "user", only update user, if which = "both", update
+     *                           both.
      */
     public void bookRoomByNumber(final int roomNumber, final LocalDate from, final LocalDate to,
+            final String username, final int totalCostOfBooking, final String which) {
+        if (!(which.equals("room") || which.equals("user") || which.equals("both"))) {
+            throw new IllegalArgumentException("Invalid argument for which");
+        }
+        if (which.equals("room")) {
+            rBookRoom(roomNumber, from, to, username, totalCostOfBooking);
+        } else if (which.equals("user")) {
+            uBookRoom(roomNumber, from, to, username, totalCostOfBooking);
+        } else if (which.equals("both")) {
+            rBookRoom(roomNumber, from, to, username, totalCostOfBooking);
+            uBookRoom(roomNumber, from, to, username, totalCostOfBooking);
+        }
+    }
+
+    private void rBookRoom(final int roomNumber, final LocalDate from, final LocalDate to,
             final String username, final int totalCostOfBooking) {
         final String url = BASE_URL + ROOMS_PATH + roomNumber + "/book/" + from + "/" + to + "/" + username;
         HttpRequest request = HttpRequest.newBuilder()
@@ -203,6 +221,10 @@ public final class RestAccess {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private void uBookRoom(final int roomNumber, final LocalDate from, final LocalDate to,
+            final String username, final int totalCostOfBooking) {
         final String url2 = BASE_URL + USERS_PATH + username + "/book/" + roomNumber + "/" + from + "/" + to + "/"
                 + totalCostOfBooking;
         HttpRequest request2 = HttpRequest.newBuilder()
