@@ -37,14 +37,14 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5c5699" height="103.0" layoutX="718.0" layoutY="359.0" stroke="TRANSPARENT" strokeType="INSIDE" width="164.0" />
       <DatePicker fx:id="toPicker" layoutX="583.0" layoutY="347.0" />
       <DatePicker fx:id="fromPicker" layoutX="217.0" layoutY="313.0" style="-fx-background-color: d8d8f8;" />
-      <Text fill="#3e3e91" layoutX="86.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book a room" wrappingWidth="302.5367431640625">
+      <Text fill="#3e3e91" layoutX="92.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book a room" wrappingWidth="368.13671875">
          <font>
-            <Font name="Goudy Old Style" size="57.0" />
+            <Font name="SansSerif Regular" size="53.0" />
          </font>
       </Text>
       <Text fill="#d8d8f8" layoutX="575.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
          <font>
-            <Font name="Goudy Old Style" size="33.0" />
+            <Font name="SansSerif Regular" size="33.0" />
          </font>
       </Text>
       <Text fill="#d8d8f8" layoutX="209.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
@@ -54,11 +54,11 @@
       </Text>
       <Button fx:id="search" layoutX="774.0" layoutY="364.0" mnemonicParsing="false" onAction="#goToAvailableRooms" prefHeight="45.0" prefWidth="97.0" style="-fx-background-color: ffa797;" text="Search">
          <font>
-            <Font name="Goudy Old Style" size="20.0" />
+            <Font name="SansSerif Regular" size="20.0" />
          </font></Button>
       <Button fx:id="back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="45.0" prefWidth="97.0" style="-fx-background-color: ffa797;" text="back">
          <font>
-            <Font name="Goudy Old Style" size="25.0" />
+            <Font name="SansSerif Regular" size="25.0" />
          </font></Button>
       <QuadCurve controlX="-125.20001220703125" controlY="143.0" endX="56.4000244140625" endY="79.79998779296875" fill="#f3f6fd" layoutX="104.0" layoutY="280.0" startX="-107.5999755859375" startY="-49.79998779296875" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Text fx:id="errorMsg" fill="#ffa797" layoutX="296.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="393.0">
