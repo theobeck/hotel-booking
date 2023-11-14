@@ -49,7 +49,7 @@
       </Text>
       <Text fill="#d8d8f8" layoutX="209.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
          <font>
-            <Font name="Goudy Old Style" size="32.0" />
+            <Font name="SansSerif Regular" size="32.0" />
          </font>
       </Text>
       <Button fx:id="search" layoutX="774.0" layoutY="364.0" mnemonicParsing="false" onAction="#goToAvailableRooms" prefHeight="45.0" prefWidth="97.0" style="-fx-background-color: ffa797;" text="Search">

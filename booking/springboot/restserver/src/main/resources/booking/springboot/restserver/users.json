@@ -26,4 +26,11 @@
   "password" : "123",
   "gender" : "Male",
   "bookings" : [ ]
+}, {
+  "username" : "lara",
+  "firstName" : "Lara",
+  "lastName" : "Jacobsen",
+  "password" : "12",
+  "gender" : "Female",
+  "bookings" : [ ]
 } ]

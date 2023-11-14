@@ -28,7 +28,7 @@
          </font></Button>
       <Button fx:id="book" layoutX="710.0" layoutY="498.0" mnemonicParsing="false" onAction="#book" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: ffa797;" text="Book">
          <font>
-            <Font name="Goudy Old Style" size="20.0" />
+            <Font name="SansSerif Regular" size="20.0" />
          </font></Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="49.0" layoutX="521.0" layoutY="153.0" stroke="TRANSPARENT" strokeType="INSIDE" width="83.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d8f8" height="49.0" layoutX="815.0" layoutY="228.0" stroke="TRANSPARENT" strokeType="INSIDE" width="94.0" />
