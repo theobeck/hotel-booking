@@ -20,9 +20,9 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="250.0" arcWidth="250.0" fill="#f3f6fd" height="592.0" layoutX="-7.0" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="620.0" />
-      <Text fill="#42406f" layoutX="63.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Bookings" wrappingWidth="412.5367431640625">
+      <Text fill="#42406f" layoutX="68.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Bookings" wrappingWidth="531.7367553710938">
          <font>
-            <Font name="Goudy Old Style" size="61.0" />
+            <Font name="SansSerif Regular" size="56.0" />
          </font>
       </Text>
       <ListView fx:id="bookingList" layoutX="106.0" layoutY="153.0" prefHeight="280.0" prefWidth="496.0" style="-fx-border-color: #f3f6fd;" />
@@ -37,13 +37,13 @@
       <Rectangle fill="#ec988a" height="187.0" layoutX="570.0" layoutY="-56.0" stroke="TRANSPARENT" strokeType="INSIDE" width="151.0" />
       <Button fx:id="btnCancelBooking" layoutX="425.0" layoutY="442.0" mnemonicParsing="false" onAction="#cancelBooking" prefHeight="23.0" prefWidth="177.0" style="-fx-background-color: f7cbca;" text="Cancel booking" textAlignment="CENTER">
          <font>
-            <Font name="Goudy Old Style" size="20.0" />
+            <Font name="SansSerif Regular" size="18.0" />
          </font></Button>
       <Rectangle fill="#f3f6fd" height="134.0" layoutX="-16.0" layoutY="-53.0" stroke="TRANSPARENT" strokeType="INSIDE" width="122.0" />
       <Rectangle fill="#f3f6fd" height="117.0" layoutX="-7.0" layoutY="479.0" stroke="TRANSPARENT" strokeType="INSIDE" width="122.0" />
-      <Button fx:id="btnBack" layoutX="25.0" layoutY="18.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="23.0" prefWidth="75.0" style="-fx-background-color: ec988a;" text="Back">
+      <Button fx:id="btnBack" layoutX="25.0" layoutY="18.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="29.0" prefWidth="85.0" style="-fx-background-color: ec988a;" text="Back">
          <font>
-            <Font name="Goudy Old Style" size="13.0" />
+            <Font name="SansSerif Regular" size="15.0" />
          </font></Button>
       <QuadCurve controlX="47.0" controlY="-103.99999237060547" endX="60.8846435546875" endY="-9.599998474121094" fill="#f7cbca" layoutX="660.0" layoutY="101.0" startX="-54.0" startY="-105.5999984741211" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Polygon fill="#f3f6fd" layoutX="586.0" layoutY="99.0" points="-31.51531982421875, 45.199981689453125, 135.0, 32.0, -31.51531982421875, -109.20000457763672" stroke="TRANSPARENT" strokeType="INSIDE" />
