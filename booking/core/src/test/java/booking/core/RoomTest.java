@@ -5,6 +5,8 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A test class for the {@link Room} class.
@@ -13,6 +15,7 @@ import java.time.LocalDate;
 public class RoomTest {
 
 	Room r1;
+	Room r2;
 	LocalDate bookedFrom;
 	LocalDate bookedTo;
 	User user;
@@ -25,8 +28,24 @@ public class RoomTest {
 		bookedTo = LocalDate.of(2023, 1, 8);
 		user = new User("test", "test", "test", "test", "Non-binary");
 		booking = new Booking(user.getUsername(), r1.getRoomNumber(), bookedFrom,
-				bookedTo,
-				r1.totalCostOfBooking(bookedFrom, bookedTo));
+				bookedTo, r1.totalCostOfBooking(bookedFrom, bookedTo));
+	}
+
+	@Test
+	public void testConstructors() {
+		// Test default constructor
+		r1 = new Room();
+		assertEquals(0, r1.getRoomNumber());
+		assertEquals(0, r1.getRoomCapacity());
+		assertEquals(0, r1.getPricePerNight());
+		assertTrue(r1.getBookings().isEmpty());
+
+		// Test constructor that books room
+		r2 = new Room(2, 2, 200, bookedFrom, bookedTo, user);
+		assertFalse(r2.getBookings().isEmpty());
+		Booking b0 = r2.getBookingsByUsername(user.getUsername()).get(0);
+		assertTrue(b0.isEqualTo(new Booking(user.getUsername(), r2.getRoomNumber(), bookedFrom, bookedTo,
+				r2.totalCostOfBooking(bookedFrom, bookedTo))));
 	}
 
 	@Test
@@ -40,27 +59,79 @@ public class RoomTest {
 	}
 
 	@Test
+	public void testIsEqualTo() {
+		int roomNumber = 1;
+		int roomCapacity = 1;
+		int pricePerNight = 100;
+		Room actual = new Room(roomNumber, roomCapacity, pricePerNight);
+		assertTrue(r1.isEqualTo(actual));
+
+		Room rFalseNumber = new Room(roomNumber + 1, roomCapacity, pricePerNight);
+		assertFalse(r1.isEqualTo(rFalseNumber));
+
+		Room rFalseCap = new Room(roomNumber, roomCapacity + 1, pricePerNight);
+		assertFalse(r1.isEqualTo(rFalseCap));
+
+		Room rFalsePrice = new Room(roomNumber, roomCapacity, pricePerNight + 1);
+		assertFalse(r1.isEqualTo(rFalsePrice));
+
+		Room rFalseBookings = new Room(roomNumber, roomCapacity, pricePerNight, bookedFrom,
+				bookedTo, user);
+		assertFalse(r1.isEqualTo(rFalseBookings));
+		assertFalse(r1.isEqualTo(null));
+	}
+
+	@Test
 	public void testBooking() {
 		assertTrue(r1.getBookings().isEmpty());
+		assertTrue(r1.isAvailableBetween(bookedTo, bookedFrom));
+
 		r1.bookRoom(bookedFrom, bookedTo, user);
 		// Cannot be booked twice at same time
 		assertThrows(IllegalStateException.class, () -> r1.bookRoom(bookedFrom,
 				bookedTo, user));
 		Booking b1 = r1.getBookingsByUsername(user.getUsername()).get(0);
+		assertEquals(null, r1.getBookingsByUsername(null));
 		assertTrue(b1.isEqualTo(booking));
 		assertEquals(600, r1.totalCostOfBooking(bookedFrom, bookedTo));
 		assertTrue(r1.getBookings().get(0).isEqualTo(booking));
 
-		LocalDate t1 = LocalDate.of(2023, 1, 3);
-		LocalDate t2 = LocalDate.of(2023, 1, 6);
-		LocalDate t3 = LocalDate.of(2023, 1, 9);
-		LocalDate t4 = LocalDate.of(2023, 1, 10);
-		assertFalse(r1.isAvailableBetween(t1, t2));
-		assertTrue(r1.isAvailableBetween(t3, t4));
+		assertThrows(IllegalArgumentException.class,
+				() -> r1.isAvailableBetween(LocalDate.of(2023, 11, 5), LocalDate.of(2023, 11, 1)));
 
+		Booking b2 = new Booking("test2", r1.getRoomNumber(), bookedFrom,
+				bookedTo, r1.totalCostOfBooking(bookedFrom, bookedTo));
+		assertTrue(r1.getEqualBooking(b2) == null);
 		r1.cancelBooking(booking);
 		assertTrue(r1.getEqualBooking(booking) == null);
 		assertThrows(IllegalStateException.class, () -> r1.cancelBooking(booking));
+
+		r1.setBookings(null);
+		assertTrue(r1.getBookings() == null);
+
+		r1.setBookings(new ArrayList<>());
+		assertTrue(r1.getBookings().isEmpty());
+
+		List<Booking> bList = new ArrayList<>();
+		bList.add(new Booking());
+		r1.setBookings(bList);
+		assertFalse(r1.getBookings().isEmpty());
+
+	}
+
+	@Test
+	public void testIsAvailableBetween() {
+		r1.bookRoom(LocalDate.of(2023, 11, 2), LocalDate.of(2023, 11, 5), user);
+
+		assertTrue(r1.isAvailableBetween(LocalDate.of(2023, 11, 10), LocalDate.of(2023, 11, 15)));
+
+		assertFalse(r1.isAvailableBetween(LocalDate.of(2023, 11, 3), LocalDate.of(2023, 11, 6)));
+
+		assertFalse(r1.isAvailableBetween(LocalDate.of(2023, 11, 2), LocalDate.of(2023, 11, 5)));
+
+		assertFalse(r1.isAvailableBetween(LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 4)));
+
+		assertTrue(r1.isAvailableBetween(LocalDate.of(2023, 10, 31), LocalDate.of(2023, 11, 1)));
 
 	}
 

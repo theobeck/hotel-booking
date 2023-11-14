@@ -111,6 +111,14 @@ public final class Booking {
      * @return Whether the bookings are equal.
      */
     public boolean isEqualTo(final Booking booking) {
+        if (booking == null) {
+            return false;
+        }
+
+        if (booking == this) {
+            return true;
+        }
+
         return this.bookedBy.equals(booking.getBookedBy()) && this.roomNumber == booking.getRoomNumber()
                 && this.from.equals(booking.getFrom()) && this.to.equals(booking.getTo())
                 && this.totalCostOfBooking == booking.getTotalCostOfBooking();

@@ -46,7 +46,7 @@ public final class User {
     }
 
     /**
-     * Create a new user object with the following variables defined.
+     * Constructor for User with all relevant info added.
      *
      * @param username  The user's username.
      * @param firstName The user's first name.
@@ -62,6 +62,27 @@ public final class User {
         this.password = password;
         this.gender = gender;
         bookings = new ArrayList<>();
+    }
+
+    /**
+     * Constructor for User with all relevant info added, along with a list of
+     * bookings.
+     *
+     * @param username  The user's username.
+     * @param firstName The user's first name.
+     * @param lastName  The user's last name.
+     * @param password  The user's password.
+     * @param gender    The user's gender
+     * @param bookings  The user's bookings.
+     */
+    public User(final String username, final String firstName, final String lastName, final String password,
+            final String gender, final List<Booking> bookings) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.gender = gender;
+        this.bookings = new ArrayList<>(bookings);
     }
 
     public String getUsername() {
@@ -119,11 +140,16 @@ public final class User {
      */
 
     public boolean isEqualTo(final User user) {
+        if (user == null) {
+            return false;
+        }
+
         return username.equals(user.getUsername())
                 && password.equals(user.getPassword())
                 && firstName.equals(user.getFirstName())
                 && lastName.equals(user.getLastName())
-                && gender.equals(user.getGender());
+                && gender.equals(user.getGender())
+                && bookings.equals(user.getBookings());
     }
 
     /**
@@ -137,6 +163,20 @@ public final class User {
      * @param booking The booking to remove from the user.
      */
     public void removeBooking(final Booking booking) {
-        bookings.remove(booking);
+        Booking bookingToCancel = getEqualBooking(booking);
+        if (bookingToCancel == null) {
+            throw new IllegalArgumentException("Cannot cancel booking that doesn't exist.");
+        }
+        bookings.remove(bookingToCancel);
+    }
+
+    public Booking getEqualBooking(final Booking booking) {
+        Booking tempBooking = null;
+        for (Booking b : bookings) {
+            if (b.isEqualTo(booking)) {
+                tempBooking = b;
+            }
+        }
+        return tempBooking;
     }
 }
