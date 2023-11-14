@@ -20,7 +20,7 @@
          </image>
       </ImageView>
       <Circle fill="#94a8d3" layoutX="364.0" layoutY="82.0" radius="83.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#94a8d3" height="585.0" layoutX="336.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="625.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#94a8d3" height="597.0" layoutX="336.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="625.0" />
       <TextField fx:id="inputUsername" layoutX="650.0" layoutY="220.0" prefHeight="27.0" prefWidth="234.0" promptText="Username">
          <font>
             <Font name="Goudy Old Style" size="23.0" />
