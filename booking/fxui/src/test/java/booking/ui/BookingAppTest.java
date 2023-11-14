@@ -56,19 +56,37 @@ public class BookingAppTest extends ApplicationTest {
         // Create a TestFX robot
         FxRobot theRobot = new FxRobot();
 
-        clickOn("#inputUsername");
-        write("test");
         clickOn("#inputPassword");
         write("test");
+        clickOn("#btnLogin");
+        clickOn("#inputUsername");
+        write("tes");
+        clickOn("#btnLogin");
+        clickOn("#inputUsername");
+        write("t");
         clickOn("#btnLogin");
 
         clickOn("#bookRoom");
 
+        clickOn("#search");
         clickOn("#fromPicker");
-        write("10/17/2023");
+        write("10/19/2023");
         theRobot.push(KeyCode.ENTER);
         clickOn("#toPicker");
+        write("10/17/2023");
+        theRobot.push(KeyCode.ENTER);
+        clickOn("#search");
+
+        clickOn("#back");
+
+        clickOn("#bookRoom");
+
+        clickOn("#toPicker");
         write("10/19/2023");
+        theRobot.push(KeyCode.ENTER);
+        clickOn("#search");
+        clickOn("#fromPicker");
+        write("10/17/2023");
         theRobot.push(KeyCode.ENTER);
         clickOn("#search");
 
@@ -81,6 +99,18 @@ public class BookingAppTest extends ApplicationTest {
         clickOn("#book");
         roomList = lookup("#roomList").query();
         assertEquals(current - 2, roomList.getItems().size());
+
+        clickOn("#back");
+        clickOn("#bookRoom");
+
+        clickOn("#fromPicker");
+        write("10/17/2023");
+        theRobot.push(KeyCode.ENTER);
+        clickOn("#search");
+        clickOn("#toPicker");
+        write("10/19/2023");
+        theRobot.push(KeyCode.ENTER);
+        clickOn("#search");
 
         clickOn("#back");
 
@@ -102,34 +132,22 @@ public class BookingAppTest extends ApplicationTest {
         clickOn("#btnSignOut");
 
         clickOn("#btnLogin");
-        List<User> users = restAccess.getAllUsers();
-        for (User user : users) {
-            restAccess.deleteUserByUsername(user.getUsername());
-        }
-        clickOn("#btnLogin");
-        for (User user : users) {
-            restAccess.createUser(user.getUsername(), user.getFirstName(), user.getLastName(), user.getPassword(),
-                    user.getGender());
-            for (Booking booking : user.getBookings()) {
-                restAccess.bookRoomByNumber(booking.getRoomNumber(), booking.getFrom(), booking.getTo(),
-                        booking.getBookedBy(), booking.getTotalCostOfBooking(), "user");
-            }
-        }
 
         clickOn("#inputUsername");
         write("test2");
-        clickOn("#inputPassword");
-        write("test2");
         clickOn("#btnLogin");
-
-        clickOn("#bookRoom");
-
-        clickOn("#back");
+        clickOn("#inputPassword");
+        write("test");
+        clickOn("#btnLogin");
+        clickOn("#inputPassword");
+        write("2");
+        clickOn("#btnLogin");
 
         clickOn("#showBooking");
 
         bookingList = lookup("#bookingList").query();
         assertEquals(0, bookingList.getItems().size());
+        clickOn("#btnCancelBooking");
 
         clickOn("#btnBack");
 
@@ -141,8 +159,9 @@ public class BookingAppTest extends ApplicationTest {
         clickOn("#btnBack");
         clickOn("#btnSignup");
 
+        clickOn("#btnRegister");
         clickOn("#inputUsername");
-        write("test3");
+        write("test2");
         clickOn("#inputPassword");
         write("test3");
         clickOn("#inputFirstName");
@@ -152,6 +171,25 @@ public class BookingAppTest extends ApplicationTest {
         clickOn("#genderCombobox");
         theRobot.push(KeyCode.DOWN);
         theRobot.push(KeyCode.ENTER);
+        clickOn("#btnRegister");
+        clickOn("#inputUsername");
+        theRobot.push(KeyCode.BACK_SPACE);
+        theRobot.push(KeyCode.BACK_SPACE);
+        theRobot.push(KeyCode.BACK_SPACE);
+        theRobot.push(KeyCode.BACK_SPACE);
+        theRobot.push(KeyCode.BACK_SPACE);
+        clickOn("#btnRegister");
+        clickOn("#inputUsername");
+        write("test3");
+        clickOn("#inputPassword");
+        theRobot.push(KeyCode.BACK_SPACE);
+        theRobot.push(KeyCode.BACK_SPACE);
+        theRobot.push(KeyCode.BACK_SPACE);
+        theRobot.push(KeyCode.BACK_SPACE);
+        theRobot.push(KeyCode.BACK_SPACE);
+        clickOn("#btnRegister");
+        clickOn("#inputPassword");
+        write("test3");
         clickOn("#btnRegister");
 
         assertFalse(null == restAccess.getUserByUsername("test3"));
@@ -177,5 +215,28 @@ public class BookingAppTest extends ApplicationTest {
                     booking.getBookedBy(), booking.getTotalCostOfBooking(), "room");
 
         }
+
+        List<User> users = restAccess.getAllUsers();
+        for (User user : users) {
+            restAccess.deleteUserByUsername(user.getUsername());
+        }
+
+        clickOn("#btnSignOut");
+
+        clickOn("#inputUsername");
+        write("test");
+        clickOn("#inputPassword");
+        write("test");
+        clickOn("#btnLogin");
+
+        for (User user : users) {
+            restAccess.createUser(user.getUsername(), user.getFirstName(), user.getLastName(), user.getPassword(),
+                    user.getGender());
+            for (Booking booking : user.getBookings()) {
+                restAccess.bookRoomByNumber(booking.getRoomNumber(), booking.getFrom(), booking.getTo(),
+                        booking.getBookedBy(), booking.getTotalCostOfBooking(), "user");
+            }
+        }
+
     }
 }
