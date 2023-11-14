@@ -175,12 +175,14 @@ public final class RoomService {
      */
     public void deleteRoomByNumber(final int roomNumber) {
         final List<Room> rooms = getAllRooms();
+        Room roomToUpdate = new Room();
         for (final Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
-                rooms.remove(room);
-                updateRooms(rooms);
+                roomToUpdate = room;
             }
         }
+        rooms.remove(roomToUpdate);
+        updateRooms(rooms);
     }
 
     public void updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {

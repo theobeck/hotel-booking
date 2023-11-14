@@ -1,4 +1,25 @@
 [ {
+  "username" : "lara",
+  "firstName" : "Lara",
+  "lastName" : "Jacobsen",
+  "password" : "12",
+  "gender" : "Female",
+  "bookings" : [ ]
+}, {
+  "username" : "ola",
+  "firstName" : "Ola",
+  "lastName" : "Vassbotn",
+  "password" : "123",
+  "gender" : "Male",
+  "bookings" : [ ]
+}, {
+  "username" : "test",
+  "firstName" : "test",
+  "lastName" : "test",
+  "password" : "test",
+  "gender" : "Non-binary",
+  "bookings" : [ ]
+}, {
   "username" : "test2",
   "firstName" : "test2",
   "lastName" : "test2",
@@ -11,26 +32,5 @@
   "lastName" : "Beck",
   "password" : "123",
   "gender" : "Male",
-  "bookings" : [ ]
-}, {
-  "username" : "ola",
-  "firstName" : "Ola",
-  "lastName" : "Vassbotn",
-  "password" : "123",
-  "gender" : "Male",
-  "bookings" : [ ]
-}, {
-  "username" : "lara",
-  "firstName" : "Lara",
-  "lastName" : "Jacobsen",
-  "password" : "12",
-  "gender" : "Female",
-  "bookings" : [ ]
-}, {
-  "username" : "test",
-  "firstName" : "test",
-  "lastName" : "test",
-  "password" : "test",
-  "gender" : "Non-binary",
   "bookings" : [ ]
 } ]

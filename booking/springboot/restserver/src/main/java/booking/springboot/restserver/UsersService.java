@@ -175,13 +175,14 @@ public final class UsersService {
      */
     public void deleteUserByUsername(final String username) {
         final List<User> users = getAllUsers();
+        User userToRemove = new User();
         for (final User user : users) {
             if (user.getUsername().equals(username)) {
-                users.remove(user);
-                updateUsers(users);
-                return;
+                userToRemove = user;
             }
         }
+        users.remove(userToRemove);
+        updateUsers(users);
     }
 
     private void updateUsers(final List<User> users) {
@@ -196,13 +197,13 @@ public final class UsersService {
 
     private void updateOneUser(final User user) {
         final List<User> users = getAllUsers();
-        User userToRemove = new User();
+        User userToUpdate = new User();
         for (final User u : users) {
             if (u.getUsername().equals(user.getUsername())) {
-                userToRemove = u;
+                userToUpdate = u;
             }
         }
-        users.remove(userToRemove);
+        users.remove(userToUpdate);
         users.add(user);
         updateUsers(users);
     }
