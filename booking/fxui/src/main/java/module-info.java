@@ -2,9 +2,8 @@ module booking.ui {
     exports booking.ui.internal;
 
     requires transitive com.fasterxml.jackson.databind;
+    requires transitive java.net.http;
     requires transitive booking.core;
-
-    requires java.net.http;
 
     requires javafx.base;
     requires javafx.controls;

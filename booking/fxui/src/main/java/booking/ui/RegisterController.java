@@ -68,8 +68,10 @@ public class RegisterController {
 
     /**
      * Default constructor for RegisterUserController.
+     *
+     * @throws Exception
      */
-    public RegisterController() {
+    public RegisterController() throws Exception {
         restAccess = new RestAccess();
         users = restAccess.getAllUsers();
     }
@@ -82,7 +84,7 @@ public class RegisterController {
     }
 
     @FXML
-    private void register(final ActionEvent event) throws IOException {
+    private void register(final ActionEvent event) throws Exception {
         if (inputUsername.getText().equals("") || inputPassword.getText().equals("")) {
             return;
         }

@@ -76,8 +76,10 @@ public final class AvailableRoomsController extends AbstractBookingController {
 
     /**
      * Default constructor for AvailableRoomsController.
+     *
+     * @throws Exception
      */
-    public AvailableRoomsController() {
+    public AvailableRoomsController() throws Exception {
         restAccess = new RestAccess();
         rooms = restAccess.getAllRooms();
         availableRooms = FXCollections.observableArrayList();
@@ -93,12 +95,12 @@ public final class AvailableRoomsController extends AbstractBookingController {
     }
 
     @FXML
-    private void initialize() {
+    private void initialize() throws Exception {
         addObjects();
         roomList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.SINGLE);
     }
 
-    private void addObjects() {
+    private void addObjects() throws Exception {
         if (rooms.size() < AMT_OF_ROOMS) {
             List<Integer> occupiedRoomNumbers = new ArrayList<>();
             for (int i = 0; i < rooms.size(); i++) {
@@ -122,7 +124,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     }
 
     @FXML
-    private void book(final ActionEvent event) throws IOException {
+    private void book(final ActionEvent event) throws Exception {
         Room thisRoom = roomList.getSelectionModel().getSelectedItem();
         restAccess.bookRoomByNumber(thisRoom.getRoomNumber(), from, to, user.getUsername(),
                 thisRoom.totalCostOfBooking(from, to), "both");
