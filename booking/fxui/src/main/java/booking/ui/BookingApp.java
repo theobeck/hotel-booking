@@ -14,11 +14,6 @@ import java.io.IOException;
 public final class BookingApp extends Application {
 
     /**
-     * Scene element for app.
-     */
-    private static Scene scene;
-
-    /**
      * Default constructor for BookingApp.
      */
     public BookingApp() {
@@ -29,10 +24,6 @@ public final class BookingApp extends Application {
         Parent parent = loadFXML("login");
         stage.setScene(new Scene(parent));
         stage.show();
-    }
-
-    static void setRoot(final String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
     }
 
     private static Parent loadFXML(final String fxml) throws IOException {
