@@ -106,14 +106,6 @@ public class RoomTest {
 		assertTrue(r1.getEqualBooking(booking) == null);
 		assertThrows(IllegalStateException.class, () -> r1.cancelBooking(booking));
 
-		r1.bookRoom(LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 5), user);
-
-		assertFalse(r1.isAvailableBetween(LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 5)));
-		assertFalse(r1.isAvailableBetween(LocalDate.of(2023, 11, 3), LocalDate.of(2023, 11, 7)));
-
-		assertTrue(r1.isAvailableBetween(LocalDate.of(2023, 11, 6), LocalDate.of(2023, 11, 10)));
-		assertTrue(r1.isAvailableBetween(LocalDate.of(2023, 11, 10), LocalDate.of(2023, 11, 15)));
-
 		r1.setBookings(null);
 		assertTrue(r1.getBookings() == null);
 
@@ -124,6 +116,22 @@ public class RoomTest {
 		bList.add(new Booking());
 		r1.setBookings(bList);
 		assertFalse(r1.getBookings().isEmpty());
+
+	}
+
+	@Test
+	public void testIsAvailableBetween() {
+		r1.bookRoom(LocalDate.of(2023, 11, 2), LocalDate.of(2023, 11, 5), user);
+
+		assertTrue(r1.isAvailableBetween(LocalDate.of(2023, 11, 10), LocalDate.of(2023, 11, 15)));
+
+		assertFalse(r1.isAvailableBetween(LocalDate.of(2023, 11, 3), LocalDate.of(2023, 11, 6)));
+
+		assertFalse(r1.isAvailableBetween(LocalDate.of(2023, 11, 2), LocalDate.of(2023, 11, 5)));
+
+		assertFalse(r1.isAvailableBetween(LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 4)));
+
+		assertTrue(r1.isAvailableBetween(LocalDate.of(2023, 10, 31), LocalDate.of(2023, 11, 1)));
 
 	}
 
