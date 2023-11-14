@@ -84,16 +84,8 @@ public final class AvailableRoomsController extends AbstractBookingController {
         random = new Random();
     }
 
-    public LocalDate getFrom() {
-        return from;
-    }
-
     public void setFrom(final LocalDate from) {
         this.from = from;
-    }
-
-    public LocalDate getTo() {
-        return to;
     }
 
     public void setTo(final LocalDate to) {
