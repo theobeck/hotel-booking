@@ -23,12 +23,12 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#94a8d3" height="597.0" layoutX="336.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="625.0" />
       <TextField fx:id="inputUsername" layoutX="650.0" layoutY="220.0" prefHeight="27.0" prefWidth="234.0" promptText="Username">
          <font>
-            <Font name="Goudy Old Style" size="23.0" />
+            <Font name="SansSerif Regular" size="23.0" />
          </font>
       </TextField>
       <Button fx:id="btnRegister" layoutX="532.0" layoutY="459.0" mnemonicParsing="false" onAction="#register" prefHeight="48.0" prefWidth="234.0" style="-fx-background-color: #ffa797;" text="Register">
          <font>
-            <Font name="Goudy Old Style" size="23.0" />
+            <Font name="SansSerif Regular" size="22.0" />
          </font>
       </Button>
       <Text fx:id="errorMsg" fill="#ffa797" layoutX="522.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="253.5367431640625">
@@ -38,27 +38,27 @@
       </Text>
       <TextField fx:id="inputFirstName" layoutX="385.0" layoutY="277.0" prefHeight="29.0" prefWidth="234.0" promptText="First Name">
          <font>
-            <Font name="Goudy Old Style" size="23.0" />
+            <Font name="SansSerif Regular" size="23.0" />
          </font>
       </TextField>
       <TextField fx:id="inputLastName" layoutX="385.0" layoutY="337.0" prefHeight="27.0" prefWidth="234.0" promptText="Last Name">
          <font>
-            <Font name="Goudy Old Style" size="23.0" />
+            <Font name="SansSerif Regular" size="23.0" />
          </font>
       </TextField>
       <PasswordField fx:id="inputPassword" layoutX="649.0" layoutY="276.0" prefHeight="35.0" prefWidth="234.0" promptText="Password">
          <font>
-            <Font name="Goudy Old Style" size="23.0" />
+            <Font name="SansSerif Regular" size="23.0" />
          </font></PasswordField>
       <Button fx:id="btnBack" layoutX="361.0" layoutY="533.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #ffa797;" text="Back">
          <font>
-            <Font name="Goudy Old Style" size="16.0" />
+            <Font name="SansSerif Regular" size="17.0" />
          </font></Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#94a8d3" height="27.0" layoutX="253.0" layoutY="390.0" stroke="TRANSPARENT" strokeType="INSIDE" width="112.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#94a8d3" height="35.0" layoutX="307.0" layoutY="409.0" stroke="TRANSPARENT" strokeType="INSIDE" width="58.0" />
       <Text fill="#2a264d" layoutX="511.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" textAlignment="CENTER" wrappingWidth="234.0">
          <font>
-            <Font name="Goudy Old Style Bold" size="62.0" />
+            <Font name="SansSerif Regular" size="62.0" />
          </font>
       </Text>
       <ComboBox fx:id="genderCombobox" layoutX="385.0" layoutY="220.0" prefHeight="44.0" prefWidth="234.0" promptText="Gender" style="-fx-background-color: f3f3f3;" />

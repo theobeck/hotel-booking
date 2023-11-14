@@ -12,9 +12,10 @@
    <children>
       <Rectangle arcHeight="100.0" arcWidth="100.0" fill="#d8d8f8" height="391.0" layoutX="68.0" layoutY="228.0" stroke="TRANSPARENT" strokeType="INSIDE" width="841.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="126.0" layoutX="16.0" layoutY="76.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="588.0" />
-      <Text fill="#3e3e91" layoutX="123.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available rooms" wrappingWidth="374.5367431640625">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="49.0" layoutX="16.0" layoutY="76.0" stroke="TRANSPARENT" strokeType="INSIDE" width="94.0" />
+      <Text fill="#3e3e91" layoutX="79.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available rooms" wrappingWidth="483.3367919921875">
          <font>
-            <Font name="Goudy Old Style" size="57.0" />
+            <Font name="SansSerif Regular" size="57.0" />
          </font>
       </Text>
       <ListView fx:id="roomList" layoutX="134.0" layoutY="265.0" prefHeight="252.0" prefWidth="525.0" style="-fx-background-color: d8d8f8;">
@@ -23,14 +24,13 @@
          </opaqueInsets></ListView>
       <Button fx:id="back" layoutX="16.0" layoutY="22.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: ffa797;" text="Back">
          <font>
-            <Font name="Goudy Old Style" size="20.0" />
+            <Font name="SansSerif Regular" size="18.0" />
          </font></Button>
       <Button fx:id="book" layoutX="710.0" layoutY="498.0" mnemonicParsing="false" onAction="#book" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: ffa797;" text="Book">
          <font>
-            <Font name="Goudy Old Style" size="20.0" />
+            <Font name="SansSerif Regular" size="20.0" />
          </font></Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="49.0" layoutX="521.0" layoutY="153.0" stroke="TRANSPARENT" strokeType="INSIDE" width="83.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a29ae4" height="49.0" layoutX="16.0" layoutY="76.0" stroke="TRANSPARENT" strokeType="INSIDE" width="94.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d8f8" height="49.0" layoutX="815.0" layoutY="228.0" stroke="TRANSPARENT" strokeType="INSIDE" width="94.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8ddf8" height="180.0" layoutX="645.0" layoutY="22.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 100; -fx-arc-width: 100;" width="243.0" />
       <Rectangle fill="#e8ddf8" height="49.0" layoutX="645.0" layoutY="153.0" stroke="TRANSPARENT" strokeType="INSIDE" width="104.0" />
