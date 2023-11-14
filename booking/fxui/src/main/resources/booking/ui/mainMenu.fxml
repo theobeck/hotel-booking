@@ -41,7 +41,7 @@
          <font>
             <Font name="SansSerif Regular" size="26.0" />
          </font></Button>
-      <Button fx:id="btnSignOut" layoutX="759.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #94a8d3;" text="Sign out">
+      <Button fx:id="btnSignOut" layoutX="25.0" layoutY="19.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #94a8d3;" text="Sign out">
          <font>
             <Font name="SansSerif Regular" size="22.0" />
          </font></Button>
