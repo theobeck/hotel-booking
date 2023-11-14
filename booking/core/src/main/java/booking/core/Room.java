@@ -8,14 +8,14 @@ import java.util.List;
 /**
  * A room that can be booked.
  *
- * Has three defining characteristics:
+ * Has four defining characteristics:
  * <ul>
  * <li>Room number</li>
  * <li>Room capacity</li>
  * <li>Price per night</li>
+ * <li>List of bookings</li>
  * </ul>
  *
- * Also has a list of bookings.
  */
 public final class Room {
     /**
@@ -42,6 +42,7 @@ public final class Room {
      * Default constructor for Room.
      */
     public Room() {
+        bookings = new ArrayList<>();
     }
 
     /**
@@ -150,6 +151,13 @@ public final class Room {
      * @return Whether or not room is available between given times
      */
     public boolean isAvailableBetween(final LocalDate targetFrom, final LocalDate targetTo) {
+        if (bookings.isEmpty()) {
+            return true;
+        }
+        if (targetFrom.isAfter(targetTo)) {
+            throw new IllegalArgumentException("Cannot check availability in negative range.");
+        }
+
         for (Booking booking : bookings) {
             if (booking.getTo().isAfter(targetFrom) && booking.getFrom().isBefore(targetTo)) {
                 return false;
@@ -185,6 +193,9 @@ public final class Room {
                 userBookings.add(booking);
             }
         }
+        if (userBookings.isEmpty()) {
+            userBookings = null;
+        }
         return userBookings;
     }
 
@@ -196,12 +207,13 @@ public final class Room {
      * @return Booking equal to given booking
      */
     public Booking getEqualBooking(final Booking booking) {
+        Booking tempBooking = null;
         for (Booking b : bookings) {
             if (b.isEqualTo(booking)) {
-                return b;
+                tempBooking = b;
             }
         }
-        return null;
+        return tempBooking;
     }
 
     /**
@@ -212,9 +224,14 @@ public final class Room {
      * @return Whether or not rooms are equal
      */
     public boolean isEqualTo(final Room room) {
+        if (room == null) {
+            return false;
+        }
+
         return roomNumber == room.getRoomNumber()
                 && roomCapacity == room.getRoomCapacity()
-                && pricePerNight == room.getPricePerNight();
+                && pricePerNight == room.getPricePerNight()
+                && bookings.equals(room.getBookings());
     }
 
     /**
