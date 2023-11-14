@@ -6,13 +6,13 @@ import java.time.temporal.ChronoUnit;
 /**
  * A specific booking of a {@link Room}.
  *
- * Has three defining characteristics:
+ * Has five defining characteristics:
  * <ul>
  * <li>Who the booking is for</li>
+ * <li>The room number of the room that is booked</li>
  * <li>When the booking starts</li>
  * <li>When the booking ends</li>
- * <li>The room that is booked</li>
- * <li>The room that is booked</li>
+ * <li>The total cost of the booking</li>
  * </ul>
  */
 public final class Booking {
