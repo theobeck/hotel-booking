@@ -47,7 +47,7 @@ public class BookingAppTest extends ApplicationTest {
     }
 
     @Test
-    public void testBookRoomAndShowBooking() {
+    public void testBookRoomAndShowBooking() throws Exception {
 
         RestAccess restAccess = new RestAccess();
         Room roomTen = restAccess.getRoomByNumber(10);
