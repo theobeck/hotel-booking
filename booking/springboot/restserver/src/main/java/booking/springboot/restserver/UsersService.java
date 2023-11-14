@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -185,6 +187,7 @@ public final class UsersService {
     private void updateUsers(final List<User> users) {
         try {
             final ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
+            Collections.sort(users, Comparator.comparing(User::getUsername));
             objectWriter.writeValue(new File(USERS_PATH), users);
         } catch (final IOException e) {
             e.printStackTrace();
