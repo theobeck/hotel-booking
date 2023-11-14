@@ -134,7 +134,11 @@ public final class Room {
      * @throws IllegalStateException If room isn't booked by user.
      */
     public void cancelBooking(final Booking booking) {
-        bookings.remove(booking);
+        Booking bookingToCancel = getEqualBooking(booking);
+        if (bookingToCancel == null) {
+            throw new IllegalStateException("Cannot cancel booking that doesn't exist.");
+        }
+        bookings.remove(bookingToCancel);
     }
 
     /**
@@ -176,12 +180,28 @@ public final class Room {
      */
     public List<Booking> getBookingsByUsername(final String username) {
         List<Booking> userBookings = new ArrayList<>();
-        for (Booking booking : userBookings) {
+        for (Booking booking : bookings) {
             if (booking.getBookedBy().equals(username)) {
                 userBookings.add(booking);
             }
         }
         return userBookings;
+    }
+
+    /**
+     * Get booking equal to given booking.
+     *
+     * @param booking Booking to compare to
+     *
+     * @return Booking equal to given booking
+     */
+    public Booking getEqualBooking(final Booking booking) {
+        for (Booking b : bookings) {
+            if (b.isEqualTo(booking)) {
+                return b;
+            }
+        }
+        return null;
     }
 
     /**
