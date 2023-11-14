@@ -135,7 +135,7 @@
                 <version>1.4.0</version>
                 <configuration>
                     <name>BookingFX</name>
-                    <appVersion>1.0.0</appVersion>
+                    <appVersion>3.0.0</appVersion>
                     <vendor>it1901</vendor>
                     <destination>target/dist</destination>
                     <module>booking.ui/booking.ui.BookingApp</module>
