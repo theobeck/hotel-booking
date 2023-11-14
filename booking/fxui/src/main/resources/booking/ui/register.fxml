@@ -26,7 +26,7 @@
             <Font name="SansSerif Regular" size="23.0" />
          </font>
       </TextField>
-      <Button fx:id="btnRegister" layoutX="532.0" layoutY="459.0" mnemonicParsing="false" onAction="#register" prefHeight="48.0" prefWidth="234.0" style="-fx-background-color: #ffa797;" text="Register">
+      <Button fx:id="btnRegister" layoutX="522.0" layoutY="461.0" mnemonicParsing="false" onAction="#register" prefHeight="48.0" prefWidth="234.0" style="-fx-background-color: #ffa797;" text="Register">
          <font>
             <Font name="SansSerif Regular" size="22.0" />
          </font>
@@ -36,21 +36,21 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="inputFirstName" layoutX="385.0" layoutY="277.0" prefHeight="29.0" prefWidth="234.0" promptText="First Name">
+      <TextField fx:id="inputFirstName" layoutX="385.0" layoutY="220.0" prefHeight="29.0" prefWidth="234.0" promptText="First Name">
          <font>
             <Font name="SansSerif Regular" size="23.0" />
          </font>
       </TextField>
-      <TextField fx:id="inputLastName" layoutX="385.0" layoutY="337.0" prefHeight="27.0" prefWidth="234.0" promptText="Last Name">
+      <TextField fx:id="inputLastName" layoutX="385.0" layoutY="293.0" prefHeight="27.0" prefWidth="234.0" promptText="Last Name">
          <font>
             <Font name="SansSerif Regular" size="23.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="inputPassword" layoutX="649.0" layoutY="276.0" prefHeight="35.0" prefWidth="234.0" promptText="Password">
+      <PasswordField fx:id="inputPassword" layoutX="650.0" layoutY="293.0" prefHeight="35.0" prefWidth="234.0" promptText="Password">
          <font>
             <Font name="SansSerif Regular" size="23.0" />
          </font></PasswordField>
-      <Button fx:id="btnBack" layoutX="361.0" layoutY="533.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #ffa797;" text="Back">
+      <Button fx:id="btnBack" layoutX="342.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #ffa797;" text="Back">
          <font>
             <Font name="SansSerif Regular" size="17.0" />
          </font></Button>
@@ -61,6 +61,6 @@
             <Font name="SansSerif Regular" size="62.0" />
          </font>
       </Text>
-      <ComboBox fx:id="genderCombobox" layoutX="385.0" layoutY="220.0" prefHeight="44.0" prefWidth="234.0" promptText="Gender" style="-fx-background-color: f3f3f3;" />
+      <ComboBox fx:id="genderCombobox" layoutX="522.0" layoutY="368.0" prefHeight="44.0" prefWidth="234.0" promptText="Gender" style="-fx-background-color: f3f3f3;" />
    </children>
 </Pane>
