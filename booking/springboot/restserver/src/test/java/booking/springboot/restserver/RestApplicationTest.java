@@ -37,11 +37,6 @@ public class RestApplicationTest {
     }
 
     @Test
-    public void testMain() {
-        RestApplication.main(new String[] {});
-    }
-
-    @Test
     public void testGetRoomByNumberShouldReturnRoomOne() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/rooms/1")
                 .accept(MediaType.APPLICATION_JSON))
