@@ -21,7 +21,7 @@ import java.util.List;
  * The controller for Room objects.
  */
 @RestController
-public final class RoomController {
+public class RoomController {
 
     /**
      * Inject the service that manages Room objects.

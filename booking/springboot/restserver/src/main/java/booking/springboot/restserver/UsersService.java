@@ -22,7 +22,7 @@ import booking.ui.internal.UserDeserializer;
 import booking.ui.internal.UserSerializer;
 
 @Service
-public final class UsersService {
+public class UsersService {
 
     /**
      * The object mapper object for the file manager object.

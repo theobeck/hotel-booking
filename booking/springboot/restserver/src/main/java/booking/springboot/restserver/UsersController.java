@@ -19,7 +19,7 @@ import java.util.List;
  * The controller for User objects.
  */
 @RestController
-public final class UsersController {
+public class UsersController {
 
     /**
      * Inject the service that manages User objects.

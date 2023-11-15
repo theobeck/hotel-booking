@@ -23,7 +23,7 @@ import booking.ui.internal.RoomDeserializer;
 import booking.ui.internal.RoomSerializer;
 
 @Service
-public final class RoomService {
+public class RoomService {
 
     /**
      * The object mapper object for the file manager object.
