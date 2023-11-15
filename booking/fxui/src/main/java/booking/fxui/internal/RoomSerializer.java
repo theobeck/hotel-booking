@@ -1,4 +1,4 @@
-package booking.ui.internal;
+package booking.fxui.internal;
 
 import java.io.IOException;
 

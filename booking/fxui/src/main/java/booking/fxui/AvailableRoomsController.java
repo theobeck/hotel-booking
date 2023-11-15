@@ -1,4 +1,4 @@
-package booking.ui;
+package booking.fxui;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import booking.core.Room;
-import booking.ui.internal.RestAccess;
+import booking.fxui.internal.RestAccess;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

@@ -1,4 +1,4 @@
-package booking.ui.internal;
+package booking.fxui.internal;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -14,6 +14,8 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import booking.fxui.internal.RestAccess;
 
 public class RestAccessTest {
 	HttpClient mockedHttpClient;

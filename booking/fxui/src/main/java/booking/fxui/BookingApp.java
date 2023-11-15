@@ -1,4 +1,4 @@
-package booking.ui;
+package booking.fxui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

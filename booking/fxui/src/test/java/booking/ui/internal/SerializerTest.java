@@ -1,4 +1,4 @@
-package booking.ui.internal;
+package booking.fxui.internal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -19,6 +19,8 @@ import java.util.List;
 import booking.core.Booking;
 import booking.core.Room;
 import booking.core.User;
+import booking.fxui.internal.RoomSerializer;
+import booking.fxui.internal.UserSerializer;
 
 public class SerializerTest {
     List<Booking> bookings;

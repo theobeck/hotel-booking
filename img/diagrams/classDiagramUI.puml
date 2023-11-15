@@ -1,5 +1,5 @@
 @startuml classDiagramUI
-package booking.ui {
+package booking.fxui {
     class AbstractBookingController
     class AvailableRoomsController {
         - rooms: List<Room>

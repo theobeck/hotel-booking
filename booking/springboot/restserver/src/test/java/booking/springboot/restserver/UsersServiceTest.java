@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import booking.core.Booking;
 import booking.core.User;
-import booking.ui.internal.BookingDeserializer;
+import booking.fxui.internal.BookingDeserializer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

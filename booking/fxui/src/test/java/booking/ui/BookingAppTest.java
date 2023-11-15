@@ -1,4 +1,4 @@
-package booking.ui;
+package booking.fxui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -15,7 +15,8 @@ import org.testfx.framework.junit5.ApplicationTest;
 import booking.core.Booking;
 import booking.core.Room;
 import booking.core.User;
-import booking.ui.internal.RestAccess;
+import booking.fxui.BookingApp;
+import booking.fxui.internal.RestAccess;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;

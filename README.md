@@ -44,7 +44,7 @@ Denne appen er organisert som følger:
     - `main/java/booking/core`
       - Her ligger hovedlogikken for appen ![Klassediagram av booking.core klasser](img/classDiagramCore.png).
     - `test/java/booking/core`
-      - Her ligger testene for hovedlogikken av appen ![Klassediagram av booking.ui klasser](img/classDiagramUI.png).
+      - Her ligger testene for hovedlogikken av appen ![Klassediagram av booking.fxui klasser](img/classDiagramUI.png).
   - `fxui/src`
     - `main/`
       - `java/booking/ui`
