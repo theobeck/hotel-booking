@@ -28,24 +28,24 @@
          </font>
       </Button>
 
-      <TextField fx:id="inputFirstName" layoutX="385.0" layoutY="220.0" prefHeight="29.0" prefWidth="234.0" promptText="First Name">
+      <TextField fx:id="inputFirstName" layoutX="385.0" layoutY="293.0" prefHeight="29.0" prefWidth="234.0" promptText="First Name">
          <font>
             <Font name="SansSerif Regular" size="23.0" />
          </font>
       </TextField>
-      <TextField fx:id="inputLastName" layoutX="385.0" layoutY="293.0" prefHeight="27.0" prefWidth="234.0" promptText="Last Name">
+      <TextField fx:id="inputLastName" layoutX="648.0" layoutY="293.0" prefHeight="27.0" prefWidth="234.0" promptText="Last Name">
          <font>
             <Font name="SansSerif Regular" size="23.0" />
          </font>
       </TextField>
       
-      <TextField fx:id="inputUsername" layoutX="650.0" layoutY="220.0" prefHeight="27.0" prefWidth="234.0" promptText="Username">
+      <TextField fx:id="inputUsername" layoutX="385.0" layoutY="220.0" prefHeight="27.0" prefWidth="234.0" promptText="Username">
          <font>
             <Font name="SansSerif Regular" size="23.0" />
          </font>
       </TextField>
 
-      <PasswordField fx:id="inputPassword" layoutX="650.0" layoutY="293.0" prefHeight="35.0" prefWidth="234.0" promptText="Password">
+      <PasswordField fx:id="inputPassword" layoutX="648.0" layoutY="220.0" prefHeight="35.0" prefWidth="234.0" promptText="Password">
          <font>
             <Font name="SansSerif Regular" size="23.0" />
          </font>
