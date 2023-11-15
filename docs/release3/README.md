@@ -8,37 +8,37 @@ Hotellbookingappen er utviklet for å gjøre det enkelt for brukere å søke ett
 
 ### Logg inn
 
-![Login Screen](../img/login.png)
+![Login Screen](../../img/login.png)
 
 På landingsiden enten velge å logge inn med en eksisterende bruker, eller registrere en ny bruker.
 
 ### Registrere ny bruker
 
-![Register Screen](../img/register.png)
+![Register Screen](../../img/register.png)
 
 Her kan brukere registrere en ny bruker ved å fylle inn ønsket brukernavn og passord, fornavnet sitt, etternavnet sitt og kjønnet sitt.
 
 ### Hovedsiden
 
-![Home Screen](../img/mainMenu.png)
+![Home Screen](../../img/mainMenu.png)
 
 På hovedsiden har brukere to valg. De kan enten søke etter ledige rom, eller se en liste over bookingene sine.
 
 ### Søk for ledige rom
 
-![Search Screen](../img/searchForRooms.png)
+![Search Screen](../../img/searchForRooms.png)
 
 På søkesiden kan brukere velge innsjekkings- og utsjekkingsdatoer. Når brukere trykker på "Search" vil de få opp en liste over ledige rom som passer kriteriene deres.
 
 ### Booke et rom
 
-![Book Room Screen](../img/availableRooms.png)
+![Book Room Screen](../../img/availableRooms.png)
 
 Her kan brukeren se en liste over ledige rom som passer kriteriene deres. Brukere kan booke et rom ved å trykke på "Book" knappen.
 
 ### Brukeren sine bookings
 
-![User Bookings Screen](../img/userBookings.png)
+![User Bookings Screen](../../img/userBookings.png)
 
 Her kan brukere se en liste over bookingene sine. De kan også kansellere en bookin om de angrer ved å trykke på "Cancel booking" knappen.
 
