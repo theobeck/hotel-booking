@@ -66,6 +66,37 @@ Denne appen er organisert som følger:
     - `test/java/booking/springboot/restserver/`
       - Her ligger testene for REST API-et og serveren vår.
 
+## Bruk av REST API-et
+
+REST API-et vårt er tilgjengelig på `http://localhost:8080/`.
+
+Her er en liste over alle `/rooms/` endepunktene:
+
+- `POST /rooms/{roomNumber}/{roomCapacity}/{pricePerNight}` - Lager et nytt rom med gitt romnummer, kapasitet, og pris per natt.
+
+- `GET /rooms` - Returnerer alle rom.
+- `GET /rooms/{roomNumber}` - Returnerer et rom spesifikt rom.
+
+- `PUT /rooms/{roomNumber}/update/{roomCapacity}/{pricePerNight}` - Oppdaterer et rom med gitt romnummer, kapasitet, og pris per natt.
+- `PUT /rooms/{roomNumber}/book/{from}/{to}/{username}` - Booker et rom med gitt romnummer, fra dato, til dato, og brukernavn.
+- `PUT /rooms/{roomNumber}/cancel/{username}/{from}{to}/{totalCostOfBooking}` - Avbooker et rom med gitt romnummer, brukernavn, fra dato, til dato, og total kostnad av bookingen.
+
+- `DELETE /rooms/{roomNumber}` - Sletter et rom med gitt romnummer.
+
+Her er en liste over alle `/users/` endepunktene:
+
+- `POST /users/{username}/{firstName}/{lastName}/{password}/{gender}` - Lager en ny bruker med gitt brukernavn og passord.
+
+- `GET /users` - Returnerer alle brukere.
+- `GET /users/{username}` - Returnerer en spesifikk bruker.
+- `GET /users/{username}/bookings` - Returnerer alle bookinger til en spesifikk bruker.
+
+- `PUT /users/{username}/{firstName}/{lastName}/{password}/{gender}` - Oppdaterer en bruker med gitt brukernavn, fornavn, etternavn, passord, og kjønn.
+- `PUT /users/{username}/book/{roomNumber}/{from}/{to}/{totalCostOfBooking}` - Legger til en booking til en bruker med gitt brukernavn, romnummer, fra dato, til dato, og total kostnad av bookingen.
+- `PUT /users/{username}/cancel/{roomNumber}/{from}/{to}/{totalCostOfBooking}` - Fjerner en booking fra en bruker med gitt brukernavn, romnummer, fra dato, til dato, og total kostnad av bookingen.
+
+- `DELETE /users/{username}` - Sletter en bruker med gitt brukernavn.
+
 ## Nødvendigheter for kjøring av prosjektet
 
 Maven versjon - 3.9.4
