@@ -44,13 +44,15 @@ public final class UserBookingsController extends AbstractBookingController {
 
     /**
      * Initialize method for controller.
+     *
+     * @throws Exception
      */
     @FXML
-    public void initialize() {
+    public void initialize() throws Exception {
         show();
     }
 
-    private void show() {
+    private void show() throws Exception {
         for (Booking booking : restAccess.getBookingsByUsername(user.getUsername())) {
             yourBookings.add(booking);
         }
@@ -58,7 +60,7 @@ public final class UserBookingsController extends AbstractBookingController {
     }
 
     @FXML
-    private void cancelBooking(final ActionEvent event) throws IOException {
+    private void cancelBooking(final ActionEvent event) throws Exception {
         Booking booking = bookingList.getSelectionModel().getSelectedItem();
         if (booking != null) {
             restAccess.cancelBooking(booking.getRoomNumber(), booking.getBookedBy(), booking.getFrom(),

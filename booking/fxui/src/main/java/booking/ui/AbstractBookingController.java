@@ -12,10 +12,6 @@ public abstract class AbstractBookingController {
      */
     protected User user;
 
-    final User getUser() {
-        return user;
-    }
-
     final void setUser(final User user) {
         this.user = user;
     }

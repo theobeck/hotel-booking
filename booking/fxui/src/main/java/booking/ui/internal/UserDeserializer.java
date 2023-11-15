@@ -20,7 +20,6 @@ public final class UserDeserializer extends JsonDeserializer<User> {
     public User deserialize(final JsonParser parser, final DeserializationContext ctxt) throws IOException {
         JsonNode jsonNode = parser.getCodec().readTree(parser);
         if (jsonNode instanceof ObjectNode objectNode) {
-            User user = new User();
 
             JsonNode usernameNode = objectNode.get("username");
             JsonNode firstNameNode = objectNode.get("firstName");
@@ -29,32 +28,36 @@ public final class UserDeserializer extends JsonDeserializer<User> {
             JsonNode genderNode = objectNode.get("gender");
             JsonNode bookingsNode = objectNode.get("bookings");
 
-            if (usernameNode != null && usernameNode.isTextual()
-                    && firstNameNode != null && firstNameNode.isTextual() && lastNameNode != null
-                    && lastNameNode.isTextual() && passwordNode != null && passwordNode.isTextual()
-                    && genderNode != null && genderNode.isTextual() && bookingsNode instanceof ArrayNode) {
-                user.setUsername(usernameNode.asText());
-                user.setFirstName(firstNameNode.asText());
-                user.setLastName(lastNameNode.asText());
-                user.setPassword(passwordNode.asText());
-                user.setGender(genderNode.asText());
-                ArrayNode bookingsArrayNode = (ArrayNode) bookingsNode;
-                List<Booking> bookings = new ArrayList<>();
-                BookingDeserializer bookingDeserializer = new BookingDeserializer();
-
-                for (JsonNode bookingNode : bookingsArrayNode) {
-                    Booking booking = bookingDeserializer.deserialize(bookingNode.traverse(parser.getCodec()),
-                            ctxt);
-                    if (booking != null) {
-                        bookings.add(booking);
-                    }
-                }
-
-                user.setBookings(bookings);
-                return user;
+            if (usernameNode.isNull() || !usernameNode.isTextual()
+                    || firstNameNode.isNull() || !firstNameNode.isTextual() || lastNameNode.isNull()
+                    || !lastNameNode.isTextual() || passwordNode.isNull() || !passwordNode.isTextual()
+                    || genderNode.isNull() || !genderNode.isTextual() || !(bookingsNode instanceof ArrayNode)) {
+                return null;
             }
 
+            User user = new User();
+
+            user.setUsername(usernameNode.asText());
+            user.setFirstName(firstNameNode.asText());
+            user.setLastName(lastNameNode.asText());
+            user.setPassword(passwordNode.asText());
+            user.setGender(genderNode.asText());
+            ArrayNode bookingsArrayNode = (ArrayNode) bookingsNode;
+            List<Booking> bookings = new ArrayList<>();
+            BookingDeserializer bookingDeserializer = new BookingDeserializer();
+
+            for (JsonNode bookingNode : bookingsArrayNode) {
+                Booking booking = bookingDeserializer.deserialize(bookingNode.traverse(parser.getCodec()),
+                        ctxt);
+                if (booking != null) {
+                    bookings.add(booking);
+                }
+            }
+
+            user.setBookings(bookings);
+            return user;
         }
+
         return null;
     }
 }

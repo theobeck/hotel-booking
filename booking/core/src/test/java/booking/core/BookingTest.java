@@ -1,8 +1,14 @@
 package booking.core;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.time.LocalDate;
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class BookingTest {
 
@@ -17,6 +23,8 @@ public class BookingTest {
 	Booking b4;
 	Booking b5;
 	Booking b6;
+	Booking b7;
+	Booking b8;
 
 	@BeforeEach
 	public void setUp() {
@@ -31,6 +39,8 @@ public class BookingTest {
 		b4 = new Booking(bookedBy, roomNumber, from, LocalDate.of(2023, 1, 4), totalCostOfBooking);
 		b5 = new Booking(bookedBy, roomNumber, from, LocalDate.of(2023, 1, 2), totalCostOfBooking);
 		b6 = new Booking(bookedBy, roomNumber, from, LocalDate.of(2023, 1, 2), totalCostOfBooking);
+		b7 = new Booking(bookedBy, roomNumber, null, LocalDate.of(2023, 1, 2), totalCostOfBooking);
+		b8 = new Booking(bookedBy, roomNumber, from, null, totalCostOfBooking);
 
 	}
 
@@ -75,7 +85,9 @@ public class BookingTest {
 
 	@Test
 	public void testToString() {
-		assertFalse(null == b1.toString());
+		assertNotNull(b1.toString());
+		assertEquals("Incomplete Booking Information", b7.toString());
+		assertEquals("Incomplete Booking Information", b8.toString());
 		assertTrue(b1.toString().equals(b1.toString()));
 		assertTrue(b3.toString().equals(b4.toString()));
 		assertTrue(b5.toString().equals(b6.toString()));

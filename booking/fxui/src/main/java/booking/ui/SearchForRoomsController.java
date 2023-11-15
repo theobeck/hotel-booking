@@ -54,7 +54,7 @@ public final class SearchForRoomsController extends AbstractBookingController {
     }
 
     @FXML
-    private void goToAvailableRooms(final ActionEvent event) throws IOException {
+    private void goToAvailableRooms(final ActionEvent event) throws Exception {
         AvailableRoomsController availableRoomsController = new AvailableRoomsController();
         if (fromPicker.getValue() == null || toPicker.getValue() == null) {
             return;

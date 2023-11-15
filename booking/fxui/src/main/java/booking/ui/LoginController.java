@@ -48,8 +48,10 @@ public class LoginController {
 
     /**
      * Default constructor for LoginController.
+     *
+     * @throws Exception
      */
-    public LoginController() {
+    public LoginController() throws Exception {
         restAccess = new RestAccess();
         users = restAccess.getAllUsers();
     }

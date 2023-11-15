@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -173,18 +175,20 @@ public final class UsersService {
      */
     public void deleteUserByUsername(final String username) {
         final List<User> users = getAllUsers();
+        User userToRemove = new User();
         for (final User user : users) {
             if (user.getUsername().equals(username)) {
-                users.remove(user);
-                updateUsers(users);
-                return;
+                userToRemove = user;
             }
         }
+        users.remove(userToRemove);
+        updateUsers(users);
     }
 
     private void updateUsers(final List<User> users) {
         try {
             final ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
+            Collections.sort(users, Comparator.comparing(User::getUsername));
             objectWriter.writeValue(new File(USERS_PATH), users);
         } catch (final IOException e) {
             e.printStackTrace();
@@ -193,13 +197,13 @@ public final class UsersService {
 
     private void updateOneUser(final User user) {
         final List<User> users = getAllUsers();
-        User userToRemove = new User();
+        User userToUpdate = new User();
         for (final User u : users) {
             if (u.getUsername().equals(user.getUsername())) {
-                userToRemove = u;
+                userToUpdate = u;
             }
         }
-        users.remove(userToRemove);
+        users.remove(userToUpdate);
         users.add(user);
         updateUsers(users);
     }
