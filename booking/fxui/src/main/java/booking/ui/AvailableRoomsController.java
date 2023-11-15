@@ -24,7 +24,7 @@ import javafx.stage.Stage;
 public final class AvailableRoomsController extends AbstractBookingController {
 
     /**
-     * The room access object.
+     * The current restAccess object.
      */
     private RestAccess restAccess;
 
@@ -60,7 +60,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     private static final int UPPER_BOUND_CAPACITY = 8;
 
     /**
-     * The upper bound for capacity of a newly generated room.
+     * The upper bound for amount of rooms that can exist at one time.
      */
     private static final int AMT_OF_ROOMS = 10;
 
@@ -77,7 +77,7 @@ public final class AvailableRoomsController extends AbstractBookingController {
     /**
      * Default constructor for AvailableRoomsController.
      *
-     * @throws Exception
+     * @throws Exception If there is an error.
      */
     public AvailableRoomsController() throws Exception {
         restAccess = new RestAccess();
