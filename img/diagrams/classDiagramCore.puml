@@ -1,0 +1,85 @@
+@startuml classDiagramCore
+
+class User {
+  - username: String
+  - firstName: String
+  - lastName: String
+  - password: String
+  - gender: String
+  - bookings: List<Booking>
+
+  + User()
+  + User(username: String, firstName: String, lastName: String, password: String, gender: String)
+  + getUsername(): String
+  + setUsername(username: String): void
+  + getFirstName(): String
+  + setFirstName(firstName: String): void
+  + getLastName(): String
+  + setLastName(lastName: String): void
+  + getPassword(): String
+  + setPassword(password: String): void
+  + getGender(): String
+  + setGender(gender: String): void
+  + getBookings(): List<Booking>
+  + setBookings(bookings: List<Booking>): void
+  + isEqualTo(user: User): boolean
+  + addBooking(booking: Booking): void
+  + removeBooking(booking: Booking): void
+}
+
+class Room {
+  - roomNumber: int
+  - roomCapacity: int
+  - pricePerNight: int
+  - bookings: List<Booking>
+
+  + Room()
+  + Room(roomNumber: int, roomCapacity: int, pricePerNight: int)
+  + Room(roomNumber: int, roomCapacity: int, pricePerNight: int, bookedFrom: LocalDate, bookedTo: LocalDate, bookedBy: User)
+  + getRoomNumber(): int
+  + setRoomNumber(roomNumber: int): void
+  + getRoomCapacity(): int
+  + setRoomCapacity(roomCapacity: int): void
+  + getBookings(): List<Booking>
+  + setBookings(bookings: List<Booking>): void
+  + getPricePerNight(): int
+  + setPricePerNight(pricePerNight: int): void
+  + bookRoom(bookedFrom: LocalDate, bookedTo: LocalDate, bookedBy: User): void
+  + cancelBooking(booking: Booking): void
+  + isAvailableBetween(targetFrom: LocalDate, targetTo: LocalDate): boolean
+  + totalCostOfBooking(from: LocalDate, to: LocalDate): int
+  + getBookingsByUsername(username: String): List<Booking>
+  + getEqualBooking(booking: Booking): Booking
+  + isEqualTo(room: Room): boolean
+  + toString(): String
+}
+
+class Booking {
+  - bookedBy: String
+  - roomNumber: int
+  - from: LocalDate
+  - to: LocalDate
+  - totalCostOfBooking: int
+
+  + Booking()
+  + Booking(bookedBy: String, roomNumber: int, from: LocalDate, to: LocalDate, totalCostOfBooking: int)
+  + getBookedBy(): String
+  + setBookedBy(bookedBy: String): void
+  + getRoomNumber(): int
+  + setRoomNumber(roomNumber: int): void
+  + getFrom(): LocalDate
+  + setFrom(from: LocalDate): void
+  + getTo(): LocalDate
+  + setTo(to: LocalDate): void
+  + getTotalCostOfBooking(): int
+  + setTotalCostOfBooking(totalCostOfBooking: int): void
+  + isEqualTo(booking: Booking): boolean
+  + toString(): String
+}
+
+
+User --> Booking : *bookings
+Room --> Booking: *bookings
+
+@enduml
+
