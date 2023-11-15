@@ -83,4 +83,21 @@ public class RestAccessTest {
 		assertThrows(IllegalArgumentException.class, () -> restAccess.bookRoomByNumber(0, LocalDate.of(2023, 11, 1),
 				LocalDate.of(2023, 11, 2), "null", 0, "none"));
 	}
+
+	@Test
+	void testBookRoomByNumber() throws Exception {
+		restAccess.bookRoomByNumber(0, LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 2), "null", 0, "both");
+		restAccess.bookRoomByNumber(0, LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 2), "null", 0, "room");
+		restAccess.bookRoomByNumber(0, LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 2), "null", 0, "user");
+	}
+
+	@Test
+	void testUpdateRoomByNumber() throws Exception {
+		restAccess.updateRoomByNumber(0, 0, 0);
+	}
+
+	@Test
+	void testUpdateUserByUsername() throws Exception {
+		restAccess.updateUserByUsername("null", "null", "null", "null", "null");
+	}
 }

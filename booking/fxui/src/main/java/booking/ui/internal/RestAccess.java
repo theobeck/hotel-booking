@@ -186,7 +186,21 @@ public final class RestAccess {
         if (!(which.equals("room") || which.equals("user") || which.equals("both"))) {
             throw new IllegalArgumentException("Invalid argument for which");
         }
-        if (which.equals("room") || which.equals("both")) {
+
+        boolean room = false;
+        boolean user = false;
+        if (which.equals("both")) {
+            room = true;
+            user = true;
+        }
+        if (which.equals("room")) {
+            room = true;
+        }
+        if (which.equals("user")) {
+            user = true;
+        }
+
+        if (room) {
             final String url = BASE_URL + ROOMS_PATH + roomNumber + "/book/" + from + "/" + to + "/" + username;
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
@@ -199,7 +213,7 @@ public final class RestAccess {
                 throw e;
             }
         }
-        if (which.equals("user") || which.equals("both")) {
+        if (user) {
             final String url2 = BASE_URL + USERS_PATH + username + "/book/" + roomNumber + "/" + from + "/" + to + "/"
                     + totalCostOfBooking;
             HttpRequest request2 = HttpRequest.newBuilder()
