@@ -64,6 +64,15 @@
         </dependencies>
     </dependencyManagement>
 
+    <profiles>
+        <profile>
+            <id>skipUITests</id>
+            <properties>
+                <skipUiTests>true</skipUiTests>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <pluginManagement>
             <plugins>
