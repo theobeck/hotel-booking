@@ -20,6 +20,12 @@ import java.util.List;
  */
 public final class RoomDeserializer extends JsonDeserializer<Room> {
 
+    /**
+     * Default constructor for RoomDeserializer.
+     */
+    public RoomDeserializer() {
+    }
+
     @Override
     public Room deserialize(final JsonParser parser, final DeserializationContext ctxt) throws IOException {
         JsonNode jsonNode = parser.getCodec().readTree(parser);
