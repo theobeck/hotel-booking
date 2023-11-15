@@ -1,124 +1,110 @@
 package booking.springboot.restserver;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@SpringBootTest(classes = RestApplication.class)
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import booking.core.Booking;
+import booking.core.Room;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import org.junit.jupiter.api.BeforeEach;
+
 @AutoConfigureMockMvc
+@ContextConfiguration(classes = { RestApplication.class, RoomController.class, RoomService.class })
+@WebMvcTest
 public class RestApplicationTest {
-    // @Autowired
-    // private MockMvc mvc;
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    private ObjectMapper objectMapper;
+
+    @BeforeEach
+    public void setup() throws Exception {
+        objectMapper = RoomService.createObjectMapper();
+    }
 
     @Test
-    public void getHello() throws Exception {
-        // mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
-        // .andExpect(status().isOk())
-        // .andExpect(content().string(equalTo("Greetings from Spring Boot!")));
+    public void testMain() {
+        RestApplication.main(new String[] {});
+    }
 
-        // package booking.json;
+    @Test
+    public void testGetRoomByNumberShouldReturnRoomOne() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/rooms/1")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+        try {
+            String content = result.getResponse().getContentAsString();
+            Room room = objectMapper.readValue(content, Room.class);
 
-        // import static org.junit.jupiter.api.Assertions.assertEquals;
-        // import static org.junit.jupiter.api.Assertions.assertTrue;
+            assertNotNull(result.getResponse().getContentType());
+            assertEquals(1, room.getRoomNumber());
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 
-        // import java.io.File;
-        // import java.io.IOException;
-        // import java.time.LocalDate;
-        // import java.util.ArrayList;
-        // import java.util.List;
+    @Test
+    public void testGetRoomByNumberShouldReturnNull() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/rooms/0")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+        try {
+            assertNull(result.getResponse().getContentType());
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 
-        // import org.junit.jupiter.api.BeforeEach;
-        // import org.junit.jupiter.api.Test;
+    @Test
+    public void testDeleteAndCreateRoomByNumber() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.delete("/rooms/1")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+        try {
+            String content = result.getResponse().getContentAsString();
+            Room room = objectMapper.readValue(content, Room.class);
 
-        // import booking.core.Room;
-        // import booking.core.User;
+            assertNotNull(result.getResponse().getContentType());
+            assertEquals(1, room.getRoomNumber());
 
-        // /**
-        // * A test class for the {@link ReadWrite} class.
-        // */
-        // public class ReadWriteTest {
-
-        // private final String roomFilePath = "readWrite-" + System.currentTimeMillis()
-        // + ".json";
-        // private final String userFilePath = "users-" + System.currentTimeMillis() +
-        // ".json";
-        // private ReadWrite readWrite;
-        // private List<Room> rooms;
-        // private List<User> users;
-
-        // @BeforeEach
-        // public void setUp() {
-        // readWrite = new ReadWrite();
-
-        // rooms = new ArrayList<>();
-        // rooms.add(new Room(1, 2, 200, LocalDate.of(2023, 1, 1), LocalDate.of(2023, 1,
-        // 7), "test1"));
-        // rooms.add(new Room(2, 4, 400, LocalDate.of(2023, 1, 10), LocalDate.of(2023,
-        // 1, 20), "test2"));
-        // rooms.add(new Room(3, 6, 600, LocalDate.of(2023, 2, 7), LocalDate.of(2023, 2,
-        // 10), "test3"));
-
-        // users = new ArrayList<>();
-        // users.add(new User("test1", "test1", "test1", "test1", "male"));
-        // users.add(new User("test2", "test2", "test2", "test2", "male"));
-        // users.add(new User("test3", "test3", "test3", "test3", "male"));
-
-        // }
-
-        // /**
-        // * @throws IOException
-        // */
-        // @Test
-        // public void testWriteAndReadRoomFromFile() throws IOException {
-
-        // // Write the rooms to a test file
-        // readWrite.writeRoomsToFile(rooms, roomFilePath);
-
-        // // Read the rooms back from the test file
-        // List<Room> restoredRooms = readWrite.readRoomsFromFile(roomFilePath);
-
-        // // Check if the rooms match what was written
-        // assertEquals(rooms.size(), restoredRooms.size());
-        // for (int i = 0; i < rooms.size(); i++) {
-        // Room originalRoom = rooms.get(i);
-        // Room restoredRoom = restoredRooms.get(i);
-        // assertTrue(originalRoom.equals(restoredRoom));
-        // for (int j = 0; j < originalRoom.getBookings().size(); j++) {
-        // assertTrue(originalRoom.getBookings().get(j).equals(restoredRoom.getBookings().get(j)));
-
-        // }
-        // }
-
-        // // Clean up the test file
-        // File testFile = new File(roomFilePath);
-        // assertTrue(testFile.delete());
-        // }
-
-        // /**
-        // * @throws IOException
-        // */
-        // @Test
-        // public void testWriteAndReadUserFromFile() throws IOException {
-
-        // // Write the users to a test file
-        // readWrite.writeUsersToFile(users, userFilePath);
-
-        // // Read the users back from the test file
-        // List<User> restoredUsers = readWrite.readUsersFromFile(userFilePath);
-
-        // // Check if the users match what was written
-        // assertEquals(users.size(), restoredUsers.size());
-        // for (int i = 0; i < users.size(); i++) {
-        // User originalUser = users.get(i);
-        // User restoredUser = restoredUsers.get(i);
-        // assertTrue(originalUser.equals(restoredUser));
-        // }
-
-        // // Clean up the test file
-        // File testFile = new File(userFilePath);
-        // assertTrue(testFile.delete());
-        // }
-        // }
-
+            result = mockMvc
+                    .perform(MockMvcRequestBuilders
+                            .post("/rooms/" + room.getRoomNumber() + "/" + room.getRoomCapacity() + "/"
+                                    + room.getPricePerNight())
+                            .accept(MediaType.APPLICATION_JSON))
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andReturn();
+            if (room.getBookings().isEmpty()) {
+                return;
+            }
+            for (Booking booking : room.getBookings()) {
+                mockMvc
+                        .perform(MockMvcRequestBuilders
+                                .put("/rooms/" + room.getRoomNumber() + "/book/" + booking.getFrom() + "/"
+                                        + booking.getTo() + "/" + booking.getBookedBy() + "")
+                                .accept(MediaType.APPLICATION_JSON))
+                        .andExpect(MockMvcResultMatchers.status().isOk())
+                        .andReturn();
+            }
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }

@@ -132,9 +132,11 @@ public class RoomController {
      * Delete a room by its room number.
      *
      * @param roomNumber The room number of the room to delete
+     *
+     * @return The room that was deleted
      */
     @DeleteMapping("/rooms/{roomNumber}")
-    public void deleteRoomByNumber(final @PathVariable int roomNumber) {
-        roomService.deleteRoomByNumber(roomNumber);
+    public Room deleteRoomByNumber(final @PathVariable int roomNumber) {
+        return roomService.deleteRoomByNumber(roomNumber);
     }
 }

@@ -177,8 +177,10 @@ public class RoomService {
      * Delete a room by room number.
      *
      * @param roomNumber the room number of the room to delete.
+     *
+     * @return the room that was deleted.
      */
-    public void deleteRoomByNumber(final int roomNumber) {
+    public Room deleteRoomByNumber(final int roomNumber) {
         final List<Room> rooms = getAllRooms();
         Room roomToUpdate = new Room();
         for (final Room room : rooms) {
@@ -188,6 +190,7 @@ public class RoomService {
         }
         rooms.remove(roomToUpdate);
         updateRooms(rooms);
+        return roomToUpdate;
     }
 
     public void updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
