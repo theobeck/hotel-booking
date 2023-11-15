@@ -70,7 +70,7 @@ Denne appen er organisert som følger:
 
 REST API-et vårt er tilgjengelig på `http://localhost:8080/`.
 
-Her er en liste over alle `/rooms/` endepunktene:
+### Her er en liste over alle `/rooms/` endepunktene:
 
 - `POST /rooms/{roomNumber}/{roomCapacity}/{pricePerNight}` - Lager et nytt rom med gitt romnummer, kapasitet, og pris per natt.
 
@@ -83,7 +83,7 @@ Her er en liste over alle `/rooms/` endepunktene:
 
 - `DELETE /rooms/{roomNumber}` - Sletter et rom med gitt romnummer.
 
-Her er en liste over alle `/users/` endepunktene:
+### Her er en liste over alle `/users/` endepunktene:
 
 - `POST /users/{username}/{firstName}/{lastName}/{password}/{gender}` - Lager en ny bruker med gitt brukernavn og passord.
 
