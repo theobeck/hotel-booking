@@ -2,7 +2,9 @@ module booking.springboot.restserver {
     exports booking.springboot.restserver;
 
     requires transitive com.fasterxml.jackson.databind;
+
     requires transitive booking.core;
+
     requires booking.ui;
 
     requires spring.web;

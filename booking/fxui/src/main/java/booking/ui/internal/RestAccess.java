@@ -24,17 +24,17 @@ public final class RestAccess {
     /**
      * The base URL for the REST API.
      */
-    private static final String BASE_URL = "http://localhost:8080/";
+    public static final String BASE_URL = "http://localhost:8080/";
 
     /**
      * The path for room requests.
      */
-    private static final String ROOMS_PATH = "rooms/";
+    public static final String ROOMS_PATH = "rooms/";
 
     /**
      * The path for user requests.
      */
-    private static final String USERS_PATH = "users/";
+    public static final String USERS_PATH = "users/";
 
     /**
      * The HTTP client.
@@ -273,9 +273,11 @@ public final class RestAccess {
      *
      * @param roomNumber The room number.
      *
+     * @return The deleted room.
+     *
      * @throws Exception
      */
-    public void deleteRoomByNumber(final int roomNumber) throws Exception {
+    public Room deleteRoomByNumber(final int roomNumber) throws Exception {
         final String url = BASE_URL + ROOMS_PATH + roomNumber;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -283,7 +285,15 @@ public final class RestAccess {
                 .build();
 
         try {
-            generateHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = generateHttpClient().send(request,
+                    HttpResponse.BodyHandlers.ofString());
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            SimpleModule module = new SimpleModule();
+            module.addDeserializer(Room.class, new RoomDeserializer());
+            objectMapper.registerModule(module);
+
+            return objectMapper.readValue(response.body(), Room.class);
         } catch (IOException | InterruptedException e) {
             throw e;
         }

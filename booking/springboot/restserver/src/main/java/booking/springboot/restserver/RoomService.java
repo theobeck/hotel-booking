@@ -23,7 +23,7 @@ import booking.ui.internal.RoomDeserializer;
 import booking.ui.internal.RoomSerializer;
 
 @Service
-public final class RoomService {
+public class RoomService {
 
     /**
      * The object mapper object for the file manager object.
@@ -39,11 +39,16 @@ public final class RoomService {
      * Random object used to generate random numbers.
      */
     public RoomService() {
-        objectMapper = new ObjectMapper();
+        objectMapper = createObjectMapper();
+    }
+
+    public static ObjectMapper createObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
         final SimpleModule module = new SimpleModule();
         module.addDeserializer(Room.class, new RoomDeserializer());
         module.addSerializer(Room.class, new RoomSerializer());
-        objectMapper.registerModule(module);
+        mapper.registerModule(module);
+        return mapper;
     }
 
     /**
@@ -172,8 +177,10 @@ public final class RoomService {
      * Delete a room by room number.
      *
      * @param roomNumber the room number of the room to delete.
+     *
+     * @return the room that was deleted.
      */
-    public void deleteRoomByNumber(final int roomNumber) {
+    public Room deleteRoomByNumber(final int roomNumber) {
         final List<Room> rooms = getAllRooms();
         Room roomToUpdate = new Room();
         for (final Room room : rooms) {
@@ -183,16 +190,28 @@ public final class RoomService {
         }
         rooms.remove(roomToUpdate);
         updateRooms(rooms);
+        return roomToUpdate;
     }
 
-    public void updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
+    /**
+     * Update a room by room number.
+     *
+     * @param roomNumber    the room number of the room to update.
+     * @param roomCapacity  the new room capacity.
+     * @param pricePerNight the new price per night.
+     *
+     * @return the room that was updated.
+     */
+    public Room updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
         final List<Room> rooms = getAllRooms();
         for (final Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 room.setRoomCapacity(roomCapacity);
                 room.setPricePerNight(pricePerNight);
                 updateRooms(rooms);
+                return room;
             }
         }
+        return null;
     }
 }

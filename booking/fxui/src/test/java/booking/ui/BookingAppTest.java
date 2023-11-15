@@ -199,7 +199,8 @@ public class BookingAppTest extends ApplicationTest {
         userBookings = restAccess.getBookingsByUsername("test");
 
         for (Booking booking : userBookings) {
-            restAccess.cancelBooking(booking.getRoomNumber(), booking.getBookedBy(), booking.getFrom(), booking.getTo(),
+            restAccess.cancelBooking(booking.getRoomNumber(), booking.getBookedBy(),
+                    booking.getFrom(), booking.getTo(),
                     booking.getTotalCostOfBooking());
         }
 
@@ -209,9 +210,11 @@ public class BookingAppTest extends ApplicationTest {
 
         assertTrue(restAccess.getAllRooms().size() == 10);
         restAccess.deleteRoomByNumber(10);
-        restAccess.createRoom(roomTen.getRoomNumber(), roomTen.getRoomCapacity(), roomTen.getPricePerNight());
+        restAccess.createRoom(roomTen.getRoomNumber(), roomTen.getRoomCapacity(),
+                roomTen.getPricePerNight());
         for (Booking booking : roomTen.getBookings()) {
-            restAccess.bookRoomByNumber(booking.getRoomNumber(), booking.getFrom(), booking.getTo(),
+            restAccess.bookRoomByNumber(booking.getRoomNumber(), booking.getFrom(),
+                    booking.getTo(),
                     booking.getBookedBy(), booking.getTotalCostOfBooking(), "room");
 
         }
@@ -230,10 +233,12 @@ public class BookingAppTest extends ApplicationTest {
         clickOn("#btnLogin");
 
         for (User user : users) {
-            restAccess.createUser(user.getUsername(), user.getFirstName(), user.getLastName(), user.getPassword(),
+            restAccess.createUser(user.getUsername(), user.getFirstName(),
+                    user.getLastName(), user.getPassword(),
                     user.getGender());
             for (Booking booking : user.getBookings()) {
-                restAccess.bookRoomByNumber(booking.getRoomNumber(), booking.getFrom(), booking.getTo(),
+                restAccess.bookRoomByNumber(booking.getRoomNumber(), booking.getFrom(),
+                        booking.getTo(),
                         booking.getBookedBy(), booking.getTotalCostOfBooking(), "user");
             }
         }

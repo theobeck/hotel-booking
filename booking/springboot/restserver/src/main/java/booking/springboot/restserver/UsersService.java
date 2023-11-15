@@ -22,7 +22,7 @@ import booking.ui.internal.UserDeserializer;
 import booking.ui.internal.UserSerializer;
 
 @Service
-public final class UsersService {
+public class UsersService {
 
     /**
      * The object mapper object for the file manager object.
@@ -38,11 +38,16 @@ public final class UsersService {
      * Random object used to generate random numbers.
      */
     public UsersService() {
-        objectMapper = new ObjectMapper();
+        objectMapper = createObjectMapper();
+    }
+
+    public static ObjectMapper createObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
         final SimpleModule module = new SimpleModule();
         module.addDeserializer(User.class, new UserDeserializer());
         module.addSerializer(User.class, new UserSerializer());
-        objectMapper.registerModule(module);
+        mapper.registerModule(module);
+        return mapper;
     }
 
     /**
@@ -119,8 +124,10 @@ public final class UsersService {
      * @param lastName  the last name of the user to update.
      * @param password  the password of the user to update.
      * @param gender    the gender of the user to update.
+     *
+     * @return the user that was updated.
      */
-    public void updateUserByUsername(final String username, final String firstName, final String lastName,
+    public User updateUserByUsername(final String username, final String firstName, final String lastName,
             final String password, final String gender) {
         final List<User> users = getAllUsers();
         for (final User user : users) {
@@ -130,9 +137,10 @@ public final class UsersService {
                 user.setPassword(password);
                 user.setGender(gender);
                 updateUsers(users);
-                return;
+                return user;
             }
         }
+        return null;
     }
 
     /**
@@ -172,8 +180,10 @@ public final class UsersService {
      * Delete a user by username.
      *
      * @param username the username of the user to delete.
+     *
+     * @return the user that was deleted.
      */
-    public void deleteUserByUsername(final String username) {
+    public User deleteUserByUsername(final String username) {
         final List<User> users = getAllUsers();
         User userToRemove = new User();
         for (final User user : users) {
@@ -183,6 +193,7 @@ public final class UsersService {
         }
         users.remove(userToRemove);
         updateUsers(users);
+        return userToRemove;
     }
 
     private void updateUsers(final List<User> users) {

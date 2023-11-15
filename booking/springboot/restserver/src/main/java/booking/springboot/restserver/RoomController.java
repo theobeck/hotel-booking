@@ -21,7 +21,7 @@ import java.util.List;
  * The controller for Room objects.
  */
 @RestController
-public final class RoomController {
+public class RoomController {
 
     /**
      * Inject the service that manages Room objects.
@@ -79,11 +79,13 @@ public final class RoomController {
      * @param roomNumber    The room number of the room to update
      * @param roomCapacity  The new room capacity
      * @param pricePerNight The new price per night
+     *
+     * @return The room that was updated
      */
     @PutMapping("/rooms/{roomNumber}/update/{roomCapacity}/{pricePerNight}")
-    public void updateRoomByNumber(final @PathVariable int roomNumber, final @PathVariable int roomCapacity,
+    public Room updateRoomByNumber(final @PathVariable int roomNumber, final @PathVariable int roomCapacity,
             final @PathVariable int pricePerNight) {
-        roomService.updateRoomByNumber(roomNumber, roomCapacity, pricePerNight);
+        return roomService.updateRoomByNumber(roomNumber, roomCapacity, pricePerNight);
     }
 
     /**
@@ -102,13 +104,8 @@ public final class RoomController {
             final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
             final @PathVariable String username) {
 
-        try {
-            roomService.bookRoomByNumber(roomNumber, from, to, username);
-            return new ResponseEntity<>("Room booked successfully", HttpStatus.OK);
-        } catch (Exception e) {
-            // Handle the exception and return an error response
-            return new ResponseEntity<>("Booking failed: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        roomService.bookRoomByNumber(roomNumber, from, to, username);
+        return new ResponseEntity<>("Room booked successfully", HttpStatus.OK);
     }
 
     /**
@@ -132,9 +129,11 @@ public final class RoomController {
      * Delete a room by its room number.
      *
      * @param roomNumber The room number of the room to delete
+     *
+     * @return The room that was deleted
      */
     @DeleteMapping("/rooms/{roomNumber}")
-    public void deleteRoomByNumber(final @PathVariable int roomNumber) {
-        roomService.deleteRoomByNumber(roomNumber);
+    public Room deleteRoomByNumber(final @PathVariable int roomNumber) {
+        return roomService.deleteRoomByNumber(roomNumber);
     }
 }

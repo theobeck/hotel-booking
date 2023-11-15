@@ -19,7 +19,7 @@ import java.util.List;
  * The controller for User objects.
  */
 @RestController
-public final class UsersController {
+public class UsersController {
 
     /**
      * Inject the service that manages User objects.
@@ -94,12 +94,14 @@ public final class UsersController {
      * @param lastName  The last name of the user to update
      * @param password  The password of the user to update
      * @param gender    The gender of the user to update
+     *
+     * @return The user that was updated
      */
     @PutMapping("/users/{username}/{firstName}/{lastName}/{password}/{gender}")
-    public void updateUserByUsername(final @PathVariable String username, final @PathVariable String firstName,
+    public User updateUserByUsername(final @PathVariable String username, final @PathVariable String firstName,
             final @PathVariable String lastName, final @PathVariable String password,
             final @PathVariable String gender) {
-        usersService.updateUserByUsername(username, firstName, lastName, password, gender);
+        return usersService.updateUserByUsername(username, firstName, lastName, password, gender);
     }
 
     /**
@@ -140,10 +142,12 @@ public final class UsersController {
      * Delete a user by its username.
      *
      * @param username The username of the user to delete
+     *
+     * @return The user that was deleted
      */
     @DeleteMapping("/users/{username}")
-    public void deleteUserByUsername(final @PathVariable String username) {
-        usersService.deleteUserByUsername(username);
+    public User deleteUserByUsername(final @PathVariable String username) {
+        return usersService.deleteUserByUsername(username);
     }
 
 }
