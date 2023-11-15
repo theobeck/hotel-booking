@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 /**
- * A specific booking of a {@link Room}.
+ * A specific booking of a {@link Room} made by a {@link User}.
  *
  * Has five defining characteristics:
  * <ul>
- * <li>Who the booking is for</li>
+ * <li>The username of the user the booking is for</li>
  * <li>The room number of the room that is booked</li>
  * <li>When the booking starts</li>
  * <li>When the booking ends</li>
@@ -18,7 +18,7 @@ import java.time.temporal.ChronoUnit;
 public final class Booking {
 
     /**
-     * Who the booking is for.
+     * The username of the user the booking is for.
      */
     private String bookedBy;
 
@@ -48,9 +48,9 @@ public final class Booking {
     }
 
     /**
-     * Create a new booking object with the following variables defined.
+     * Create a new booking.
      *
-     * @param bookedBy           Who the booking is for.
+     * @param bookedBy           The username of the user the booking is for.
      * @param roomNumber         The room number of the room that is booked.
      * @param from               When the booking starts.
      * @param to                 When the booking ends.
@@ -106,6 +106,8 @@ public final class Booking {
     }
 
     /**
+     * Takes in a booking and compares it to the current booking.
+     *
      * @param booking The booking to compare to.
      *
      * @return Whether the bookings are equal.
