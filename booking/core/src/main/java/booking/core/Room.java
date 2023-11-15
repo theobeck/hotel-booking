@@ -239,7 +239,7 @@ public final class Room {
      */
     @Override
     public String toString() {
-        return "Room " + roomNumber + ", capacity: " + roomCapacity + ", price: " + pricePerNight
+        return "Room " + roomNumber + "\nHas bedding for " + roomCapacity + "\nCosts " + pricePerNight
                 + " per night.";
     }
 }
