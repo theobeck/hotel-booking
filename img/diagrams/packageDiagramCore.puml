@@ -1,0 +1,48 @@
+@startuml packageDiagram
+skin rose
+component restserver {
+  [booking.restserver] <<inside>>
+}
+component fxui {
+  package booking.fxui {
+}
+}
+component booking.internal {
+    package booking.restAccess
+}
+
+component core {
+  package booking.core {
+}
+
+}
+
+component javafx {
+  
+    component fxml <<inside>> {
+    }
+}
+
+
+component java.net.http <<inside>> {
+}
+
+skinparam Component {
+  BackgroundColor transparent
+  BorderColor black
+  BorderColor<<inside>> #cc1836
+}
+skinparam ComponentBorderThickness 1.2
+skinparam PackageBorderThickness 1.2
+skinparam PackageBorderColor black
+skinparam ArrowColor #cc1836
+HIDE <<inside>> stereotype
+booking.core <...> booking.fxui
+booking.fxui ...> fxml
+booking.restAccess ...> java.net.http
+booking.fxui ...> booking.restAccess
+booking.restserver <...> booking.core
+booking.restserver ...> fxui   
+ 
+
+@enduml

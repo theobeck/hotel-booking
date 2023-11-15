@@ -1,0 +1,18 @@
+@startuml sequenceDiagram
+skin rose
+actor User as user
+
+
+participant "SearchForRoomsController" as searchCon
+database "restServer" as restServer
+
+participant "AvailableRoomsController" as avaCon
+
+
+user -> searchCon: insert date
+searchCon --> avaCon: searches for available rooms
+avaCon --> restServer: requests available rooms
+restServer --> avaCon: returns available rooms
+avaCon --> user: displays available rooms
+
+@enduml
