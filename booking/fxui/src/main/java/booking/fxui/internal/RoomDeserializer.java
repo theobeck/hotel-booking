@@ -1,4 +1,4 @@
-package booking.ui.internal;
+package booking.fxui.internal;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

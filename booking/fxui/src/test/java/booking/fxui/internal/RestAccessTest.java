@@ -1,4 +1,4 @@
-package booking.ui.internal;
+package booking.fxui.internal;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;

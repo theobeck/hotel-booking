@@ -1,4 +1,4 @@
-package booking.ui;
+package booking.fxui;
 
 import java.io.IOException;
 import java.time.LocalDate;

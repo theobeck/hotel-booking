@@ -103,8 +103,8 @@
                     </systemPropertyVariables>
                     <argLine>
                         @{jaCoCoArgLine} -Dtestfx.robot=awt
-                        --add-opens booking.ui/booking.ui=ALL-UNNAMED --add-opens
-                        booking.ui/booking.ui.internal=ALL-UNNAMED --add-exports
+                        --add-opens booking.fxui/booking.fxui=ALL-UNNAMED --add-opens
+                        booking.fxui/booking.fxui.internal=ALL-UNNAMED --add-exports
                         javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
                         --add-opens javafx.graphics/com.sun.glass.ui=ALL-UNNAMED --add-opens
                         javafx.graphics/com.sun.javafx.application=ALL-UNNAMED --add-exports
@@ -119,7 +119,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>booking.ui/booking.ui.BookingApp</mainClass>
+                    <mainClass>booking.fxui/booking.fxui.BookingApp</mainClass>
                     <!-- rest of options are for jlink -->
                     <compress>2</compress>
                     <noHeaderFiles>true</noHeaderFiles>
@@ -140,7 +140,7 @@
                     <appVersion>3.0.0</appVersion>
                     <vendor>it1901</vendor>
                     <destination>target/dist</destination>
-                    <module>booking.ui/booking.ui.BookingApp</module>
+                    <module>booking.fxui/booking.fxui.BookingApp</module>
                     <runtimeImage>target/bookingfx</runtimeImage>
                     <javaOptions>
                         <option>-Dfile.encoding=UTF-8</option>

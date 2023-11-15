@@ -19,8 +19,8 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import booking.core.Booking;
 import booking.core.Room;
 import booking.core.User;
-import booking.ui.internal.RoomDeserializer;
-import booking.ui.internal.RoomSerializer;
+import booking.fxui.internal.RoomDeserializer;
+import booking.fxui.internal.RoomSerializer;
 
 /**
  * A service for managing {@link Room} objects.

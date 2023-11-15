@@ -21,7 +21,7 @@ component "core" {
 }
 
 component "fxui" {
-  package booking.ui
+  package booking.fxui
 }
 
 component "javafx"{
@@ -32,8 +32,8 @@ component "jackson" #FF6655
 
 [fxui] ..> [javafx]
 [fxui] ..> [fxml]
-[booking.ui] ..> [booking.core]
-[booking.ui] ..> [booking.json]
+[booking.fxui] ..> [booking.core]
+[booking.fxui] ..> [booking.json]
 [booking.core] ..> [booking.json]
 [booking.json] ..> [jackson]
 

@@ -1,4 +1,4 @@
-package booking.ui.internal;
+package booking.fxui.internal;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;
@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import booking.core.Booking;
 import booking.core.Room;
 import booking.core.User;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

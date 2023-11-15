@@ -1,10 +1,10 @@
-package booking.ui;
+package booking.fxui;
 
 import java.io.IOException;
 import java.util.List;
 
 import booking.core.User;
-import booking.ui.internal.RestAccess;
+import booking.fxui.internal.RestAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

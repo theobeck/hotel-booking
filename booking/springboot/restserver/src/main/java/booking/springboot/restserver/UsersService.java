@@ -18,8 +18,8 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import booking.core.Booking;
 import booking.core.User;
-import booking.ui.internal.UserDeserializer;
-import booking.ui.internal.UserSerializer;
+import booking.fxui.internal.UserDeserializer;
+import booking.fxui.internal.UserSerializer;
 
 /**
  * A service for managing {@link User} objects.

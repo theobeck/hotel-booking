@@ -1,5 +1,5 @@
-module booking.ui {
-    exports booking.ui.internal;
+module booking.fxui {
+    exports booking.fxui.internal;
 
     requires transitive com.fasterxml.jackson.databind;
     requires transitive java.net.http;
@@ -9,5 +9,5 @@ module booking.ui {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens booking.ui to javafx.graphics, javafx.fxml;
+    opens booking.fxui to javafx.graphics, javafx.fxml;
 }

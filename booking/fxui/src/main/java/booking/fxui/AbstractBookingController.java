@@ -1,4 +1,4 @@
-package booking.ui;
+package booking.fxui;
 
 import booking.core.User;
 

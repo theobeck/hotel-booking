@@ -5,7 +5,7 @@ module booking.springboot.restserver {
 
     requires transitive booking.core;
 
-    requires booking.ui;
+    requires booking.fxui;
 
     requires spring.web;
     requires spring.beans;
