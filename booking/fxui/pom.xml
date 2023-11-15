@@ -106,7 +106,8 @@
                         --add-opens booking.ui/booking.ui=ALL-UNNAMED --add-opens
                         booking.ui/booking.ui.internal=ALL-UNNAMED --add-exports
                         javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
-                        --add-opens javafx.graphics/com.sun.glass.ui=ALL-UNNAMED --add-exports
+                        --add-opens javafx.graphics/com.sun.glass.ui=ALL-UNNAMED --add-opens
+                        javafx.graphics/com.sun.javafx.application=ALL-UNNAMED --add-exports
                         javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
                         --add-exports javafx.graphics/com.sun.glass.ui.delegate=ALL-UNNAMED
                     </argLine>
