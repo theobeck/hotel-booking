@@ -102,13 +102,8 @@ public class RoomController {
             final @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
             final @PathVariable String username) {
 
-        try {
-            roomService.bookRoomByNumber(roomNumber, from, to, username);
-            return new ResponseEntity<>("Room booked successfully", HttpStatus.OK);
-        } catch (Exception e) {
-            // Handle the exception and return an error response
-            return new ResponseEntity<>("Booking failed: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        roomService.bookRoomByNumber(roomNumber, from, to, username);
+        return new ResponseEntity<>("Room booked successfully", HttpStatus.OK);
     }
 
     /**
