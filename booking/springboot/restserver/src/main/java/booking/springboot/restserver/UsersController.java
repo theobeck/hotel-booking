@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * The controller for User objects.
+ * The controller for {@link User} objects.
  */
 @RestController
 public class UsersController {
@@ -28,7 +28,7 @@ public class UsersController {
     private final UsersService usersService;
 
     /**
-     * Constructor for UsersController that injects the given UsersService.
+     * Constructor for UsersController that injects the given {@link UsersService}.
      *
      * @param usersService the users service to use
      */
@@ -37,7 +37,7 @@ public class UsersController {
     }
 
     /**
-     * Create a new user.
+     * Creates a new user.
      *
      * @param username  The username of the user to create
      * @param firstName The first name of the user to create
@@ -53,7 +53,7 @@ public class UsersController {
     }
 
     /**
-     * Get all users in the system.
+     * Gets all users in the system.
      *
      * @return All users in the system
      */
@@ -63,7 +63,7 @@ public class UsersController {
     }
 
     /**
-     * Get a user by its username.
+     * Gets a user by its username.
      *
      * @param username The username of the user to get
      *
@@ -75,7 +75,7 @@ public class UsersController {
     }
 
     /**
-     * Get all bookings for a user.
+     * Gets all bookings for a user.
      *
      * @param username The username of the user to get bookings for
      *
@@ -87,7 +87,7 @@ public class UsersController {
     }
 
     /**
-     * Update a user by its username.
+     * Updates a user by its username.
      *
      * @param username  The username of the user to update
      * @param firstName The first name of the user to update
@@ -105,7 +105,7 @@ public class UsersController {
     }
 
     /**
-     * Book a room by its room number.
+     * Books a room by its room number.
      *
      * @param username           The username of the user booking the room
      * @param roomNumber         The room number of the room to book
@@ -122,7 +122,7 @@ public class UsersController {
     }
 
     /**
-     * Unbook a room by the booking.
+     * Unbooks a room by the booking.
      *
      * @param username           The username of the user unbooking the room
      * @param roomNumber         The room number of the room to unbook
@@ -139,7 +139,7 @@ public class UsersController {
     }
 
     /**
-     * Delete a user by its username.
+     * Delete sa user by its username.
      *
      * @param username The username of the user to delete
      *

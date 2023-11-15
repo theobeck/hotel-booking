@@ -21,6 +21,9 @@ import booking.core.User;
 import booking.ui.internal.UserDeserializer;
 import booking.ui.internal.UserSerializer;
 
+/**
+ * A service for managing {@link User} objects.
+ */
 @Service
 public class UsersService {
 
@@ -41,6 +44,11 @@ public class UsersService {
         objectMapper = createObjectMapper();
     }
 
+    /**
+     * Creates an object mapper for {@link User} objects.
+     *
+     * @return the object mapper.
+     */
     public static ObjectMapper createObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         final SimpleModule module = new SimpleModule();
@@ -51,7 +59,7 @@ public class UsersService {
     }
 
     /**
-     * Create a user.
+     * Creates a user.
      *
      * @param username  the username of the user to create.
      * @param firstName the first name of the user to create.
@@ -68,7 +76,7 @@ public class UsersService {
     }
 
     /**
-     * Get all users.
+     * Gets all users.
      *
      * @return all users.
      */
@@ -89,7 +97,7 @@ public class UsersService {
     }
 
     /**
-     * Get a user by its username.
+     * Gets a user by its username.
      *
      * @param username the username of the user to get.
      *
@@ -106,7 +114,7 @@ public class UsersService {
     }
 
     /**
-     * Get all bookings for a user.
+     * Gets all bookings for a user.
      *
      * @param username the username of the user to get bookings for.
      *
@@ -117,7 +125,7 @@ public class UsersService {
     }
 
     /**
-     * Update a user by username.
+     * Updates a user by username.
      *
      * @param username  the username of the user to update.
      * @param firstName the first name of the user to update.
@@ -144,7 +152,7 @@ public class UsersService {
     }
 
     /**
-     * Book a room by username.
+     * Books a room by username.
      *
      * @param username           the username of the user to book the room.
      * @param roomNumber         the room number of the room to book.
@@ -160,7 +168,7 @@ public class UsersService {
     }
 
     /**
-     * Cancel a booking.
+     * Unbooks a booking.
      *
      * @param booking the booking to cancel.
      */
@@ -177,7 +185,7 @@ public class UsersService {
     }
 
     /**
-     * Delete a user by username.
+     * Deletes a user by username.
      *
      * @param username the username of the user to delete.
      *
@@ -196,6 +204,11 @@ public class UsersService {
         return userToRemove;
     }
 
+    /**
+     * Updates all users.
+     *
+     * @param users the users to update.
+     */
     private void updateUsers(final List<User> users) {
         try {
             final ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
@@ -206,6 +219,11 @@ public class UsersService {
         }
     }
 
+    /**
+     * Updates a user.
+     *
+     * @param user the user to update.
+     */
     private void updateOneUser(final User user) {
         final List<User> users = getAllUsers();
         User userToUpdate = new User();

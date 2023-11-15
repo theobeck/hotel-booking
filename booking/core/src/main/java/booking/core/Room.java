@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A room that can be booked.
+ * A room that can be booked by a {@link User} with a {@link Booking}.
  *
  * Has four defining characteristics:
  * <ul>
@@ -15,9 +15,9 @@ import java.util.List;
  * <li>Price per night</li>
  * <li>List of bookings</li>
  * </ul>
- *
  */
 public final class Room {
+
     /**
      * The room's number.
      */
@@ -46,7 +46,7 @@ public final class Room {
     }
 
     /**
-     * Create a new room object with the following variables defined.
+     * Create a new room.
      *
      * @param roomNumber    The room's number.
      * @param roomCapacity  The room's capacity.
@@ -60,7 +60,7 @@ public final class Room {
     }
 
     /**
-     * Create a new room object with the following variables defined.
+     * Create a new room with an initial booking.
      *
      * @param roomNumber    The room's number.
      * @param roomCapacity  The room's capacity.
@@ -111,7 +111,7 @@ public final class Room {
     }
 
     /**
-     * Book room with given booking parameters.
+     * Create a new booking for the room.
      *
      * @param bookedFrom Time to start booking
      * @param bookedTo   Time to end booking
@@ -128,11 +128,11 @@ public final class Room {
     }
 
     /**
-     * Cancel booking by booking.
+     * Takes in a booking and cancels it.
      *
      * @param booking Booking to cancel
      *
-     * @throws IllegalStateException If room isn't booked by user.
+     * @throws IllegalStateException If the booking doesn't exist
      */
     public void cancelBooking(final Booking booking) {
         Booking bookingToCancel = getEqualBooking(booking);
@@ -143,12 +143,12 @@ public final class Room {
     }
 
     /**
-     * Check if room is available between given times.
+     * Check if a room is available in a date range.
      *
      * @param targetFrom Wanted start of booking
      * @param targetTo   Wanted end of booking
      *
-     * @return Whether or not room is available between given times
+     * @return Whether or not room is available in the date range
      */
     public boolean isAvailableBetween(final LocalDate targetFrom, final LocalDate targetTo) {
         if (bookings.isEmpty()) {
@@ -180,11 +180,11 @@ public final class Room {
     }
 
     /**
-     * Get user's booking.
+     * Get all bookings made by a user.
      *
-     * @param username Username of user to get booking of
+     * @param username Username of user to get bookings of
      *
-     * @return Booking of user
+     * @return List of bookings made by user
      */
     public List<Booking> getBookingsByUsername(final String username) {
         List<Booking> userBookings = new ArrayList<>();
@@ -200,11 +200,11 @@ public final class Room {
     }
 
     /**
-     * Get booking equal to given booking.
+     * Takes in a booking and returns the booking equal to it.
      *
      * @param booking Booking to compare to
      *
-     * @return Booking equal to given booking
+     * @return The booking equal to the given booking
      */
     public Booking getEqualBooking(final Booking booking) {
         Booking tempBooking = null;
@@ -235,7 +235,7 @@ public final class Room {
     }
 
     /**
-     * @return String
+     * @return String representation of room
      */
     @Override
     public String toString() {

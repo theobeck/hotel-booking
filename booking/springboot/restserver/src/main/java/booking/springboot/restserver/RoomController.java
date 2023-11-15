@@ -18,7 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * The controller for Room objects.
+ * The controller for {@link Room} objects.
  */
 @RestController
 public class RoomController {
@@ -30,7 +30,7 @@ public class RoomController {
     private final RoomService roomService;
 
     /**
-     * Constructor for RoomController that injects the given RoomService.
+     * Constructor for RoomController that injects the given {@link RoomService}.
      *
      * @param roomService the room service to use
      */
@@ -39,7 +39,7 @@ public class RoomController {
     }
 
     /**
-     * Create a new room.
+     * Creates a new room.
      *
      * @param roomNumber    The room number of the room to create
      * @param roomCapacity  The room capacity of the room to create
@@ -52,7 +52,7 @@ public class RoomController {
     }
 
     /**
-     * Get all rooms in the system.
+     * Gets all rooms in the system.
      *
      * @return All rooms in the system
      */
@@ -62,7 +62,7 @@ public class RoomController {
     }
 
     /**
-     * Get a room by its room number.
+     * Gets a room by its room number.
      *
      * @param roomNumber The room Number of the room to get
      *
@@ -74,7 +74,7 @@ public class RoomController {
     }
 
     /**
-     * Update the room by given number.
+     * Updates the room by given number.
      *
      * @param roomNumber    The room number of the room to update
      * @param roomCapacity  The new room capacity
@@ -89,7 +89,7 @@ public class RoomController {
     }
 
     /**
-     * Book a room by its room number.
+     * Books a room by its room number.
      *
      * @param roomNumber The room number of the room to update
      * @param from       The start date of the booking
@@ -109,7 +109,7 @@ public class RoomController {
     }
 
     /**
-     * Unbook a room by the booking.
+     * Unbooks a room by the booking.
      *
      * @param roomNumber         The room number of the room to unbook
      * @param username           The username of the user cancelling the booking
@@ -126,7 +126,7 @@ public class RoomController {
     }
 
     /**
-     * Delete a room by its room number.
+     * Deletes a room by its room number.
      *
      * @param roomNumber The room number of the room to delete
      *

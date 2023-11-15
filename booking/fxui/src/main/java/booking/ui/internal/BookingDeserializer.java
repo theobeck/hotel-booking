@@ -14,9 +14,16 @@ import java.time.LocalDate;
 /**
  * A deserializer for the {@link Booking} class.
  *
- * Used by the {@link RoomDeserializer} to deserialize its bookings.
+ * Used by the {@link RoomDeserializer} and {@link UserDeserializer} classes
+ * to deserialize their bookings.
  */
 public final class BookingDeserializer extends JsonDeserializer<Booking> {
+
+    /**
+     * Default constructor for BookingDeserializer.
+     */
+    public BookingDeserializer() {
+    }
 
     @Override
     public Booking deserialize(final JsonParser parser, final DeserializationContext ctxt) throws IOException {

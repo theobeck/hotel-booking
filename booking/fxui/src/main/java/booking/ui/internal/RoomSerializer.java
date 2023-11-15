@@ -16,6 +16,12 @@ import booking.core.Room;
  */
 public final class RoomSerializer extends JsonSerializer<Room> {
 
+    /**
+     * Default constructor for RoomSerializer.
+     */
+    public RoomSerializer() {
+    }
+
     @Override
     public void serialize(final Room room, final JsonGenerator jsonGenerator,
             final SerializerProvider serializerProvider)

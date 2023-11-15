@@ -12,9 +12,16 @@ import java.time.format.DateTimeFormatter;
 /**
  * A serializer for the {@link Booking} class.
  *
- * Used by the {@link RoomSerializer} to serialize its bookings.
+ * Used by the {@link RoomSerializer} and {@link UserSerializer} classes
+ * to serialize their bookings.
  */
 public final class BookingSerializer extends JsonSerializer<Booking> {
+
+    /**
+     * Default constructor for BookingSerializer.
+     */
+    public BookingSerializer() {
+    }
 
     @Override
     public void serialize(final Booking booking, final JsonGenerator jsonGenerator,

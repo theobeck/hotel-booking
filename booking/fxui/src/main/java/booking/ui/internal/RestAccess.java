@@ -17,22 +17,22 @@ import booking.core.Room;
 import booking.core.User;
 
 /**
- * A REST API access file.
+ * A class that provides access to the hotel booking system's REST API.
  */
 public final class RestAccess {
 
     /**
-     * The base URL for the REST API.
+     * The base URL path for the REST Server.
      */
     public static final String BASE_URL = "http://localhost:8080/";
 
     /**
-     * The path for room requests.
+     * The base URL path for room requests.
      */
     public static final String ROOMS_PATH = "rooms/";
 
     /**
-     * The path for user requests.
+     * The base URL path for user requests.
      */
     public static final String USERS_PATH = "users/";
 
@@ -49,7 +49,7 @@ public final class RestAccess {
     }
 
     /**
-     * Constructor for RestAccess.
+     * Creates a new RestAccess with a given HTTP client.
      *
      * @param httpClient The HTTP client.
      */
@@ -58,13 +58,13 @@ public final class RestAccess {
     }
 
     /**
-     * Create a room.
+     * Creates a room.
      *
      * @param roomNumber    The room number.
      * @param roomCapacity  The room capacity.
      * @param pricePerNight The price per night.
      *
-     * @throws Exception
+     * @throws Exception If the room already exists.
      */
     public void createRoom(final int roomNumber, final int roomCapacity, final int pricePerNight) throws Exception {
         final String url = BASE_URL + ROOMS_PATH + roomNumber + "/" + roomCapacity + "/" + pricePerNight;
@@ -81,11 +81,11 @@ public final class RestAccess {
     }
 
     /**
-     * Get all rooms.
+     * Gets all rooms.
      *
      * @return A list of all rooms.
      *
-     * @throws Exception
+     * @throws Exception If there are no rooms.
      */
     public List<Room> getAllRooms() throws Exception {
         final String url = BASE_URL + ROOMS_PATH;
@@ -112,13 +112,13 @@ public final class RestAccess {
     }
 
     /**
-     * Get a room by number.
+     * Gets a room by number.
      *
      * @param roomNumber The room number.
      *
      * @return The room.
      *
-     * @throws Exception
+     * @throws Exception If the room does not exist.
      */
     public Room getRoomByNumber(final int roomNumber) throws Exception {
         final String url = BASE_URL + ROOMS_PATH + roomNumber;
@@ -144,13 +144,13 @@ public final class RestAccess {
     }
 
     /**
-     * Update a room.
+     * Updates a room.
      *
      * @param roomNumber    The room number.
      * @param roomCapacity  The room capacity.
      * @param pricePerNight The price per night.
      *
-     * @throws Exception
+     * @throws Exception If the room does not exist.
      */
     public void updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight)
             throws Exception {
@@ -168,7 +168,7 @@ public final class RestAccess {
     }
 
     /**
-     * Book a room.
+     * Books a room.
      *
      * @param roomNumber         The room number.
      * @param from               The start date of the booking.
@@ -179,7 +179,7 @@ public final class RestAccess {
      *                           "user", only update user, if which = "both", update
      *                           both.
      *
-     * @throws Exception
+     * @throws Exception If the room is already booked.
      */
     public void bookRoomByNumber(final int roomNumber, final LocalDate from, final LocalDate to,
             final String username, final int totalCostOfBooking, final String which) throws Exception {
@@ -230,7 +230,7 @@ public final class RestAccess {
     }
 
     /**
-     * Cancel a booking.
+     * Cancels a booking.
      *
      * @param roomNumber         The room number.
      * @param username           The username.
@@ -238,7 +238,7 @@ public final class RestAccess {
      * @param to                 The end date of the booking.
      * @param totalCostOfBooking The total cost of the booking.
      *
-     * @throws Exception
+     * @throws Exception If the booking does not exist.
      */
     public void cancelBooking(final int roomNumber, final String username, final LocalDate from, final LocalDate to,
             final int totalCostOfBooking) throws Exception {
@@ -269,13 +269,13 @@ public final class RestAccess {
     }
 
     /**
-     * Delete a room.
+     * Deletes a room.
      *
      * @param roomNumber The room number.
      *
      * @return The deleted room.
      *
-     * @throws Exception
+     * @throws Exception If the room does not exist.
      */
     public Room deleteRoomByNumber(final int roomNumber) throws Exception {
         final String url = BASE_URL + ROOMS_PATH + roomNumber;
@@ -300,7 +300,7 @@ public final class RestAccess {
     }
 
     /**
-     * Create a user.
+     * Creates a user.
      *
      * @param username  The username.
      * @param firstName The first name.
@@ -308,7 +308,7 @@ public final class RestAccess {
      * @param password  The password.
      * @param gender    The gender.
      *
-     * @throws Exception
+     * @throws Exception If the user already exists.
      */
     public void createUser(final String username, final String firstName, final String lastName, final String password,
             final String gender) throws Exception {
@@ -327,11 +327,11 @@ public final class RestAccess {
     }
 
     /**
-     * Get all users.
+     * Gets all users.
      *
      * @return A list of all users.
      *
-     * @throws Exception
+     * @throws Exception If there are no users.
      */
     public List<User> getAllUsers() throws Exception {
         final String url = BASE_URL + USERS_PATH;
@@ -358,14 +358,14 @@ public final class RestAccess {
     }
 
     /**
-     * Get a user by username.
+     * Gets a user by username.
      *
      * @param username The username.
      * @return The user.
      *
-     * @throws Exception
+     * @throws Exception If the user does not exist.
      */
-    public User getUserByUsername(final String username) {
+    public User getUserByUsername(final String username) throws Exception {
         final String url = BASE_URL + USERS_PATH + username;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -380,22 +380,23 @@ public final class RestAccess {
             SimpleModule module = new SimpleModule();
             module.addDeserializer(User.class, new UserDeserializer());
             objectMapper.registerModule(module);
-
+            if (response.body().equals("")) {
+                return null;
+            }
             return objectMapper.readValue(response.body(), User.class);
 
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-            return null;
+            throw e;
         }
     }
 
     /**
-     * Get all bookings by username.
+     * Gets all bookings by username.
      *
      * @param username The username.
      * @return A list of all bookings by username.
      *
-     * @throws Exception
+     * @throws Exception If there are no bookings.
      */
     public List<Booking> getBookingsByUsername(final String username) throws Exception {
         final String url = BASE_URL + USERS_PATH + username + "/bookings";
@@ -421,7 +422,7 @@ public final class RestAccess {
     }
 
     /**
-     * Update a user by username.
+     * Updates a user by username.
      *
      * @param username  The username.
      * @param firstName The first name.
@@ -429,7 +430,7 @@ public final class RestAccess {
      * @param password  The password.
      * @param gender    The gender.
      *
-     * @throws Exception
+     * @throws Exception If the user does not exist.
      */
     public void updateUserByUsername(final String username, final String firstName, final String lastName,
             final String password, final String gender) throws Exception {
@@ -448,11 +449,11 @@ public final class RestAccess {
     }
 
     /**
-     * Delete a user by username.
+     * Deletes a user by username.
      *
      * @param username The username.
      *
-     * @throws Exception
+     * @throws Exception If the user does not exist.
      */
     public void deleteUserByUsername(final String username) throws Exception {
         final String url = BASE_URL + USERS_PATH + username;

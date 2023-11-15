@@ -12,9 +12,15 @@ import java.io.IOException;
 /**
  * A serializer for the {@link User} class.
  *
- * Used by the {@link UserSerializer} to serialize its users.
+ * Uses the {@link BookingSerializer} to serialize the bookings.
  */
 public final class UserSerializer extends JsonSerializer<User> {
+
+    /**
+     * Default constructor for UserSerializer.
+     */
+    public UserSerializer() {
+    }
 
     @Override
     public void serialize(final User user, final JsonGenerator jsonGenerator,

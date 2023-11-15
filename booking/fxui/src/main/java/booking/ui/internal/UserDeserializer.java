@@ -14,7 +14,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A deserializer for the {@link User} class.
+ *
+ * Uses the {@link BookingDeserializer} to deserialize the bookings.
+ */
 public final class UserDeserializer extends JsonDeserializer<User> {
+
+    /**
+     * Default constructor for UserDeserializer.
+     */
+    public UserDeserializer() {
+    }
 
     @Override
     public User deserialize(final JsonParser parser, final DeserializationContext ctxt) throws IOException {

@@ -4,7 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A user of the system.
+ * A user of the hotel booking system that can
+ * book a {@link Room} with a {@link Booking}.
+ *
+ * Has six defining characteristics:
+ * <ul>
+ * <li>Username</li>
+ * <li>First name</li>
+ * <li>Last name</li>
+ * <li>Password</li>
+ * <li>Gender</li>
+ * <li>List of bookings</li>
+ * </ul>
  */
 public final class User {
 
@@ -34,7 +45,7 @@ public final class User {
     private String gender;
 
     /**
-     * The list of bookings for the user.
+     * The list of bookings the user has made.
      */
     private List<Booking> bookings;
 
@@ -46,7 +57,7 @@ public final class User {
     }
 
     /**
-     * Constructor for User with all relevant info added.
+     * Creates a new user.
      *
      * @param username  The user's username.
      * @param firstName The user's first name.
@@ -65,8 +76,7 @@ public final class User {
     }
 
     /**
-     * Constructor for User with all relevant info added, along with a list of
-     * bookings.
+     * Creates a new user with a list of bookings.
      *
      * @param username  The user's username.
      * @param firstName The user's first name.
@@ -134,6 +144,8 @@ public final class User {
     }
 
     /**
+     * Check if given user is equal to this user.
+     *
      * @param user The user to compare to.
      *
      * @return Whether the users are equal.
@@ -153,6 +165,8 @@ public final class User {
     }
 
     /**
+     * Takes in a booking to add to user's list of bookings.
+     *
      * @param booking The booking to add to the user.
      */
     public void addBooking(final Booking booking) {
@@ -160,6 +174,8 @@ public final class User {
     }
 
     /**
+     * Takes in a booking to remove from user's list of bookings.
+     *
      * @param booking The booking to remove from the user.
      */
     public void removeBooking(final Booking booking) {
@@ -170,6 +186,13 @@ public final class User {
         bookings.remove(bookingToCancel);
     }
 
+    /**
+     * Takes in a booking and returns the booking equal to it.
+     *
+     * @param booking Booking to compare to
+     *
+     * @return The booking equal to the given booking
+     */
     public Booking getEqualBooking(final Booking booking) {
         Booking tempBooking = null;
         for (Booking b : bookings) {

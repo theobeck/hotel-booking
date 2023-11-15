@@ -8,10 +8,15 @@ import booking.core.User;
 public abstract class AbstractBookingController {
 
     /**
-     * The user.
+     * The logged in user.
      */
     protected User user;
 
+    /**
+     * Takes in a user and sets it as the logged in user.
+     *
+     * @param user The logged in user.
+     */
     final void setUser(final User user) {
         this.user = user;
     }
