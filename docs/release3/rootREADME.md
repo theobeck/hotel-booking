@@ -4,7 +4,7 @@
 
 I eclipse che, etter at du har bygget og kjørt prosjektet, må du se på panelet som heter `endpoints` (finnes nederst til venstre), og trykke på public port 6080, kopiere denne, og lim den inn i en ny fane for å få opp GUIen.
 
-Dette kodingsprosjektet inneholder en hotellbookingapplikasjon som lar brukere søke etter og bestille hotellrom. Her er en oversikt over prosjektet og hvordan du kan bruke det.
+Dette kodingsprosjektet inneholder en hotellbookingapplikasjon som lar brukere søke etter og bestille hotellrom. Her er en oversikt over appen og hvordan du kan bruke det.
 
 ## Bygging og kjøring av appen
 
@@ -64,7 +64,7 @@ Denne appen er organisert som følger:
     - `test/java/booking/springboot/restserver/`
       - Her ligger testene for REST API-et og serveren vår.
 
-![Prosjektets struktur vha PlantUML](img/architecture.png)
+![Prosjektets struktur vha PlantUML](../../img/architecture.png)
 
 ## Nødvendigheter for kjøring av prosjektet
 
