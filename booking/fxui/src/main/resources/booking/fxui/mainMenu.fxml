@@ -18,12 +18,12 @@
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7cbca" height="244.0" layoutX="-16.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7cbca" height="600.0" layoutX="99.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="812.0" />
-      <Text fill="#2a264d" layoutX="56.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Motel Holiday Inn" textAlignment="CENTER" wrappingWidth="457.0">
+      <Text fill="#2a264d" layoutX="106.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Motel Holiday Inn" textAlignment="CENTER" wrappingWidth="457.0">
          <font>
             <Font name="SansSerif Bold" size="62.0" />
          </font>
       </Text>
-      <Text fill="#2a264d" layoutX="200.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget about your boyfriend. Meet me at the hotel room" textAlignment="CENTER" wrappingWidth="312.5367431640625">
+      <Text fill="#2a264d" layoutX="174.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget about your boyfriend. Meet me at the hotel room" textAlignment="CENTER" wrappingWidth="312.5367431640625">
          <font>
             <Font name="SansSerif Regular" size="22.0" />
          </font>
