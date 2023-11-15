@@ -25,9 +25,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 
 @AutoConfigureMockMvc
-@ContextConfiguration(classes = { RestApplication.class,
-        RoomController.class, RoomService.class,
-        UsersController.class, UsersService.class })
+@ContextConfiguration(classes = { RestApplication.class, RoomController.class, RoomService.class })
 @WebMvcTest
 public class RoomServiceTest {
 
@@ -72,9 +70,11 @@ public class RoomServiceTest {
     public void testBookDeleteCreateUnbookRoom() throws Exception {
         Booking booking = new Booking("test", 1, LocalDate.now(), LocalDate.now().plusDays(3), 1800);
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.put(roomsUrl(String.valueOf(booking.getRoomNumber()), "book",
-                        String.valueOf(booking.getFrom()), String.valueOf(booking.getTo()),
-                        booking.getBookedBy()))
+                .perform(MockMvcRequestBuilders
+                        .put(roomsUrl(String.valueOf(booking.getRoomNumber()), "book",
+                                String.valueOf(booking.getFrom()),
+                                String.valueOf(booking.getTo()),
+                                booking.getBookedBy()))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
@@ -92,9 +92,10 @@ public class RoomServiceTest {
 
             result = mockMvc
                     .perform(MockMvcRequestBuilders
-                            .post(roomsUrl(String.valueOf(room.getRoomNumber()), String.valueOf(room.getRoomCapacity()),
+                            .post(roomsUrl(String.valueOf(room.getRoomNumber()),
+                                    String.valueOf(room.getRoomCapacity()),
                                     String.valueOf(room.getPricePerNight())))
-                            .accept(MediaType.APPLICATION_JSON))
+                    .accept(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andReturn();
             if (room.getBookings().isEmpty()) {
@@ -104,9 +105,10 @@ public class RoomServiceTest {
                 mockMvc
                         .perform(MockMvcRequestBuilders
                                 .put(roomsUrl(String.valueOf(b.getRoomNumber()), "book",
-                                        String.valueOf(b.getFrom()), String.valueOf(b.getTo()),
+                                        String.valueOf(b.getFrom()),
+                                        String.valueOf(b.getTo()),
                                         b.getBookedBy()))
-                                .accept(MediaType.APPLICATION_JSON))
+                        .accept(MediaType.APPLICATION_JSON))
                         .andExpect(MockMvcResultMatchers.status().isOk())
                         .andReturn();
             }
@@ -115,10 +117,12 @@ public class RoomServiceTest {
         }
         result = mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put(roomsUrl(String.valueOf(booking.getRoomNumber()), "cancel", booking.getBookedBy(),
-                                String.valueOf(booking.getFrom()), String.valueOf(booking.getTo()),
+                        .put(roomsUrl(String.valueOf(booking.getRoomNumber()), "cancel",
+                                booking.getBookedBy(),
+                                String.valueOf(booking.getFrom()),
+                                String.valueOf(booking.getTo()),
                                 String.valueOf(booking.getTotalCostOfBooking())))
-                        .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
     }
@@ -131,7 +135,7 @@ public class RoomServiceTest {
                         .put(roomsUrl(String.valueOf(room.getRoomNumber()), "update",
                                 String.valueOf(room.getRoomCapacity() + 1),
                                 String.valueOf(room.getPricePerNight())))
-                        .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
 
@@ -145,7 +149,7 @@ public class RoomServiceTest {
                         .put(roomsUrl(String.valueOf(room.getRoomNumber()), "update",
                                 String.valueOf(room.getRoomCapacity()),
                                 String.valueOf(room.getPricePerNight())))
-                        .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
 
@@ -164,7 +168,7 @@ public class RoomServiceTest {
                         .put(roomsUrl(String.valueOf(0), "update",
                                 String.valueOf(room.getRoomCapacity() + 1),
                                 String.valueOf(room.getPricePerNight())))
-                        .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
         assertNull(result.getResponse().getContentType());
