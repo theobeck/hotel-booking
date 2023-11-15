@@ -56,4 +56,23 @@ Klikke på en bestilling for å se flere detaljer om oppholdet.
 Få tilgang til kvitteringer og bekreftelser for hver bestilling.
 Eventuelt kansellere en fremtidig booking (hvis avbestillingsregler tillater det).
 
+**Brukerhistorie 3: Avbestille og Rebestille (US-3)**
+
+Som en gjest som har feilaktig booket feil dato, ønsker jeg å kunne avbestille min nåværende booking og deretter enkelt kunne bestille på nytt med de riktige datoene.
+Viktig å kunne se
+
+- En landingsside med alternativet "Mine Bookinger" som tar meg til bookingshistorikksiden.
+- En oversikt over mine eksisterende bookinger med detaljer om innsjekkings- og utsjekkingsdatoer.
+- En knapp som gir mulighet for avbestilling.
+
+**Viktig å kunne gjøre**
+
+- Velge en bestilling som jeg vil avbestille.
+- Umiddelbart etter avbestilling, få muligheten til å bestille på nytt med korrekte datoer.
+
+**Scenario:**
+1. Jeg logger inn på profilen min og navigerer til "Mine Bookinger".
+2. Jeg identifiserer feil booking og velger alternativet for avbestilling.
+3. Etter avbestilling blir jeg ledet tilbake til bookingsiden, der jeg enkelt kan starte en ny booking med riktige datoer.
+
 Disse brukerhistoriene gir en oversikt over de grunnleggende funksjonalitetene i hotellbookingappen din. Du kan utvide og tilpasse dem etter behov, avhengig av prosjektets omfang og krav.
