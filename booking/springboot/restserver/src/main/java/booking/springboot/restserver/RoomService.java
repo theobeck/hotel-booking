@@ -22,6 +22,9 @@ import booking.core.User;
 import booking.ui.internal.RoomDeserializer;
 import booking.ui.internal.RoomSerializer;
 
+/**
+ * A service for managing {@link Room} objects.
+ */
 @Service
 public class RoomService {
 
@@ -42,6 +45,11 @@ public class RoomService {
         objectMapper = createObjectMapper();
     }
 
+    /**
+     * Creates an object mapper for {@link Room} objects.
+     *
+     * @return the object mapper.
+     */
     public static ObjectMapper createObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         final SimpleModule module = new SimpleModule();
@@ -52,7 +60,7 @@ public class RoomService {
     }
 
     /**
-     * Create a room.
+     * Creates a room.
      *
      * @param roomNumber    the room number of the room to create.
      * @param roomCapacity  the room capacity of the room to create.
@@ -66,7 +74,7 @@ public class RoomService {
     }
 
     /**
-     * Get all rooms.
+     * Gets all rooms.
      *
      * @return all rooms.
      */
@@ -89,7 +97,7 @@ public class RoomService {
     }
 
     /**
-     * Get a room by room number.
+     * Gets a room by room number.
      *
      * @param roomNumber the room number of the room to get.
      *
@@ -107,40 +115,29 @@ public class RoomService {
     }
 
     /**
-     * Write the given rooms to the given file.
+     * Updates a room by room number.
      *
-     * @param rooms The rooms to store
-     */
-    private void updateRooms(final List<Room> rooms) {
-        try {
-            final ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
-            Collections.sort(rooms, Comparator.comparingInt(Room::getRoomNumber));
-            objectWriter.writeValue(new File(ROOMS_PATH), rooms);
-        } catch (final IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Update a room.
+     * @param roomNumber    the room number of the room to update.
+     * @param roomCapacity  the new room capacity.
+     * @param pricePerNight the new price per night.
      *
-     * @param room the room to update.
+     * @return the room that was updated.
      */
-    private void updateOneRoom(final Room room) {
+    public Room updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
         final List<Room> rooms = getAllRooms();
-        Room roomToRemove = new Room();
-        for (final Room r : rooms) {
-            if (r.getRoomNumber() == room.getRoomNumber()) {
-                roomToRemove = r;
+        for (final Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber) {
+                room.setRoomCapacity(roomCapacity);
+                room.setPricePerNight(pricePerNight);
+                updateRooms(rooms);
+                return room;
             }
         }
-        rooms.remove(roomToRemove);
-        rooms.add(room);
-        updateRooms(rooms);
+        return null;
     }
 
     /**
-     * Update a room by room number.
+     * Books a room by room number.
      *
      * @param roomNumber the room number of the room to update.
      * @param from       the start date of the booking.
@@ -157,7 +154,7 @@ public class RoomService {
     }
 
     /**
-     * Unbook a room by room number.
+     * Unbooks a room by room number.
      *
      * @param booking the booking to cancel.
      */
@@ -174,7 +171,7 @@ public class RoomService {
     }
 
     /**
-     * Delete a room by room number.
+     * Deletes a room by room number.
      *
      * @param roomNumber the room number of the room to delete.
      *
@@ -194,24 +191,35 @@ public class RoomService {
     }
 
     /**
-     * Update a room by room number.
+     * Writes the given rooms to the given file.
      *
-     * @param roomNumber    the room number of the room to update.
-     * @param roomCapacity  the new room capacity.
-     * @param pricePerNight the new price per night.
-     *
-     * @return the room that was updated.
+     * @param rooms The rooms to store
      */
-    public Room updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
+    private void updateRooms(final List<Room> rooms) {
+        try {
+            final ObjectWriter objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
+            Collections.sort(rooms, Comparator.comparingInt(Room::getRoomNumber));
+            objectWriter.writeValue(new File(ROOMS_PATH), rooms);
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Updates a room.
+     *
+     * @param room the room to update.
+     */
+    private void updateOneRoom(final Room room) {
         final List<Room> rooms = getAllRooms();
-        for (final Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber) {
-                room.setRoomCapacity(roomCapacity);
-                room.setPricePerNight(pricePerNight);
-                updateRooms(rooms);
-                return room;
+        Room roomToRemove = new Room();
+        for (final Room r : rooms) {
+            if (r.getRoomNumber() == room.getRoomNumber()) {
+                roomToRemove = r;
             }
         }
-        return null;
+        rooms.remove(roomToRemove);
+        rooms.add(room);
+        updateRooms(rooms);
     }
 }
