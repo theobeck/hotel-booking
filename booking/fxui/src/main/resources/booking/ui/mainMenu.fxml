@@ -33,7 +33,7 @@
             <Image url="@shapes.png" />
          </image>
       </ImageView>
-      <Button fx:id="showBooking" layoutX="185.0" layoutY="315.0" mnemonicParsing="false" onAction="#goToUserBookings" prefHeight="84.0" prefWidth="260.0" style="-fx-background-color: #ec988a;" text="Show booking" textFill="#2a264d">
+      <Button fx:id="showBooking" layoutX="185.0" layoutY="315.0" mnemonicParsing="false" onAction="#goToUserBookings" prefHeight="84.0" prefWidth="260.0" style="-fx-background-color: #ec988a;" text="Show bookings" textFill="#2a264d">
          <font>
             <Font name="SansSerif Regular" size="26.0" />
          </font></Button>
