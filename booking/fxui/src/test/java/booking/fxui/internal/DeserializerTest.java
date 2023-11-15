@@ -11,10 +11,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import booking.core.Booking;
 import booking.core.Room;
 import booking.core.User;
-import booking.fxui.internal.BookingDeserializer;
-import booking.fxui.internal.RoomDeserializer;
-import booking.fxui.internal.UserDeserializer;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -15,8 +15,6 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import booking.fxui.internal.RestAccess;
-
 public class RestAccessTest {
 	HttpClient mockedHttpClient;
 	private RestAccess restAccess;

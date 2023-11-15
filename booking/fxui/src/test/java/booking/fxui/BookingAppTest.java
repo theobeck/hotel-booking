@@ -15,7 +15,6 @@ import org.testfx.framework.junit5.ApplicationTest;
 import booking.core.Booking;
 import booking.core.Room;
 import booking.core.User;
-import booking.fxui.BookingApp;
 import booking.fxui.internal.RestAccess;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;

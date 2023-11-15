@@ -19,8 +19,6 @@ import java.util.List;
 import booking.core.Booking;
 import booking.core.Room;
 import booking.core.User;
-import booking.fxui.internal.RoomSerializer;
-import booking.fxui.internal.UserSerializer;
 
 public class SerializerTest {
     List<Booking> bookings;
