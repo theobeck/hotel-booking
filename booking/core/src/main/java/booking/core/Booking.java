@@ -129,6 +129,9 @@ public final class Booking {
      */
     @Override
     public String toString() {
+        if (from == null || to == null) {
+            return "Incomplete Booking Information";
+        }
         String fromMonth = from.getMonth().toString();
         fromMonth = fromMonth.substring(0, 1) + fromMonth.substring(1).toLowerCase();
         String toMonth = to.getMonth().toString();
