@@ -56,9 +56,9 @@
             <Font name="SansSerif Regular" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="153.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="if you dont have a user" wrappingWidth="150.0">
+      <Text fill="WHITE" layoutX="153.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you dont have a user:" wrappingWidth="150.0">
          <font>
-            <Font name="SansSerif Regular" size="13.0" />
+            <Font name="SansSerif Regular" size="14.0" />
          </font>
       </Text>
    </children>
