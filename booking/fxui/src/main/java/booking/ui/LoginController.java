@@ -18,6 +18,7 @@ import javafx.stage.Stage;
  * A controller for the login view.
  */
 public class LoginController {
+
     /**
      * The input field for the username.
      */
