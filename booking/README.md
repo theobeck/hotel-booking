@@ -30,6 +30,8 @@ På hovedsiden har brukere to valg. De kan enten søke etter ledige rom, eller s
 
 På søkesiden kan brukere velge innsjekkings- og utsjekkingsdatoer. Når brukere trykker på "Search" vil de få opp en liste over ledige rom som passer kriteriene deres.
 
+Her er et diagram som viser hvordan prossesen med å søke etter ledige rom fungerer:
+![Search Sequence Diagram](../img/sequenceDiagram.png)
 ### Booke et rom
 
 ![Book Room Screen](../img/availableRooms.png)
