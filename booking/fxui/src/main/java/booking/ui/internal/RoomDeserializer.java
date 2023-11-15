@@ -24,34 +24,39 @@ public final class RoomDeserializer extends JsonDeserializer<Room> {
     public Room deserialize(final JsonParser parser, final DeserializationContext ctxt) throws IOException {
         JsonNode jsonNode = parser.getCodec().readTree(parser);
         if (jsonNode instanceof ObjectNode objectNode) {
-            Room room = new Room();
 
             JsonNode roomNumberNode = objectNode.get("roomNumber");
             JsonNode roomCapacityNode = objectNode.get("roomCapacity");
             JsonNode pricePerNightNode = objectNode.get("pricePerNight");
             JsonNode bookingsNode = objectNode.get("bookings");
 
-            if (roomNumberNode != null && roomCapacityNode != null && pricePerNightNode != null
-                    && bookingsNode instanceof ArrayNode) {
-                room.setRoomNumber(roomNumberNode.asInt());
-                room.setRoomCapacity(roomCapacityNode.asInt());
-                room.setPricePerNight(pricePerNightNode.asInt());
-
-                ArrayNode bookingsArrayNode = (ArrayNode) bookingsNode;
-                List<Booking> bookings = new ArrayList<>();
-                BookingDeserializer bookingDeserializer = new BookingDeserializer();
-
-                for (JsonNode bookingNode : bookingsArrayNode) {
-                    Booking booking = bookingDeserializer.deserialize(bookingNode.traverse(parser.getCodec()),
-                            ctxt);
-                    if (booking != null) {
-                        bookings.add(booking);
-                    }
-                }
-
-                room.setBookings(bookings);
-                return room;
+            if (roomNumberNode.isNull() || !roomNumberNode.isInt()
+                    || roomCapacityNode.isNull() || !roomCapacityNode.isInt()
+                    || pricePerNightNode.isNull() || !pricePerNightNode.isInt()
+                    || bookingsNode.isNull() || !(bookingsNode instanceof ArrayNode)) {
+                return null;
             }
+
+            Room room = new Room();
+
+            room.setRoomNumber(roomNumberNode.asInt());
+            room.setRoomCapacity(roomCapacityNode.asInt());
+            room.setPricePerNight(pricePerNightNode.asInt());
+
+            ArrayNode bookingsArrayNode = (ArrayNode) bookingsNode;
+            List<Booking> bookings = new ArrayList<>();
+            BookingDeserializer bookingDeserializer = new BookingDeserializer();
+
+            for (JsonNode bookingNode : bookingsArrayNode) {
+                Booking booking = bookingDeserializer.deserialize(bookingNode.traverse(parser.getCodec()),
+                        ctxt);
+                if (booking != null) {
+                    bookings.add(booking);
+                }
+            }
+
+            room.setBookings(bookings);
+            return room;
         }
 
         return null;
