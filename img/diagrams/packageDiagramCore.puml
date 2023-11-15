@@ -6,23 +6,27 @@ component restserver {
 component fxui {
   package booking.fxui {
 }
-  package booking.internal {
-
-  }
 }
+component booking.internal {
+    package booking.restAccess
+}
+
 component core {
   package booking.core {
 }
 
 }
 
-component fxml <<inside>> {
+component javafx {
+  
+    component fxml <<inside>> {
+    }
 }
 
-component json <<inside>>{
-}
+
 component java.net.http <<inside>> {
 }
+
 skinparam Component {
   BackgroundColor transparent
   BorderColor black
@@ -35,8 +39,10 @@ skinparam ArrowColor #cc1836
 HIDE <<inside>> stereotype
 booking.core <...> booking.fxui
 booking.fxui ...> fxml
-booking.fxui ...> java.net.http
+booking.restAccess ...> java.net.http
+booking.fxui ...> booking.restAccess
 booking.restserver <...> booking.core
-booking.restserver ...> fxui    
-booking.internal <...> json
+booking.restserver ...> fxui   
+ 
+
 @enduml
