@@ -10,11 +10,13 @@ Dette kodingsprosjektet inneholder en hotellbookingapplikasjon som lar brukere s
 
 Prosjektet bruker maven til bygging og kjøring.
 
-For å bygge, kjør `mvn install` fra rot-prosjektet `booking/`. Dette vil kjøre alle tester og kvalitetssjekker.
+For å bygge, kjør `mvn clean install -PskipUITests` fra rot-prosjektet `booking/`. Dette vil bygge appen.
 
 For å kjøre prosjektet, må man først starte opp Springboot serveren. Dette gjores ved å kjøre `mvn spring-boot:run` fra springboot mappa `booking/springboot/restserver`. Dette vil starte opp serveren på port 8080.
 
-Etter det, åpner du en ny terminal, og navigerer til `booking/fxui`. Herfra kjorer du `mvn javafx:run`. Dette vil starte opp GUIen.
+Etter det, åpner du en ny terminal, og navigerer tilbake til `booking/`. Herfra kjører du `mvn clean install`. Dette vil starte bygge appen på nytt, i tillegg til at den kjører alle tester og kvalitetssjekker.
+
+Til slutt, navigerer du til `booking/fxui`, og kjører `mvn javafx:run`. Dette vil åpne GUIet.
 
 ## Prosjektets Struktur
 
@@ -24,6 +26,7 @@ Dette prosjektet er organisert som følger:
 - `booking/` - Dette er selve kodelageret for prosjektet.
   - `core/` - Her ligger hovedlogikken for prosjektet og de tilhørende testene. Innad i `core/`, er loggiken delt opp enda litt til, med at hoved logikk filene og filene som kontrollerer skriving/lesing til/fra JSON filer ligger i sine egne mapper.
   - `fxui/` - Her ligger filene for GUIen, altså fxml filer, de tilhørende kontrollerne, og tester for disse.
+  - `springboot/` - Her ligger filene for REST API-et og serveren vår.
 
 ![Prosjektets struktur vha PlantUML](img/architecture.png)
 
