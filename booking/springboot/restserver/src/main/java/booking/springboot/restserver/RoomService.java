@@ -39,11 +39,16 @@ public class RoomService {
      * Random object used to generate random numbers.
      */
     public RoomService() {
-        objectMapper = new ObjectMapper();
+        objectMapper = createObjectMapper();
+    }
+
+    public static ObjectMapper createObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
         final SimpleModule module = new SimpleModule();
         module.addDeserializer(Room.class, new RoomDeserializer());
         module.addSerializer(Room.class, new RoomSerializer());
-        objectMapper.registerModule(module);
+        mapper.registerModule(module);
+        return mapper;
     }
 
     /**

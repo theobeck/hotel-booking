@@ -38,11 +38,16 @@ public class UsersService {
      * Random object used to generate random numbers.
      */
     public UsersService() {
-        objectMapper = new ObjectMapper();
+        objectMapper = createObjectMapper();
+    }
+
+    public static ObjectMapper createObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
         final SimpleModule module = new SimpleModule();
         module.addDeserializer(User.class, new UserDeserializer());
         module.addSerializer(User.class, new UserSerializer());
-        objectMapper.registerModule(module);
+        mapper.registerModule(module);
+        return mapper;
     }
 
     /**

@@ -100,7 +100,7 @@
     <module name="SimplifyBooleanExpression" />
     <module name="SimplifyBooleanReturn" />
 
-    <module name="DesignForExtension" />
+    <!-- <module name="DesignForExtension" /> -->
     <module name="FinalClass" />
     <module name="InterfaceIsType" />
     <!-- <module name="VisibilityModifier" /> removed bc protected didnt count -->

@@ -24,17 +24,17 @@ public final class RestAccess {
     /**
      * The base URL for the REST API.
      */
-    private static final String BASE_URL = "http://localhost:8080/";
+    public static final String BASE_URL = "http://localhost:8080/";
 
     /**
      * The path for room requests.
      */
-    private static final String ROOMS_PATH = "rooms/";
+    public static final String ROOMS_PATH = "rooms/";
 
     /**
      * The path for user requests.
      */
-    private static final String USERS_PATH = "users/";
+    public static final String USERS_PATH = "users/";
 
     /**
      * The HTTP client.
