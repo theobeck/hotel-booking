@@ -34,15 +34,17 @@ Her er hvordan man bygger prosjektet:
 
 ## Appens Struktur
 
+![Prosjektets struktur vha PlantUML](img/packageDiagram.png)
+
 Denne appen er organisert som følger:
 
 - `docs/` - Her ligger gruppekontrakten, i tillegg til dokumentasjon fra hver release.
 - `booking/` - Dette er selve kodelageret for prosjektet.
   - `core/src/`
     - `main/java/booking/core`
-      - Her ligger hovedlogikken for appen.
+      - Her ligger hovedlogikken for appen ![Klassediagram av booking.core klasser](img/classDiagramCore.png).
     - `test/java/booking/core`
-      - Her ligger testene for hovedlogikken av appen.
+      - Her ligger testene for hovedlogikken av appen ![Klassediagram av booking.ui klasser](img/classDiagramUI.png).
   - `fxui/src`
     - `main/`
       - `java/booking/ui`
@@ -63,8 +65,6 @@ Denne appen er organisert som følger:
       - Her ligger 'databasen' vår, som er to json filer. En for rom, og en for brukere.
     - `test/java/booking/springboot/restserver/`
       - Her ligger testene for REST API-et og serveren vår.
-
-![Prosjektets struktur vha PlantUML](img/architecture.png)
 
 ## Nødvendigheter for kjøring av prosjektet
 
