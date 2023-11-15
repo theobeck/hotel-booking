@@ -6,9 +6,4 @@ stages:
 build:
   stage: build
   script:
-    - "cd booking; mvn clean install -U --batch-mode -DskipUiTests=true"
-
-test:
-  stage: test
-  script:
-    - "cd booking; mvn clean test -U --batch-mode -DskipUiTests=true"
+    - "cd booking; mvn clean install -U --batch-mode -PskipUITests"
