@@ -1,0 +1,101 @@
+@startuml classDiagramUI
+package booking.ui {
+    class AbstractBookingController
+    class AvailableRoomsController {
+        - rooms: List<Room>
+        - roomList: ListView<Room>
+        - availableRooms: ObservableList<Room>
+        - from: LocalDate
+        - to: LocalDate
+        - UPPER_BOUND_CAPACITY: int
+        - AMT_OF_ROOMS: int
+        - COST_PER_PERSON: int
+        - random: Random
+        + AvailableRoomsController() throws Exception
+        + setFrom(from: LocalDate): void
+        + setTo(to: LocalDate): void
+        + initialize(): void
+        + book(event: ActionEvent): void
+        + goToMainMenu(event: ActionEvent): void
+        - addObjects(): void
+    }
+    class BookingApp {
+        + start(stage: Stage): void
+        - loadFXML(fxml: String): Parent
+    }
+    class LoginController {
+        - inputUsername: TextField
+        - inputPassword: TextField
+        - errorMsg: Text
+        + LoginController() throws Exception
+        + login(event: ActionEvent): void
+        + signup(event: ActionEvent): void
+    }
+    class MainMenuController {
+        + goToLogin(event: ActionEvent): void
+        + goToUserBookings(event: ActionEvent): void
+        + goToSearchForRooms(event: ActionEvent): void
+    }
+    class RegisterController {
+        - inputUsername: TextField
+        - inputFirstName: TextField
+        - inputLastName: TextField
+        - inputPassword: PasswordField
+        - genderCombobox: ComboBox<String>
+        - errorMsg: Text
+        + RegisterController() throws Exception
+        + initialize(): void
+        + register(event: ActionEvent): void
+        + goToLogin(event: ActionEvent): void
+    }
+    class SearchForRoomsController {
+        - toPicker: DatePicker
+        - fromPicker: DatePicker
+        - errorMsg: Text
+        + SearchForRoomsController()
+        + goToMainMenu(event: ActionEvent): void
+        + goToAvailableRooms(event: ActionEvent): void
+    }
+    class UserBookingsController {
+        - yourBookings: ObservableList<Booking>
+        - bookingList: ListView<Booking>
+        + UserBookingsController()
+        + initialize(): void
+        + show(): void
+        + cancelBooking(event: ActionEvent): void
+        + goToMainMenu(event: ActionEvent): void
+    }
+}
+
+
+class User {
+
+}
+
+class Room {
+
+}
+
+class Booking {
+
+}
+
+
+
+
+BookingApp ...> LoginController: initializes
+
+
+AvailableRoomsController --> AbstractBookingController: uses
+MainMenuController --> AbstractBookingController: uses
+SearchForRoomsController --> AbstractBookingController: uses
+UserBookingsController --> AbstractBookingController: uses
+UserBookingsController --> Booking: uses
+
+AvailableRoomsController --> Room: uses
+AbstractBookingController --> User: uses
+
+
+
+@enduml
+
