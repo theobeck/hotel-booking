@@ -193,14 +193,25 @@ public class RoomService {
         return roomToUpdate;
     }
 
-    public void updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
+    /**
+     * Update a room by room number.
+     *
+     * @param roomNumber    the room number of the room to update.
+     * @param roomCapacity  the new room capacity.
+     * @param pricePerNight the new price per night.
+     *
+     * @return the room that was updated.
+     */
+    public Room updateRoomByNumber(final int roomNumber, final int roomCapacity, final int pricePerNight) {
         final List<Room> rooms = getAllRooms();
         for (final Room room : rooms) {
             if (room.getRoomNumber() == roomNumber) {
                 room.setRoomCapacity(roomCapacity);
                 room.setPricePerNight(pricePerNight);
                 updateRooms(rooms);
+                return room;
             }
         }
+        return null;
     }
 }

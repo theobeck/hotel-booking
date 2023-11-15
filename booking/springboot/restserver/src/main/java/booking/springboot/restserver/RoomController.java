@@ -79,11 +79,13 @@ public class RoomController {
      * @param roomNumber    The room number of the room to update
      * @param roomCapacity  The new room capacity
      * @param pricePerNight The new price per night
+     *
+     * @return The room that was updated
      */
     @PutMapping("/rooms/{roomNumber}/update/{roomCapacity}/{pricePerNight}")
-    public void updateRoomByNumber(final @PathVariable int roomNumber, final @PathVariable int roomCapacity,
+    public Room updateRoomByNumber(final @PathVariable int roomNumber, final @PathVariable int roomCapacity,
             final @PathVariable int pricePerNight) {
-        roomService.updateRoomByNumber(roomNumber, roomCapacity, pricePerNight);
+        return roomService.updateRoomByNumber(roomNumber, roomCapacity, pricePerNight);
     }
 
     /**
