@@ -2,6 +2,7 @@ package booking.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -153,7 +154,7 @@ public class BookingAppTest extends ApplicationTest {
 
         clickOn("#btnSignOut");
 
-        assertTrue(null == restAccess.getUserByUsername("test3"));
+        assertNull(restAccess.getUserByUsername("test3"));
 
         clickOn("#btnSignup");
         clickOn("#btnBack");
