@@ -42,7 +42,7 @@ Denne appen er organisert som følger:
 - `booking/` - Dette er selve kodelageret for prosjektet.
   - `core/src/`
     - `main/java/booking/core`
-      - Her ligger hovedlogikken for appen ![Klassediagram av booking.core klasser](img/classDiagramCore.png).
+      - Her ligger hovedlogikken for appen. ![Klassediagram av booking.core klasser](img/classDiagramCore.png)
     - `test/java/booking/core`
       - Her ligger testene for hovedlogikken av appen.
   - `fxui/src`
@@ -50,7 +50,7 @@ Denne appen er organisert som følger:
       - `java/booking/ui`
         - `internal/`
           - Her ligger serializer og deserializer filer for alle tre hovudlogikk filene våre. I tillegg, er har vi filen som håndterer tilgang til REST Serveren vår, og fungerer som en type klient til Serveren.
-        - Her ligger kontroller filene for GUIen ![Klassediagram av booking.fxui klasser](img/classDiagramUI.png).
+        - Her ligger kontroller filene for GUIen. ![Klassediagram av booking.fxui klasser](img/classDiagramUI.png)
       - `resources/booking/ui`
         - Her ligger fxml filene som tilsvarer hver side i appen.
     - `test/java/booking/ui`
