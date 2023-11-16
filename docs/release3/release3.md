@@ -1,36 +1,38 @@
-# Release 3.0.0
+# Utgivelse 3.0.0
 
-## Changes and improvements in This Release
+## Endringer og forbedringer i denne utgivelsen
 
-- Transitioned to a date-oriented booking process and removed redundant Hotel.java.
-- Rooms can now be booked multiple times, enhancing booking flexibility.
-- Created User.java and Booking.java to better handle user data and booking data.
-- Implemented a new login page and a new register page along with a LogInController and RegisterController. The booking process is now tied to a specific user.
-- Created REST APIs for both users and rooms, allowing for more streamlined data handling.
-- Made significant changes to the UI on all pages, including new layouts, font changes, and added images.
-- Created custom serializer/deserializer classes for better JSON handling for Booking, Room, and User objects.
-- Updated and clarified file and controller names for better readability.
+- Gikk over til en dato-orientert bookingprosess og fjernet ubrukt Hotel.java.
+- Rom kan nå bookes flere ganger, noe som tilbyr økt fleksibilitet i bookingen.
+- Bookingprosessen er nå knyttet til en spesifikk bruker.
+- Opprettet [User.java](../../booking/core/src/main/java/booking/core/User.java) og [Booking.java](../../booking/core/src/main/java/booking/core/Booking.java) for bedre håndtering av brukerdata og bookingdata.
+- Implementert en ny innloggingsside og en ny registreringsside med tilhørende kontrollere.
+- Opprettet REST API for både brukere og rom, noe som tillater mer fleksibilitet i hvor dataene kan hentes.
+- Gjort betydelige endringer i brukergrensesnittet på alle sider, inkludert nytt oppsett, endringer i skrifttyper og generelt utseende.
+- Opprettet egendefinerte serializer/deserializer-klasser for bedre JSON-håndtering av Booking, Room og User objekter.
+- Oppdatert nye og tydeliggjort gamle fil- og kontrollernavn for bedre leselighet.
+- Endret filnavn for mer samsvar innad i filstrukturen.
 
 ## Testing
 
-- Updated tests to reflect the change in the booking process.
-- Added new tests for the new controllers and REST APIs.
-- Improved test coverage in correspondence with JaCoCo report. The modules `core` and `fxui` now have 100% test coverage, and `springboot.restserver` has near 100% test coverage.
+- Oppdaterte tester for å reflektere endringen i bookingprosessen.
+- Opprettet tester for de nye kontrollerne og REST API.
+- Forbedret testdekning i samsvar med JaCoCo-rapporten. Modulene `core` og `fxui` har nå 100% testdekning, og `springboot.restserver` har nær 100% testdekning.
 
 ## Bug Fixes
 
-- Fixed bugs in the che devfile which made it impossible to run the project itself and its GUI in che.
-- Addressed issues with the pipeline and Eclipse Che, ensuring smoother operations.
-- Addressed various minor issues, including UI tweaks, checkstyle satisfaction, and small bug fixes.
+- Rettet feil i [devfile.yaml](../../devfile.yaml) som gjorde det umulig å kjøre prosjektet og prosjektets GUI i Eclipse Che.
+- Håndtert problemer med pipeline og Eclipse Che for å sikre jevnere drift.
+- Håndtert diverse mindre problemer, inkludert justeringer i UI, tilfredsstillelse av checkstyle og små feilrettinger.
 
-## Documentation
+## Dokumentasjon
 
-- Updated Javadocs across the project for better documentation.
-- Updated README.md to reflect the changes in the project.
-- Added Javadocs plugin so we can generate Javadocs sites.
+- Oppdatert Javadocs gjennom hele prosjektet.
+- Oppdatert READMEs.
+- Lagt til Javadocs-plugin slik at vi kan generere Javadocs-nettsider.
 
-## Known Issues
+## Kjente problemer
 
-- No known issues at this time.
+- Ingen kjente problemer på dette tidspunktet.
 
-For more details and specific implementation changes, please refer to the commit history and release documentation.
+For flere detaljer og spesifikke implementeringsendringer, vennligst se gjennom commit-historikken og READMEs.
