@@ -1,9 +1,5 @@
 # Hotellbooking App
 
-[Open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2313/gr2313?new)
-
-I eclipse che, etter at du har bygget og kjørt prosjektet, må du se på panelet som heter `endpoints` (finnes nederst til venstre), og trykke på public port 6080, kopiere denne, og lim den inn i en ny fane for å få opp GUIen.
-
 Dette kodingsprosjektet inneholder en hotellbookingapplikasjon som lar brukere søke etter og bestille hotellrom. Her er en oversikt over prosjektet og hvordan du kan bruke det.
 
 ## Bygging og kjøring av appen
